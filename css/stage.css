@@ -531,14 +531,14 @@ header h4 {
   position: absolute;
   text-align: center;
   top: 125px;
-  color: #fff;
+  color: #203;
 }
 #owner h4 {
   position: absolute;
   top: 146px;
   width: 100%;
   text-align: center;
-  color: #fff;
+  color: #203;
 }
 #owner .social {
   text-align: center;

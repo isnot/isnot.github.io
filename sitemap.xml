@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://pages.isnot.jp/about/index.html</loc>
+    
+    <lastmod>2019-04-09T13:27:19.734Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://pages.isnot.jp/2019-04/09-index/</loc>
     
     <lastmod>2019-04-09T06:09:59.862Z</lastmod>
@@ -12,13 +19,6 @@
     <loc>https://pages.isnot.jp/tags/index.html</loc>
     
     <lastmod>2019-04-09T04:57:09.250Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://pages.isnot.jp/about/index.html</loc>
-    
-    <lastmod>2019-04-09T04:56:42.939Z</lastmod>
     
   </url>
   

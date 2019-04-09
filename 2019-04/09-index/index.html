@@ -5,8 +5,11 @@
     <title>はじめまして！ | isnot N3</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <meta name="keywords" content="Javascript Node.js npm git Github Chromy MPD Ubuntu LXQt Emacs Telegram Bot">
-    <meta name="description" content="My First Weblogdesu
-">
+    <meta name="description" content="My First WeblogGoogle+が個人向けサービス終了となり、アウトプットについて考えた。
+考えた結果、静的サイト・ジェネレータを使って、ブログ形式のサイトを始めることにしました。それがコレです。
+
+静的サイト・ジェネレータを選んだのは、書く内容を勘案したうえで、「自力でなんとかする」ことに意味があるように思えたから。特定サービスへのロックオンを、できれば減らしたいという意味で。とはいえ、全くナッシングで全て自力というのも、また無駄でありつつ。そのバランスが、ちょうど良いように思えたから。
+数あるプロダクトの中でHexoを選択したのは、あまり悩まなかったな。Javascript製で、npmを使ってセットアップ...">
     
         <link rel="icon" href="/favicon.ico">
     
@@ -48,10 +51,28 @@
             
             <ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/myself/">myself</a></li></ul>
         </div>
-        <h2 id="My-First-Weblog"><a href="#My-First-Weblog" class="headerlink" title="My First Weblog"></a>My First Weblog</h2><p>desu</p>
+        <h2 id="My-First-Weblog"><a href="#My-First-Weblog" class="headerlink" title="My First Weblog"></a>My First Weblog</h2><p>Google+が個人向けサービス終了となり、アウトプットについて考えた。</p>
+<p>考えた結果、静的サイト・ジェネレータを使って、ブログ形式のサイトを始めることにしました。それがコレです。</p>
+<a id="more"></a>
+<p>静的サイト・ジェネレータを選んだのは、書く内容を勘案したうえで、「自力でなんとかする」ことに意味があるように思えたから。<br>特定サービスへのロックオンを、できれば減らしたいという意味で。とはいえ、全くナッシングで全て自力というのも、また無駄でありつつ。<br>そのバランスが、ちょうど良いように思えたから。</p>
+<p>数あるプロダクトの中でHexoを選択したのは、あまり悩まなかったな。Javascript製で、npmを使ってセットアップが簡単ということで。</p>
+<p>それで、ドメインはずっと使っているisnot.jpに、新しくサブドメインを追加することにした。<br>本体ごと、まるっと乗り換えるほどには思いきれなかったということである。</p>
+<p>そのうえで、ホスティングにGitHub Pagesを使う。<br>レンサバに直接デプロイするのに比べると、例えば出先でスマホから、ブラウザを使ってちょこっとコンテンツを書き換える程度のことが、それなりに出来るから。<br>まぁ普段はデスクトップのパソコンで作業します。</p>
+<h3 id="つまずき-その1-ドメインの設定"><a href="#つまずき-その1-ドメインの設定" class="headerlink" title="つまずき その1 ドメインの設定"></a>つまずき その1 ドメインの設定</h3><p>さくらの会員メニューからログイン。ドメインの設定。<br>ドメインの編集から、CNAMEを追加する。このとき、「値」に何を設定すれば良いか分かってなかったので、調べる。と、FQDN書けよと。<br>ここで失敗。末尾のドット（.）を付け忘れる。いつまで待ってもドメインが伝播してこないなーとか。<br>1日待って、おかしいと思って見直したら、そういうことだった。</p>
+<p>ついでに、無料のSSL証明書をポチっとした。この上なく楽だな〜。<br>業務で国内大手事業者からSSL証明書を買った経験は何度かあるけど、そういうのと次元がまったく違ってますね。</p>
+<h3 id="つまずき-その2-リポジトリの設定"><a href="#つまずき-その2-リポジトリの設定" class="headerlink" title="つまずき その2 リポジトリの設定"></a>つまずき その2 リポジトリの設定</h3><p>「CNAME」という名前のファイルを置くのだが、いろいろあって、衝突したり消えたりした。<br>結局でいうと、&lt;$blog_home&gt;/source/CNAME に置いてあげれば解決でした。</p>
+<h3 id="themes-のカスタマイズ"><a href="#themes-のカスタマイズ" class="headerlink" title="themes のカスタマイズ"></a>themes のカスタマイズ</h3><p>themesには、Stageというのを選んだ。<br>結構たくさんある中で選んだポイントは、<br>本文テキストの文字サイズが小さくないこと。<br>ライト系で、白っぽいこと。<br>そして、jQuery依存しないで済むこと。</p>
+<p>よく見たらjQuery使われていたんだけど、見た目のちょっとした動きを付けるためだけに使っている程度だったので、カスタマイズの過程で外しといた。</p>
+<p>あとはヘッダーの画像を入れ替え、位置関係を調整。<br>サイドバーのアバター画像も入れ替え。</p>
+<p>それと、独自のCSSを追加した。<br>Parmalinkの書式を変えた。</p>
+<p>マルチ言語機能があるが、日本語（ja）の言語ファイルがなかったので、enをコピーして適当に翻訳した。</p>
+<p>今のところは、この程度かな。</p>
+<h3 id="既存コンテンツどうしよう"><a href="#既存コンテンツどうしよう" class="headerlink" title="既存コンテンツどうしよう"></a>既存コンテンツどうしよう</h3><p>G+のバックアップデータをインポートするとしたら、パーザから自作してだな。<br>うーむ。</p>
+<p>そして旧ブログというかWeb日記も、そのうちコンバートしておくか。</p>
+<p>以上です。</p>
 
         <div>
-            <ul class="tags-category-list"><li class="tags-category-list-item"><a class="tags-category-list-link" href="/tags/isnot/">isnot</a></li></ul>
+            <ul class="tags-category-list"><li class="tags-category-list-item"><a class="tags-category-list-link" href="/tags/domain/">domain</a></li><li class="tags-category-list-item"><a class="tags-category-list-link" href="/tags/github-pages/">github pages</a></li><li class="tags-category-list-item"><a class="tags-category-list-link" href="/tags/hexo/">hexo</a></li><li class="tags-category-list-item"><a class="tags-category-list-link" href="/tags/isnot/">isnot</a></li></ul>
         </div>
         <div class="bottom-line"></div>
         
@@ -61,7 +82,7 @@
     <div id="toc">
         
             <h2>目次</h2>
-            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#My-First-Weblog"><span class="toc-number">1.</span> <span class="toc-text">My First Weblog</span></a></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#My-First-Weblog"><span class="toc-number">1.</span> <span class="toc-text">My First Weblog</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#つまずき-その1-ドメインの設定"><span class="toc-number">1.1.</span> <span class="toc-text">つまずき その1 ドメインの設定</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#つまずき-その2-リポジトリの設定"><span class="toc-number">1.2.</span> <span class="toc-text">つまずき その2 リポジトリの設定</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#themes-のカスタマイズ"><span class="toc-number">1.3.</span> <span class="toc-text">themes のカスタマイズ</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#既存コンテンツどうしよう"><span class="toc-number">1.4.</span> <span class="toc-text">既存コンテンツどうしよう</span></a></li></ol></li></ol>
         
     </div>
 </div>

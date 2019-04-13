@@ -5,7 +5,16 @@
     <title>画像のテスト | isnot N3</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <meta name="keywords" content="Javascript Node.js npm git Github Chromy MPD Ubuntu LXQt Emacs Telegram Bot">
-    <meta name="description" content>
+    <meta name="description" content=" {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement(&#39;img&#39;);
+            img.style = &#39;display:none !important;&#39;;
+            img.src = el.dataset.src;
+            img.addEventListener(&#39;error&#39;, () =&gt; {
+              img.remove();
+              el.style.color = &#39;inherit&#39;;
+ ...">
+    <link rel="alternate" href="/atom.xml" title="isnot N3">
     
         <link rel="icon" href="/favicon.ico">
     
@@ -47,13 +56,31 @@
             
             <ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/photo/">photo</a></li></ul>
         </div>
-        <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/css/lightgallery.min.css"><div class=".article-gallery" <p><a href="https://lh3.googleusercontent.com/8wMrYDfiHx91_TF6aaO568dRvZGCE2JAu19FNb-SFyxbF47stu_cu8yABCv4n2y29vEc8RIb_G-w7RVUENQMzBAN1GhGMmgEu-rAwmA8JBlZnZYijb5CynYRu0ORRVmI2oLaGiSNbr4hx_lURvHT2yHBazJyvmDFcYGG3OLpdATab6nkVYMyzmf-LMCn3bd-T9a-DctUzRTYECD6poMQy1S9qDser36wsMW1-yKHlWYHRWXnG-c76ZwyFYW25f9q7dmBjo_VMoIqoB-F7PARjaVulFF0Sk2UZ72CI_hlMPR8QkE2NoPcfgUZDRPoLsxJ5AlD4VzNpjK8PDB5YsAFRu0Qkok6gYLuQZJyK7rE74LlZXSrPuz04cgz92-8Ai32Vjbd2QcgZzETU_Of6Wkc1JLZOdVz7SvLOTy7KoZEoePBGKM9t_0TjSa_8FHz9gSSj1u6y3nIN4qYtcPWltbTakNNGNa-w8_rd5R7OB9KiUA86btuI-wl6DmVjT_5AANCWYrQ3JtJmuUG_-wjbtRUe4fA3NMUIdCV8g-yyJH0V-sdSvbUxtL7d0rR83ZXdvplGBR89RFqVFjtGcKtSQNSiZqHq-amITmPwHc6YxDpIo0mi38W_P0DrmqlFNvxv6VID4dRb5cUiCY_s6GZxsxFuo9Qi9VmD6n7qNmNhQCoLvvqdcw2XoUvvzrJ5uEtSmcNBPpRgobFZHZybCmYbt7inzkxrw=w1226-h919-no" class="gallery-item" target="_blank" rel="noopener"><img src="https://lh3.googleusercontent.com/8wMrYDfiHx91_TF6aaO568dRvZGCE2JAu19FNb-SFyxbF47stu_cu8yABCv4n2y29vEc8RIb_G-w7RVUENQMzBAN1GhGMmgEu-rAwmA8JBlZnZYijb5CynYRu0ORRVmI2oLaGiSNbr4hx_lURvHT2yHBazJyvmDFcYGG3OLpdATab6nkVYMyzmf-LMCn3bd-T9a-DctUzRTYECD6poMQy1S9qDser36wsMW1-yKHlWYHRWXnG-c76ZwyFYW25f9q7dmBjo_VMoIqoB-F7PARjaVulFF0Sk2UZ72CI_hlMPR8QkE2NoPcfgUZDRPoLsxJ5AlD4VzNpjK8PDB5YsAFRu0Qkok6gYLuQZJyK7rE74LlZXSrPuz04cgz92-8Ai32Vjbd2QcgZzETU_Of6Wkc1JLZOdVz7SvLOTy7KoZEoePBGKM9t_0TjSa_8FHz9gSSj1u6y3nIN4qYtcPWltbTakNNGNa-w8_rd5R7OB9KiUA86btuI-wl6DmVjT_5AANCWYrQ3JtJmuUG_-wjbtRUe4fA3NMUIdCV8g-yyJH0V-sdSvbUxtL7d0rR83ZXdvplGBR89RFqVFjtGcKtSQNSiZqHq-amITmPwHc6YxDpIo0mi38W_P0DrmqlFNvxv6VID4dRb5cUiCY_s6GZxsxFuo9Qi9VmD6n7qNmNhQCoLvvqdcw2XoUvvzrJ5uEtSmcNBPpRgobFZHZybCmYbt7inzkxrw=w1226-h919-no"></a><p></p>
+        <div class=".article-gallery" <p><a href="https://lh3.googleusercontent.com/8wMrYDfiHx91_TF6aaO568dRvZGCE2JAu19FNb-SFyxbF47stu_cu8yABCv4n2y29vEc8RIb_G-w7RVUENQMzBAN1GhGMmgEu-rAwmA8JBlZnZYijb5CynYRu0ORRVmI2oLaGiSNbr4hx_lURvHT2yHBazJyvmDFcYGG3OLpdATab6nkVYMyzmf-LMCn3bd-T9a-DctUzRTYECD6poMQy1S9qDser36wsMW1-yKHlWYHRWXnG-c76ZwyFYW25f9q7dmBjo_VMoIqoB-F7PARjaVulFF0Sk2UZ72CI_hlMPR8QkE2NoPcfgUZDRPoLsxJ5AlD4VzNpjK8PDB5YsAFRu0Qkok6gYLuQZJyK7rE74LlZXSrPuz04cgz92-8Ai32Vjbd2QcgZzETU_Of6Wkc1JLZOdVz7SvLOTy7KoZEoePBGKM9t_0TjSa_8FHz9gSSj1u6y3nIN4qYtcPWltbTakNNGNa-w8_rd5R7OB9KiUA86btuI-wl6DmVjT_5AANCWYrQ3JtJmuUG_-wjbtRUe4fA3NMUIdCV8g-yyJH0V-sdSvbUxtL7d0rR83ZXdvplGBR89RFqVFjtGcKtSQNSiZqHq-amITmPwHc6YxDpIo0mi38W_P0DrmqlFNvxv6VID4dRb5cUiCY_s6GZxsxFuo9Qi9VmD6n7qNmNhQCoLvvqdcw2XoUvvzrJ5uEtSmcNBPpRgobFZHZybCmYbt7inzkxrw=w1226-h919-no" class="gallery-item" target="_blank" rel="noopener"><img src="https://lh3.googleusercontent.com/8wMrYDfiHx91_TF6aaO568dRvZGCE2JAu19FNb-SFyxbF47stu_cu8yABCv4n2y29vEc8RIb_G-w7RVUENQMzBAN1GhGMmgEu-rAwmA8JBlZnZYijb5CynYRu0ORRVmI2oLaGiSNbr4hx_lURvHT2yHBazJyvmDFcYGG3OLpdATab6nkVYMyzmf-LMCn3bd-T9a-DctUzRTYECD6poMQy1S9qDser36wsMW1-yKHlWYHRWXnG-c76ZwyFYW25f9q7dmBjo_VMoIqoB-F7PARjaVulFF0Sk2UZ72CI_hlMPR8QkE2NoPcfgUZDRPoLsxJ5AlD4VzNpjK8PDB5YsAFRu0Qkok6gYLuQZJyK7rE74LlZXSrPuz04cgz92-8Ai32Vjbd2QcgZzETU_Of6Wkc1JLZOdVz7SvLOTy7KoZEoePBGKM9t_0TjSa_8FHz9gSSj1u6y3nIN4qYtcPWltbTakNNGNa-w8_rd5R7OB9KiUA86btuI-wl6DmVjT_5AANCWYrQ3JtJmuUG_-wjbtRUe4fA3NMUIdCV8g-yyJH0V-sdSvbUxtL7d0rR83ZXdvplGBR89RFqVFjtGcKtSQNSiZqHq-amITmPwHc6YxDpIo0mi38W_P0DrmqlFNvxv6VID4dRb5cUiCY_s6GZxsxFuo9Qi9VmD6n7qNmNhQCoLvvqdcw2XoUvvzrJ5uEtSmcNBPpRgobFZHZybCmYbt7inzkxrw=w1226-h919-no"></a><p></p>
 </div><script src="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/js/lightgallery.min.js"></script><script src="/js/lg-thumbnail.min.js"></script><script src="/js/lg-zoom.min.js"></script><script src="/js/lg-autoplay.min.js"></script><script src="/js/lg-fullscreen.min.js"></script><script src="/js/lg-pager.min.js"></script><script src="/js/lg-hash.min.js"></script><script>if (typeof lightGallery !== 'undefined') {
         var options = {
             selector: '.gallery-item'
         };
         lightGallery(document.getElementsByClassName('.article-gallery')[0], options);
-        }</script>
+        }</script><script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>
         <div>
             <ul class="tags-category-list"><li class="tags-category-list-item"><a class="tags-category-list-link" href="/tags/photo/">photo</a></li></ul>
         </div>
@@ -143,7 +170,34 @@
                 </sup>
             </a>
         </h2>
+        
+            <script type="text/javascript" charset="utf-8" src="/js/tagcloud.js"></script>
+            <script type="text/javascript" charset="utf-8" src="/js/tagcanvas.js"></script>
+            <div class="widget-wrap">
+                <div id="myCanvasContainer" class="widget tagcloud">
+                    <canvas width="250" height="250" id="resCanvas" style="width=100%">
+                        <a href="/tags/domain/" style="font-size: 10px;">domain</a> <a href="/tags/github-pages/" style="font-size: 10px;">github pages</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/isnot/" style="font-size: 10px;">isnot</a> <a href="/tags/photo/" style="font-size: 10px;">photo</a>
+                    </canvas>
+                </div>
+            </div>
+        
     </div>
+    
+    <aside id="recent">
+        <h2>最近の投稿</h2>
+        <ul class="recent-list">
+        
+            <li class="recent-list-item"><a class="recent-list-link" href="/2019-04/13-image-test/">
+                画像のテスト
+            </a></li>
+        
+            <li class="recent-list-item"><a class="recent-list-link" href="/2019-04/09-index/">
+                はじめまして！
+            </a></li>
+        
+        </ul>
+    </aside>
+    
     
 <aside id="categories">
     <h2>カテゴリー</h2>
@@ -153,7 +207,7 @@
 </aside>
 
     
-<aside id="acchives">
+<aside id="archives">
     <h2>アーカイブ</h2>
     
     <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">四月 2019</a></li></ul>

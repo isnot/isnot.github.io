@@ -392,27 +392,52 @@ header h4 {
   color: #17a167;
   border-bottom: 1px dashed #17a167;
 }
-#acchives {
+#recent {
+  width: 230px;
+  background: #fff;
+  border-radius: 1px;
+  padding: 10px 10px 14px 14px;
+  margin-bottom: 14px;
+}
+#recent h2 {
+  font-size: 19px;
+}
+#recent .recent-list {
+  padding-left: 13px;
+  padding-top: 7px;
+}
+#recent .recent-list li {
+  line-height: 1.7;
+}
+#recent .recent-list .recent-list-child {
+  list-style: disc;
+  padding-left: 17px;
+}
+#recent .recent-list a:hover {
+  color: #17a167;
+  border-bottom: 1px dashed #17a167;
+}
+#archives {
   width: 230px;
   background: #fff;
   border-radius: 1px;
   padding: 10px 10px 14px 14px;
   margin-bottom: 47px;
 }
-#acchives h2 {
+#archives h2 {
   font-size: 19px;
 }
-#acchives .archive-list {
+#archives .archive-list {
   padding-top: 7px;
 }
-#acchives ul li {
+#archives ul li {
   line-height: 1.7;
 }
-#acchives ul li a {
+#archives ul li a {
   padding-top: 7px;
   margin-left: 13px;
 }
-#acchives ul li a:hover {
+#archives ul li a:hover {
   color: #17a167;
   border-bottom: 1px dashed #17a167;
 }
@@ -848,7 +873,7 @@ header h4 {
   #content-aside #categories {
     background: none;
   }
-  #content-aside #acchives {
+  #content-aside #archives {
     background: none;
   }
   #header .menu {

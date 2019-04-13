@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <meta name="keywords" content="Javascript Node.js npm git Github Chromy MPD Ubuntu LXQt Emacs Telegram Bot">
     <meta name="description" content="&lt;https://pages.isnot.jp&gt; &lt;dc:title&gt; &#34;isnot N3&#34; .">
+    <link rel="alternate" href="/atom.xml" title="isnot N3">
     
         <link rel="icon" href="/favicon.ico">
     
@@ -39,7 +40,7 @@
     <article id="page">
         <div class="page-content">
             <h1>About いしだなおと / isnot N3</h1>
-            <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/css/lightgallery.min.css"><div class=".article-gallery" <h2 id="私について"><a href="#私について" class="headerlink" title="私について"></a>私について<ul>
+            <div class=".article-gallery" <h2 id="私について"><a href="#私について" class="headerlink" title="私について"></a>私について<ul>
 <li>isnot</li>
 <li>いしだなおと</li>
 <li>日本出身・在住</li>
@@ -74,7 +75,7 @@
 <h4 id><a href="#" class="headerlink" title></a><a href="/images/makino-otometsubaki512.png" class="gallery-item"><img src="/images/makino-otometsubaki512.png" width="250"></a></h4><ul>
 <li>アバター画像 <a href="/images/makino-otometsubaki512.png">乙女椿</a></li>
 <li>牧野記念庭園 (練馬区東大泉)</li>
-<li>2018年3月18日 撮影&gt;</li>
+<li>2018年3月18日 撮影></li>
 </ul>
 <h4 id="-1"><a href="#-1" class="headerlink" title></a><a href="/images/default-header.jpg" class="gallery-item"><img src="/images/default-header.jpg" width="250"></a></h4><ul>
 <li>ヘッダー画像 <a href="/images/default-header.jpg">滑走路と軽飛行機</a></li>
@@ -91,12 +92,35 @@
 <li>MeWe: <a href="https://mewe.com/i/naoto" target="_blank" rel="noopener">いしだ なおと</a></li>
 <li>Google+: <a href="https://plus.google.com/+いしだなおと" target="_blank" rel="noopener">いしだなおと</a> Closed</li>
 </ul>
+<h3 id="GitHub"><a href="#GitHub" class="headerlink" title="GitHub"></a>GitHub</h3><div style="text-align:center">
+  <div class="github-card" data-user="isnot" data-repo data-width="400" data-theme="default" data-target data-client-id data-client-secret></div>
+</div>
+<script src="/github-card-lib/githubcard.js"></script>
+
 </div><script src="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/js/lightgallery.min.js"></script><script src="/js/lg-thumbnail.min.js"></script><script src="/js/lg-zoom.min.js"></script><script src="/js/lg-autoplay.min.js"></script><script src="/js/lg-fullscreen.min.js"></script><script src="/js/lg-pager.min.js"></script><script src="/js/lg-hash.min.js"></script><script>if (typeof lightGallery !== 'undefined') {
         var options = {
             selector: '.gallery-item'
         };
         lightGallery(document.getElementsByClassName('.article-gallery')[0], options);
-        }</script>
+        }</script><script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>
         </div>
         
     </article>
@@ -167,7 +191,34 @@
                 </sup>
             </a>
         </h2>
+        
+            <script type="text/javascript" charset="utf-8" src="/js/tagcloud.js"></script>
+            <script type="text/javascript" charset="utf-8" src="/js/tagcanvas.js"></script>
+            <div class="widget-wrap">
+                <div id="myCanvasContainer" class="widget tagcloud">
+                    <canvas width="250" height="250" id="resCanvas" style="width=100%">
+                        <a href="/tags/domain/" style="font-size: 10px;">domain</a> <a href="/tags/github-pages/" style="font-size: 10px;">github pages</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/isnot/" style="font-size: 10px;">isnot</a> <a href="/tags/photo/" style="font-size: 10px;">photo</a>
+                    </canvas>
+                </div>
+            </div>
+        
     </div>
+    
+    <aside id="recent">
+        <h2>最近の投稿</h2>
+        <ul class="recent-list">
+        
+            <li class="recent-list-item"><a class="recent-list-link" href="/2019-04/13-image-test/">
+                画像のテスト
+            </a></li>
+        
+            <li class="recent-list-item"><a class="recent-list-link" href="/2019-04/09-index/">
+                はじめまして！
+            </a></li>
+        
+        </ul>
+    </aside>
+    
     
 <aside id="categories">
     <h2>カテゴリー</h2>
@@ -177,7 +228,7 @@
 </aside>
 
     
-<aside id="acchives">
+<aside id="archives">
     <h2>アーカイブ</h2>
     
     <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">四月 2019</a></li></ul>

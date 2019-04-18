@@ -4,3 +4,60 @@
 #page div ul { margin: auto 1em; }
 #page div ul li { padding: 2px; }
 #page a { text-decoration: underline; color: #33c; }
+
+.google-photos-album-area {
+  overflow: hidden;
+  position: relative;
+  margin: 1em 0 1em 0;
+  padding: 10px;
+  border: 1px #999 solid;
+}
+.google-photos-album-area .metadatas {
+  overflow: hidden;
+  clear: both;
+  margin-bottom: 10px;
+}
+.google-photos-album-area span.og-title {
+  font-size: 1.2em;
+  font-weight: bold;
+}
+.google-photos-album-area span.og-title::before {
+  content: '';
+  display: inline-block;
+  width: 32px;
+  height: 32px;
+  vertical-align: middle;
+  background: url(//ssl.gstatic.com/images/branding/product/1x/photos_64dp.png);
+  background-size: 32px 32px;
+  margin: 0 5px 0 0;
+}
+.google-photos-album-area span.og-description {
+  color: #555;
+  font-size: 0.86em;
+  margin-top: 0.2em;
+}
+.google-photos-album-area span.og-description::before {
+  content: ' ';
+  display: inline-block;
+  vertical-align: middle;
+  margin: 0 5px;
+}
+.google-photos-album-area span.og-description::after {
+  content: '🔗';
+  display: inline-block;
+  vertical-align: middle;
+  margin: 0 0 0 2px;
+}
+.google-photos-album-area .og-image {
+  float: left;
+  margin-right: 10px;
+  max-width: 100%;
+}
+.google-photos-album-images {
+  display: flex;
+  flex-flow: row wrap;
+  clear: both;
+}
+.google-photos-album-images img {
+    margin: 0 2px 2px 0 !important;
+}

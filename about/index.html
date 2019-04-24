@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <title>About いしだなおと / isnot N3 | isnot N3</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <meta name="keywords" content="Javascript Node.js npm git Github Chromy MPD Ubuntu LXQt Emacs Telegram Bot">
-    <meta name="description" content="&lt;https://pages.isnot.jp&gt; &lt;dc:title&gt; &#34;isnot N3&#34; .">
+    <meta name="keywords" content="Javascript Node.js npm git GitHub Chromy MPD Ubuntu LXQt Emacs Telegram Bot">
+    <meta name="description" content="https://pages.isnot.jp isnot N3">
     <link rel="alternate" href="/atom.xml" title="isnot N3">
     
         <link rel="icon" href="/favicon.ico">
@@ -42,7 +42,7 @@
     <article id="page">
         <div class="page-content">
             <h1>About いしだなおと / isnot N3</h1>
-            <div class="article-gallery"><h2 id="私について"><a href="#私について" class="headerlink" title="私について"></a>私について</h2><ul>
+            <link crossorigin="anonymous" media="screen" rel="stylesheet" href="/css/google_photos_album.css"><div class="article-gallery"><h2 id="私について"><a href="#私について" class="headerlink" title="私について"></a>私について</h2><ul>
 <li>isnot</li>
 <li>いしだなおと</li>
 <li>日本出身・在住</li>
@@ -122,7 +122,33 @@
             });
             document.body.appendChild(img);
           });
-      </script>
+      </script><script>
+function addLoadEvent(func) {
+  const oldonload = window.onload;
+  if (typeof window.onload !== 'function') {
+    window.onload = func;
+  } else {
+    window.onload = () => {
+      oldonload();
+      func();
+    };
+  }
+}
+  addLoadEvent(() => {
+    try {
+      if (window.innerWidth < Number('768')) {
+        return;
+      }
+      let imgs = document.body.querySelectorAll('.google-photos-album-images a');
+      for (let anchor of imgs) {
+        anchor.href = anchor.href.replace(/=s720\-no/i, '=s1920-no');
+      }
+    } catch (e) {
+      console.log(e);
+    }
+  });
+</script>
+
         </div>
         
         

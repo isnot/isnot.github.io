@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <title>はじめまして！ | isnot N3</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <meta name="keywords" content="Javascript Node.js npm git Github Chromy MPD Ubuntu LXQt Emacs Telegram Bot">
+    <meta name="keywords" content="Javascript Node.js npm git GitHub Chromy MPD Ubuntu LXQt Emacs Telegram Bot">
     <meta name="description" content="My First WeblogGoogle+が個人向けサービス終了となり、今後のアウトプットについて考えた。
 考えた結果、静的サイト・ジェネレータを使って、ブログ形式のサイトを始めることにしました。それがコレです。
 
@@ -54,7 +54,7 @@
             
             <ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/myself/">myself</a></li></ul>
         </div>
-        <div class="article-gallery"><h2 id="My-First-Weblog"><a href="#My-First-Weblog" class="headerlink" title="My First Weblog"></a>My First Weblog</h2><p>Google+が個人向けサービス終了となり、今後のアウトプットについて考えた。</p>
+        <link crossorigin="anonymous" media="screen" rel="stylesheet" href="/css/google_photos_album.css"><div class="article-gallery"><h2 id="My-First-Weblog"><a href="#My-First-Weblog" class="headerlink" title="My First Weblog"></a>My First Weblog</h2><p>Google+が個人向けサービス終了となり、今後のアウトプットについて考えた。</p>
 <p>考えた結果、静的サイト・ジェネレータを使って、ブログ形式のサイトを始めることにしました。それがコレです。</p>
 <a id="more"></a>
 <p>静的サイト・ジェネレータを選んだのは、書く内容を勘案したうえで、「自力でなんとかする」ことに意味があるように思えたから。<br>特定サービスへのロックオンを、できれば減らしたいという意味で。とはいえ、全くナッシングで全て自力というのも、また無駄でありつつ。<br>そのバランスが、ちょうど良いように思えたから。</p>
@@ -98,7 +98,33 @@
             });
             document.body.appendChild(img);
           });
-      </script>
+      </script><script>
+function addLoadEvent(func) {
+  const oldonload = window.onload;
+  if (typeof window.onload !== 'function') {
+    window.onload = func;
+  } else {
+    window.onload = () => {
+      oldonload();
+      func();
+    };
+  }
+}
+  addLoadEvent(() => {
+    try {
+      if (window.innerWidth < Number('768')) {
+        return;
+      }
+      let imgs = document.body.querySelectorAll('.google-photos-album-images a');
+      for (let anchor of imgs) {
+        anchor.href = anchor.href.replace(/=s720\-no/i, '=s1920-no');
+      }
+    } catch (e) {
+      console.log(e);
+    }
+  });
+</script>
+
         <div>
             <ul class="tags-category-list"><li class="tags-category-list-item"><a class="tags-category-list-link" href="/tags/domain/">domain</a></li><li class="tags-category-list-item"><a class="tags-category-list-link" href="/tags/github-pages/">github pages</a></li><li class="tags-category-list-item"><a class="tags-category-list-link" href="/tags/hexo/">hexo</a></li><li class="tags-category-list-item"><a class="tags-category-list-link" href="/tags/isnot/">isnot</a></li></ul>
         </div>

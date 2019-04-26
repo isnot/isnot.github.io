@@ -5,6 +5,8 @@
 #page div ul li { padding: 2px; }
 #page a { text-decoration: underline; color: #33c; }
 
+#owner h4 { font-size: 14px; }
+
 #stageComment { border: silver dotted 2px; padding: 8px 12px; margin: 4px auto; }
 #stageComment a { color: #33c; }
 

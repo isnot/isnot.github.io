@@ -1,15 +1,31 @@
 <!DOCTYPE html>
 <html>
 <head><meta name="generator" content="Hexo 3.8.0">
-    <meta charset="UTF-8">
-    <title>About いしだなおと / isnot N3 | isnot N3</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <meta name="keywords" content="Javascript Node.js npm git GitHub Chromy MPD Ubuntu LXQt Emacs Telegram Bot">
-    <meta name="description" content="https://pages.isnot.jp isnot N3">
-    <link rel="alternate" href="/atom.xml" title="isnot N3">
-    
-        <link rel="icon" href="/favicon.ico">
-    
+  <meta charset="UTF-8">
+  <title>About いしだなおと / isnot N3 | isnot N3</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <link rel="alternate" href="/atom.xml" title="isnot N3">
+  
+    <link rel="icon" href="/favicon.ico">
+  
+  <meta name="description" content="私について isnot いしだなおと 日本出身・在住   好きなこと。睡眠、安らぎ、寛ぐこと。旅行に行くこと。おいしいものをいただく。音楽を聞く。インターネットネット・カルチャー（インターネット以前も含む）。日本のオタク的なサブカルチャー全般。 得意なこと。プログラミング、論理的思考、設計。コンピューター・アーキテクチャの理解。コンピューターのネットワーク。UNIX的なOS。特にUbuntu Li">
+<meta name="keywords" content="Javascript Node.js npm git GitHub Chromy MPD Ubuntu LXQt Emacs Telegram Bot">
+<meta property="og:type" content="website">
+<meta property="og:title" content="About いしだなおと &#x2F; isnot N3">
+<meta property="og:url" content="https://pages.isnot.jp/about/index.html">
+<meta property="og:site_name" content="isnot N3">
+<meta property="og:description" content="私について isnot いしだなおと 日本出身・在住   好きなこと。睡眠、安らぎ、寛ぐこと。旅行に行くこと。おいしいものをいただく。音楽を聞く。インターネットネット・カルチャー（インターネット以前も含む）。日本のオタク的なサブカルチャー全般。 得意なこと。プログラミング、論理的思考、設計。コンピューター・アーキテクチャの理解。コンピューターのネットワーク。UNIX的なOS。特にUbuntu Li">
+<meta property="og:locale" content="ja">
+<meta property="og:image" content="https://pages.isnot.jp/images/makino-otometsubaki512.png">
+<meta property="og:image" content="https://pages.isnot.jp/images/default-header.jpg">
+<meta property="og:updated_time" content="2019-04-13T14:23:55.306Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="About いしだなおと &#x2F; isnot N3">
+<meta name="twitter:description" content="私について isnot いしだなおと 日本出身・在住   好きなこと。睡眠、安らぎ、寛ぐこと。旅行に行くこと。おいしいものをいただく。音楽を聞く。インターネットネット・カルチャー（インターネット以前も含む）。日本のオタク的なサブカルチャー全般。 得意なこと。プログラミング、論理的思考、設計。コンピューター・アーキテクチャの理解。コンピューターのネットワーク。UNIX的なOS。特にUbuntu Li">
+<meta name="twitter:image" content="https://pages.isnot.jp/images/makino-otometsubaki512.png">
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
     
         
             <link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
@@ -139,7 +155,8 @@ function addLoadEvent(func) {
       if (window.innerWidth < Number('768')) {
         return;
       }
-      let imgs = document.body.querySelectorAll('.google-photos-album-images a');
+      let imgs = Array.from(document.body.querySelectorAll('.google-photos-album-images a'));
+      imgs.push(...Array.from(document.body.querySelectorAll('a.google-photos-album-image')));
       for (let anchor of imgs) {
         anchor.href = anchor.href.replace(/=s720\-no/i, '=s1920-no');
       }

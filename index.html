@@ -56,6 +56,218 @@
         
             <div class="post-item">
                 <h1>
+                    <a href="/2019-05/06-study-about-hexos-internals-4/">
+                        Hexo 内部探訪 (4) プラグインのロード
+                    </a>
+                </h1>
+                <div class="create">
+                    <span>作成</span>
+                    
+                        <time datetime="2019-05-05T18:36:30.000Z">
+                            2019-05-06
+                        </time>
+                    
+                    <ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/hexo/">hexo</a></li></ul>
+                </div>
+                
+                    <link crossorigin="anonymous" media="screen" rel="stylesheet" href="/css/google_photos_album.css"><div class="article-gallery"><p><a href="https://github.com/hexojs/hexo/blob/master/lib/hexo/load_plugins.js" target="_blank" rel="noopener">hexo/lib/hexo/load_plugins.js</a>に書いてある。</p>
+</div><script src="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/js/lightgallery.min.js"></script><script src="/js/lg-thumbnail.min.js"></script><script src="/js/lg-zoom.min.js"></script><script src="/js/lg-autoplay.min.js"></script><script src="/js/lg-fullscreen.min.js"></script><script src="/js/lg-pager.min.js"></script><script src="/js/lg-hash.min.js"></script><script>if (typeof lightGallery !== 'undefined') {
+        var options = {
+            selector: '.gallery-item'
+        };
+        lightGallery(document.getElementsByClassName('article-gallery')[0], options);
+        }</script><script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script><script>
+function addLoadEvent(func) {
+  const oldonload = window.onload;
+  if (typeof window.onload !== 'function') {
+    window.onload = func;
+  } else {
+    window.onload = () => {
+      oldonload();
+      func();
+    };
+  }
+}
+  addLoadEvent(() => {
+    try {
+      if (window.innerWidth < Number('768')) {
+        return;
+      }
+      let imgs = Array.from(document.body.querySelectorAll('.google-photos-album-images a'));
+      imgs.push(...Array.from(document.body.querySelectorAll('a.google-photos-album-image')));
+      for (let anchor of imgs) {
+        anchor.href = anchor.href.replace(/=s720\-no/i, '=s1920-no');
+      }
+    } catch (e) {
+      console.log(e);
+    }
+  });
+</script>
+
+                
+                <div class="readmore">
+                    <a href="/2019-05/06-study-about-hexos-internals-4/">
+                        »続き……
+                    </a>
+                </div>
+            </div>
+        
+            <div class="post-item">
+                <h1>
+                    <a href="/2019-05/06-study-about-hexos-internals-3/">
+                        Hexo 内部探訪 (3) グローバル
+                    </a>
+                </h1>
+                <div class="create">
+                    <span>作成</span>
+                    
+                        <time datetime="2019-05-05T15:03:00.000Z">
+                            2019-05-06
+                        </time>
+                    
+                    <ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/hexo/">hexo</a></li></ul>
+                </div>
+                
+                    <link crossorigin="anonymous" media="screen" rel="stylesheet" href="/css/google_photos_album.css"><div class="article-gallery"><p>プラグイン（さしあたりTagプラグインを想定）の中で参照できる、グローバルな変数やオブジェクトを調べてまとめよう。</p>
+<p>Node.jsでは、グローバルな空間を参照するためのキーワードがある。<br><code>global</code>である。</p>
+<p>また、次のようなやり方で参照する方法もあるようだ。</p>
+<figure class="highlight javascript"><table><tbody><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> { inspect } = <span class="built_in">require</span>(<span class="string">'util'</span>);</span><br><span class="line"><span class="keyword">var</span> g = <span class="built_in">Function</span>(<span class="string">'return this'</span>)();</span><br><span class="line"><span class="built_in">console</span>.log(inspect(g, { <span class="attr">depth</span>: <span class="number">2</span> }));</span><br></pre></td></tr></tbody></table></figure>
+<p>これらを駆使しつつ、Hexoの場合には、私が見たところほとんど全ての場所で、<code>hexo</code>というグローバル変数が見えるので、これを足がかりにしたい。<br>また、他にも使える要素がもしあるなら、確かめたい。</p>
+<p><a href="https://nodejs.org/ja/docs/" target="_blank" rel="noopener">ドキュメント | Node.js</a>、 <a href="https://nodejs.org/api/process.html" target="_blank" rel="noopener">Process</a> 等もためになる。</p>
+<p>（調査中）</p>
+<p>Hexoオブジェクト<br></p><figure class="highlight"><table><tbody><tr><td class="code"><pre><span class="line">{</span><br><span class="line">  _events: [Object: null prototype] {},</span><br><span class="line">  _eventsCount: 0,</span><br><span class="line">  _maxListeners: undefined,</span><br><span class="line">  base_dir: '/home/naoto/www/MyBlog/',</span><br><span class="line">  public_dir: '/home/naoto/www/MyBlog/public/',</span><br><span class="line">  source_dir: '/home/naoto/www/MyBlog/source/',</span><br><span class="line">  plugin_dir: '/home/naoto/www/MyBlog/node_modules/',</span><br><span class="line">  script_dir: '/home/naoto/www/MyBlog/scripts/',</span><br><span class="line">  scaffold_dir: '/home/naoto/www/MyBlog/scaffolds/',</span><br><span class="line">  theme_dir: '/home/naoto/www/MyBlog/themes/stage/',</span><br><span class="line">  theme_script_dir: '/home/naoto/www/MyBlog/themes/stage/scripts/',</span><br><span class="line">  env: [Object],</span><br><span class="line">  extend: [Object],</span><br><span class="line">  config: [Object],</span><br><span class="line">  log: [Logger],</span><br><span class="line">  render: [Render],</span><br><span class="line">  route: [Router],</span><br><span class="line">  post: [Post],</span><br><span class="line">  scaffold: [Scaffold],</span><br><span class="line">  _dbLoaded: true,</span><br><span class="line">  _isGenerating: true,</span><br><span class="line">  database: [Database],</span><br><span class="line">  config_path: '/home/naoto/www/MyBlog/_config.yml',</span><br><span class="line">  source: [Source],</span><br><span class="line">  theme: [Theme],</span><br><span class="line">  locals: [Locals]</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure><p></p>
+</div><script src="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/js/lightgallery.min.js"></script><script src="/js/lg-thumbnail.min.js"></script><script src="/js/lg-zoom.min.js"></script><script src="/js/lg-autoplay.min.js"></script><script src="/js/lg-fullscreen.min.js"></script><script src="/js/lg-pager.min.js"></script><script src="/js/lg-hash.min.js"></script><script>if (typeof lightGallery !== 'undefined') {
+        var options = {
+            selector: '.gallery-item'
+        };
+        lightGallery(document.getElementsByClassName('article-gallery')[0], options);
+        }</script><script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script><script>
+function addLoadEvent(func) {
+  const oldonload = window.onload;
+  if (typeof window.onload !== 'function') {
+    window.onload = func;
+  } else {
+    window.onload = () => {
+      oldonload();
+      func();
+    };
+  }
+}
+  addLoadEvent(() => {
+    try {
+      if (window.innerWidth < Number('768')) {
+        return;
+      }
+      let imgs = Array.from(document.body.querySelectorAll('.google-photos-album-images a'));
+      imgs.push(...Array.from(document.body.querySelectorAll('a.google-photos-album-image')));
+      for (let anchor of imgs) {
+        anchor.href = anchor.href.replace(/=s720\-no/i, '=s1920-no');
+      }
+    } catch (e) {
+      console.log(e);
+    }
+  });
+</script>
+
+                
+                <div class="readmore">
+                    <a href="/2019-05/06-study-about-hexos-internals-3/">
+                        »続き……
+                    </a>
+                </div>
+            </div>
+        
+            <div class="post-item">
+                <h1>
+                    <a href="/2019-05/06-study-about-hexos-internals-2/">
+                        Hexo 内部探訪 (2) 準備 npm linkメモ
+                    </a>
+                </h1>
+                <div class="create">
+                    <span>作成</span>
+                    
+                        <time datetime="2019-05-05T15:02:00.000Z">
+                            2019-05-06
+                        </time>
+                    
+                    <ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/hexo/">hexo</a></li></ul>
+                </div>
+                
+                    <div class="article-gallery"><h2 id="npm-linkを使いこなすには"><a href="#npm-linkを使いこなすには" class="headerlink" title="npm linkを使いこなすには"></a>npm linkを使いこなすには</h2><p><a href="https://docs.npmjs.com/cli/link.html" target="_blank" rel="noopener">npm link</a>という、ありがたい仕組みがあって、非公開のモジュール（または開発中のバージョン）を、node_modulesの中に配置することができる。<br>基本的には、シンボリック・リンクである。</p>
+<p>ここまでは、すぐに把握できたけど、実はうまく動作させるための、さらなる条件があった。</p></div>
+                
+                <div class="readmore">
+                    <a href="/2019-05/06-study-about-hexos-internals-2/">
+                        »続き……
+                    </a>
+                </div>
+            </div>
+        
+            <div class="post-item">
+                <h1>
+                    <a href="/2019-05/05-study-about-hexos-internals-1/">
+                        Hexo 内部探訪 (1) はじめに
+                    </a>
+                </h1>
+                <div class="create">
+                    <span>作成</span>
+                    
+                        <time datetime="2019-05-05T14:29:55.000Z">
+                            2019-05-05
+                        </time>
+                    
+                    <ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/hexo/">hexo</a></li></ul>
+                </div>
+                
+                    <div class="article-gallery"><p>Hexoを選択した理由は、Node.jsだから、Javascriptだから、つまりいろいろと、自身で内部構造を含めて手を加えるため。<br>それは使い始めるとすぐに現実になり、早速プラグインを作成したりもした。（参照 <a href="/2019-04/30-hexo-tag-google-photos-album-is-arrived/" title="hexo-tag-google-photos-album 公開しました">hexo-tag-google-photos-album 公開しました</a>）</p>
+<p>だんだんとHexoの内部構造やAPIについて理解をしはじめたところです。しかしながら開発においてはまだまだ、暗中模索です。</p>
+<p>特に、記事やブログのメタデータや状態などを処理の過程で参照しようと思った時と、jsやcssの挿入（インジェクション）が、掴みにくいポイントだと思う。</p></div>
+                
+                <div class="readmore">
+                    <a href="/2019-05/05-study-about-hexos-internals-1/">
+                        »続き……
+                    </a>
+                </div>
+            </div>
+        
+            <div class="post-item">
+                <h1>
                     <a href="/2019-05/01-azalea/">
                         ツツジ
                     </a>
@@ -326,7 +538,7 @@ function addLoadEvent(func) {
             <div class="widget-wrap">
                 <div id="myCanvasContainer" class="widget tagcloud">
                     <canvas width="250" height="250" id="resCanvas" style="width=100%">
-                        <a href="/tags/domain/" style="font-size: 10px;">domain</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/github-pages/" style="font-size: 10px;">github pages</a> <a href="/tags/hexo/" style="font-size: 15px;">hexo</a> <a href="/tags/isnot/" style="font-size: 10px;">isnot</a> <a href="/tags/javascript/" style="font-size: 10px;">javascript</a> <a href="/tags/npm/" style="font-size: 10px;">npm</a> <a href="/tags/photo/" style="font-size: 20px;">photo</a> <a href="/tags/sakura/" style="font-size: 10px;">sakura</a>
+                        <a href="/tags/domain/" style="font-size: 10px;">domain</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/github-pages/" style="font-size: 10px;">github pages</a> <a href="/tags/hexo/" style="font-size: 20px;">hexo</a> <a href="/tags/isnot/" style="font-size: 10px;">isnot</a> <a href="/tags/javascript/" style="font-size: 17.5px;">javascript</a> <a href="/tags/npm/" style="font-size: 12.5px;">npm</a> <a href="/tags/photo/" style="font-size: 15px;">photo</a> <a href="/tags/sakura/" style="font-size: 10px;">sakura</a>
                     </canvas>
                 </div>
             </div>
@@ -336,6 +548,22 @@ function addLoadEvent(func) {
     <aside id="recent">
         <h2>最近の投稿</h2>
         <ul class="recent-list">
+        
+            <li class="recent-list-item"><a class="recent-list-link" href="/2019-05/06-study-about-hexos-internals-4/">
+                Hexo 内部探訪 (4) プラグインのロード
+            </a></li>
+        
+            <li class="recent-list-item"><a class="recent-list-link" href="/2019-05/06-study-about-hexos-internals-3/">
+                Hexo 内部探訪 (3) グローバル
+            </a></li>
+        
+            <li class="recent-list-item"><a class="recent-list-link" href="/2019-05/06-study-about-hexos-internals-2/">
+                Hexo 内部探訪 (2) 準備 npm linkメモ
+            </a></li>
+        
+            <li class="recent-list-item"><a class="recent-list-link" href="/2019-05/05-study-about-hexos-internals-1/">
+                Hexo 内部探訪 (1) はじめに
+            </a></li>
         
             <li class="recent-list-item"><a class="recent-list-link" href="/2019-05/01-azalea/">
                 ツツジ
@@ -364,7 +592,7 @@ function addLoadEvent(func) {
 <aside id="categories">
     <h2>カテゴリー</h2>
     
-        <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/javascript/">javascript</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/myself/">myself</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/photo/">photo</a></li></ul>
+        <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/hexo/">hexo</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/javascript/">javascript</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/myself/">myself</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/photo/">photo</a></li></ul>
     
 </aside>
 

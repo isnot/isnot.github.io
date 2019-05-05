@@ -2,24 +2,24 @@
 <html>
 <head><meta name="generator" content="Hexo 3.8.0">
   <meta charset="UTF-8">
-  <title>はじめまして！ | isnot N3</title>
+  <title>Hexo 内部探訪 (1) はじめに | isnot N3</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <link rel="alternate" href="/atom.xml" title="isnot N3">
   
     <link rel="icon" href="/favicon.ico">
   
-  <meta name="description" content="My First WeblogGoogle+が個人向けサービス終了となり、今後のアウトプットについて考えた。 考えた結果、静的サイト・ジェネレータを使って、ブログ形式のサイトを始めることにしました。それがコレです。">
-<meta name="keywords" content="hexo,isnot,github pages,domain">
+  <meta name="description" content="Hexoを選択した理由は、Node.jsだから、Javascriptだから、つまりいろいろと、自身で内部構造を含めて手を加えるため。それは使い始めるとすぐに現実になり、早速プラグインを作成したりもした。（参照 hexo-tag-google-photos-album 公開しました） だんだんとHexoの内部構造やAPIについて理解をしはじめたところです。しかしながら開発においてはまだまだ、暗中模索">
+<meta name="keywords" content="hexo,javascript">
 <meta property="og:type" content="article">
-<meta property="og:title" content="はじめまして！">
-<meta property="og:url" content="https://pages.isnot.jp/2019-04/09-index/index.html">
+<meta property="og:title" content="Hexo 内部探訪 (1) はじめに">
+<meta property="og:url" content="https://pages.isnot.jp/2019-05/05-study-about-hexos-internals-1/index.html">
 <meta property="og:site_name" content="isnot N3">
-<meta property="og:description" content="My First WeblogGoogle+が個人向けサービス終了となり、今後のアウトプットについて考えた。 考えた結果、静的サイト・ジェネレータを使って、ブログ形式のサイトを始めることにしました。それがコレです。">
+<meta property="og:description" content="Hexoを選択した理由は、Node.jsだから、Javascriptだから、つまりいろいろと、自身で内部構造を含めて手を加えるため。それは使い始めるとすぐに現実になり、早速プラグインを作成したりもした。（参照 hexo-tag-google-photos-album 公開しました） だんだんとHexoの内部構造やAPIについて理解をしはじめたところです。しかしながら開発においてはまだまだ、暗中模索">
 <meta property="og:locale" content="ja">
-<meta property="og:updated_time" content="2019-04-24T01:33:05.214Z">
+<meta property="og:updated_time" content="2019-05-05T15:37:05.105Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="はじめまして！">
-<meta name="twitter:description" content="My First WeblogGoogle+が個人向けサービス終了となり、今後のアウトプットについて考えた。 考えた結果、静的サイト・ジェネレータを使って、ブログ形式のサイトを始めることにしました。それがコレです。">
+<meta name="twitter:title" content="Hexo 内部探訪 (1) はじめに">
+<meta name="twitter:description" content="Hexoを選択した理由は、Node.jsだから、Javascriptだから、つまりいろいろと、自身で内部構造を含めて手を加えるため。それは使い始めるとすぐに現実になり、早速プラグインを作成したりもした。（参照 hexo-tag-google-photos-album 公開しました） だんだんとHexoの内部構造やAPIについて理解をしはじめたところです。しかしながら開発においてはまだまだ、暗中模索">
   
     <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
   
@@ -53,37 +53,42 @@
     <div id="content-inner">
         <div class="clearfix">
     <article id="post">
-        <h1>はじめまして！</h1>
+        <h1>Hexo 内部探訪 (1) はじめに</h1>
         <div class="create">
             <span>作成</span>
             
-                <time datetime="2019-04-09T06:00:00.000Z">
-                    2019-04-09
+                <time datetime="2019-05-05T14:29:55.000Z">
+                    2019-05-05
                 </time>
             
-            <ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/myself/">myself</a></li></ul>
+            <ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/hexo/">hexo</a></li></ul>
         </div>
-        <link crossorigin="anonymous" media="screen" rel="stylesheet" href="/css/google_photos_album.css"><div class="article-gallery"><h2 id="My-First-Weblog"><a href="#My-First-Weblog" class="headerlink" title="My First Weblog"></a>My First Weblog</h2><p>Google+が個人向けサービス終了となり、今後のアウトプットについて考えた。</p>
-<p>考えた結果、静的サイト・ジェネレータを使って、ブログ形式のサイトを始めることにしました。それがコレです。</p>
+        <link crossorigin="anonymous" media="screen" rel="stylesheet" href="/css/google_photos_album.css"><div class="article-gallery"><p>Hexoを選択した理由は、Node.jsだから、Javascriptだから、つまりいろいろと、自身で内部構造を含めて手を加えるため。<br>それは使い始めるとすぐに現実になり、早速プラグインを作成したりもした。（参照 <a href="/2019-04/30-hexo-tag-google-photos-album-is-arrived/" title="hexo-tag-google-photos-album 公開しました">hexo-tag-google-photos-album 公開しました</a>）</p>
+<p>だんだんとHexoの内部構造やAPIについて理解をしはじめたところです。しかしながら開発においてはまだまだ、暗中模索です。</p>
+<p>特に、記事やブログのメタデータや状態などを処理の過程で参照しようと思った時と、jsやcssの挿入（インジェクション）が、掴みにくいポイントだと思う。</p>
 <a id="more"></a>
-<p>静的サイト・ジェネレータを選んだのは、書く内容を勘案したうえで、「自力でなんとかする」ことに意味があるように思えたから。<br>特定サービスへのロックオンを、できれば減らしたいという意味で。とはいえ、全くナッシングで全て自力というのも、また無駄でありつつ。<br>そのバランスが、ちょうど良いように思えたから。</p>
-<p>数あるプロダクトの中でHexoを選択したのは、あまり悩まなかったな。Javascript製で、npmを使ってセットアップが簡単ということで。</p>
-<p>それで、ドメインはずっと使っているisnot.jpに、新しくサブドメインを追加することにした。<br>本体ごと、まるっと乗り換えるほどには思いきれなかったということである。</p>
-<p>そのうえで、ホスティングにGitHub Pagesを使う。<br>レンサバに直接デプロイするのに比べると、例えば出先でスマホから、ブラウザを使ってちょこっとコンテンツを書き換える程度のことが、それなりに出来るから。<br>まぁ普段はデスクトップのパソコンで作業します。</p>
-<h3 id="つまずき-その1-ドメインの設定"><a href="#つまずき-その1-ドメインの設定" class="headerlink" title="つまずき その1 ドメインの設定"></a>つまずき その1 ドメインの設定</h3><p>さくらの会員メニューからログイン。ドメインの設定。<br>ドメインの編集から、CNAMEを追加する。このとき、「値」に何を設定すれば良いか分かってなかったので、調べる。と、FQDN書けよと。<br>ここで失敗。末尾のドット（.）を付け忘れる。いつまで待ってもドメインが伝播してこないなーとか。<br>1日待って、おかしいと思って見直したら、そういうことだった。</p>
-<p>ついでに、無料のSSL証明書をポチっとした。この上なく楽だな〜。<br>業務で国内大手事業者からSSL証明書を買った経験は何度かあるけど、そういうのと次元がまったく違ってますね。</p>
-<h3 id="つまずき-その2-リポジトリの設定"><a href="#つまずき-その2-リポジトリの設定" class="headerlink" title="つまずき その2 リポジトリの設定"></a>つまずき その2 リポジトリの設定</h3><p>「CNAME」という名前のファイルを置くのだが、いろいろあって、衝突したり消えたりした。<br>結局でいうと、<$blog_home>/source/CNAME に置いてあげれば解決でした。</$blog_home></p>
-<h3 id="themes-のカスタマイズ"><a href="#themes-のカスタマイズ" class="headerlink" title="themes のカスタマイズ"></a>themes のカスタマイズ</h3><p>themesには、Stageというのを選んだ。<br>結構たくさんある中で選んだポイントは、<br>本文テキストの文字サイズが小さくないこと。<br>ライト系で、白っぽいこと。<br>そして、jQuery依存しないで済むこと。</p>
-<p>よく見たらjQuery使われていたんだけど、見た目のちょっとした動きを付けるためだけに使っている程度だったので、カスタマイズの過程で外しといた。</p>
-<p>あとはヘッダーの画像を入れ替え、位置関係を調整。<br>サイドバーのアバター画像も入れ替え。</p>
-<p>それと、独自のCSSを追加した。<br>Parmalinkの書式を変えた。</p>
-<p>マルチ言語機能があるが、日本語（ja）の言語ファイルがなかったので、enをコピーして適当に翻訳した。</p>
-<p>今のところは、この程度かな。</p>
-<h3 id="つまずき-その3-jsの変更を反映する"><a href="#つまずき-その3-jsの変更を反映する" class="headerlink" title="つまずき その3 jsの変更を反映する"></a>つまずき その3 jsの変更を反映する</h3><p>これはつまずきというより、すぐに気付けた。<br>hexo コマンドでは、themesの中の、webpack処理が行われないようです。<br>つまり、元jsファイルを更新した時に、minify後のファイルには反映されないのです。<br>なので、以下のようにbuildしてやる必要がありました。</p>
-<figure class="highlight shell"><table><tbody><tr><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> <span class="built_in">cd</span> themes/stage/</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> npm run build</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> <span class="built_in">cd</span> ../..</span></span><br></pre></td></tr></tbody></table></figure>
-<h3 id="既存コンテンツどうしよう"><a href="#既存コンテンツどうしよう" class="headerlink" title="既存コンテンツどうしよう"></a>既存コンテンツどうしよう</h3><p>G+のバックアップデータをインポートするとしたら、パーザから自作してだな。<br>うーむ。</p>
-<p>そして旧ブログというかWeb日記も、そのうちコンバートしておくか。</p>
-<p>以上です。</p>
+<h2 id="インジェクションの方法"><a href="#インジェクションの方法" class="headerlink" title="インジェクションの方法"></a>インジェクションの方法</h2><p>はじめに<a href="https://github.com/hexojs/hexo-inject" target="_blank" rel="noopener">hexo-inject</a>を見つけた時、これでかなり楽ができそうだなと思いました。<br>しかし実際に使おうと思い、試してみるのですが、思い通りに動かすことができませんでした。</p>
+<blockquote><p>This package has been deprecated<br>Author message:</p>
+<p>The author does not use Hexo any more. This plugin is no longer maintained.</p>
+<footer><strong>www.npmjs.com</strong><cite><a href="https://www.npmjs.com/package/hexo-inject" target="_blank" rel="noopener">/package/hexo-inject</a></cite></footer></blockquote>
+<p>とのことで、現段階ではコレに頼るのは諦めました。<br>なお、元作者以外のメンテナの動きがあるようなので、少し期待しつつ成り行きを見守っています。</p>
+<p>で、他のプラグインを（少しだけ）調査したのですが、インジェクションにはまだ定説というかベスト・プラクティスが確立しているようには見えませんでした。<br>いくつかアプローチがあるものの、私の望む動作とは少し違っているようです。<br>それというのも、Hexoのプラグイン機構の動作と、うまくマッチしていないように思いました。</p>
+<p>postもしくはpageの中で、1回だけ呼び出す限りにおいては、いくつかの手法で（私の実装でも）問題なく動いています。</p>
+<p>同じくpostもしくはpageの中で、複数回同じプラグイン（この場合はTagプラグインを想定）が呼び出されたときにどうなるかというと、私の手法ではマズイ部分があります。</p>
+<p>探してみると、ランダムな文字列をうまく使って、重複したインジェクションの問題を回避しているプラグインがあることがわかりました。<br>それはそれで良いのですが、私の目的では、単に同一html文書内ではインジェクションが1回だけ、というような動きにしたく思い、引き続き調査中です。</p>
+<p>もう一つの問題は、アーカイブもしくはインデックスでの挙動。特にインデックス。</p>
+<p>私が使っているテーマ（Stage）だとアーカイブ系（カテゴリー別、タグ別一覧も同様）ではタイトルのみで本文が入らないのでまだ問題になっていないのですが、インデックスではそうもいきません。</p>
+<p>ここでも、複数回の呼び出しが発生することを想定した作り込みが必要になりますが、私の実装では対応できていません。（不完全だが、1画面内で最初のTagプラグイン記述のみ、動いている）</p>
+<p>あと、挿入位置も。<br>コンテンツの中（body要素の途中）ではなく、head要素の最後とか、body要素の最後に挿入したい。</p>
+<h2 id="状態の参照"><a href="#状態の参照" class="headerlink" title="状態の参照"></a>状態の参照</h2><p>ドキュメントの、<a href="https://hexo.io/api/" target="_blank" rel="noopener">API</a>を見ればおおよそは分かります。<br>でも、もっと細かい部分を確かめようと思うと、上記のドキュメントでは物足りなさを感じました。</p>
+<p>私もhexo-tag-google-photos-albumを開発している過程で、その場しのぎ的に調査したのですが、効率的にやれていなかったのと、今後のことを思うと、まとまった形でどこかに書き出しておいたほうがいいなと思いました。</p>
+<p>このあと、Hexoプラグイン開発に役立つよう、hexo-tag-google-photos-albumの開発を題材にとって、それらをまとめていきたいです。</p>
+<h2 id="他にも、開発の役に立ちそうなこと"><a href="#他にも、開発の役に立ちそうなこと" class="headerlink" title="他にも、開発の役に立ちそうなこと"></a>他にも、開発の役に立ちそうなこと</h2><p>まだまだ理解できていないこと。</p>
+<p>Hexoの一連のライフサイクル。<br>それぞれの段階で、どんな処理が走るのか。<br>とか。</p>
+<p>それとテーマ。</p>
+<p>あとは、プラグインのロードあたりも、おいおい調べる必要が出てくるかも。</p>
+<p>それと、<code>npm link</code>を効果的に使う方法をちゃんと理解しておかないと、開発の効率が悪すぎる……。</p>
+<p>そういったことを、連載形式でまとめていけたらと思います。</p>
 </div><script src="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/js/lightgallery.min.js"></script><script src="/js/lg-thumbnail.min.js"></script><script src="/js/lg-zoom.min.js"></script><script src="/js/lg-autoplay.min.js"></script><script src="/js/lg-fullscreen.min.js"></script><script src="/js/lg-pager.min.js"></script><script src="/js/lg-hash.min.js"></script><script>if (typeof lightGallery !== 'undefined') {
         var options = {
             selector: '.gallery-item'
@@ -136,12 +141,12 @@ function addLoadEvent(func) {
 </script>
 
         <div>
-            <ul class="tags-category-list"><li class="tags-category-list-item"><a class="tags-category-list-link" href="/tags/domain/">domain</a></li><li class="tags-category-list-item"><a class="tags-category-list-link" href="/tags/github-pages/">github pages</a></li><li class="tags-category-list-item"><a class="tags-category-list-link" href="/tags/hexo/">hexo</a></li><li class="tags-category-list-item"><a class="tags-category-list-link" href="/tags/isnot/">isnot</a></li></ul>
+            <ul class="tags-category-list"><li class="tags-category-list-item"><a class="tags-category-list-link" href="/tags/hexo/">hexo</a></li><li class="tags-category-list-item"><a class="tags-category-list-link" href="/tags/javascript/">javascript</a></li></ul>
         </div>
         
 <div id="stageComment" class="comment fa fa-comment-o">
-  はじめまして！ について、
-  <a href="https://github.com/isnot/isnot.github.io/issues/new?labels=blog-comments&title=はじめまして！&body=About%20%5B%E3%81%AF%E3%81%98%E3%82%81%E3%81%BE%E3%81%97%E3%81%A6%EF%BC%81%5D(https%3A%2F%2Fpages.isnot.jp%2F2019-04%2F09-index%2Findex.html)">
+  Hexo 内部探訪 (1) はじめに について、
+  <a href="https://github.com/isnot/isnot.github.io/issues/new?labels=blog-comments&title=Hexo 内部探訪 (1) はじめに&body=About%20%5BHexo%20%E5%86%85%E9%83%A8%E6%8E%A2%E8%A8%AA%20(1)%20%E3%81%AF%E3%81%98%E3%82%81%E3%81%AB%5D(https%3A%2F%2Fpages.isnot.jp%2F2019-05%2F05-study-about-hexos-internals-1%2Findex.html)">
     GitHubでコメントする
   </a>
 </div>
@@ -150,15 +155,24 @@ function addLoadEvent(func) {
         
     <nav id="article-nav">
         
-            <a href="/2019-04/13-image-test/" id="article-nav-newer" class="article-nav-link-wrap">
+            <a href="/2019-05/06-study-about-hexos-internals-2/" id="article-nav-newer" class="article-nav-link-wrap">
         <span class="article-nav-title">
             
-                画像のテスト
+                Hexo 内部探訪 (2) 準備 npm linkメモ
             
         </span>
                 <strong class="article-nav-caption">&gt;</strong>
             </a>
         
+        
+            <a href="/2019-05/01-azalea/" id="article-nav-older" class="article-nav-link-wrap">
+                <strong class="article-nav-caption">&lt;</strong>
+                <span class="article-nav-title">
+                    
+                        ツツジ
+                </span>
+                
+            </a>
         
     </nav>
 
@@ -313,7 +327,7 @@ function addLoadEvent(func) {
     <div id="toc">
         
             <h2>目次</h2>
-            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#My-First-Weblog"><span class="toc-number">1.</span> <span class="toc-text">My First Weblog</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#つまずき-その1-ドメインの設定"><span class="toc-number">1.1.</span> <span class="toc-text">つまずき その1 ドメインの設定</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#つまずき-その2-リポジトリの設定"><span class="toc-number">1.2.</span> <span class="toc-text">つまずき その2 リポジトリの設定</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#themes-のカスタマイズ"><span class="toc-number">1.3.</span> <span class="toc-text">themes のカスタマイズ</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#つまずき-その3-jsの変更を反映する"><span class="toc-number">1.4.</span> <span class="toc-text">つまずき その3 jsの変更を反映する</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#既存コンテンツどうしよう"><span class="toc-number">1.5.</span> <span class="toc-text">既存コンテンツどうしよう</span></a></li></ol></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#インジェクションの方法"><span class="toc-number">1.</span> <span class="toc-text">インジェクションの方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#状態の参照"><span class="toc-number">2.</span> <span class="toc-text">状態の参照</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#他にも、開発の役に立ちそうなこと"><span class="toc-number">3.</span> <span class="toc-text">他にも、開発の役に立ちそうなこと</span></a></li></ol>
         
     </div>
 </div>

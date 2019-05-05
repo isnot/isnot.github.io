@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+  <title>Hexo 内部探訪 (2) 準備 npm linkメモ | isnot N3</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <link rel="alternate" href="/atom.xml" title="isnot N3">
+  
+    <link rel="icon" href="/favicon.ico">
+  
+  <meta name="description" content="npm linkを使いこなすにはnpm linkという、ありがたい仕組みがあって、非公開のモジュール（または開発中のバージョン）を、node_modulesの中に配置することができる。基本的には、シンボリック・リンクである。 ここまでは、すぐに把握できたけど、実はうまく動作させるための、さらなる条件があった。">
+<meta name="keywords" content="hexo,npm,javascript">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hexo 内部探訪 (2) 準備 npm linkメモ">
+<meta property="og:url" content="https://pages.isnot.jp/2019-05/06-study-about-hexos-internals-2/index.html">
+<meta property="og:site_name" content="isnot N3">
+<meta property="og:description" content="npm linkを使いこなすにはnpm linkという、ありがたい仕組みがあって、非公開のモジュール（または開発中のバージョン）を、node_modulesの中に配置することができる。基本的には、シンボリック・リンクである。 ここまでは、すぐに把握できたけど、実はうまく動作させるための、さらなる条件があった。">
+<meta property="og:locale" content="ja">
+<meta property="og:updated_time" content="2019-05-05T18:40:15.035Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Hexo 内部探訪 (2) 準備 npm linkメモ">
+<meta name="twitter:description" content="npm linkを使いこなすにはnpm linkという、ありがたい仕組みがあって、非公開のモジュール（または開発中のバージョン）を、node_modulesの中に配置することができる。基本的には、シンボリック・リンクである。 ここまでは、すぐに把握できたけど、実はうまく動作させるための、さらなる条件があった。">
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+    
+        
+            <link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+        
+            <link rel="stylesheet" href="/css/stage.css">
+        
+            <link rel="stylesheet" href="/css/pages-isnot-jp.css">
+        
+            <link rel="stylesheet" href="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/css/lightgallery.min.css">
+        
+    
+</head>
+</html>
+<body>
+<header id="header">
+    <div class="menu">
+        <i class="fa fa-bars"></i>
+    </div>
+    <div class="header-main">
+        <h1><a href="/">isnot N3</a></h1>
+    </div>
+    <div id="nav">
+        <div class="nav-img" id="nav-img"></div>
+    </div>
+</header>
+
+<div id="content-outer">
+    <div id="content-inner">
+        <div class="clearfix">
+    <article id="post">
+        <h1>Hexo 内部探訪 (2) 準備 npm linkメモ</h1>
+        <div class="create">
+            <span>作成</span>
+            
+                <time datetime="2019-05-05T15:02:00.000Z">
+                    2019-05-06
+                </time>
+            
+            <ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/hexo/">hexo</a></li></ul>
+        </div>
+        <link crossorigin="anonymous" media="screen" rel="stylesheet" href="/css/google_photos_album.css"><div class="article-gallery"><h2 id="npm-linkを使いこなすには"><a href="#npm-linkを使いこなすには" class="headerlink" title="npm linkを使いこなすには"></a>npm linkを使いこなすには</h2><p><a href="https://docs.npmjs.com/cli/link.html" target="_blank" rel="noopener">npm link</a>という、ありがたい仕組みがあって、非公開のモジュール（または開発中のバージョン）を、node_modulesの中に配置することができる。<br>基本的には、シンボリック・リンクである。</p>
+<p>ここまでは、すぐに把握できたけど、実はうまく動作させるための、さらなる条件があった。</p>
+<a id="more"></a>
+<p>モジュールを読み込む側と、読み込まれる側のモジュールが、ファイルシステム上で同階層になるように配置されている必要があるのだった。</p>
+<p>私の場合だけど、開発中のリポジトリは、ある場所にまとめてある。<br>例：<code>~/repository/hexo-tag-google-photos-album/</code><br>これが、Hexoプラグインを開発する場所。</p>
+<p>一方で、ただ使うだけのものは、別の場所にある。<br>Hexoで構成しているブログの作業場所は、こんな感じ。<br>例：<code>~/www/MyBlog/</code></p>
+<p>つまり、自分のブログに自分のプラグインを組み込むとすると、<br>例：<code>~/www/MyBlog/node_modules/hexo-tag-google-photos-album/</code><br>ということになる。</p>
+<p>しかしながら、npm link的には、上記の2箇所を直接リンクすることはできないわけだ。</p>
+<p>なので、さらに回りくどいが、以下のようにして、解決してみる。</p>
+<figure class="highlight bash"><table><tbody><tr><td class="code"><pre><span class="line">naoto@MyComputer:~/www/MyBlog$ <span class="built_in">cd</span> ..</span><br><span class="line">naoto@MyComputer:~/www$ ln -s ../repository/hexo-tag-google-photos-album</span><br><span class="line">naoto@MyComputer:~/www$ ls -l hexo-tag-google-photos-album</span><br><span class="line">lrwxrwxrwx 1 naoto naoto 42  5月  6 01:46 hexo-tag-google-photos-album -> ../repository/hexo-tag-google-photos-album</span><br></pre></td></tr></tbody></table></figure>
+<p>こうすることで、開発中のプラグイン実体は従来通りのままとしつつ、link可能な場所にも配置できた。</p>
+<p>呼び出される側のlinkは、以下の通り。</p>
+<figure class="highlight bash"><table><tbody><tr><td class="code"><pre><span class="line">naoto@MyComputer:~/www$ <span class="built_in">cd</span> hexo-tag-google-photos-album</span><br><span class="line">naoto@MyComputer:~/www/hexo-tag-google-photos-album$ sudo npm link</span><br><span class="line">(snip)</span><br><span class="line">/usr/lib/node_modules/hexo-tag-google-photos-album -> /home/naoto/repository/hexo-tag-google-photos-album</span><br></pre></td></tr></tbody></table></figure>
+<p>そして、呼び出す方で使う側の、つまりブログ側の（しつこい）linkはこの通り。</p>
+<figure class="highlight bash"><table><tbody><tr><td class="code"><pre><span class="line">naoto@MyComputer:~/www/hexo-tag-google-photos-album$ <span class="built_in">cd</span> ../MyBlog</span><br><span class="line">naoto@MyComputer:~/www/MyBlog$ npm link hexo-tag-google-photos-album</span><br><span class="line">/home/naoto/www/MyBlog/node_modules/hexo-tag-google-photos-album -> /usr/lib/node_modules/hexo-tag-google-photos-album -> /home/naoto/repository/hexo-tag-google-photos-album</span><br><span class="line">naoto@MyComputer:~/www/MyBlog$ grep photos package.json</span><br><span class="line">    <span class="string">"hexo-tag-google-photos-album"</span>: <span class="string">"git+https://github.com/isnot/hexo-tag-google-photos-album.git"</span>,</span><br><span class="line">naoto@MyComputer:~/www/MyBlog$ ls -l node_modules/hexo-tag-google-photos-album</span><br><span class="line">lrwxrwxrwx 1 naoto naoto 64  5月  6 01:50 node_modules/hexo-tag-google-photos-album -> ../../../../../usr/lib/node_modules/hexo-tag-google-photos-album</span><br></pre></td></tr></tbody></table></figure>
+<p>これで、毎度git pushとnpm upを繰り返すこと無く、作業ができるようになる（はず）。<br>確かめてみよう。</p>
+<p>開発中のプラグインの中に、以下を書き加える。</p>
+<figure class="highlight javascript"><figcaption><span>~/repository/hexo-tag-google-photos-album/index.js</span></figcaption><table><tbody><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> { inspect } = <span class="built_in">require</span>(<span class="string">'util'</span>);</span><br><span class="line"><span class="keyword">var</span> g = <span class="built_in">Function</span>(<span class="string">'return this'</span>)();</span><br><span class="line"><span class="built_in">console</span>.log(inspect(g, { <span class="attr">depth</span>: <span class="number">0</span> }));</span><br><span class="line"><span class="built_in">console</span>.log(inspect(hexo, { <span class="attr">depth</span>: <span class="number">0</span> }));</span><br></pre></td></tr></tbody></table></figure>
+<p>これを、コミットもせず、コピーもせず、動かしたい。</p>
+<figure class="highlight bash"><table><tbody><tr><td class="code"><pre><span class="line">naoto@MyComputer:~/www/MyBlog$ hexo list page</span><br><span class="line">Object [global] {</span><br><span class="line">  global: [Circular],</span><br><span class="line">  process: [process],</span><br><span class="line">  Buffer: [Function],</span><br><span class="line">  clearImmediate: [Function: clearImmediate],</span><br><span class="line">  clearInterval: [Function: clearInterval],</span><br><span class="line">  clearTimeout: [Function: clearTimeout],</span><br><span class="line">  setImmediate: [Function],</span><br><span class="line">  setInterval: [Function: setInterval],</span><br><span class="line">  setTimeout: [Function] }</span><br><span class="line">Hexo {</span><br><span class="line">  _events: [Object: null prototype] {},</span><br><span class="line">  _eventsCount: 0,</span><br><span class="line">  _maxListeners: undefined,</span><br><span class="line">  base_dir: <span class="string">'/home/naoto/www/MyBlog/'</span>,</span><br><span class="line">  public_dir: <span class="string">'/home/naoto/www/MyBlog/public/'</span>,</span><br><span class="line">  source_dir: <span class="string">'/home/naoto/www/MyBlog/source/'</span>,</span><br><span class="line">  plugin_dir: <span class="string">'/home/naoto/www/MyBlog/node_modules/'</span>,</span><br><span class="line">  script_dir: <span class="string">'/home/naoto/www/MyBlog/scripts/'</span>,</span><br><span class="line">  scaffold_dir: <span class="string">'/home/naoto/www/MyBlog/scaffolds/'</span>,</span><br><span class="line">  theme_dir: <span class="string">'/home/naoto/www/MyBlog/themes/stage/'</span>,</span><br><span class="line">  theme_script_dir: <span class="string">'/home/naoto/www/MyBlog/themes/stage/scripts/'</span>,</span><br><span class="line">  env: [Object],</span><br><span class="line">  extend: [Object],</span><br><span class="line">  config: [Object],</span><br><span class="line">  <span class="built_in">log</span>: [Logger],</span><br><span class="line">  render: [Render],</span><br><span class="line">  route: [Router],</span><br><span class="line">  post: [Post],</span><br><span class="line">  scaffold: [Scaffold],</span><br><span class="line">  _dbLoaded: <span class="literal">false</span>,</span><br><span class="line">  _isGenerating: <span class="literal">false</span>,</span><br><span class="line">  database: [Database],</span><br><span class="line">  config_path: <span class="string">'/home/naoto/www/MyBlog/_config.yml'</span>,</span><br><span class="line">  <span class="built_in">source</span>: [Source],</span><br><span class="line">  theme: [Theme],</span><br><span class="line">  locals: [Locals] }</span><br><span class="line">INFO  Start processing</span><br><span class="line">INFO  ---- START COPYING TAG CLOUD FILES ----</span><br><span class="line">INFO  ---- END COPYING TAG CLOUD FILES ----</span><br><span class="line">Date        Title                          Path</span><br><span class="line">2019-04-09  Tags                           tags/index.md</span><br><span class="line">2019-04-13  About いしだなおと / isnot N3  about/index.md</span><br></pre></td></tr></tbody></table></figure>
+<p>できた！</p>
+<p>いいね。これで行こう。</p>
+</div><script src="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/js/lightgallery.min.js"></script><script src="/js/lg-thumbnail.min.js"></script><script src="/js/lg-zoom.min.js"></script><script src="/js/lg-autoplay.min.js"></script><script src="/js/lg-fullscreen.min.js"></script><script src="/js/lg-pager.min.js"></script><script src="/js/lg-hash.min.js"></script><script>if (typeof lightGallery !== 'undefined') {
+        var options = {
+            selector: '.gallery-item'
+        };
+        lightGallery(document.getElementsByClassName('article-gallery')[0], options);
+        }</script><script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script><script>
+function addLoadEvent(func) {
+  const oldonload = window.onload;
+  if (typeof window.onload !== 'function') {
+    window.onload = func;
+  } else {
+    window.onload = () => {
+      oldonload();
+      func();
+    };
+  }
+}
+  addLoadEvent(() => {
+    try {
+      if (window.innerWidth < Number('768')) {
+        return;
+      }
+      let imgs = Array.from(document.body.querySelectorAll('.google-photos-album-images a'));
+      imgs.push(...Array.from(document.body.querySelectorAll('a.google-photos-album-image')));
+      for (let anchor of imgs) {
+        anchor.href = anchor.href.replace(/=s720\-no/i, '=s1920-no');
+      }
+    } catch (e) {
+      console.log(e);
+    }
+  });
+</script>
+
+        <div>
+            <ul class="tags-category-list"><li class="tags-category-list-item"><a class="tags-category-list-link" href="/tags/hexo/">hexo</a></li><li class="tags-category-list-item"><a class="tags-category-list-link" href="/tags/javascript/">javascript</a></li><li class="tags-category-list-item"><a class="tags-category-list-link" href="/tags/npm/">npm</a></li></ul>
+        </div>
+        
+<div id="stageComment" class="comment fa fa-comment-o">
+  Hexo 内部探訪 (2) 準備 npm linkメモ について、
+  <a href="https://github.com/isnot/isnot.github.io/issues/new?labels=blog-comments&title=Hexo 内部探訪 (2) 準備 npm linkメモ&body=About%20%5BHexo%20%E5%86%85%E9%83%A8%E6%8E%A2%E8%A8%AA%20(2)%20%E6%BA%96%E5%82%99%20npm%20link%E3%83%A1%E3%83%A2%5D(https%3A%2F%2Fpages.isnot.jp%2F2019-05%2F06-study-about-hexos-internals-2%2Findex.html)">
+    GitHubでコメントする
+  </a>
+</div>
+
+        <div class="bottom-line"></div>
+        
+    <nav id="article-nav">
+        
+            <a href="/2019-05/06-study-about-hexos-internals-3/" id="article-nav-newer" class="article-nav-link-wrap">
+        <span class="article-nav-title">
+            
+                Hexo 内部探訪 (3) グローバル
+            
+        </span>
+                <strong class="article-nav-caption">&gt;</strong>
+            </a>
+        
+        
+            <a href="/2019-05/05-study-about-hexos-internals-1/" id="article-nav-older" class="article-nav-link-wrap">
+                <strong class="article-nav-caption">&lt;</strong>
+                <span class="article-nav-title">
+                    
+                        Hexo 内部探訪 (1) はじめに
+                </span>
+                
+            </a>
+        
+    </nav>
+
+
+        
+    </article>
+    <div id="content-aside">
+    <div class="content-aside-owner">
+        <div id="owner">
+    <div class="avatar-bg">
+        <div class="index-page">
+            <div class="banner">
+                <div class="slide slide1">
+                    <div class="bg-wrapper">
+                        <div class="bg" id="container_left">
+                            <div id="canvas_left"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="slide slide2">
+                    <div class="bg-wrapper">
+                        <div class="bg" id="container_right">
+                            <div id="canvas_right"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <a href="/"><img class="avatar" src="/images/makino-otometsubaki512.png" alt></a>
+    <a href="/"><h3 class="author">isnot</h3></a>
+    <h4>いしだなおと の、ブログ的な。</h4>
+    <div class="social">
+        
+            
+              <a href="/atom.xml" title="rss" class="fa fa-rss" target="_blank"></a>
+            
+        
+            
+              <a href="https://github.com/isnot" title="github" class="fa fa-github" target="_blank"></a>
+            
+        
+            
+              <a href="https://soundcloud.com/isnot-jp" title="soundcloud" class="fa fa-soundcloud" target="_blank"></a>
+            
+        
+            
+              <a href="https://www.youtube.com/channel/UCy6ciW14LkMnyXFkxi9uwNw" title="youtube" class="fa fa-youtube" target="_blank"></a>
+            
+        
+            
+              <a href="https://t.me/isnot" title="telegram" class="fa fa-telegram" target="_blank"></a>
+            
+        
+            
+              <a href="https://mewe.com/i/naoto" title="user" class="fa fa-user" target="_blank"></a>
+            
+        
+    </div>
+</div>
+    </div>
+    
+        <div class="content-aside-about">
+            <h2>
+                <a href="/about">About</a>
+            </h2>
+        </div>
+    
+    <div class="content-aside-tags">
+        <h2>
+            <a href="/tags">
+                タグ
+                <sup style="font-size: 12px">
+                    [9]
+                </sup>
+            </a>
+        </h2>
+        
+            <script type="text/javascript" charset="utf-8" src="/js/tagcloud.js"></script>
+            <script type="text/javascript" charset="utf-8" src="/js/tagcanvas.js"></script>
+            <div class="widget-wrap">
+                <div id="myCanvasContainer" class="widget tagcloud">
+                    <canvas width="250" height="250" id="resCanvas" style="width=100%">
+                        <a href="/tags/domain/" style="font-size: 10px;">domain</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/github-pages/" style="font-size: 10px;">github pages</a> <a href="/tags/hexo/" style="font-size: 20px;">hexo</a> <a href="/tags/isnot/" style="font-size: 10px;">isnot</a> <a href="/tags/javascript/" style="font-size: 17.5px;">javascript</a> <a href="/tags/npm/" style="font-size: 12.5px;">npm</a> <a href="/tags/photo/" style="font-size: 15px;">photo</a> <a href="/tags/sakura/" style="font-size: 10px;">sakura</a>
+                    </canvas>
+                </div>
+            </div>
+        
+    </div>
+    
+    <aside id="recent">
+        <h2>最近の投稿</h2>
+        <ul class="recent-list">
+        
+            <li class="recent-list-item"><a class="recent-list-link" href="/2019-05/06-study-about-hexos-internals-4/">
+                Hexo 内部探訪 (4) プラグインのロード
+            </a></li>
+        
+            <li class="recent-list-item"><a class="recent-list-link" href="/2019-05/06-study-about-hexos-internals-3/">
+                Hexo 内部探訪 (3) グローバル
+            </a></li>
+        
+            <li class="recent-list-item"><a class="recent-list-link" href="/2019-05/06-study-about-hexos-internals-2/">
+                Hexo 内部探訪 (2) 準備 npm linkメモ
+            </a></li>
+        
+            <li class="recent-list-item"><a class="recent-list-link" href="/2019-05/05-study-about-hexos-internals-1/">
+                Hexo 内部探訪 (1) はじめに
+            </a></li>
+        
+            <li class="recent-list-item"><a class="recent-list-link" href="/2019-05/01-azalea/">
+                ツツジ
+            </a></li>
+        
+            <li class="recent-list-item"><a class="recent-list-link" href="/2019-04/30-hexo-tag-google-photos-album-is-arrived/">
+                hexo-tag-google-photos-album 公開しました
+            </a></li>
+        
+            <li class="recent-list-item"><a class="recent-list-link" href="/2019-04/15-sakura2019/">
+                さくら 2019
+            </a></li>
+        
+            <li class="recent-list-item"><a class="recent-list-link" href="/2019-04/13-image-test/">
+                画像のテスト
+            </a></li>
+        
+            <li class="recent-list-item"><a class="recent-list-link" href="/2019-04/09-index/">
+                はじめまして！
+            </a></li>
+        
+        </ul>
+    </aside>
+    
+    
+<aside id="categories">
+    <h2>カテゴリー</h2>
+    
+        <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/hexo/">hexo</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/javascript/">javascript</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/myself/">myself</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/photo/">photo</a></li></ul>
+    
+</aside>
+
+    
+<aside id="archives">
+    <h2>アーカイブ</h2>
+    
+    <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">五月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">四月 2019</a></li></ul>
+    
+</aside>
+
+</div>
+
+    <div id="toc">
+        
+            <h2>目次</h2>
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#npm-linkを使いこなすには"><span class="toc-number">1.</span> <span class="toc-text">npm linkを使いこなすには</span></a></li></ol>
+        
+    </div>
+</div>
+
+    </div>
+</div>
+<footer id="footer">
+    <div id="copyright">&copy; isnot  2019</div>
+    <div id="theme">
+        Powered by <a href="http://hexo.io">Hexo</a>. Theme by <a href="https://github.com/markyong/hexo-theme-stage">Stage</a>
+    </div>
+</footer>
+<script src="/js/header-bg.main.js"></script>
+
+    <script src="/lib/js/smooth-scroll.min.js"></script>
+    <script src="/js/toc.main.js"></script>
+
+</body>
+</html>

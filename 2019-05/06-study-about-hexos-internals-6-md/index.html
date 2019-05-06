@@ -2,23 +2,24 @@
 <html>
 <head><meta name="generator" content="Hexo 3.8.0">
   <meta charset="UTF-8">
-  <title>Category: myself | isnot N3</title>
+  <title>Hexo 内部探訪 (6) DevToolsを使ったデバッグ | isnot N3</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <link rel="alternate" href="/atom.xml" title="isnot N3">
   
     <link rel="icon" href="/favicon.ico">
   
-  <meta name="description" content="https://pages.isnot.jp isnot N3">
-<meta name="keywords" content="Javascript Node.js npm git GitHub Chromy MPD Ubuntu LXQt Emacs Telegram Bot">
-<meta property="og:type" content="website">
-<meta property="og:title" content="isnot N3">
-<meta property="og:url" content="https://pages.isnot.jp/categories/myself/index.html">
+  <meta name="description" content="恥ずかしながらデバッカーを使い慣れておらず、こういった実行時コンテキストの解析に、手間取っていました。今回は、DevToolsプロトコルを使って解析してみよう。">
+<meta name="keywords" content="hexo,javascript">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hexo 内部探訪 (6) DevToolsを使ったデバッグ">
+<meta property="og:url" content="https://pages.isnot.jp/2019-05/06-study-about-hexos-internals-6-md/index.html">
 <meta property="og:site_name" content="isnot N3">
-<meta property="og:description" content="https://pages.isnot.jp isnot N3">
+<meta property="og:description" content="恥ずかしながらデバッカーを使い慣れておらず、こういった実行時コンテキストの解析に、手間取っていました。今回は、DevToolsプロトコルを使って解析してみよう。">
 <meta property="og:locale" content="ja">
+<meta property="og:updated_time" content="2019-05-06T14:11:11.564Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="isnot N3">
-<meta name="twitter:description" content="https://pages.isnot.jp isnot N3">
+<meta name="twitter:title" content="Hexo 内部探訪 (6) DevToolsを使ったデバッグ">
+<meta name="twitter:description" content="恥ずかしながらデバッカーを使い慣れておらず、こういった実行時コンテキストの解析に、手間取っていました。今回は、DevToolsプロトコルを使って解析してみよう。">
   
     <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
   
@@ -51,23 +52,110 @@
 <div id="content-outer">
     <div id="content-inner">
         <div class="clearfix">
-    <div id="category">
-        <h1>myself</h1>
-        
-        <div class="item">
-            <h3>
-                <time datetime="2019-04-09T06:00:00.000Z">
-                    2019-04-09
+    <article id="post">
+        <h1>Hexo 内部探訪 (6) DevToolsを使ったデバッグ</h1>
+        <div class="create">
+            <span>作成</span>
+            
+                <time datetime="2019-05-06T14:08:08.000Z">
+                    2019-05-06
                 </time>
-                
-                <a href="/2019-04/09-index/">
-                    はじめまして！
-                </a>
-                
-            </h3>
+            
+            <ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/hexo/">hexo</a></li></ul>
+        </div>
+        <link crossorigin="anonymous" media="screen" rel="stylesheet" href="/css/google_photos_album.css"><div class="article-gallery"><p>恥ずかしながらデバッカーを使い慣れておらず、こういった実行時コンテキストの解析に、手間取っていました。<br>今回は、DevToolsプロトコルを使って解析してみよう。</p>
+<a id="more"></a>
+<figure class="highlight bash"><table><tbody><tr><td class="code"><pre><span class="line">$ <span class="built_in">cd</span> &lt;path-to-your-blog-dir&gt;</span><br><span class="line">$ hexo clean</span><br><span class="line">$ node --inspect-brk node_modules/hexo-cli/bin/hexo g --debug</span><br></pre></td></tr></tbody></table></figure>
+<p>このようにinspectを有効化してから、ブラウザ（Chromiumを利用）で<code>chrome://inspect</code>を開き、<code>Remote Target</code>の中に現れる<code>inspect this</code>から、デバッカーを開始する。</p>
+<p>これだと、デバッカーに馴れていない私にとっては、見たいところにたどり着くまでに手間取ってしまった。</p>
+<p>そこで、自身で開発中のプラグインの中に、任意のブレークポイントをあらかじめ挿入してしまう。</p>
+<figure class="highlight javascript"><table><tbody><tr><td class="code"><pre><span class="line">  <span class="keyword">debugger</span>;</span><br><span class="line"><span class="string">`</span></span><br></pre></td></tr></tbody></table></figure>
+<p>そして</p>
+<figure class="highlight bash"><table><tbody><tr><td class="code"><pre><span class="line">$ node --inspect node_modules/hexo-cli/bin/hexo g --debug</span><br></pre></td></tr></tbody></table></figure>
+<p><strong>-brk</strong> の有無が異なる点に注意。</p>
+<p>これで、ようやく調査がやりやすくなりました。<br>デバッカーの使い方は、これが詳しい。</p>
+<p><a href="https://developers.google.com/web/tools/chrome-devtools/javascript/step-code?hl=ja" target="_blank" rel="noopener">コードをステップ実行する方法 | Tools for Web Developers | Google Developers</a></p>
+</div><script src="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/js/lightgallery.min.js"></script><script src="/js/lg-thumbnail.min.js"></script><script src="/js/lg-zoom.min.js"></script><script src="/js/lg-autoplay.min.js"></script><script src="/js/lg-fullscreen.min.js"></script><script src="/js/lg-pager.min.js"></script><script src="/js/lg-hash.min.js"></script><script>if (typeof lightGallery !== 'undefined') {
+        var options = {
+            selector: '.gallery-item'
+        };
+        lightGallery(document.getElementsByClassName('article-gallery')[0], options);
+        }</script><script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script><script>
+function addLoadEvent(func) {
+  const oldonload = window.onload;
+  if (typeof window.onload !== 'function') {
+    window.onload = func;
+  } else {
+    window.onload = () => {
+      oldonload();
+      func();
+    };
+  }
+}
+  addLoadEvent(() => {
+    try {
+      if (window.innerWidth < Number('768')) {
+        return;
+      }
+      let imgs = Array.from(document.body.querySelectorAll('.google-photos-album-images a'));
+      imgs.push(...Array.from(document.body.querySelectorAll('a.google-photos-album-image')));
+      for (let anchor of imgs) {
+        anchor.href = anchor.href.replace(/=s720\-no/i, '=s1920-no');
+      }
+    } catch (e) {
+      console.log(e);
+    }
+  });
+</script>
+
+        <div>
+            <ul class="tags-category-list"><li class="tags-category-list-item"><a class="tags-category-list-link" href="/tags/hexo/">hexo</a></li><li class="tags-category-list-item"><a class="tags-category-list-link" href="/tags/javascript/">javascript</a></li></ul>
         </div>
         
-    </div>
+<div id="stageComment" class="comment fa fa-comment-o">
+  Hexo 内部探訪 (6) DevToolsを使ったデバッグ について、
+  <a href="https://github.com/isnot/isnot.github.io/issues/new?labels=blog-comments&title=Hexo 内部探訪 (6) DevToolsを使ったデバッグ&body=About%20%5BHexo%20%E5%86%85%E9%83%A8%E6%8E%A2%E8%A8%AA%20(6)%20DevTools%E3%82%92%E4%BD%BF%E3%81%A3%E3%81%9F%E3%83%87%E3%83%90%E3%83%83%E3%82%B0%5D(https%3A%2F%2Fpages.isnot.jp%2F2019-05%2F06-study-about-hexos-internals-6-md%2Findex.html)">
+    GitHubでコメントする
+  </a>
+</div>
+
+        <div class="bottom-line"></div>
+        
+    <nav id="article-nav">
+        
+        
+            <a href="/2019-05/06-study-about-hexos-internals-5/" id="article-nav-older" class="article-nav-link-wrap">
+                <strong class="article-nav-caption">&lt;</strong>
+                <span class="article-nav-title">
+                    
+                        Hexo 内部探訪 (5) ライフサイクル
+                </span>
+                
+            </a>
+        
+    </nav>
+
+
+        
+    </article>
     <div id="content-aside">
     <div class="content-aside-owner">
         <div id="owner">
@@ -217,9 +305,11 @@
 
 </div>
 
-</div>
-<div id="category-paginator" class="clearfix">
-    <span class="page-number current">1</span>
+    <div id="toc">
+        
+            <h2>目次がありません</h2>
+        
+    </div>
 </div>
 
     </div>
@@ -232,6 +322,8 @@
 </footer>
 <script src="/js/header-bg.main.js"></script>
 
+    <script src="/lib/js/smooth-scroll.min.js"></script>
+    <script src="/js/toc.main.js"></script>
 
 </body>
 </html>

@@ -66,9 +66,11 @@
         <link crossorigin="anonymous" media="screen" rel="stylesheet" href="/css/google_photos_album.css"><div class="article-gallery"><h2 id="調査の開始にあたって"><a href="#調査の開始にあたって" class="headerlink" title="調査の開始にあたって"></a>調査の開始にあたって</h2><p>プラグイン（さしあたりTagプラグインを想定）の実装中にて参照できる変数やオブジェクトを、調べてまとめよう。</p>
 <p><a href="https://nodejs.org/ja/docs/" target="_blank" rel="noopener">ドキュメント | Node.js</a>、 <a href="https://nodejs.org/api/process.html" target="_blank" rel="noopener">Process</a> 等もためになる。</p>
 <a id="more"></a>
+
 <p>ところで、Node.jsでは、グローバルな空間を参照するためのキーワードがある。<br><code>global</code>である。</p>
 <p>また、次のようなやり方で参照する方法もあるようだ。</p>
 <figure class="highlight javascript"><table><tbody><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> { inspect } = <span class="built_in">require</span>(<span class="string">'util'</span>);</span><br><span class="line"><span class="keyword">var</span> g = <span class="built_in">Function</span>(<span class="string">'return this'</span>)();</span><br><span class="line"><span class="built_in">console</span>.log(inspect(g, { <span class="attr">depth</span>: <span class="number">0</span> }));</span><br></pre></td></tr></tbody></table></figure>
+
 <p>これらを駆使しつつ、Hexoの場合には、私が見たところほとんど全ての場所で、<code>hexo</code>という、トップレベルの変数が見えるので、これを足がかりにしたい。<br>また、他にも使える要素がもしあるなら、確かめたい。</p>
 <h2 id="グローバル汚染はなかった"><a href="#グローバル汚染はなかった" class="headerlink" title="グローバル汚染はなかった"></a>グローバル汚染はなかった</h2><p>調査を進めてから理解できたことだが、Hexoではグローバル変数、またはグローバル・オブジェクトを使ってはいない。</p>
 <p>何らかのプラグインで、グローバルを意図して使うのならばともかくとして、少なくともHexoの本体と言える範囲や、純正／バンドルされた各プラグインでは、グローバル変数は使わないようだ。いわゆる「グローバル汚染」はない。</p>
@@ -76,7 +78,9 @@
 <p>しかしこれは、実際には、<code>module.exports</code>の仕組みによって与えられたもので、各モジュール（概ね各jsファイルに相当）毎にそれぞれエクスポートされていました。</p>
 <p>私はこれまで<code>module.exports</code>について理解していないままでしたが、今回勉強になりました。</p>
 <p>（調査中）</p>
-<p>Hexoオブジェクト<br></p><figure class="highlight"><table><tbody><tr><td class="code"><pre><span class="line">{</span><br><span class="line">  _events: [Object: null prototype] {},</span><br><span class="line">  _eventsCount: 0,</span><br><span class="line">  _maxListeners: undefined,</span><br><span class="line">  base_dir: '/home/naoto/www/MyBlog/',</span><br><span class="line">  public_dir: '/home/naoto/www/MyBlog/public/',</span><br><span class="line">  source_dir: '/home/naoto/www/MyBlog/source/',</span><br><span class="line">  plugin_dir: '/home/naoto/www/MyBlog/node_modules/',</span><br><span class="line">  script_dir: '/home/naoto/www/MyBlog/scripts/',</span><br><span class="line">  scaffold_dir: '/home/naoto/www/MyBlog/scaffolds/',</span><br><span class="line">  theme_dir: '/home/naoto/www/MyBlog/themes/stage/',</span><br><span class="line">  theme_script_dir: '/home/naoto/www/MyBlog/themes/stage/scripts/',</span><br><span class="line">  env: [Object],</span><br><span class="line">  extend: [Object],</span><br><span class="line">  config: [Object],</span><br><span class="line">  log: [Logger],</span><br><span class="line">  render: [Render],</span><br><span class="line">  route: [Router],</span><br><span class="line">  post: [Post],</span><br><span class="line">  scaffold: [Scaffold],</span><br><span class="line">  _dbLoaded: true,</span><br><span class="line">  _isGenerating: true,</span><br><span class="line">  database: [Database],</span><br><span class="line">  config_path: '/home/naoto/www/MyBlog/_config.yml',</span><br><span class="line">  source: [Source],</span><br><span class="line">  theme: [Theme],</span><br><span class="line">  locals: [Locals]</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure><p></p>
+<p>Hexoオブジェクト</p>
+<figure class="highlight"><table><tbody><tr><td class="code"><pre><span class="line">{</span><br><span class="line">  _events: [Object: null prototype] {},</span><br><span class="line">  _eventsCount: 0,</span><br><span class="line">  _maxListeners: undefined,</span><br><span class="line">  base_dir: '/home/naoto/www/MyBlog/',</span><br><span class="line">  public_dir: '/home/naoto/www/MyBlog/public/',</span><br><span class="line">  source_dir: '/home/naoto/www/MyBlog/source/',</span><br><span class="line">  plugin_dir: '/home/naoto/www/MyBlog/node_modules/',</span><br><span class="line">  script_dir: '/home/naoto/www/MyBlog/scripts/',</span><br><span class="line">  scaffold_dir: '/home/naoto/www/MyBlog/scaffolds/',</span><br><span class="line">  theme_dir: '/home/naoto/www/MyBlog/themes/stage/',</span><br><span class="line">  theme_script_dir: '/home/naoto/www/MyBlog/themes/stage/scripts/',</span><br><span class="line">  env: [Object],</span><br><span class="line">  extend: [Object],</span><br><span class="line">  config: [Object],</span><br><span class="line">  log: [Logger],</span><br><span class="line">  render: [Render],</span><br><span class="line">  route: [Router],</span><br><span class="line">  post: [Post],</span><br><span class="line">  scaffold: [Scaffold],</span><br><span class="line">  _dbLoaded: true,</span><br><span class="line">  _isGenerating: true,</span><br><span class="line">  database: [Database],</span><br><span class="line">  config_path: '/home/naoto/www/MyBlog/_config.yml',</span><br><span class="line">  source: [Source],</span><br><span class="line">  theme: [Theme],</span><br><span class="line">  locals: [Locals]</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
 <h2 id="（進捗途中）"><a href="#（進捗途中）" class="headerlink" title="（進捗途中）"></a>（進捗途中）</h2></div><script src="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/js/lightgallery.min.js"></script><script src="/js/lg-thumbnail.min.js"></script><script src="/js/lg-zoom.min.js"></script><script src="/js/lg-autoplay.min.js"></script><script src="/js/lg-fullscreen.min.js"></script><script src="/js/lg-pager.min.js"></script><script src="/js/lg-hash.min.js"></script><script>if (typeof lightGallery !== 'undefined') {
         var options = {
             selector: '.gallery-item'
@@ -235,6 +239,10 @@ function addLoadEvent(func) {
         <h2>最近の投稿</h2>
         <ul class="recent-list">
         
+            <li class="recent-list-item"><a class="recent-list-link" href="/2019-05/26-hoya-rose-garden/">
+                保谷町ローズガーデン2019
+            </a></li>
+        
             <li class="recent-list-item"><a class="recent-list-link" href="/2019-05/06-study-about-hexos-internals-6/">
                 Hexo 内部探訪 (6) DevToolsを使ったデバッグ
             </a></li>
@@ -269,10 +277,6 @@ function addLoadEvent(func) {
         
             <li class="recent-list-item"><a class="recent-list-link" href="/2019-04/15-sakura2019/">
                 さくら 2019
-            </a></li>
-        
-            <li class="recent-list-item"><a class="recent-list-link" href="/2019-04/13-image-test/">
-                画像のテスト
             </a></li>
         
         </ul>

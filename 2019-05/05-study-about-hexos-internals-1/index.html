@@ -67,10 +67,12 @@
 <p>だんだんとHexoの内部構造やAPIについて理解をしはじめたところです。しかしながら開発においてはまだまだ、暗中模索です。</p>
 <p>特に、記事やブログのメタデータや状態などを処理の過程で参照しようと思った時と、jsやcssの挿入（インジェクション）が、掴みにくいポイントだと思う。</p>
 <a id="more"></a>
+
 <h2 id="インジェクションの方法"><a href="#インジェクションの方法" class="headerlink" title="インジェクションの方法"></a>インジェクションの方法</h2><p>はじめに<a href="https://github.com/hexojs/hexo-inject" target="_blank" rel="noopener">hexo-inject</a>を見つけた時、これでかなり楽ができそうだなと思いました。<br>しかし実際に使おうと思い、試してみるのですが、思い通りに動かすことができませんでした。</p>
 <blockquote><p>This package has been deprecated<br>Author message:</p>
 <p>The author does not use Hexo any more. This plugin is no longer maintained.</p>
 <footer><strong>www.npmjs.com</strong><cite><a href="https://www.npmjs.com/package/hexo-inject" target="_blank" rel="noopener">/package/hexo-inject</a></cite></footer></blockquote>
+
 <p>とのことで、現段階ではコレに頼るのは諦めました。<br>なお、元作者以外のメンテナの動きがあるようなので、少し期待しつつ成り行きを見守っています。</p>
 <p>で、他のプラグインを（少しだけ）調査したのですが、インジェクションにはまだ定説というかベスト・プラクティスが確立しているようには見えませんでした。<br>いくつかアプローチがあるものの、私の望む動作とは少し違っているようです。<br>それというのも、Hexoのプラグイン機構の動作と、うまくマッチしていないように思いました。</p>
 <p>postもしくはpageの中で、1回だけ呼び出す限りにおいては、いくつかの手法で（私の実装でも）問題なく動いています。</p>
@@ -247,6 +249,10 @@ function addLoadEvent(func) {
         <h2>最近の投稿</h2>
         <ul class="recent-list">
         
+            <li class="recent-list-item"><a class="recent-list-link" href="/2019-05/26-hoya-rose-garden/">
+                保谷町ローズガーデン2019
+            </a></li>
+        
             <li class="recent-list-item"><a class="recent-list-link" href="/2019-05/06-study-about-hexos-internals-6/">
                 Hexo 内部探訪 (6) DevToolsを使ったデバッグ
             </a></li>
@@ -281,10 +287,6 @@ function addLoadEvent(func) {
         
             <li class="recent-list-item"><a class="recent-list-link" href="/2019-04/15-sakura2019/">
                 さくら 2019
-            </a></li>
-        
-            <li class="recent-list-item"><a class="recent-list-link" href="/2019-04/13-image-test/">
-                画像のテスト
             </a></li>
         
         </ul>

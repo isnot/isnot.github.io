@@ -66,6 +66,7 @@
         <link crossorigin="anonymous" media="screen" rel="stylesheet" href="/css/google_photos_album.css"><div class="article-gallery"><h2 id="My-First-Weblog"><a href="#My-First-Weblog" class="headerlink" title="My First Weblog"></a>My First Weblog</h2><p>Google+が個人向けサービス終了となり、今後のアウトプットについて考えた。</p>
 <p>考えた結果、静的サイト・ジェネレータを使って、ブログ形式のサイトを始めることにしました。それがコレです。</p>
 <a id="more"></a>
+
 <p>静的サイト・ジェネレータを選んだのは、書く内容を勘案したうえで、「自力でなんとかする」ことに意味があるように思えたから。<br>特定サービスへのロックオンを、できれば減らしたいという意味で。とはいえ、全くナッシングで全て自力というのも、また無駄でありつつ。<br>そのバランスが、ちょうど良いように思えたから。</p>
 <p>数あるプロダクトの中でHexoを選択したのは、あまり悩まなかったな。Javascript製で、npmを使ってセットアップが簡単ということで。</p>
 <p>それで、ドメインはずっと使っているisnot.jpに、新しくサブドメインを追加することにした。<br>本体ごと、まるっと乗り換えるほどには思いきれなかったということである。</p>
@@ -81,6 +82,7 @@
 <p>今のところは、この程度かな。</p>
 <h3 id="つまずき-その3-jsの変更を反映する"><a href="#つまずき-その3-jsの変更を反映する" class="headerlink" title="つまずき その3 jsの変更を反映する"></a>つまずき その3 jsの変更を反映する</h3><p>これはつまずきというより、すぐに気付けた。<br>hexo コマンドでは、themesの中の、webpack処理が行われないようです。<br>つまり、元jsファイルを更新した時に、minify後のファイルには反映されないのです。<br>なので、以下のようにbuildしてやる必要がありました。</p>
 <figure class="highlight shell"><table><tbody><tr><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> <span class="built_in">cd</span> themes/stage/</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> npm run build</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> <span class="built_in">cd</span> ../..</span></span><br></pre></td></tr></tbody></table></figure>
+
 <h3 id="既存コンテンツどうしよう"><a href="#既存コンテンツどうしよう" class="headerlink" title="既存コンテンツどうしよう"></a>既存コンテンツどうしよう</h3><p>G+のバックアップデータをインポートするとしたら、パーザから自作してだな。<br>うーむ。</p>
 <p>そして旧ブログというかWeb日記も、そのうちコンバートしておくか。</p>
 <p>以上です。</p>
@@ -233,6 +235,10 @@ function addLoadEvent(func) {
         <h2>最近の投稿</h2>
         <ul class="recent-list">
         
+            <li class="recent-list-item"><a class="recent-list-link" href="/2019-05/26-hoya-rose-garden/">
+                保谷町ローズガーデン2019
+            </a></li>
+        
             <li class="recent-list-item"><a class="recent-list-link" href="/2019-05/06-study-about-hexos-internals-6/">
                 Hexo 内部探訪 (6) DevToolsを使ったデバッグ
             </a></li>
@@ -267,10 +273,6 @@ function addLoadEvent(func) {
         
             <li class="recent-list-item"><a class="recent-list-link" href="/2019-04/15-sakura2019/">
                 さくら 2019
-            </a></li>
-        
-            <li class="recent-list-item"><a class="recent-list-link" href="/2019-04/13-image-test/">
-                画像のテスト
             </a></li>
         
         </ul>

@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://pages.isnot.jp/"/>
-  <updated>2019-05-30T00:49:41.017Z</updated>
+  <updated>2019-06-08T06:14:15.780Z</updated>
   <id>https://pages.isnot.jp/</id>
   
   <author>
@@ -15,6 +15,35 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>hexo-tag-google-photos-albumをアップデートした</title>
+    <link href="https://pages.isnot.jp/2019-06/08-update-hexo-tag-gpa/"/>
+    <id>https://pages.isnot.jp/2019-06/08-update-hexo-tag-gpa/</id>
+    <published>2019-06-08T05:40:03.000Z</published>
+    <updated>2019-06-08T06:14:15.780Z</updated>
+    
+    <content type="html"><![CDATA[<link crossorigin="anonymous" media="screen" rel="stylesheet" href="/css/google_photos_album.css" /><div class="article-gallery"><h1 id="metascraperにおけるXSS対応と、その影響"><a href="#metascraperにおけるXSS対応と、その影響" class="headerlink" title="metascraperにおけるXSS対応と、その影響"></a>metascraperにおけるXSS対応と、その影響</h1><p>自作のHexo向けプラグインであるhexo-tag-google-photos-albumでは、<a href="https://metascraper.js.org/#/" target="_blank" rel="noopener">metascraper</a>というnpmライブラリを利用しています。<br>Google Photosの共有リンクから辿って、いくつかのメタデータを抽出するためです。</p><p>そのmetascraperで、XSS脆弱性の報告がありました。（現時点では修正対応済）</p><p>その解決に伴い、hexo-tag-google-photos-albumでは、修正済みバージョンを利用するように、修正をしました。</p><ul><li>metascraperのGitHubリポジトリにおけるイシュー<ul><li>NPM Reporting as CSS Vulnerability <a href="https://github.com/microlinkhq/metascraper/issues/153" target="_blank" rel="noopener">#153</a></li><li>Add escape parameter to escape html data by default <a href="https://github.com/microlinkhq/metascraper/issues/168" target="_blank" rel="noopener">#168</a></li></ul></li><li>npmのセキュリティ勧告<ul><li><a href="https://www.npmjs.com/advisories/603" target="_blank" rel="noopener">Cross-Site Scripting metascraper</a></li></ul></li><li>報告の元になったレポート<ul><li>[metascraper] Stored XSS in Open Graph meta properties read by metascrapper</li><li><a href="https://hackerone.com/reports/309367" target="_blank" rel="noopener">hackerone.com #309367</a></li></ul></li><li>isnot/hexo-tag-google-photos-album<ul><li>metascraper up to @5.4.2 <a href="https://github.com/isnot/hexo-tag-google-photos-album/commit/02366cc046ccd932cdca89d2562f4ae5dd60adf4#diff-b9cfc7f2cdf78a7f4b91a753d10865a2" target="_blank" rel="noopener">#02366cc</a></li></ul></li></ul><h2 id="修正後の確認"><a href="#修正後の確認" class="headerlink" title="修正後の確認"></a>修正後の確認</h2><figure class="highlight bash"><table><tbody><tr><td class="code"><pre><span class="line">hexo-tag-google-photos-album$ npm audit</span><br><span class="line"></span><br><span class="line">                       === npm audit security report ===</span><br><span class="line"></span><br><span class="line">found 0 vulnerabilities</span><br><span class="line"> <span class="keyword">in</span> 2702 scanned packages</span><br><span class="line"></span><br><span class="line">(snip)</span><br><span class="line"></span><br><span class="line">blog$ npm view hexo-tag-google-photos-album version</span><br><span class="line">1.0.5</span><br><span class="line">blog$ hexo clean</span><br><span class="line">(node:29044) [DEP0061] DeprecationWarning: fs.SyncWriteStream is deprecated.</span><br><span class="line">INFO  Deleted database.</span><br><span class="line">INFO  Deleted public folder.</span><br><span class="line">blog$ hexo list page</span><br><span class="line">(node:29055) [DEP0061] DeprecationWarning: fs.SyncWriteStream is deprecated.</span><br><span class="line">INFO  Start processing</span><br><span class="line">INFO  google-photos-album: start  https://photos.app.goo.gl/YyQWnVUPjaQL9UiJ6</span><br><span class="line">INFO  google-photos-album: start  https://photos.app.goo.gl/kXQ4wLkyHXwm6r7HA</span><br><span class="line">INFO  google-photos-album: start  https://photos.app.goo.gl/hcTmPQj1LahtHKpc7</span><br><span class="line">INFO  google-photos-album: start  https://bit.ly/2LebRva</span><br><span class="line">INFO  google-photos-album: start  https://photos.app.goo.gl/BPMyX13M24MA7hWx6</span><br><span class="line">INFO  google-photos-album: start  https://photos.app.goo.gl/6SaCYcYsVo1ju4RB8</span><br><span class="line">INFO  google-photos-album: start  https://photos.app.goo.gl/X4sHxrNrKTXXbTef7</span><br><span class="line">INFO  google-photos-album: start  https://bit.ly/2L6dbQD</span><br><span class="line">INFO  google-photos-album: start  https://twitter.com/tourist_rebun/status/1122287078304178176?ref_src=twsrc%5Etfw</span><br><span class="line">INFO  ---- START COPYING TAG CLOUD FILES ----</span><br><span class="line">INFO  ---- END COPYING TAG CLOUD FILES ----</span><br><span class="line">Date        Title                          Path</span><br><span class="line">2019-04-09  Tags                           tags/index.md</span><br><span class="line">2019-04-13  About いしだなおと / isnot N3  about/index.md</span><br><span class="line">blog$</span><br></pre></td></tr></tbody></table></figure></div><script src="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/js/lightgallery.min.js"></script><script src="/js/lg-thumbnail.min.js"></script><script src="/js/lg-zoom.min.js"></script><script src="/js/lg-autoplay.min.js"></script><script src="/js/lg-fullscreen.min.js"></script><script src="/js/lg-pager.min.js"></script><script src="/js/lg-hash.min.js"></script><script>if (typeof lightGallery !== 'undefined') {        var options = {            selector: '.gallery-item'        };        lightGallery(document.getElementsByClassName('article-gallery')[0], options);        }</script><script>        document.querySelectorAll('.github-emoji')          .forEach(el => {            if (!el.dataset.src) { return; }            const img = document.createElement('img');            img.style = 'display:none !important;';            img.src = el.dataset.src;            img.addEventListener('error', () => {              img.remove();              el.style.color = 'inherit';              el.style.backgroundImage = 'none';              el.style.background = 'none';            });            img.addEventListener('load', () => {              img.remove();            });            document.body.appendChild(img);          });      </script><script>function addLoadEvent(func) {  const oldonload = window.onload;  if (typeof window.onload !== 'function') {    window.onload = func;  } else {    window.onload = () => {      oldonload();      func();    };  }}  addLoadEvent(() => {    try {      if (window.innerWidth < Number('768')) {        return;      }      let imgs = Array.from(document.body.querySelectorAll('.google-photos-album-images a'));      imgs.push(...Array.from(document.body.querySelectorAll('a.google-photos-album-image')));      for (let anchor of imgs) {        anchor.href = anchor.href.replace(/=s720\-no/i, '=s1920-no');      }    } catch (e) {      console.log(e);    }  });</script>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;link crossorigin=&quot;anonymous&quot; media=&quot;screen&quot; rel=&quot;stylesheet&quot; href=&quot;/css/google_photos_album.css&quot; /&gt;&lt;div class=&quot;article-gallery&quot;&gt;&lt;h1 id=&quot;met
+      
+    
+    </summary>
+    
+      <category term="hexo" scheme="https://pages.isnot.jp/categories/hexo/"/>
+    
+    
+      <category term="hexo" scheme="https://pages.isnot.jp/tags/hexo/"/>
+    
+      <category term="npm" scheme="https://pages.isnot.jp/tags/npm/"/>
+    
+      <category term="javascript" scheme="https://pages.isnot.jp/tags/javascript/"/>
+    
+  </entry>
   
   <entry>
     <title>東京都庁展望室</title>

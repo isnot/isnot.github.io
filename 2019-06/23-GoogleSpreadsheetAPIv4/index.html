@@ -2,23 +2,24 @@
 <html>
 <head><meta name="generator" content="Hexo 3.8.0">
   <meta charset="UTF-8">
-  <title>Tag: javascript | isnot N3</title>
+  <title>GoogleSpreadsheetAPIv4 | isnot N3</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <link rel="alternate" href="/atom.xml" title="isnot N3">
   
     <link rel="icon" href="/favicon.ico">
   
-  <meta name="description" content="https://pages.isnot.jp isnot N3">
-<meta name="keywords" content="Javascript Node.js npm git GitHub Chromy MPD Ubuntu LXQt Emacs Telegram Bot">
-<meta property="og:type" content="website">
-<meta property="og:title" content="isnot N3">
-<meta property="og:url" content="https://pages.isnot.jp/tags/javascript/index.html">
+  <meta name="description" content="Node.jsからスプシを操作したいわけじゃないですか。https://developers.google.com/sheets/api/ なので、npmの中から適当なライブラリがないか、調べたのです。すると、結構な数が検索で挙げられてきて、ひとつひとつ見ていくわけです。 結局の所、殆どのものは、API v3を前提にしたもので、そのAPI v3は過去の存在なわけですね。 つまるところ理解したのは、">
+<meta name="keywords" content="npm,javascript">
+<meta property="og:type" content="article">
+<meta property="og:title" content="GoogleSpreadsheetAPIv4">
+<meta property="og:url" content="https://pages.isnot.jp/2019-06/23-GoogleSpreadsheetAPIv4/index.html">
 <meta property="og:site_name" content="isnot N3">
-<meta property="og:description" content="https://pages.isnot.jp isnot N3">
+<meta property="og:description" content="Node.jsからスプシを操作したいわけじゃないですか。https://developers.google.com/sheets/api/ なので、npmの中から適当なライブラリがないか、調べたのです。すると、結構な数が検索で挙げられてきて、ひとつひとつ見ていくわけです。 結局の所、殆どのものは、API v3を前提にしたもので、そのAPI v3は過去の存在なわけですね。 つまるところ理解したのは、">
 <meta property="og:locale" content="ja">
+<meta property="og:updated_time" content="2019-06-23T12:02:06.618Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="isnot N3">
-<meta name="twitter:description" content="https://pages.isnot.jp isnot N3">
+<meta name="twitter:title" content="GoogleSpreadsheetAPIv4">
+<meta name="twitter:description" content="Node.jsからスプシを操作したいわけじゃないですか。https://developers.google.com/sheets/api/ なので、npmの中から適当なライブラリがないか、調べたのです。すると、結構な数が検索で挙げられてきて、ひとつひとつ見ていくわけです。 結局の所、殆どのものは、API v3を前提にしたもので、そのAPI v3は過去の存在なわけですね。 つまるところ理解したのは、">
   
     <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
   
@@ -51,109 +52,106 @@
 <div id="content-outer">
     <div id="content-inner">
         <div class="clearfix">
-    <div id="tag-item">
-        <h1>javascript</h1>
-        
-        <div class="item">
-            <h3>
+    <article id="post">
+        <h1>GoogleSpreadsheetAPIv4</h1>
+        <div class="create">
+            <span>作成</span>
+            
                 <time datetime="2019-06-23T11:47:44.000Z">
                     2019-06-23
                 </time>
-                <a href="/2019-06/23-GoogleSpreadsheetAPIv4/">
-                    GoogleSpreadsheetAPIv4
-                </a>
-            </h3>
+            
+            <ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/javascript/">javascript</a></li></ul>
+        </div>
+        <link crossorigin="anonymous" media="screen" rel="stylesheet" href="/css/google_photos_album.css"><div class="article-gallery"><p>Node.jsからスプシを操作したいわけじゃないですか。<br><a href="https://developers.google.com/sheets/api/" target="_blank" rel="noopener">https://developers.google.com/sheets/api/</a></p>
+<p>なので、npmの中から適当なライブラリがないか、調べたのです。<br>すると、結構な数が検索で挙げられてきて、ひとつひとつ見ていくわけです。</p>
+<p>結局の所、殆どのものは、API v3を前提にしたもので、そのAPI v3は過去の存在なわけですね。</p>
+<p>つまるところ理解したのは、API v4を使うにあたって、いま、選択するべきライブラリといえば、Google自身によるgoogleapis。<br><a href="https://www.npmjs.com/package/googleapis" target="_blank" rel="noopener">https://www.npmjs.com/package/googleapis</a></p>
+<p>そうなってくると、サンプルが欲しいわけじゃないですか。</p>
+<p><a href="https://qiita.com/howdy39/items/22068b3f768f0f9a757d" target="_blank" rel="noopener">スプレッドシートをWebAPI化するサービスの作り方</a> から辿り、<br><a href="https://github.com/howdy39/sheets-to-webapi" target="_blank" rel="noopener">スプレッドシートを読み込んでWebAPI化するCloudFunctionsのソース</a> に行き着く。</p>
+<p>これはvalues.getを包むラッパーということですが、あとはリファレンスその他を見ながら、updateやappendも容易に実装できるわけです。</p>
+<p>googleapisは、ライブラリとしての使い心地も、まぁしっくりクル。<br>ただし、やはり記述が冗長になるので、ラッパーがあると良いよね、という。<br>このサンプル、ありがたいことです。</p>
+</div><script src="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/js/lightgallery.min.js"></script><script src="/js/lg-thumbnail.min.js"></script><script src="/js/lg-zoom.min.js"></script><script src="/js/lg-autoplay.min.js"></script><script src="/js/lg-fullscreen.min.js"></script><script src="/js/lg-pager.min.js"></script><script src="/js/lg-hash.min.js"></script><script>if (typeof lightGallery !== 'undefined') {
+        var options = {
+            selector: '.gallery-item'
+        };
+        lightGallery(document.getElementsByClassName('article-gallery')[0], options);
+        }</script><script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script><script>
+function addLoadEvent(func) {
+  const oldonload = window.onload;
+  if (typeof window.onload !== 'function') {
+    window.onload = func;
+  } else {
+    window.onload = () => {
+      oldonload();
+      func();
+    };
+  }
+}
+  addLoadEvent(() => {
+    try {
+      if (window.innerWidth < Number('768')) {
+        return;
+      }
+      let imgs = Array.from(document.body.querySelectorAll('.google-photos-album-images a'));
+      imgs.push(...Array.from(document.body.querySelectorAll('a.google-photos-album-image')));
+      for (let anchor of imgs) {
+        anchor.href = anchor.href.replace(/=s720\-no/i, '=s1920-no');
+      }
+    } catch (e) {
+      console.log(e);
+    }
+  });
+</script>
+
+        <div>
+            <ul class="tags-category-list"><li class="tags-category-list-item"><a class="tags-category-list-link" href="/tags/javascript/">javascript</a></li><li class="tags-category-list-item"><a class="tags-category-list-link" href="/tags/npm/">npm</a></li></ul>
         </div>
         
-        <div class="item">
-            <h3>
-                <time datetime="2019-06-08T05:40:03.000Z">
-                    2019-06-08
-                </time>
-                <a href="/2019-06/08-update-hexo-tag-gpa/">
-                    hexo-tag-google-photos-album をアップデートした
-                </a>
-            </h3>
-        </div>
+<div id="stageComment" class="comment fa fa-comment-o">
+  GoogleSpreadsheetAPIv4 について、
+  <a href="https://github.com/isnot/isnot.github.io/issues/new?labels=blog-comments&title=GoogleSpreadsheetAPIv4&body=About%20%5BGoogleSpreadsheetAPIv4%5D(https%3A%2F%2Fpages.isnot.jp%2F2019-06%2F23-GoogleSpreadsheetAPIv4%2Findex.html)">
+    GitHubでコメントする
+  </a>
+</div>
+
+        <div class="bottom-line"></div>
         
-        <div class="item">
-            <h3>
-                <time datetime="2019-05-06T14:08:08.000Z">
-                    2019-05-06
-                </time>
-                <a href="/2019-05/06-study-about-hexos-internals-6/">
-                    Hexo 内部探訪 (6) DevToolsを使ったデバッグ
-                </a>
-            </h3>
-        </div>
+    <nav id="article-nav">
         
-        <div class="item">
-            <h3>
-                <time datetime="2019-05-06T07:15:43.000Z">
-                    2019-05-06
-                </time>
-                <a href="/2019-05/06-study-about-hexos-internals-5/">
-                    Hexo 内部探訪 (5) ライフサイクル
-                </a>
-            </h3>
-        </div>
         
-        <div class="item">
-            <h3>
-                <time datetime="2019-05-05T18:36:30.000Z">
-                    2019-05-06
-                </time>
-                <a href="/2019-05/06-study-about-hexos-internals-4/">
-                    Hexo 内部探訪 (4) プラグインのロード
-                </a>
-            </h3>
-        </div>
+            <a href="/2019-06/17-hydrangea/" id="article-nav-older" class="article-nav-link-wrap">
+                <strong class="article-nav-caption">&lt;</strong>
+                <span class="article-nav-title">
+                    
+                        アジサイ2019
+                </span>
+                
+            </a>
         
-        <div class="item">
-            <h3>
-                <time datetime="2019-05-05T15:03:00.000Z">
-                    2019-05-06
-                </time>
-                <a href="/2019-05/06-study-about-hexos-internals-3/">
-                    Hexo 内部探訪 (3) コンテキストとしての"hexo"変数
-                </a>
-            </h3>
-        </div>
+    </nav>
+
+
         
-        <div class="item">
-            <h3>
-                <time datetime="2019-05-05T15:02:00.000Z">
-                    2019-05-06
-                </time>
-                <a href="/2019-05/06-study-about-hexos-internals-2/">
-                    Hexo 内部探訪 (2) 準備 npm linkメモ
-                </a>
-            </h3>
-        </div>
-        
-        <div class="item">
-            <h3>
-                <time datetime="2019-05-05T14:29:55.000Z">
-                    2019-05-05
-                </time>
-                <a href="/2019-05/05-study-about-hexos-internals-1/">
-                    Hexo 内部探訪 (1) はじめに
-                </a>
-            </h3>
-        </div>
-        
-        <div class="item">
-            <h3>
-                <time datetime="2019-04-29T16:36:16.000Z">
-                    2019-04-30
-                </time>
-                <a href="/2019-04/30-hexo-tag-google-photos-album-is-arrived/">
-                    hexo-tag-google-photos-album 公開しました
-                </a>
-            </h3>
-        </div>
-        
-    </div>
+    </article>
     <div id="content-aside">
     <div class="content-aside-owner">
         <div id="owner">
@@ -282,11 +280,14 @@
 </aside>
 
     
+        <div id="toc">
+            
+                <h2>目次がありません</h2>
+            
+        </div>
+    
 </div>
 
-</div>
-<div id="tag-paginator" class="clearfix">
-    <span class="page-number current">1</span>
 </div>
 
     </div>
@@ -299,6 +300,8 @@
 </footer>
 <script src="/js/header-bg.main.js"></script>
 
+    <script src="/lib/js/smooth-scroll.min.js"></script>
+    <script src="/js/toc.main.js"></script>
 
 </body>
 </html>

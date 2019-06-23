@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://pages.isnot.jp/"/>
-  <updated>2019-06-19T00:48:13.995Z</updated>
+  <updated>2019-06-23T12:02:06.618Z</updated>
   <id>https://pages.isnot.jp/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>GoogleSpreadsheetAPIv4</title>
+    <link href="https://pages.isnot.jp/2019-06/23-GoogleSpreadsheetAPIv4/"/>
+    <id>https://pages.isnot.jp/2019-06/23-GoogleSpreadsheetAPIv4/</id>
+    <published>2019-06-23T11:47:44.000Z</published>
+    <updated>2019-06-23T12:02:06.618Z</updated>
+    
+    <content type="html"><![CDATA[<link crossorigin="anonymous" media="screen" rel="stylesheet" href="/css/google_photos_album.css" /><div class="article-gallery"><p>Node.jsからスプシを操作したいわけじゃないですか。<br><a href="https://developers.google.com/sheets/api/" target="_blank" rel="noopener">https://developers.google.com/sheets/api/</a></p><p>なので、npmの中から適当なライブラリがないか、調べたのです。<br>すると、結構な数が検索で挙げられてきて、ひとつひとつ見ていくわけです。</p><p>結局の所、殆どのものは、API v3を前提にしたもので、そのAPI v3は過去の存在なわけですね。</p><p>つまるところ理解したのは、API v4を使うにあたって、いま、選択するべきライブラリといえば、Google自身によるgoogleapis。<br><a href="https://www.npmjs.com/package/googleapis" target="_blank" rel="noopener">https://www.npmjs.com/package/googleapis</a></p><p>そうなってくると、サンプルが欲しいわけじゃないですか。</p><p><a href="https://qiita.com/howdy39/items/22068b3f768f0f9a757d" target="_blank" rel="noopener">スプレッドシートをWebAPI化するサービスの作り方</a> から辿り、<br><a href="https://github.com/howdy39/sheets-to-webapi" target="_blank" rel="noopener">スプレッドシートを読み込んでWebAPI化するCloudFunctionsのソース</a> に行き着く。</p><p>これはvalues.getを包むラッパーということですが、あとはリファレンスその他を見ながら、updateやappendも容易に実装できるわけです。</p><p>googleapisは、ライブラリとしての使い心地も、まぁしっくりクル。<br>ただし、やはり記述が冗長になるので、ラッパーがあると良いよね、という。<br>このサンプル、ありがたいことです。</p></div><script src="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/js/lightgallery.min.js"></script><script src="/js/lg-thumbnail.min.js"></script><script src="/js/lg-zoom.min.js"></script><script src="/js/lg-autoplay.min.js"></script><script src="/js/lg-fullscreen.min.js"></script><script src="/js/lg-pager.min.js"></script><script src="/js/lg-hash.min.js"></script><script>if (typeof lightGallery !== 'undefined') {        var options = {            selector: '.gallery-item'        };        lightGallery(document.getElementsByClassName('article-gallery')[0], options);        }</script><script>        document.querySelectorAll('.github-emoji')          .forEach(el => {            if (!el.dataset.src) { return; }            const img = document.createElement('img');            img.style = 'display:none !important;';            img.src = el.dataset.src;            img.addEventListener('error', () => {              img.remove();              el.style.color = 'inherit';              el.style.backgroundImage = 'none';              el.style.background = 'none';            });            img.addEventListener('load', () => {              img.remove();            });            document.body.appendChild(img);          });      </script><script>function addLoadEvent(func) {  const oldonload = window.onload;  if (typeof window.onload !== 'function') {    window.onload = func;  } else {    window.onload = () => {      oldonload();      func();    };  }}  addLoadEvent(() => {    try {      if (window.innerWidth < Number('768')) {        return;      }      let imgs = Array.from(document.body.querySelectorAll('.google-photos-album-images a'));      imgs.push(...Array.from(document.body.querySelectorAll('a.google-photos-album-image')));      for (let anchor of imgs) {        anchor.href = anchor.href.replace(/=s720\-no/i, '=s1920-no');      }    } catch (e) {      console.log(e);    }  });</script>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;link crossorigin=&quot;anonymous&quot; media=&quot;screen&quot; rel=&quot;stylesheet&quot; href=&quot;/css/google_photos_album.css&quot; /&gt;&lt;div class=&quot;article-gallery&quot;&gt;&lt;p&gt;Node.jsか
+      
+    
+    </summary>
+    
+      <category term="javascript" scheme="https://pages.isnot.jp/categories/javascript/"/>
+    
+    
+      <category term="npm" scheme="https://pages.isnot.jp/tags/npm/"/>
+    
+      <category term="javascript" scheme="https://pages.isnot.jp/tags/javascript/"/>
+    
+  </entry>
   
   <entry>
     <title>アジサイ2019</title>
@@ -74,11 +101,11 @@
       <category term="hexo" scheme="https://pages.isnot.jp/categories/hexo/"/>
     
     
-      <category term="hexo" scheme="https://pages.isnot.jp/tags/hexo/"/>
-    
       <category term="npm" scheme="https://pages.isnot.jp/tags/npm/"/>
     
       <category term="javascript" scheme="https://pages.isnot.jp/tags/javascript/"/>
+    
+      <category term="hexo" scheme="https://pages.isnot.jp/tags/hexo/"/>
     
   </entry>
   
@@ -181,9 +208,9 @@
       <category term="hexo" scheme="https://pages.isnot.jp/categories/hexo/"/>
     
     
-      <category term="hexo" scheme="https://pages.isnot.jp/tags/hexo/"/>
-    
       <category term="javascript" scheme="https://pages.isnot.jp/tags/javascript/"/>
+    
+      <category term="hexo" scheme="https://pages.isnot.jp/tags/hexo/"/>
     
   </entry>
   
@@ -208,9 +235,9 @@
       <category term="hexo" scheme="https://pages.isnot.jp/categories/hexo/"/>
     
     
-      <category term="hexo" scheme="https://pages.isnot.jp/tags/hexo/"/>
-    
       <category term="javascript" scheme="https://pages.isnot.jp/tags/javascript/"/>
+    
+      <category term="hexo" scheme="https://pages.isnot.jp/tags/hexo/"/>
     
   </entry>
   
@@ -235,9 +262,9 @@
       <category term="hexo" scheme="https://pages.isnot.jp/categories/hexo/"/>
     
     
-      <category term="hexo" scheme="https://pages.isnot.jp/tags/hexo/"/>
-    
       <category term="javascript" scheme="https://pages.isnot.jp/tags/javascript/"/>
+    
+      <category term="hexo" scheme="https://pages.isnot.jp/tags/hexo/"/>
     
   </entry>
   
@@ -260,9 +287,9 @@
       <category term="hexo" scheme="https://pages.isnot.jp/categories/hexo/"/>
     
     
-      <category term="hexo" scheme="https://pages.isnot.jp/tags/hexo/"/>
-    
       <category term="javascript" scheme="https://pages.isnot.jp/tags/javascript/"/>
+    
+      <category term="hexo" scheme="https://pages.isnot.jp/tags/hexo/"/>
     
   </entry>
   
@@ -285,11 +312,11 @@
       <category term="hexo" scheme="https://pages.isnot.jp/categories/hexo/"/>
     
     
-      <category term="hexo" scheme="https://pages.isnot.jp/tags/hexo/"/>
-    
       <category term="npm" scheme="https://pages.isnot.jp/tags/npm/"/>
     
       <category term="javascript" scheme="https://pages.isnot.jp/tags/javascript/"/>
+    
+      <category term="hexo" scheme="https://pages.isnot.jp/tags/hexo/"/>
     
   </entry>
   
@@ -313,9 +340,9 @@
       <category term="hexo" scheme="https://pages.isnot.jp/categories/hexo/"/>
     
     
-      <category term="hexo" scheme="https://pages.isnot.jp/tags/hexo/"/>
-    
       <category term="javascript" scheme="https://pages.isnot.jp/tags/javascript/"/>
+    
+      <category term="hexo" scheme="https://pages.isnot.jp/tags/hexo/"/>
     
   </entry>
   
@@ -365,13 +392,13 @@
       <category term="javascript" scheme="https://pages.isnot.jp/categories/javascript/"/>
     
     
-      <category term="hexo" scheme="https://pages.isnot.jp/tags/hexo/"/>
-    
       <category term="npm" scheme="https://pages.isnot.jp/tags/npm/"/>
     
-      <category term="github" scheme="https://pages.isnot.jp/tags/github/"/>
-    
       <category term="javascript" scheme="https://pages.isnot.jp/tags/javascript/"/>
+    
+      <category term="hexo" scheme="https://pages.isnot.jp/tags/hexo/"/>
+    
+      <category term="github" scheme="https://pages.isnot.jp/tags/github/"/>
     
   </entry>
   

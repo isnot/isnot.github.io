@@ -9,7 +9,7 @@
     <link rel="icon" href="/favicon.ico">
   
   <meta name="description" content="Hexoを選択した理由は、Node.jsだから、Javascriptだから、つまりいろいろと、自身で内部構造を含めて手を加えるため。それは使い始めるとすぐに現実になり、早速プラグインを作成したりもした。（参照 hexo-tag-google-photos-album 公開しました） だんだんとHexoの内部構造やAPIについて理解をしはじめたところです。しかしながら開発においてはまだまだ、暗中模索">
-<meta name="keywords" content="hexo,javascript">
+<meta name="keywords" content="javascript,hexo">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Hexo 内部探訪 (1) はじめに">
 <meta property="og:url" content="https://pages.isnot.jp/2019-05/05-study-about-hexos-internals-1/index.html">
@@ -238,7 +238,7 @@ function addLoadEvent(func) {
             <div class="widget-wrap">
                 <div id="myCanvasContainer" class="widget tagcloud">
                     <canvas width="250" height="250" id="resCanvas" style="width=100%">
-                        <a href="/tags/domain/" style="font-size: 10px;">domain</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/github-pages/" style="font-size: 10px;">github pages</a> <a href="/tags/hexo/" style="font-size: 20px;">hexo</a> <a href="/tags/isnot/" style="font-size: 10px;">isnot</a> <a href="/tags/javascript/" style="font-size: 18px;">javascript</a> <a href="/tags/npm/" style="font-size: 14px;">npm</a> <a href="/tags/photo/" style="font-size: 16px;">photo</a> <a href="/tags/rose/" style="font-size: 12px;">rose</a> <a href="/tags/sakura/" style="font-size: 10px;">sakura</a> <a href="/tags/skyscraper/" style="font-size: 10px;">skyscraper</a>
+                        <a href="/tags/domain/" style="font-size: 10px;">domain</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/github-pages/" style="font-size: 10px;">github pages</a> <a href="/tags/hexo/" style="font-size: 20px;">hexo</a> <a href="/tags/isnot/" style="font-size: 10px;">isnot</a> <a href="/tags/javascript/" style="font-size: 20px;">javascript</a> <a href="/tags/npm/" style="font-size: 15px;">npm</a> <a href="/tags/photo/" style="font-size: 17.5px;">photo</a> <a href="/tags/rose/" style="font-size: 12.5px;">rose</a> <a href="/tags/sakura/" style="font-size: 10px;">sakura</a> <a href="/tags/skyscraper/" style="font-size: 10px;">skyscraper</a>
                     </canvas>
                 </div>
             </div>
@@ -248,6 +248,10 @@ function addLoadEvent(func) {
     <aside id="recent">
         <h2>最近の投稿</h2>
         <ul class="recent-list">
+        
+            <li class="recent-list-item"><a class="recent-list-link" href="/2019-06/23-GoogleSpreadsheetAPIv4/">
+                GoogleSpreadsheetAPIv4
+            </a></li>
         
             <li class="recent-list-item"><a class="recent-list-link" href="/2019-06/17-hydrangea/">
                 アジサイ2019
@@ -283,10 +287,6 @@ function addLoadEvent(func) {
         
             <li class="recent-list-item"><a class="recent-list-link" href="/2019-05/06-study-about-hexos-internals-3/">
                 Hexo 内部探訪 (3) コンテキストとしての"hexo"変数
-            </a></li>
-        
-            <li class="recent-list-item"><a class="recent-list-link" href="/2019-05/06-study-about-hexos-internals-2/">
-                Hexo 内部探訪 (2) 準備 npm linkメモ
             </a></li>
         
         </ul>

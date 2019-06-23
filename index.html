@@ -56,6 +56,89 @@
         
             <div class="post-item">
                 <h1>
+                    <a href="/2019-06/23-GoogleSpreadsheetAPIv4/">
+                        GoogleSpreadsheetAPIv4
+                    </a>
+                </h1>
+                <div class="create">
+                    <span>作成</span>
+                    
+                        <time datetime="2019-06-23T11:47:44.000Z">
+                            2019-06-23
+                        </time>
+                    
+                    <ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/javascript/">javascript</a></li></ul>
+                </div>
+                
+                    <link crossorigin="anonymous" media="screen" rel="stylesheet" href="/css/google_photos_album.css"><div class="article-gallery"><p>Node.jsからスプシを操作したいわけじゃないですか。<br><a href="https://developers.google.com/sheets/api/" target="_blank" rel="noopener">https://developers.google.com/sheets/api/</a></p>
+<p>なので、npmの中から適当なライブラリがないか、調べたのです。<br>すると、結構な数が検索で挙げられてきて、ひとつひとつ見ていくわけです。</p>
+<p>結局の所、殆どのものは、API v3を前提にしたもので、そのAPI v3は過去の存在なわけですね。</p>
+<p>つまるところ理解したのは、API v4を使うにあたって、いま、選択するべきライブラリといえば、Google自身によるgoogleapis。<br><a href="https://www.npmjs.com/package/googleapis" target="_blank" rel="noopener">https://www.npmjs.com/package/googleapis</a></p>
+<p>そうなってくると、サンプルが欲しいわけじゃないですか。</p>
+<p><a href="https://qiita.com/howdy39/items/22068b3f768f0f9a757d" target="_blank" rel="noopener">スプレッドシートをWebAPI化するサービスの作り方</a> から辿り、<br><a href="https://github.com/howdy39/sheets-to-webapi" target="_blank" rel="noopener">スプレッドシートを読み込んでWebAPI化するCloudFunctionsのソース</a> に行き着く。</p>
+<p>これはvalues.getを包むラッパーということですが、あとはリファレンスその他を見ながら、updateやappendも容易に実装できるわけです。</p>
+<p>googleapisは、ライブラリとしての使い心地も、まぁしっくりクル。<br>ただし、やはり記述が冗長になるので、ラッパーがあると良いよね、という。<br>このサンプル、ありがたいことです。</p>
+</div><script src="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/js/lightgallery.min.js"></script><script src="/js/lg-thumbnail.min.js"></script><script src="/js/lg-zoom.min.js"></script><script src="/js/lg-autoplay.min.js"></script><script src="/js/lg-fullscreen.min.js"></script><script src="/js/lg-pager.min.js"></script><script src="/js/lg-hash.min.js"></script><script>if (typeof lightGallery !== 'undefined') {
+        var options = {
+            selector: '.gallery-item'
+        };
+        lightGallery(document.getElementsByClassName('article-gallery')[0], options);
+        }</script><script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script><script>
+function addLoadEvent(func) {
+  const oldonload = window.onload;
+  if (typeof window.onload !== 'function') {
+    window.onload = func;
+  } else {
+    window.onload = () => {
+      oldonload();
+      func();
+    };
+  }
+}
+  addLoadEvent(() => {
+    try {
+      if (window.innerWidth < Number('768')) {
+        return;
+      }
+      let imgs = Array.from(document.body.querySelectorAll('.google-photos-album-images a'));
+      imgs.push(...Array.from(document.body.querySelectorAll('a.google-photos-album-image')));
+      for (let anchor of imgs) {
+        anchor.href = anchor.href.replace(/=s720\-no/i, '=s1920-no');
+      }
+    } catch (e) {
+      console.log(e);
+    }
+  });
+</script>
+
+                
+                <div class="readmore">
+                    <a href="/2019-06/23-GoogleSpreadsheetAPIv4/">
+                        »続き……
+                    </a>
+                </div>
+            </div>
+        
+            <div class="post-item">
+                <h1>
                     <a href="/2019-06/17-hydrangea/">
                         アジサイ2019
                     </a>
@@ -720,32 +803,6 @@ function addLoadEvent(func) {
                 </div>
             </div>
         
-            <div class="post-item">
-                <h1>
-                    <a href="/2019-05/06-study-about-hexos-internals-2/">
-                        Hexo 内部探訪 (2) 準備 npm linkメモ
-                    </a>
-                </h1>
-                <div class="create">
-                    <span>作成</span>
-                    
-                        <time datetime="2019-05-05T15:02:00.000Z">
-                            2019-05-06
-                        </time>
-                    
-                    <ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/hexo/">hexo</a></li></ul>
-                </div>
-                
-                    <div class="article-gallery"><h2 id="npm-linkを使いこなすには"><a href="#npm-linkを使いこなすには" class="headerlink" title="npm linkを使いこなすには"></a>npm linkを使いこなすには</h2><p><a href="https://docs.npmjs.com/cli/link.html" target="_blank" rel="noopener">npm link</a>という、ありがたい仕組みがあって、非公開のモジュール（または開発中のバージョン）を、node_modulesの中に配置することができる。<br>基本的には、シンボリック・リンクである。</p>
-<p>ここまでは、すぐに把握できたけど、実はうまく動作させるための、さらなる条件があった。</p></div>
-                
-                <div class="readmore">
-                    <a href="/2019-05/06-study-about-hexos-internals-2/">
-                        »続き……
-                    </a>
-                </div>
-            </div>
-        
     </div>
 
 
@@ -806,7 +863,7 @@ function addLoadEvent(func) {
             <div class="widget-wrap">
                 <div id="myCanvasContainer" class="widget tagcloud">
                     <canvas width="250" height="250" id="resCanvas" style="width=100%">
-                        <a href="/tags/domain/" style="font-size: 10px;">domain</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/github-pages/" style="font-size: 10px;">github pages</a> <a href="/tags/hexo/" style="font-size: 20px;">hexo</a> <a href="/tags/isnot/" style="font-size: 10px;">isnot</a> <a href="/tags/javascript/" style="font-size: 18px;">javascript</a> <a href="/tags/npm/" style="font-size: 14px;">npm</a> <a href="/tags/photo/" style="font-size: 16px;">photo</a> <a href="/tags/rose/" style="font-size: 12px;">rose</a> <a href="/tags/sakura/" style="font-size: 10px;">sakura</a> <a href="/tags/skyscraper/" style="font-size: 10px;">skyscraper</a>
+                        <a href="/tags/domain/" style="font-size: 10px;">domain</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/github-pages/" style="font-size: 10px;">github pages</a> <a href="/tags/hexo/" style="font-size: 20px;">hexo</a> <a href="/tags/isnot/" style="font-size: 10px;">isnot</a> <a href="/tags/javascript/" style="font-size: 20px;">javascript</a> <a href="/tags/npm/" style="font-size: 15px;">npm</a> <a href="/tags/photo/" style="font-size: 17.5px;">photo</a> <a href="/tags/rose/" style="font-size: 12.5px;">rose</a> <a href="/tags/sakura/" style="font-size: 10px;">sakura</a> <a href="/tags/skyscraper/" style="font-size: 10px;">skyscraper</a>
                     </canvas>
                 </div>
             </div>
@@ -816,6 +873,10 @@ function addLoadEvent(func) {
     <aside id="recent">
         <h2>最近の投稿</h2>
         <ul class="recent-list">
+        
+            <li class="recent-list-item"><a class="recent-list-link" href="/2019-06/23-GoogleSpreadsheetAPIv4/">
+                GoogleSpreadsheetAPIv4
+            </a></li>
         
             <li class="recent-list-item"><a class="recent-list-link" href="/2019-06/17-hydrangea/">
                 アジサイ2019
@@ -851,10 +912,6 @@ function addLoadEvent(func) {
         
             <li class="recent-list-item"><a class="recent-list-link" href="/2019-05/06-study-about-hexos-internals-3/">
                 Hexo 内部探訪 (3) コンテキストとしての"hexo"変数
-            </a></li>
-        
-            <li class="recent-list-item"><a class="recent-list-link" href="/2019-05/06-study-about-hexos-internals-2/">
-                Hexo 内部探訪 (2) 準備 npm linkメモ
             </a></li>
         
         </ul>

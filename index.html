@@ -56,6 +56,87 @@
         
             <div class="post-item">
                 <h1>
+                    <a href="/2019-09/24-Avenir-Shards-Bookmarklet/">
+                        Avenir Shards Bookmarklet
+                    </a>
+                </h1>
+                <div class="create">
+                    <span>作成</span>
+                    
+                        <time datetime="2019-09-23T18:10:23.000Z">
+                            2019-09-24
+                        </time>
+                    
+                    <ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/javascript/">javascript</a></li></ul>
+                </div>
+                
+                    <link crossorigin="anonymous" media="screen" rel="stylesheet" href="/css/google_photos_album.css"><div class="article-gallery"><p>Ingressでは、目下のところ公式のイベント「Avenir　Shards」が開催中であることは、ご存知かと思います。<br>Nianticの公式シャード情報ページでは、マップ上に軌跡を表示するなど、情報提供がされています。<br><a href="https://ingress.com/shards/avenir_shards" target="_blank" rel="noopener">https://ingress.com/shards/avenir_shards</a> （以下、公式シャード情報）</p>
+<p>一方で、私は各シャードの移動履歴をリスト形式で一覧表示したものが欲しかったので、以下のBookmarkletを作成しました。<br>Bookmarkletとは？ということについては、説明を省きますので、Google検索などで調べてください。</p>
+<h2 id="利用方法"><a href="#利用方法" class="headerlink" title="利用方法"></a>利用方法</h2><p>Bookmarkletをブラウザに登録する。これ→ <a href="javascript:(function(){const d=document;const h=d.createElement('div');h.innerHTML=points.map(e=>{return e.title}).join('<br>\n');d.getElementById('targets').appendChild(h)})();" target="_blank" rel="noopener">PrintShardsHistory</a></p>
+<p>公式シャード情報を開き、そこでBookmarkletを実行する。</p>
+<h2 id="内容"><a href="#内容" class="headerlink" title="内容"></a>内容</h2><figure class="highlight javascript"><table><tbody><tr><td class="code"><pre><span class="line">javascript:</span><br><span class="line">  (<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>{</span><br><span class="line">    <span class="keyword">const</span> d=<span class="built_in">document</span>;</span><br><span class="line">    <span class="keyword">const</span> h=d.createElement(<span class="string">'div'</span>);</span><br><span class="line">    h.innerHTML=points.map(<span class="function"><span class="params">e</span>=></span>{<span class="keyword">return</span> e.title}).join(<span class="string">'<br>\n'</span>);</span><br><span class="line">    d.getElementById(<span class="string">'targets'</span>).appendChild(h)</span><br><span class="line">  })();</span><br></pre></td></tr></tbody></table></figure>
+
+</div><script src="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/js/lightgallery.min.js"></script><script src="/js/lg-thumbnail.min.js"></script><script src="/js/lg-zoom.min.js"></script><script src="/js/lg-autoplay.min.js"></script><script src="/js/lg-fullscreen.min.js"></script><script src="/js/lg-pager.min.js"></script><script src="/js/lg-hash.min.js"></script><script>if (typeof lightGallery !== 'undefined') {
+        var options = {
+            selector: '.gallery-item'
+        };
+        lightGallery(document.getElementsByClassName('article-gallery')[0], options);
+        }</script><script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script><script>
+function addLoadEvent(func) {
+  const oldonload = window.onload;
+  if (typeof window.onload !== 'function') {
+    window.onload = func;
+  } else {
+    window.onload = () => {
+      oldonload();
+      func();
+    };
+  }
+}
+  addLoadEvent(() => {
+    try {
+      if (window.innerWidth < Number('768')) {
+        return;
+      }
+      let imgs = Array.from(document.body.querySelectorAll('.google-photos-album-images a'));
+      imgs.push(...Array.from(document.body.querySelectorAll('a.google-photos-album-image')));
+      for (let anchor of imgs) {
+        anchor.href = anchor.href.replace(/=s720\-no/i, '=s1920-no');
+      }
+    } catch (e) {
+      console.log(e);
+    }
+  });
+</script>
+
+                
+                <div class="readmore">
+                    <a href="/2019-09/24-Avenir-Shards-Bookmarklet/">
+                        »続き……
+                    </a>
+                </div>
+            </div>
+        
+            <div class="post-item">
+                <h1>
                     <a href="/2019-06/23-GoogleSpreadsheetAPIv4/">
                         GoogleSpreadsheetAPIv4
                     </a>
@@ -777,32 +858,6 @@ function addLoadEvent(func) {
                 </div>
             </div>
         
-            <div class="post-item">
-                <h1>
-                    <a href="/2019-05/06-study-about-hexos-internals-3/">
-                        Hexo 内部探訪 (3) コンテキストとしての"hexo"変数
-                    </a>
-                </h1>
-                <div class="create">
-                    <span>作成</span>
-                    
-                        <time datetime="2019-05-05T15:03:00.000Z">
-                            2019-05-06
-                        </time>
-                    
-                    <ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/hexo/">hexo</a></li></ul>
-                </div>
-                
-                    <div class="article-gallery"><h2 id="調査の開始にあたって"><a href="#調査の開始にあたって" class="headerlink" title="調査の開始にあたって"></a>調査の開始にあたって</h2><p>プラグイン（さしあたりTagプラグインを想定）の実装中にて参照できる変数やオブジェクトを、調べてまとめよう。</p>
-<p><a href="https://nodejs.org/ja/docs/" target="_blank" rel="noopener">ドキュメント | Node.js</a>、 <a href="https://nodejs.org/api/process.html" target="_blank" rel="noopener">Process</a> 等もためになる。</p></div>
-                
-                <div class="readmore">
-                    <a href="/2019-05/06-study-about-hexos-internals-3/">
-                        »続き……
-                    </a>
-                </div>
-            </div>
-        
     </div>
 
 
@@ -853,7 +908,7 @@ function addLoadEvent(func) {
             <a href="/tags">
                 タグ
                 <sup style="font-size: 12px">
-                    [11]
+                    [12]
                 </sup>
             </a>
         </h2>
@@ -863,7 +918,7 @@ function addLoadEvent(func) {
             <div class="widget-wrap">
                 <div id="myCanvasContainer" class="widget tagcloud">
                     <canvas width="250" height="250" id="resCanvas" style="width=100%">
-                        <a href="/tags/domain/" style="font-size: 10px;">domain</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/github-pages/" style="font-size: 10px;">github pages</a> <a href="/tags/hexo/" style="font-size: 20px;">hexo</a> <a href="/tags/isnot/" style="font-size: 10px;">isnot</a> <a href="/tags/javascript/" style="font-size: 20px;">javascript</a> <a href="/tags/npm/" style="font-size: 15px;">npm</a> <a href="/tags/photo/" style="font-size: 17.5px;">photo</a> <a href="/tags/rose/" style="font-size: 12.5px;">rose</a> <a href="/tags/sakura/" style="font-size: 10px;">sakura</a> <a href="/tags/skyscraper/" style="font-size: 10px;">skyscraper</a>
+                        <a href="/tags/domain/" style="font-size: 10px;">domain</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/github-pages/" style="font-size: 10px;">github pages</a> <a href="/tags/hexo/" style="font-size: 18px;">hexo</a> <a href="/tags/ingress/" style="font-size: 10px;">ingress</a> <a href="/tags/isnot/" style="font-size: 10px;">isnot</a> <a href="/tags/javascript/" style="font-size: 20px;">javascript</a> <a href="/tags/npm/" style="font-size: 14px;">npm</a> <a href="/tags/photo/" style="font-size: 16px;">photo</a> <a href="/tags/rose/" style="font-size: 12px;">rose</a> <a href="/tags/sakura/" style="font-size: 10px;">sakura</a> <a href="/tags/skyscraper/" style="font-size: 10px;">skyscraper</a>
                     </canvas>
                 </div>
             </div>
@@ -873,6 +928,10 @@ function addLoadEvent(func) {
     <aside id="recent">
         <h2>最近の投稿</h2>
         <ul class="recent-list">
+        
+            <li class="recent-list-item"><a class="recent-list-link" href="/2019-09/24-Avenir-Shards-Bookmarklet/">
+                Avenir Shards Bookmarklet
+            </a></li>
         
             <li class="recent-list-item"><a class="recent-list-link" href="/2019-06/23-GoogleSpreadsheetAPIv4/">
                 GoogleSpreadsheetAPIv4
@@ -910,10 +969,6 @@ function addLoadEvent(func) {
                 Hexo 内部探訪 (4) プラグインのロード
             </a></li>
         
-            <li class="recent-list-item"><a class="recent-list-link" href="/2019-05/06-study-about-hexos-internals-3/">
-                Hexo 内部探訪 (3) コンテキストとしての"hexo"変数
-            </a></li>
-        
         </ul>
     </aside>
     
@@ -929,7 +984,7 @@ function addLoadEvent(func) {
 <aside id="archives">
     <h2>アーカイブ</h2>
     
-    <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">六月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">五月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">四月 2019</a></li></ul>
+    <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">九月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">六月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">五月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">四月 2019</a></li></ul>
     
 </aside>
 

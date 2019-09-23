@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://pages.isnot.jp/"/>
-  <updated>2019-06-23T12:02:06.618Z</updated>
+  <updated>2019-09-23T18:28:56.027Z</updated>
   <id>https://pages.isnot.jp/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Avenir Shards Bookmarklet</title>
+    <link href="https://pages.isnot.jp/2019-09/24-Avenir-Shards-Bookmarklet/"/>
+    <id>https://pages.isnot.jp/2019-09/24-Avenir-Shards-Bookmarklet/</id>
+    <published>2019-09-23T18:10:23.000Z</published>
+    <updated>2019-09-23T18:28:56.027Z</updated>
+    
+    <content type="html"><![CDATA[<link crossorigin="anonymous" media="screen" rel="stylesheet" href="/css/google_photos_album.css" /><div class="article-gallery"><p>Ingressでは、目下のところ公式のイベント「Avenir　Shards」が開催中であることは、ご存知かと思います。<br>Nianticの公式シャード情報ページでは、マップ上に軌跡を表示するなど、情報提供がされています。<br><a href="https://ingress.com/shards/avenir_shards" target="_blank" rel="noopener">https://ingress.com/shards/avenir_shards</a> （以下、公式シャード情報）</p><p>一方で、私は各シャードの移動履歴をリスト形式で一覧表示したものが欲しかったので、以下のBookmarkletを作成しました。<br>Bookmarkletとは？ということについては、説明を省きますので、Google検索などで調べてください。</p><h2 id="利用方法"><a href="#利用方法" class="headerlink" title="利用方法"></a>利用方法</h2><p>Bookmarkletをブラウザに登録する。これ→ <a href="javascript:(function(){const d=document;const h=d.createElement('div');h.innerHTML=points.map(e=>{return e.title}).join('<br>\n');d.getElementById('targets').appendChild(h)})();" target="_blank" rel="noopener">PrintShardsHistory</a></p><p>公式シャード情報を開き、そこでBookmarkletを実行する。</p><h2 id="内容"><a href="#内容" class="headerlink" title="内容"></a>内容</h2><figure class="highlight javascript"><table><tbody><tr><td class="code"><pre><span class="line">javascript:</span><br><span class="line">  (<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>{</span><br><span class="line">    <span class="keyword">const</span> d=<span class="built_in">document</span>;</span><br><span class="line">    <span class="keyword">const</span> h=d.createElement(<span class="string">'div'</span>);</span><br><span class="line">    h.innerHTML=points.map(<span class="function"><span class="params">e</span>=></span>{<span class="keyword">return</span> e.title}).join(<span class="string">'<br>\n'</span>);</span><br><span class="line">    d.getElementById(<span class="string">'targets'</span>).appendChild(h)</span><br><span class="line">  })();</span><br></pre></td></tr></tbody></table></figure></div><script src="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/js/lightgallery.min.js"></script><script src="/js/lg-thumbnail.min.js"></script><script src="/js/lg-zoom.min.js"></script><script src="/js/lg-autoplay.min.js"></script><script src="/js/lg-fullscreen.min.js"></script><script src="/js/lg-pager.min.js"></script><script src="/js/lg-hash.min.js"></script><script>if (typeof lightGallery !== 'undefined') {        var options = {            selector: '.gallery-item'        };        lightGallery(document.getElementsByClassName('article-gallery')[0], options);        }</script><script>        document.querySelectorAll('.github-emoji')          .forEach(el => {            if (!el.dataset.src) { return; }            const img = document.createElement('img');            img.style = 'display:none !important;';            img.src = el.dataset.src;            img.addEventListener('error', () => {              img.remove();              el.style.color = 'inherit';              el.style.backgroundImage = 'none';              el.style.background = 'none';            });            img.addEventListener('load', () => {              img.remove();            });            document.body.appendChild(img);          });      </script><script>function addLoadEvent(func) {  const oldonload = window.onload;  if (typeof window.onload !== 'function') {    window.onload = func;  } else {    window.onload = () => {      oldonload();      func();    };  }}  addLoadEvent(() => {    try {      if (window.innerWidth < Number('768')) {        return;      }      let imgs = Array.from(document.body.querySelectorAll('.google-photos-album-images a'));      imgs.push(...Array.from(document.body.querySelectorAll('a.google-photos-album-image')));      for (let anchor of imgs) {        anchor.href = anchor.href.replace(/=s720\-no/i, '=s1920-no');      }    } catch (e) {      console.log(e);    }  });</script>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;link crossorigin=&quot;anonymous&quot; media=&quot;screen&quot; rel=&quot;stylesheet&quot; href=&quot;/css/google_photos_album.css&quot; /&gt;&lt;div class=&quot;article-gallery&quot;&gt;&lt;p&gt;Ingressで
+      
+    
+    </summary>
+    
+      <category term="javascript" scheme="https://pages.isnot.jp/categories/javascript/"/>
+    
+    
+      <category term="javascript" scheme="https://pages.isnot.jp/tags/javascript/"/>
+    
+      <category term="ingress" scheme="https://pages.isnot.jp/tags/ingress/"/>
+    
+  </entry>
   
   <entry>
     <title>GoogleSpreadsheetAPIv4</title>
@@ -37,9 +64,9 @@
       <category term="javascript" scheme="https://pages.isnot.jp/categories/javascript/"/>
     
     
-      <category term="npm" scheme="https://pages.isnot.jp/tags/npm/"/>
-    
       <category term="javascript" scheme="https://pages.isnot.jp/tags/javascript/"/>
+    
+      <category term="npm" scheme="https://pages.isnot.jp/tags/npm/"/>
     
   </entry>
   
@@ -101,9 +128,9 @@
       <category term="hexo" scheme="https://pages.isnot.jp/categories/hexo/"/>
     
     
-      <category term="npm" scheme="https://pages.isnot.jp/tags/npm/"/>
-    
       <category term="javascript" scheme="https://pages.isnot.jp/tags/javascript/"/>
+    
+      <category term="npm" scheme="https://pages.isnot.jp/tags/npm/"/>
     
       <category term="hexo" scheme="https://pages.isnot.jp/tags/hexo/"/>
     
@@ -312,9 +339,9 @@
       <category term="hexo" scheme="https://pages.isnot.jp/categories/hexo/"/>
     
     
-      <category term="npm" scheme="https://pages.isnot.jp/tags/npm/"/>
-    
       <category term="javascript" scheme="https://pages.isnot.jp/tags/javascript/"/>
+    
+      <category term="npm" scheme="https://pages.isnot.jp/tags/npm/"/>
     
       <category term="hexo" scheme="https://pages.isnot.jp/tags/hexo/"/>
     
@@ -392,9 +419,9 @@
       <category term="javascript" scheme="https://pages.isnot.jp/categories/javascript/"/>
     
     
-      <category term="npm" scheme="https://pages.isnot.jp/tags/npm/"/>
-    
       <category term="javascript" scheme="https://pages.isnot.jp/tags/javascript/"/>
+    
+      <category term="npm" scheme="https://pages.isnot.jp/tags/npm/"/>
     
       <category term="hexo" scheme="https://pages.isnot.jp/tags/hexo/"/>
     

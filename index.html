@@ -56,6 +56,92 @@
         
             <div class="post-item">
                 <h1>
+                    <a href="/2019-11/18-apt-btrfs-snapshot-df/">
+                        apt-btrfs-snapshotによるディスク容量の消費
+                    </a>
+                </h1>
+                <div class="create">
+                    <span>作成</span>
+                    
+                        <time datetime="2019-11-18T08:32:35.000Z">
+                            2019-11-18
+                        </time>
+                    
+                    <ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/ubuntu/">ubuntu</a></li></ul>
+                </div>
+                
+                    <link crossorigin="anonymous" media="screen" rel="stylesheet" href="/css/google_photos_album.css"><div class="article-gallery"><p>パソコンのディス容量がアップアップになっていたところを、今まで知らなかった方法で大きく改善した話。<br>一時的にディスフル（100％）になり、従来手法を使っても95％にしか減らず、それでは困るので別の手法を取り入れ、結果的に60%利用まで落ち着いた。</p>
+<p>Ubuntuのリリースサイクルは半年毎であり、最新の版は先月でた19.10 eoanであるということは、先刻ご承知であろうかと思う。<br>そして、私のパソコン（のひとつ）では、約1年と少し前にSSDを交換した後も、何かとディスク容量の空きに余裕がなく、苦慮していた。</p>
+<p>今回まずきっかけになったのは、VirtualBoxで動かしているWindows10のシステム更新をしたところ、問題発生、途中で停止したことによる。<br>ディスク容量が問題になっていることは、すぐに察した。今までに同様の件は経験済みである。</p>
+<p>このパソコンで最もディスクを消費しているものは、そのwindows10のHDDイメージで、約51GiBであった。<br>これを、まだディスクには余裕がるもう一つのパソコンに移動した。<br>つまり今後はVirtualBoxはそちらのほうで使うことにした。</p>
+<p>これでディスクには大きく余裕ができるハズだろうと思ったのに…。なんと100%→95%になっただけ。残り約10GiB。<br>これは何かがおかしいと思って、イロイロ調べることにした。</p>
+<p>dfや「btrfs filesystem usage /」で見ると、ディスクの割当て済みがほぼ100％近く、空きは上記のように約10GiBと表示される。<br>いっぽう、duやbaobabで調べる、つまり個々のファイルの大きさを積算していく方式で調べると、それは約53GiBであると判った。<br>これは、驚きを持って受け止められれるべき事柄でありつつ、たしかに、冷静に考えると（ある点を除いて）妥当だと納得いく数字。</p>
+<p>つまり、妥当であるのは、パソコンの利用状況などを考慮すれば、使用済みが53GiBであるという事実。200GiB超も使っているというほうが変だ。<br>そして納得できない、分からないのが、ディスク容量の使用済み（実数）と空きの合計が、ディスク（というよりパーティション）として確保している大きさに一致しないこと。<br>170GiB以上も、謎の差分があることになる。</p>
+<p>これは、古き伝統的（そしてごく単純な）ファイルシステムを管理していた頃の知識からは、ありえない、異常事態としか言いようがない。<br>しかしここはもはや、Btrfsの世界なのである。<br>なので、何を調べるべきかは、だいたい想像できることではあるのだ。ただ、私の経験と知識では、まだ知らない何かがあるのだろう、ということ。</p>
+<p>調べた。<br>その結果に辿り着いた答えが、aptのスナップショット機能によるものだったというわけ。<br>apt-btrfs-snapshotを使うと、それを確認でき、削除を含む管理ができる。<br>一番あたらしいものを一つだけ残して、あとは削除した。</p>
+<p>Ubuntuをインストールしているシステムのファイルシステムとして、Btrfsを使っている場合、アップグレードのタイミング等で、自動的にaptがスナップショットを保存する。<br>そして冒頭のリリースサイクルの話に繋がるが、当パソコンでは、cosmic、disco、eoanという3回のアップグレードを経ており、この通り蓄積が大きくなっていたわけ。<br>これは全て自動的に行われており、今までまったく意識していなかった。<br>ファイルシステムのスナップショット機能があることは理解していたし、それを使えば相応にディスク容量が消費されるのはまったく道理なのだが、自分で能動的にスナップショット機能を利用したことはないため、当初は思いに至らなかった。<br>また同時に、スナップショットの保存によって消費された分が、システム的に、具体的にはdf等にどのように反映される（見える）のかは、知らないでいた。<br>まぁ、「見えない数字」になるということが、今回判った。</p>
+<p>そして私は、この貴重な経験と共に、十分に余裕があるディスクスペースを確保することに成功した。<br>今後も、半年毎のリリースのたびに、このことを思い起こして不要なスナップショットを手動で削除する必要があるだろう…。</p>
+</div><script src="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/js/lightgallery.min.js"></script><script src="/js/lg-thumbnail.min.js"></script><script src="/js/lg-zoom.min.js"></script><script src="/js/lg-autoplay.min.js"></script><script src="/js/lg-fullscreen.min.js"></script><script src="/js/lg-pager.min.js"></script><script src="/js/lg-hash.min.js"></script><script>if (typeof lightGallery !== 'undefined') {
+        var options = {
+            selector: '.gallery-item'
+        };
+        lightGallery(document.getElementsByClassName('article-gallery')[0], options);
+        }</script><script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script><script>
+function addLoadEvent(func) {
+  const oldonload = window.onload;
+  if (typeof window.onload !== 'function') {
+    window.onload = func;
+  } else {
+    window.onload = () => {
+      oldonload();
+      func();
+    };
+  }
+}
+  addLoadEvent(() => {
+    try {
+      if (window.innerWidth < Number('768')) {
+        return;
+      }
+      let imgs = Array.from(document.body.querySelectorAll('.google-photos-album-images a'));
+      imgs.push(...Array.from(document.body.querySelectorAll('a.google-photos-album-image')));
+      for (let anchor of imgs) {
+        anchor.href = anchor.href.replace(/=s720\-no/i, '=s1920-no');
+      }
+    } catch (e) {
+      console.log(e);
+    }
+  });
+</script>
+
+                
+                <div class="readmore">
+                    <a href="/2019-11/18-apt-btrfs-snapshot-df/">
+                        »続き……
+                    </a>
+                </div>
+            </div>
+        
+            <div class="post-item">
+                <h1>
                     <a href="/2019-10/17-tamako-cycling/">
                         多摩湖自転車歩行者道〜六道山〜文明堂壹番館
                     </a>
@@ -740,90 +826,6 @@ function addLoadEvent(func) {
                 </div>
             </div>
         
-            <div class="post-item">
-                <h1>
-                    <a href="/2019-05/06-study-about-hexos-internals-5/">
-                        Hexo 内部探訪 (5) ライフサイクル
-                    </a>
-                </h1>
-                <div class="create">
-                    <span>作成</span>
-                    
-                        <time datetime="2019-05-06T07:15:43.000Z">
-                            2019-05-06
-                        </time>
-                    
-                    <ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/hexo/">hexo</a></li></ul>
-                </div>
-                
-                    <link crossorigin="anonymous" media="screen" rel="stylesheet" href="/css/google_photos_album.css"><div class="article-gallery"><p>Hexoでは、なにはともあれ、コマンドライン（インタラクティブなコマンド・シェル、例えばBash）環境において、<code>hexo</code>コマンドを利用することで処理が始まる。</p>
-<h2 id="hexo-cliにある、コマンドラインの処理が始まる場所"><a href="#hexo-cliにある、コマンドラインの処理が始まる場所" class="headerlink" title="hexo-cliにある、コマンドラインの処理が始まる場所"></a>hexo-cliにある、コマンドラインの処理が始まる場所</h2><ul>
-<li><a href="https://github.com/hexojs/hexo-cli/blob/master/lib/hexo.js" target="_blank" rel="noopener">hexo-cli/lib/hexo.js</a></li>
-<li>hexo-cli/lib/context.js</li>
-<li>hexo-cli/lib/extend/console.js</li>
-</ul>
-<h2 id="Hexo-オブジェクト"><a href="#Hexo-オブジェクト" class="headerlink" title="Hexo オブジェクト"></a>Hexo オブジェクト</h2><ul>
-<li><a href="https://github.com/hexojs/hexo/blob/master/lib/hexo/index.js" target="_blank" rel="noopener">hexo/lib/hexo/index.js</a></li>
-</ul>
-</div><script src="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/js/lightgallery.min.js"></script><script src="/js/lg-thumbnail.min.js"></script><script src="/js/lg-zoom.min.js"></script><script src="/js/lg-autoplay.min.js"></script><script src="/js/lg-fullscreen.min.js"></script><script src="/js/lg-pager.min.js"></script><script src="/js/lg-hash.min.js"></script><script>if (typeof lightGallery !== 'undefined') {
-        var options = {
-            selector: '.gallery-item'
-        };
-        lightGallery(document.getElementsByClassName('article-gallery')[0], options);
-        }</script><script>
-        document.querySelectorAll('.github-emoji')
-          .forEach(el => {
-            if (!el.dataset.src) { return; }
-            const img = document.createElement('img');
-            img.style = 'display:none !important;';
-            img.src = el.dataset.src;
-            img.addEventListener('error', () => {
-              img.remove();
-              el.style.color = 'inherit';
-              el.style.backgroundImage = 'none';
-              el.style.background = 'none';
-            });
-            img.addEventListener('load', () => {
-              img.remove();
-            });
-            document.body.appendChild(img);
-          });
-      </script><script>
-function addLoadEvent(func) {
-  const oldonload = window.onload;
-  if (typeof window.onload !== 'function') {
-    window.onload = func;
-  } else {
-    window.onload = () => {
-      oldonload();
-      func();
-    };
-  }
-}
-  addLoadEvent(() => {
-    try {
-      if (window.innerWidth < Number('768')) {
-        return;
-      }
-      let imgs = Array.from(document.body.querySelectorAll('.google-photos-album-images a'));
-      imgs.push(...Array.from(document.body.querySelectorAll('a.google-photos-album-image')));
-      for (let anchor of imgs) {
-        anchor.href = anchor.href.replace(/=s720\-no/i, '=s1920-no');
-      }
-    } catch (e) {
-      console.log(e);
-    }
-  });
-</script>
-
-                
-                <div class="readmore">
-                    <a href="/2019-05/06-study-about-hexos-internals-5/">
-                        »続き……
-                    </a>
-                </div>
-            </div>
-        
     </div>
 
 
@@ -874,7 +876,7 @@ function addLoadEvent(func) {
             <a href="/tags">
                 タグ
                 <sup style="font-size: 12px">
-                    [13]
+                    [14]
                 </sup>
             </a>
         </h2>
@@ -884,7 +886,7 @@ function addLoadEvent(func) {
             <div class="widget-wrap">
                 <div id="myCanvasContainer" class="widget tagcloud">
                     <canvas width="250" height="250" id="resCanvas" style="width=100%">
-                        <a href="/tags/cycling/" style="font-size: 10px;">cycling</a> <a href="/tags/domain/" style="font-size: 10px;">domain</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/github-pages/" style="font-size: 10px;">github pages</a> <a href="/tags/hexo/" style="font-size: 18px;">hexo</a> <a href="/tags/ingress/" style="font-size: 10px;">ingress</a> <a href="/tags/isnot/" style="font-size: 10px;">isnot</a> <a href="/tags/javascript/" style="font-size: 20px;">javascript</a> <a href="/tags/npm/" style="font-size: 14px;">npm</a> <a href="/tags/photo/" style="font-size: 16px;">photo</a> <a href="/tags/rose/" style="font-size: 12px;">rose</a> <a href="/tags/sakura/" style="font-size: 10px;">sakura</a> <a href="/tags/skyscraper/" style="font-size: 10px;">skyscraper</a>
+                        <a href="/tags/cycling/" style="font-size: 10px;">cycling</a> <a href="/tags/domain/" style="font-size: 10px;">domain</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/github-pages/" style="font-size: 10px;">github pages</a> <a href="/tags/hexo/" style="font-size: 18px;">hexo</a> <a href="/tags/ingress/" style="font-size: 10px;">ingress</a> <a href="/tags/isnot/" style="font-size: 10px;">isnot</a> <a href="/tags/javascript/" style="font-size: 20px;">javascript</a> <a href="/tags/npm/" style="font-size: 14px;">npm</a> <a href="/tags/photo/" style="font-size: 16px;">photo</a> <a href="/tags/rose/" style="font-size: 12px;">rose</a> <a href="/tags/sakura/" style="font-size: 10px;">sakura</a> <a href="/tags/skyscraper/" style="font-size: 10px;">skyscraper</a> <a href="/tags/ubuntu/" style="font-size: 10px;">ubuntu</a>
                     </canvas>
                 </div>
             </div>
@@ -894,6 +896,10 @@ function addLoadEvent(func) {
     <aside id="recent">
         <h2>最近の投稿</h2>
         <ul class="recent-list">
+        
+            <li class="recent-list-item"><a class="recent-list-link" href="/2019-11/18-apt-btrfs-snapshot-df/">
+                apt-btrfs-snapshotによるディスク容量の消費
+            </a></li>
         
             <li class="recent-list-item"><a class="recent-list-link" href="/2019-10/17-tamako-cycling/">
                 多摩湖自転車歩行者道〜六道山〜文明堂壹番館
@@ -931,10 +937,6 @@ function addLoadEvent(func) {
                 Hexo 内部探訪 (6) DevToolsを使ったデバッグ
             </a></li>
         
-            <li class="recent-list-item"><a class="recent-list-link" href="/2019-05/06-study-about-hexos-internals-5/">
-                Hexo 内部探訪 (5) ライフサイクル
-            </a></li>
-        
         </ul>
     </aside>
     
@@ -942,7 +944,7 @@ function addLoadEvent(func) {
 <aside id="categories">
     <h2>カテゴリー</h2>
     
-        <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/hexo/">hexo</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/javascript/">javascript</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/myself/">myself</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/photo/">photo</a></li></ul>
+        <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/hexo/">hexo</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/javascript/">javascript</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/myself/">myself</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/photo/">photo</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/ubuntu/">ubuntu</a></li></ul>
     
 </aside>
 
@@ -950,7 +952,7 @@ function addLoadEvent(func) {
 <aside id="archives">
     <h2>アーカイブ</h2>
     
-    <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">十月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">九月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">六月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">五月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">四月 2019</a></li></ul>
+    <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">十一月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">十月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">九月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">六月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">五月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">四月 2019</a></li></ul>
     
 </aside>
 

@@ -2,24 +2,24 @@
 <html>
 <head><meta name="generator" content="Hexo 3.8.0">
   <meta charset="UTF-8">
-  <title>Hexo 内部探訪 (3) コンテキストとしての&#34;hexo&#34;変数 | isnot N3</title>
+  <title>apt-btrfs-snapshotによるディスク容量の消費 | isnot N3</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <link rel="alternate" href="/atom.xml" title="isnot N3">
   
     <link rel="icon" href="/favicon.ico">
   
-  <meta name="description" content="調査の開始にあたってプラグイン（さしあたりTagプラグインを想定）の実装中にて参照できる変数やオブジェクトを、調べてまとめよう。 ドキュメント | Node.js、 Process 等もためになる。">
-<meta name="keywords" content="javascript,hexo">
+  <meta name="description" content="パソコンのディス容量がアップアップになっていたところを、今まで知らなかった方法で大きく改善した話。一時的にディスフル（100％）になり、従来手法を使っても95％にしか減らず、それでは困るので別の手法を取り入れ、結果的に60%利用まで落ち着いた。 Ubuntuのリリースサイクルは半年毎であり、最新の版は先月でた19.10 eoanであるということは、先刻ご承知であろうかと思う。そして、私のパソコン（">
+<meta name="keywords" content="ubuntu">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hexo 内部探訪 (3) コンテキストとしての&quot;hexo&quot;変数">
-<meta property="og:url" content="https://pages.isnot.jp/2019-05/06-study-about-hexos-internals-3/index.html">
+<meta property="og:title" content="apt-btrfs-snapshotによるディスク容量の消費">
+<meta property="og:url" content="https://pages.isnot.jp/2019-11/18-apt-btrfs-snapshot-df/index.html">
 <meta property="og:site_name" content="isnot N3">
-<meta property="og:description" content="調査の開始にあたってプラグイン（さしあたりTagプラグインを想定）の実装中にて参照できる変数やオブジェクトを、調べてまとめよう。 ドキュメント | Node.js、 Process 等もためになる。">
+<meta property="og:description" content="パソコンのディス容量がアップアップになっていたところを、今まで知らなかった方法で大きく改善した話。一時的にディスフル（100％）になり、従来手法を使っても95％にしか減らず、それでは困るので別の手法を取り入れ、結果的に60%利用まで落ち着いた。 Ubuntuのリリースサイクルは半年毎であり、最新の版は先月でた19.10 eoanであるということは、先刻ご承知であろうかと思う。そして、私のパソコン（">
 <meta property="og:locale" content="ja">
-<meta property="og:updated_time" content="2019-05-06T16:36:12.125Z">
+<meta property="og:updated_time" content="2019-11-18T09:27:52.795Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hexo 内部探訪 (3) コンテキストとしての&quot;hexo&quot;変数">
-<meta name="twitter:description" content="調査の開始にあたってプラグイン（さしあたりTagプラグインを想定）の実装中にて参照できる変数やオブジェクトを、調べてまとめよう。 ドキュメント | Node.js、 Process 等もためになる。">
+<meta name="twitter:title" content="apt-btrfs-snapshotによるディスク容量の消費">
+<meta name="twitter:description" content="パソコンのディス容量がアップアップになっていたところを、今まで知らなかった方法で大きく改善した話。一時的にディスフル（100％）になり、従来手法を使っても95％にしか減らず、それでは困るので別の手法を取り入れ、結果的に60%利用まで落ち着いた。 Ubuntuのリリースサイクルは半年毎であり、最新の版は先月でた19.10 eoanであるということは、先刻ご承知であろうかと思う。そして、私のパソコン（">
   
     <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
   
@@ -53,35 +53,28 @@
     <div id="content-inner">
         <div class="clearfix">
     <article id="post">
-        <h1>Hexo 内部探訪 (3) コンテキストとしての&#34;hexo&#34;変数</h1>
+        <h1>apt-btrfs-snapshotによるディスク容量の消費</h1>
         <div class="create">
             <span>作成</span>
             
-                <time datetime="2019-05-05T15:03:00.000Z">
-                    2019-05-06
+                <time datetime="2019-11-18T08:32:35.000Z">
+                    2019-11-18
                 </time>
             
-            <ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/hexo/">hexo</a></li></ul>
+            <ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/ubuntu/">ubuntu</a></li></ul>
         </div>
-        <link crossorigin="anonymous" media="screen" rel="stylesheet" href="/css/google_photos_album.css"><div class="article-gallery"><h2 id="調査の開始にあたって"><a href="#調査の開始にあたって" class="headerlink" title="調査の開始にあたって"></a>調査の開始にあたって</h2><p>プラグイン（さしあたりTagプラグインを想定）の実装中にて参照できる変数やオブジェクトを、調べてまとめよう。</p>
-<p><a href="https://nodejs.org/ja/docs/" target="_blank" rel="noopener">ドキュメント | Node.js</a>、 <a href="https://nodejs.org/api/process.html" target="_blank" rel="noopener">Process</a> 等もためになる。</p>
-<a id="more"></a>
-
-<p>ところで、Node.jsでは、グローバルな空間を参照するためのキーワードがある。<br><code>global</code>である。</p>
-<p>また、次のようなやり方で参照する方法もあるようだ。</p>
-<figure class="highlight javascript"><table><tbody><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> { inspect } = <span class="built_in">require</span>(<span class="string">'util'</span>);</span><br><span class="line"><span class="keyword">var</span> g = <span class="built_in">Function</span>(<span class="string">'return this'</span>)();</span><br><span class="line"><span class="built_in">console</span>.log(inspect(g, { <span class="attr">depth</span>: <span class="number">0</span> }));</span><br></pre></td></tr></tbody></table></figure>
-
-<p>これらを駆使しつつ、Hexoの場合には、私が見たところほとんど全ての場所で、<code>hexo</code>という、トップレベルの変数が見えるので、これを足がかりにしたい。<br>また、他にも使える要素がもしあるなら、確かめたい。</p>
-<h2 id="グローバル汚染はなかった"><a href="#グローバル汚染はなかった" class="headerlink" title="グローバル汚染はなかった"></a>グローバル汚染はなかった</h2><p>調査を進めてから理解できたことだが、Hexoではグローバル変数、またはグローバル・オブジェクトを使ってはいない。</p>
-<p>何らかのプラグインで、グローバルを意図して使うのならばともかくとして、少なくともHexoの本体と言える範囲や、純正／バンドルされた各プラグインでは、グローバル変数は使わないようだ。いわゆる「グローバル汚染」はない。</p>
-<p>プラグイン含めて各所で見かける<code>hexo</code>という変数が存在し、トップレベルの階層にあるし、自ら呼び出しているわけでもないので、私は当初これがグローバル変数なのかな？と勘違いしていました。</p>
-<p>しかしこれは、実際には、<code>module.exports</code>の仕組みによって与えられたもので、各モジュール（概ね各jsファイルに相当）毎にそれぞれエクスポートされていました。</p>
-<p>私はこれまで<code>module.exports</code>について理解していないままでしたが、今回勉強になりました。</p>
-<p>（調査中）</p>
-<p>Hexoオブジェクト</p>
-<figure class="highlight"><table><tbody><tr><td class="code"><pre><span class="line">{</span><br><span class="line">  _events: [Object: null prototype] {},</span><br><span class="line">  _eventsCount: 0,</span><br><span class="line">  _maxListeners: undefined,</span><br><span class="line">  base_dir: '/home/naoto/www/MyBlog/',</span><br><span class="line">  public_dir: '/home/naoto/www/MyBlog/public/',</span><br><span class="line">  source_dir: '/home/naoto/www/MyBlog/source/',</span><br><span class="line">  plugin_dir: '/home/naoto/www/MyBlog/node_modules/',</span><br><span class="line">  script_dir: '/home/naoto/www/MyBlog/scripts/',</span><br><span class="line">  scaffold_dir: '/home/naoto/www/MyBlog/scaffolds/',</span><br><span class="line">  theme_dir: '/home/naoto/www/MyBlog/themes/stage/',</span><br><span class="line">  theme_script_dir: '/home/naoto/www/MyBlog/themes/stage/scripts/',</span><br><span class="line">  env: [Object],</span><br><span class="line">  extend: [Object],</span><br><span class="line">  config: [Object],</span><br><span class="line">  log: [Logger],</span><br><span class="line">  render: [Render],</span><br><span class="line">  route: [Router],</span><br><span class="line">  post: [Post],</span><br><span class="line">  scaffold: [Scaffold],</span><br><span class="line">  _dbLoaded: true,</span><br><span class="line">  _isGenerating: true,</span><br><span class="line">  database: [Database],</span><br><span class="line">  config_path: '/home/naoto/www/MyBlog/_config.yml',</span><br><span class="line">  source: [Source],</span><br><span class="line">  theme: [Theme],</span><br><span class="line">  locals: [Locals]</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
-
-<h2 id="（進捗途中）"><a href="#（進捗途中）" class="headerlink" title="（進捗途中）"></a>（進捗途中）</h2></div><script src="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/js/lightgallery.min.js"></script><script src="/js/lg-thumbnail.min.js"></script><script src="/js/lg-zoom.min.js"></script><script src="/js/lg-autoplay.min.js"></script><script src="/js/lg-fullscreen.min.js"></script><script src="/js/lg-pager.min.js"></script><script src="/js/lg-hash.min.js"></script><script>if (typeof lightGallery !== 'undefined') {
+        <link crossorigin="anonymous" media="screen" rel="stylesheet" href="/css/google_photos_album.css"><div class="article-gallery"><p>パソコンのディス容量がアップアップになっていたところを、今まで知らなかった方法で大きく改善した話。<br>一時的にディスフル（100％）になり、従来手法を使っても95％にしか減らず、それでは困るので別の手法を取り入れ、結果的に60%利用まで落ち着いた。</p>
+<p>Ubuntuのリリースサイクルは半年毎であり、最新の版は先月でた19.10 eoanであるということは、先刻ご承知であろうかと思う。<br>そして、私のパソコン（のひとつ）では、約1年と少し前にSSDを交換した後も、何かとディスク容量の空きに余裕がなく、苦慮していた。</p>
+<p>今回まずきっかけになったのは、VirtualBoxで動かしているWindows10のシステム更新をしたところ、問題発生、途中で停止したことによる。<br>ディスク容量が問題になっていることは、すぐに察した。今までに同様の件は経験済みである。</p>
+<p>このパソコンで最もディスクを消費しているものは、そのwindows10のHDDイメージで、約51GiBであった。<br>これを、まだディスクには余裕がるもう一つのパソコンに移動した。<br>つまり今後はVirtualBoxはそちらのほうで使うことにした。</p>
+<p>これでディスクには大きく余裕ができるハズだろうと思ったのに…。なんと100%→95%になっただけ。残り約10GiB。<br>これは何かがおかしいと思って、イロイロ調べることにした。</p>
+<p>dfや「btrfs filesystem usage /」で見ると、ディスクの割当て済みがほぼ100％近く、空きは上記のように約10GiBと表示される。<br>いっぽう、duやbaobabで調べる、つまり個々のファイルの大きさを積算していく方式で調べると、それは約53GiBであると判った。<br>これは、驚きを持って受け止められれるべき事柄でありつつ、たしかに、冷静に考えると（ある点を除いて）妥当だと納得いく数字。</p>
+<p>つまり、妥当であるのは、パソコンの利用状況などを考慮すれば、使用済みが53GiBであるという事実。200GiB超も使っているというほうが変だ。<br>そして納得できない、分からないのが、ディスク容量の使用済み（実数）と空きの合計が、ディスク（というよりパーティション）として確保している大きさに一致しないこと。<br>170GiB以上も、謎の差分があることになる。</p>
+<p>これは、古き伝統的（そしてごく単純な）ファイルシステムを管理していた頃の知識からは、ありえない、異常事態としか言いようがない。<br>しかしここはもはや、Btrfsの世界なのである。<br>なので、何を調べるべきかは、だいたい想像できることではあるのだ。ただ、私の経験と知識では、まだ知らない何かがあるのだろう、ということ。</p>
+<p>調べた。<br>その結果に辿り着いた答えが、aptのスナップショット機能によるものだったというわけ。<br>apt-btrfs-snapshotを使うと、それを確認でき、削除を含む管理ができる。<br>一番あたらしいものを一つだけ残して、あとは削除した。</p>
+<p>Ubuntuをインストールしているシステムのファイルシステムとして、Btrfsを使っている場合、アップグレードのタイミング等で、自動的にaptがスナップショットを保存する。<br>そして冒頭のリリースサイクルの話に繋がるが、当パソコンでは、cosmic、disco、eoanという3回のアップグレードを経ており、この通り蓄積が大きくなっていたわけ。<br>これは全て自動的に行われており、今までまったく意識していなかった。<br>ファイルシステムのスナップショット機能があることは理解していたし、それを使えば相応にディスク容量が消費されるのはまったく道理なのだが、自分で能動的にスナップショット機能を利用したことはないため、当初は思いに至らなかった。<br>また同時に、スナップショットの保存によって消費された分が、システム的に、具体的にはdf等にどのように反映される（見える）のかは、知らないでいた。<br>まぁ、「見えない数字」になるということが、今回判った。</p>
+<p>そして私は、この貴重な経験と共に、十分に余裕があるディスクスペースを確保することに成功した。<br>今後も、半年毎のリリースのたびに、このことを思い起こして不要なスナップショットを手動で削除する必要があるだろう…。</p>
+</div><script src="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/js/lightgallery.min.js"></script><script src="/js/lg-thumbnail.min.js"></script><script src="/js/lg-zoom.min.js"></script><script src="/js/lg-autoplay.min.js"></script><script src="/js/lg-fullscreen.min.js"></script><script src="/js/lg-pager.min.js"></script><script src="/js/lg-hash.min.js"></script><script>if (typeof lightGallery !== 'undefined') {
         var options = {
             selector: '.gallery-item'
         };
@@ -133,12 +126,12 @@ function addLoadEvent(func) {
 </script>
 
         <div>
-            <ul class="tags-category-list"><li class="tags-category-list-item"><a class="tags-category-list-link" href="/tags/hexo/">hexo</a></li><li class="tags-category-list-item"><a class="tags-category-list-link" href="/tags/javascript/">javascript</a></li></ul>
+            <ul class="tags-category-list"><li class="tags-category-list-item"><a class="tags-category-list-link" href="/tags/ubuntu/">ubuntu</a></li></ul>
         </div>
         
 <div id="stageComment" class="comment fa fa-comment-o">
-  Hexo 内部探訪 (3) コンテキストとしての&#34;hexo&#34;変数 について、
-  <a href="https://github.com/isnot/isnot.github.io/issues/new?labels=blog-comments&title=Hexo 内部探訪 (3) コンテキストとしての&#34;hexo&#34;変数&body=About%20%5BHexo%20%E5%86%85%E9%83%A8%E6%8E%A2%E8%A8%AA%20(3)%20%E3%82%B3%E3%83%B3%E3%83%86%E3%82%AD%E3%82%B9%E3%83%88%E3%81%A8%E3%81%97%E3%81%A6%E3%81%AE%22hexo%22%E5%A4%89%E6%95%B0%5D(https%3A%2F%2Fpages.isnot.jp%2F2019-05%2F06-study-about-hexos-internals-3%2Findex.html)">
+  apt-btrfs-snapshotによるディスク容量の消費 について、
+  <a href="https://github.com/isnot/isnot.github.io/issues/new?labels=blog-comments&title=apt-btrfs-snapshotによるディスク容量の消費&body=About%20%5Bapt-btrfs-snapshot%E3%81%AB%E3%82%88%E3%82%8B%E3%83%87%E3%82%A3%E3%82%B9%E3%82%AF%E5%AE%B9%E9%87%8F%E3%81%AE%E6%B6%88%E8%B2%BB%5D(https%3A%2F%2Fpages.isnot.jp%2F2019-11%2F18-apt-btrfs-snapshot-df%2Findex.html)">
     GitHubでコメントする
   </a>
 </div>
@@ -147,21 +140,12 @@ function addLoadEvent(func) {
         
     <nav id="article-nav">
         
-            <a href="/2019-05/06-study-about-hexos-internals-4/" id="article-nav-newer" class="article-nav-link-wrap">
-        <span class="article-nav-title">
-            
-                Hexo 内部探訪 (4) プラグインのロード
-            
-        </span>
-                <strong class="article-nav-caption">&gt;</strong>
-            </a>
         
-        
-            <a href="/2019-05/06-study-about-hexos-internals-2/" id="article-nav-older" class="article-nav-link-wrap">
+            <a href="/2019-10/17-tamako-cycling/" id="article-nav-older" class="article-nav-link-wrap">
                 <strong class="article-nav-caption">&lt;</strong>
                 <span class="article-nav-title">
                     
-                        Hexo 内部探訪 (2) 準備 npm linkメモ
+                        多摩湖自転車歩行者道〜六道山〜文明堂壹番館
                 </span>
                 
             </a>
@@ -301,8 +285,7 @@ function addLoadEvent(func) {
     
         <div id="toc">
             
-                <h2>目次</h2>
-                <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#調査の開始にあたって"><span class="toc-number">1.</span> <span class="toc-text">調査の開始にあたって</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#グローバル汚染はなかった"><span class="toc-number">2.</span> <span class="toc-text">グローバル汚染はなかった</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#（進捗途中）"><span class="toc-number">3.</span> <span class="toc-text">（進捗途中）</span></a></li></ol>
+                <h2>目次がありません</h2>
             
         </div>
     

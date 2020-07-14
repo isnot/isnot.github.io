@@ -6,7 +6,7 @@ article h2 { color: black; border-bottom: solid 2px #bbb; margin: 2em 0 0.5em 0;
 article h3 { margin: 1.5em 0 0.5em 0; font-weight: bold; text-decoration: underline; color: black; }
 
 #owner .avatar { width:250px }
-#owner .author h4 { margin: 1.5em 0 0.5em 0; font-weight: bold; color: black; font-size: 1.1em; }
+#owner .author h4 { margin: 1.5em 0 0.5em 0; font-weight: bold; color: black; font-size: 1em; }
 
 
 #stageComment { border: silver dotted 2px; padding: 8px 12px; margin: 4px auto; }

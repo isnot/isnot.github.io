@@ -1,69 +1,121 @@
 <!DOCTYPE html>
 <html>
-<head><meta name="generator" content="Hexo 3.8.0">
+<head>
   <meta charset="UTF-8">
-  <title>Hexo 内部探訪 (1) はじめに | isnot N3</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <link rel="alternate" href="/atom.xml" title="isnot N3">
   
-    <link rel="icon" href="/favicon.ico">
-  
+  <title>Hexo 内部探訪 (1) はじめに | isnot N3 | isnot N3</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no">
   <meta name="description" content="Hexoを選択した理由は、Node.jsだから、Javascriptだから、つまりいろいろと、自身で内部構造を含めて手を加えるため。それは使い始めるとすぐに現実になり、早速プラグインを作成したりもした。（参照 hexo-tag-google-photos-album 公開しました） だんだんとHexoの内部構造やAPIについて理解をしはじめたところです。しかしながら開発においてはまだまだ、暗中模索">
-<meta name="keywords" content="javascript,hexo">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Hexo 内部探訪 (1) はじめに">
 <meta property="og:url" content="https://pages.isnot.jp/2019-05/05-study-about-hexos-internals-1/index.html">
 <meta property="og:site_name" content="isnot N3">
 <meta property="og:description" content="Hexoを選択した理由は、Node.jsだから、Javascriptだから、つまりいろいろと、自身で内部構造を含めて手を加えるため。それは使い始めるとすぐに現実になり、早速プラグインを作成したりもした。（参照 hexo-tag-google-photos-album 公開しました） だんだんとHexoの内部構造やAPIについて理解をしはじめたところです。しかしながら開発においてはまだまだ、暗中模索">
-<meta property="og:locale" content="ja">
-<meta property="og:updated_time" content="2019-05-05T15:37:05.105Z">
+<meta property="og:locale" content="ja_JP">
+<meta property="article:published_time" content="2019-05-05T14:29:55.000Z">
+<meta property="article:modified_time" content="2019-05-05T14:29:55.000Z">
+<meta property="article:author" content="isnot">
+<meta property="article:tag" content="javascript">
+<meta property="article:tag" content="hexo">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hexo 内部探訪 (1) はじめに">
-<meta name="twitter:description" content="Hexoを選択した理由は、Node.jsだから、Javascriptだから、つまりいろいろと、自身で内部構造を含めて手を加えるため。それは使い始めるとすぐに現実になり、早速プラグインを作成したりもした。（参照 hexo-tag-google-photos-album 公開しました） だんだんとHexoの内部構造やAPIについて理解をしはじめたところです。しかしながら開発においてはまだまだ、暗中模索">
   
-    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+    <link rel="alternate" href="/atom.xml" title="isnot N3">
   
   
-    
-      <link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
-    
-      <link rel="stylesheet" href="/css/stage.css">
-    
-      <link rel="stylesheet" href="/css/pages-isnot-jp.css">
-    
-      <link rel="stylesheet" href="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/css/lightgallery.min.css">
-    
+    <link rel="icon" href="/favicon.ico">
   
-</head>
-</html>
-<body>
-<header id="header">
-    <div class="menu">
-        <i class="fa fa-bars"></i>
-    </div>
-    <div class="header-main">
-        <h1><a href="/">isnot N3</a></h1>
-    </div>
-    <div id="nav">
-        <div class="nav-img" id="nav-img"></div>
-    </div>
-</header>
+  
+    
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Source+Code+Pro.css">
 
-<div id="content-outer">
-    <div id="content-inner">
-        <div class="clearfix">
-    <article id="post">
-        <h1>Hexo 内部探訪 (1) はじめに</h1>
-        <div class="create">
-            <span>作成</span>
-            
-                <time datetime="2019-05-05T14:29:55.000Z">
-                    2019-05-05
-                </time>
-            
-            <ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/hexo/">hexo</a></li></ul>
-        </div>
-        <link crossorigin="anonymous" media="screen" rel="stylesheet" href="/css/google_photos_album.css"><div class="article-gallery"><p>Hexoを選択した理由は、Node.jsだから、Javascriptだから、つまりいろいろと、自身で内部構造を含めて手を加えるため。<br>それは使い始めるとすぐに現実になり、早速プラグインを作成したりもした。（参照 <a href="/2019-04/30-hexo-tag-google-photos-album-is-arrived/" title="hexo-tag-google-photos-album 公開しました">hexo-tag-google-photos-album 公開しました</a>）</p>
+  
+  
+    
+      
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/css/lightgallery.min.css">
+
+    
+      
+<link rel="stylesheet" href="/css/font-awesome.min.css">
+
+    
+      
+<link rel="stylesheet" href="/css/style.css">
+
+    
+      
+<link rel="stylesheet" href="/css/pages-isnot-jp.css">
+
+    
+  
+<meta name="generator" content="Hexo 4.2.1"><link rel="alternate" href="/atom.xml" title="isnot N3" type="application/atom+xml">
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">isnot N3</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          Javascript, Node.js, npm, git, GitHub, MPD, Ubuntu, LXQt, Emacs, Chat Bot, Photo
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives/">Archives</a>
+        
+          <a class="main-nav-link" href="/about/">About</a>
+        
+          <a class="main-nav-link" href="/tags/">Tag</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSSフィード"></a>
+        
+      </nav>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-study-about-hexos-internals-1" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2019-05/05-study-about-hexos-internals-1/" class="article-date">
+  <time class="dt-published" datetime="2019-05-05T14:29:55.000Z" itemprop="datePublished">2019-05-05</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/hexo/">hexo</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      Hexo 内部探訪 (1) はじめに
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <link crossorigin="anonymous" media="screen" rel="stylesheet" href="/css/google_photos_album.css" /><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/lightgallery.js@1.1.3/dist/css/lightgallery.min.css" /><div class="article-gallery"><p>Hexoを選択した理由は、Node.jsだから、Javascriptだから、つまりいろいろと、自身で内部構造を含めて手を加えるため。<br>それは使い始めるとすぐに現実になり、早速プラグインを作成したりもした。（参照 <a href="/2019-04/30-hexo-tag-google-photos-album-is-arrived/" title="hexo-tag-google-photos-album 公開しました">hexo-tag-google-photos-album 公開しました</a>）</p>
 <p>だんだんとHexoの内部構造やAPIについて理解をしはじめたところです。しかしながら開発においてはまだまだ、暗中模索です。</p>
 <p>特に、記事やブログのメタデータや状態などを処理の過程で参照しようと思った時と、jsやcssの挿入（インジェクション）が、掴みにくいポイントだと思う。</p>
 <a id="more"></a>
@@ -97,24 +149,6 @@
         };
         lightGallery(document.getElementsByClassName('article-gallery')[0], options);
         }</script><script>
-        document.querySelectorAll('.github-emoji')
-          .forEach(el => {
-            if (!el.dataset.src) { return; }
-            const img = document.createElement('img');
-            img.style = 'display:none !important;';
-            img.src = el.dataset.src;
-            img.addEventListener('error', () => {
-              img.remove();
-              el.style.color = 'inherit';
-              el.style.backgroundImage = 'none';
-              el.style.background = 'none';
-            });
-            img.addEventListener('load', () => {
-              img.remove();
-            });
-            document.body.appendChild(img);
-          });
-      </script><script>
 function addLoadEvent(func) {
   const oldonload = window.onload;
   if (typeof window.onload !== 'function') {
@@ -131,9 +165,9 @@ function addLoadEvent(func) {
       if (window.innerWidth < Number('768')) {
         return;
       }
-      let imgs = Array.from(document.body.querySelectorAll('.google-photos-album-images a'));
+      const imgs = Array.from(document.body.querySelectorAll('.google-photos-album-images a'));
       imgs.push(...Array.from(document.body.querySelectorAll('a.google-photos-album-image')));
-      for (let anchor of imgs) {
+      for (const anchor of imgs) {
         anchor.href = anchor.href.replace(/=s720\-no/i, '=s1920-no');
       }
     } catch (e) {
@@ -142,196 +176,200 @@ function addLoadEvent(func) {
   });
 </script>
 
-        <div>
-            <ul class="tags-category-list"><li class="tags-category-list-item"><a class="tags-category-list-link" href="/tags/hexo/">hexo</a></li><li class="tags-category-list-item"><a class="tags-category-list-link" href="/tags/javascript/">javascript</a></li></ul>
-        </div>
-        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://pages.isnot.jp/2019-05/05-study-about-hexos-internals-1/" data-id="ckcm4f94800152wbq6f0p71yd" data-title="Hexo 内部探訪 (1) はじめに" class="article-permalink">
+      
+      </a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hexo/" rel="tag">hexo</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/" rel="tag">javascript</a></li></ul>
+
+    </footer>
+    <div class="article-footer">
+      
+      
 <div id="stageComment" class="comment fa fa-comment-o">
   Hexo 内部探訪 (1) はじめに について、
-  <a href="https://github.com/isnot/isnot.github.io/issues/new?labels=blog-comments&title=Hexo 内部探訪 (1) はじめに&body=About%20%5BHexo%20%E5%86%85%E9%83%A8%E6%8E%A2%E8%A8%AA%20(1)%20%E3%81%AF%E3%81%98%E3%82%81%E3%81%AB%5D(https%3A%2F%2Fpages.isnot.jp%2F2019-05%2F05-study-about-hexos-internals-1%2Findex.html)">
+  <a href="https://github.com/isnot/isnot.github.io/issues/new?labels=blog-comments&title=Hexo 内部探訪 (1) はじめに&body=About%20%5BHexo%20%E5%86%85%E9%83%A8%E6%8E%A2%E8%A8%AA%20(1)%20%E3%81%AF%E3%81%98%E3%82%81%E3%81%AB%5D(https%3A%2F%2Fpages.isnot.jp%2F2019-05%2F05-study-about-hexos-internals-1%2Findex.html)" target="_blank" rel="noopener">
     GitHubでコメントする
   </a>
 </div>
 
-        <div class="bottom-line"></div>
+      
+    </div>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2019-05/06-study-about-hexos-internals-2/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">次の記事</strong>
+      <div class="article-nav-title">
         
-    <nav id="article-nav">
+          Hexo 内部探訪 (2) 準備 npm linkメモ
         
-            <a href="/2019-05/06-study-about-hexos-internals-2/" id="article-nav-newer" class="article-nav-link-wrap">
-        <span class="article-nav-title">
-            
-                Hexo 内部探訪 (2) 準備 npm linkメモ
-            
-        </span>
-                <strong class="article-nav-caption">&gt;</strong>
-            </a>
-        
-        
-            <a href="/2019-05/01-azalea/" id="article-nav-older" class="article-nav-link-wrap">
-                <strong class="article-nav-caption">&lt;</strong>
-                <span class="article-nav-title">
-                    
-                        ツツジ
-                </span>
-                
-            </a>
-        
-    </nav>
+      </div>
+    </a>
+  
+  
+    <a href="/2019-05/01-azalea/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">前の記事</strong>
+      <div class="article-nav-title">ツツジ</div>
+    </a>
+  
+</nav>
+
+  
+</article>
 
 
+
+</section>
         
-    </article>
-    <div id="content-aside">
-    <div class="content-aside-owner">
-        <div id="owner">
-    <a href="/"><img class="avatar" src="/images/makino-otometsubaki512.png" alt></a>
+          <aside id="sidebar">
+  
+    <div id="owner" class="widget-wrap">
+  <h3 class="widget-title">&nbsp;</h3>
+  <div class="widget author">
+    <a href="/"><img class="avatar" src="/images/makino-otometsubaki512.png" alt=""></a>
     <a href="/"><h3 class="author">isnot</h3></a>
     <h4>いしだなおと の、ブログ的な。</h4>
     <div class="social">
+      
         
-            
-              <a href="/atom.xml" title="rss" class="fa fa-rss" target="_blank"></a>
-            
+          <a href="/atom.xml" title="rss" class="fa fa-rss" target="_blank"></a>
         
-            
-              <a href="https://github.com/isnot" title="github" class="fa fa-github" target="_blank"></a>
-            
+      
         
-            
-              <a href="https://soundcloud.com/isnot-jp" title="soundcloud" class="fa fa-soundcloud" target="_blank"></a>
-            
+          <a href="https://github.com/isnot" title="github" class="fa fa-github" target="_blank"></a>
         
-            
-              <a href="https://www.youtube.com/channel/UCy6ciW14LkMnyXFkxi9uwNw" title="youtube" class="fa fa-youtube" target="_blank"></a>
-            
+      
         
-            
-              <a href="https://t.me/isnot" title="telegram" class="fa fa-telegram" target="_blank"></a>
-            
+          <a href="https://soundcloud.com/isnot-jp" title="soundcloud" class="fa fa-soundcloud" target="_blank"></a>
         
-            
-              <a href="https://mewe.com/i/naoto" title="user" class="fa fa-user" target="_blank"></a>
-            
+      
         
+          <a href="https://www.youtube.com/channel/UCy6ciW14LkMnyXFkxi9uwNw" title="youtube" class="fa fa-youtube" target="_blank"></a>
+        
+      
+        
+          <a href="https://t.me/isnot" title="telegram" class="fa fa-telegram" target="_blank"></a>
+        
+      
+        
+          <a href="https://mewe.com/i/naoto" title="user" class="fa fa-user" target="_blank"></a>
+        
+      
     </div>
+  </div>
 </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最近の投稿</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2020-06/25-hydrangea2020/">アジサイ2020</a>
+          </li>
+        
+          <li>
+            <a href="/2020-04/09-Create-a-Framework-for-Chatbot/">チャット・ボットのためのフレームワークを開発してみた。序章</a>
+          </li>
+        
+          <li>
+            <a href="/2019-11/18-apt-btrfs-snapshot-df/">apt-btrfs-snapshotによるディスク容量の消費</a>
+          </li>
+        
+          <li>
+            <a href="/2019-10/17-tamako-cycling/">多摩湖自転車歩行者道〜六道山〜文明堂壹番館</a>
+          </li>
+        
+          <li>
+            <a href="/2019-09/24-Avenir-Shards-Bookmarklet/">Avenir Shards Bookmarklet</a>
+          </li>
+        
+          <li>
+            <a href="/2019-06/23-GoogleSpreadsheetAPIv4/">GoogleSpreadsheetAPIv4</a>
+          </li>
+        
+          <li>
+            <a href="/2019-06/17-hydrangea/">アジサイ2019</a>
+          </li>
+        
+      </ul>
     </div>
+  </div>
+
+  
     
-        <div class="content-aside-about">
-            <h2>
-                <a href="/about">About</a>
-            </h2>
-        </div>
-    
-    <div class="content-aside-tags">
-        <h2>
-            <a href="/tags">
-                タグ
-                <sup style="font-size: 12px">
-                    [14]
-                </sup>
-            </a>
-        </h2>
-        
-            <script type="text/javascript" charset="utf-8" src="/js/tagcloud.js"></script>
-            <script type="text/javascript" charset="utf-8" src="/js/tagcanvas.js"></script>
-            <div class="widget-wrap">
-                <div id="myCanvasContainer" class="widget tagcloud">
-                    <canvas width="250" height="250" id="resCanvas" style="width=100%">
-                        <a href="/tags/cycling/" style="font-size: 10px;">cycling</a> <a href="/tags/domain/" style="font-size: 10px;">domain</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/github-pages/" style="font-size: 10px;">github pages</a> <a href="/tags/hexo/" style="font-size: 18px;">hexo</a> <a href="/tags/ingress/" style="font-size: 10px;">ingress</a> <a href="/tags/isnot/" style="font-size: 10px;">isnot</a> <a href="/tags/javascript/" style="font-size: 20px;">javascript</a> <a href="/tags/npm/" style="font-size: 14px;">npm</a> <a href="/tags/photo/" style="font-size: 16px;">photo</a> <a href="/tags/rose/" style="font-size: 12px;">rose</a> <a href="/tags/sakura/" style="font-size: 10px;">sakura</a> <a href="/tags/skyscraper/" style="font-size: 10px;">skyscraper</a> <a href="/tags/ubuntu/" style="font-size: 10px;">ubuntu</a>
-                    </canvas>
-                </div>
-            </div>
-        
+  <div class="widget-wrap">
+    <h3 class="widget-title">タグ一覧</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/chatbot/" style="font-size: 10px;">chatbot</a> <a href="/tags/cycling/" style="font-size: 10px;">cycling</a> <a href="/tags/domain/" style="font-size: 10px;">domain</a> <a href="/tags/gas/" style="font-size: 10px;">gas</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/github-pages/" style="font-size: 10px;">github pages</a> <a href="/tags/hexo/" style="font-size: 17.5px;">hexo</a> <a href="/tags/ingress/" style="font-size: 10px;">ingress</a> <a href="/tags/isnot/" style="font-size: 10px;">isnot</a> <a href="/tags/javascript/" style="font-size: 20px;">javascript</a> <a href="/tags/line/" style="font-size: 10px;">line</a> <a href="/tags/npm/" style="font-size: 15px;">npm</a> <a href="/tags/photo/" style="font-size: 17.5px;">photo</a> <a href="/tags/rose/" style="font-size: 12.5px;">rose</a> <a href="/tags/sakura/" style="font-size: 10px;">sakura</a> <a href="/tags/skyscraper/" style="font-size: 10px;">skyscraper</a> <a href="/tags/telegram/" style="font-size: 10px;">telegram</a> <a href="/tags/ubuntu/" style="font-size: 10px;">ubuntu</a>
     </div>
+  </div>
+
+  
     
-    <aside id="recent">
-        <h2>最近の投稿</h2>
-        <ul class="recent-list">
-        
-            <li class="recent-list-item"><a class="recent-list-link" href="/2019-11/18-apt-btrfs-snapshot-df/">
-                apt-btrfs-snapshotによるディスク容量の消費
-            </a></li>
-        
-            <li class="recent-list-item"><a class="recent-list-link" href="/2019-10/17-tamako-cycling/">
-                多摩湖自転車歩行者道〜六道山〜文明堂壹番館
-            </a></li>
-        
-            <li class="recent-list-item"><a class="recent-list-link" href="/2019-09/24-Avenir-Shards-Bookmarklet/">
-                Avenir Shards Bookmarklet
-            </a></li>
-        
-            <li class="recent-list-item"><a class="recent-list-link" href="/2019-06/23-GoogleSpreadsheetAPIv4/">
-                GoogleSpreadsheetAPIv4
-            </a></li>
-        
-            <li class="recent-list-item"><a class="recent-list-link" href="/2019-06/17-hydrangea/">
-                アジサイ2019
-            </a></li>
-        
-            <li class="recent-list-item"><a class="recent-list-link" href="/2019-06/08-update-hexo-tag-gpa/">
-                hexo-tag-google-photos-album をアップデートした
-            </a></li>
-        
-            <li class="recent-list-item"><a class="recent-list-link" href="/2019-05/30-TMG-Observatories/">
-                東京都庁展望室
-            </a></li>
-        
-            <li class="recent-list-item"><a class="recent-list-link" href="/2019-05/30-shikinokaori-rose-garden/">
-                四季の香ローズガーデン2019
-            </a></li>
-        
-            <li class="recent-list-item"><a class="recent-list-link" href="/2019-05/26-hoya-rose-garden/">
-                保谷町ローズガーデン2019
-            </a></li>
-        
-            <li class="recent-list-item"><a class="recent-list-link" href="/2019-05/06-study-about-hexos-internals-6/">
-                Hexo 内部探訪 (6) DevToolsを使ったデバッグ
-            </a></li>
-        
-        </ul>
-    </aside>
+  <div class="widget-wrap">
+    <h3 class="widget-title">カテゴリ</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/hexo/">hexo</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/javascript/">javascript</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/myself/">myself</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/photo/">photo</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/ubuntu/">ubuntu</a></li></ul>
+    </div>
+  </div>
+
+
+  
     
-    
-<aside id="categories">
-    <h2>カテゴリー</h2>
-    
-        <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/hexo/">hexo</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/javascript/">javascript</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/myself/">myself</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/photo/">photo</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/ubuntu/">ubuntu</a></li></ul>
-    
+  <div class="widget-wrap">
+    <h3 class="widget-title">アーカイブ</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">2020/06</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">2020/04</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">2019/11</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">2019/10</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">2019/09</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">2019/06</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">2019/05</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">2019/04</a></li></ul>
+    </div>
+  </div>
+
+
+  
 </aside>
-
-    
-<aside id="archives">
-    <h2>アーカイブ</h2>
-    
-    <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">十一月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">十月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">九月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">六月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">五月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">四月 2019</a></li></ul>
-    
-</aside>
-
-    
-        <div id="toc">
-            
-                <h2>目次</h2>
-                <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#インジェクションの方法"><span class="toc-number">1.</span> <span class="toc-text">インジェクションの方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#状態の参照"><span class="toc-number">2.</span> <span class="toc-text">状態の参照</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#他にも、開発の役に立ちそうなこと"><span class="toc-number">3.</span> <span class="toc-text">他にも、開発の役に立ちそうなこと</span></a></li></ol>
-            
-        </div>
-    
-</div>
-
-</div>
-
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 isnot<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
     </div>
-</div>
-<footer id="footer">
-    <div id="copyright">&copy; isnot  2019</div>
-    <div id="theme">
-        Powered by <a href="http://hexo.io">Hexo</a>. Theme by <a href="https://github.com/markyong/hexo-theme-stage">Stage</a>
-    </div>
+  </div>
 </footer>
-<script src="/js/header-bg.main.js"></script>
 
-    <script src="/lib/js/smooth-scroll.min.js"></script>
-    <script src="/js/toc.main.js"></script>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives/" class="mobile-nav-link">Archives</a>
+  
+    <a href="/about/" class="mobile-nav-link">About</a>
+  
+    <a href="/tags/" class="mobile-nav-link">Tag</a>
+  
+</nav>
+    
 
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
 </body>
 </html>

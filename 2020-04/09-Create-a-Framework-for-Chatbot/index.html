@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  
+  <title>チャット・ボットのためのフレームワークを開発してみた。序章 | isnot N3 | isnot N3</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no">
+  <meta name="description" content="GASでChat Botを動かすためのFrameworkを作成する。 背景ここで言うチャットとは、LINEやTelegramのような、グループチャットのことです。また興味の対象としては、アプリとしてよりも、プラットフォーム（サービスの基盤）として、見ています。 チャット・ボット（Chat Bot、単にBotと呼ぶ場合が多い）とは、そのようなチャットの中で、機能的、あるいは非機能的な振る舞いをする、">
+<meta property="og:type" content="article">
+<meta property="og:title" content="チャット・ボットのためのフレームワークを開発してみた。序章">
+<meta property="og:url" content="https://pages.isnot.jp/2020-04/09-Create-a-Framework-for-Chatbot/index.html">
+<meta property="og:site_name" content="isnot N3">
+<meta property="og:description" content="GASでChat Botを動かすためのFrameworkを作成する。 背景ここで言うチャットとは、LINEやTelegramのような、グループチャットのことです。また興味の対象としては、アプリとしてよりも、プラットフォーム（サービスの基盤）として、見ています。 チャット・ボット（Chat Bot、単にBotと呼ぶ場合が多い）とは、そのようなチャットの中で、機能的、あるいは非機能的な振る舞いをする、">
+<meta property="og:locale" content="ja_JP">
+<meta property="article:published_time" content="2020-04-08T22:54:19.000Z">
+<meta property="article:modified_time" content="2020-04-08T22:54:19.000Z">
+<meta property="article:author" content="isnot">
+<meta property="article:tag" content="javascript">
+<meta property="article:tag" content="gas">
+<meta property="article:tag" content="telegram">
+<meta property="article:tag" content="line">
+<meta property="article:tag" content="chatbot">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="isnot N3">
+  
+  
+    <link rel="icon" href="/favicon.ico">
+  
+  
+    
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Source+Code+Pro.css">
+
+  
+  
+    
+      
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/css/lightgallery.min.css">
+
+    
+      
+<link rel="stylesheet" href="/css/font-awesome.min.css">
+
+    
+      
+<link rel="stylesheet" href="/css/style.css">
+
+    
+      
+<link rel="stylesheet" href="/css/pages-isnot-jp.css">
+
+    
+  
+<meta name="generator" content="Hexo 4.2.1"><link rel="alternate" href="/atom.xml" title="isnot N3" type="application/atom+xml">
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">isnot N3</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          Javascript, Node.js, npm, git, GitHub, MPD, Ubuntu, LXQt, Emacs, Chat Bot, Photo
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives/">Archives</a>
+        
+          <a class="main-nav-link" href="/about/">About</a>
+        
+          <a class="main-nav-link" href="/tags/">Tag</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSSフィード"></a>
+        
+      </nav>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-Create-a-Framework-for-Chatbot" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2020-04/09-Create-a-Framework-for-Chatbot/" class="article-date">
+  <time class="dt-published" datetime="2020-04-08T22:54:19.000Z" itemprop="datePublished">2020-04-09</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/javascript/">javascript</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      チャット・ボットのためのフレームワークを開発してみた。序章
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <link crossorigin="anonymous" media="screen" rel="stylesheet" href="/css/google_photos_album.css" /><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/lightgallery.js@1.1.3/dist/css/lightgallery.min.css" /><div class="article-gallery"><p>GASでChat Botを動かすためのFrameworkを作成する。</p>
+<h1 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h1><p>ここで言うチャットとは、LINEやTelegramのような、グループチャットのことです。<br>また興味の対象としては、アプリとしてよりも、プラットフォーム（サービスの基盤）として、見ています。</p>
+<p>チャット・ボット（Chat Bot、単にBotと呼ぶ場合が多い）とは、そのようなチャットの中で、機能的、あるいは非機能的な振る舞いをする、自動的なプログラムのことを指します。</p>
+<p>各チャットのサービス（プラットフォーム）を提供する事業者は、そういったBotを作成・動作させるための仕組みを、一般の第三者に対して提供しています。<br>つまり利用者（私、Botの開発者）がプログラムを作成し、動かすことによって、チャットの中に独自の機能や価値を、組み入れていくことができます。</p>
+<h1 id="課題"><a href="#課題" class="headerlink" title="課題"></a>課題</h1><p>独自のBotを動かそうとしたとき、Botのプログラムを動作させる場所（いわゆるサーバー）が必要になってきます。<br>この点が比較的大きめの障壁であると感じられます。</p>
+<p>簡単なテストの目的で動かすとか、あるいは開発をする段階では、普段使っている自分の（自宅の）パソコンだけで十分です。<br>しかし本格的に、継続的・安定的に動かし続けるのであれば、それでは足りず、サーバーで動かしたくなってきます。</p>
+<p>でも、公開のサーバーを管理するのは、何かと手間やリスクがつきもので、できる限り避けたいものです。<br>そこで昨今の情勢としては、いわゆるパブリック・クラウドと呼ばれる、フルマネージド型（管理を代行してくれる、利用者は手間が少ない）のサーバー運用サービスが主流です。<br>その中でも、サーバーレスと言われるタイプのヤツでは、「サーバーの管理」という概念が、利用者（Bot開発者）側にまったくありません。</p>
+<p>多くの場合で、サーバーレスと言えば、AmazonのAWSや、GoogleのGCP、MicrosoftのAzureといったプラットフォームの中で提供されているモノを指していることが多いと思われますが、さらにお手軽なモノがあります。<br>それが、Google Apps Script、通称GASです。</p>
+<p>GASでは、利用者が用意したプログラムを24時間動かすことができます。<br>それは、チャットのサービスや、それ以外の外部のサービスと連携させる事も可能で、さらにGoogleが持つ多くの製品との連携がかなり簡単にできるようになっています。<br>具体的には、スプレッドシートの内容を読み書きし、またチャットのサービスから送信されるリクエストを待ち受けて、また逆にメッセージ等を送り返す（チャットのメンバーに届ける）ことができるわけです。</p>
+<h1 id="GASの特徴と利点、そして制約"><a href="#GASの特徴と利点、そして制約" class="headerlink" title="GASの特徴と利点、そして制約"></a>GASの特徴と利点、そして制約</h1><p>Googleアカウントを持っているならば、それを使ってすぐに始められます。<br>GmailやGoogleドライブ、Google Play等を利用したことがあるならば、Googleアカウントは既に利用可能な状態です。<br>また、普段使っているものとは別に、Googleアカウントを作成しても良いです。</p>
+<p>利用は基本的に無料です。これは大きいです。<br>例えば同じGoogleでも、GCPやFirebaseでも無料枠の中でそれなりのことが可能だろうと思いますが、クレジット・カードの登録が必要であり、その部分の違い（GASなら請求のおそれがない）は大であります。</p>
+<p>何よりGoogleブランドの安心感。サーバーの運用面は一切おまかせです。</p>
+<p>しかし何でも可能というわけではなく、一定の制約があります。<br>コンピューター資源の使用量や回数に上限が定められています。<br>また、普通はありませんが、極端に負荷がかかる状態を継続していると、前記の無料という話に関わらず、上位の有料プランにアップグレードする必要が発生する可能性があるようです。</p>
+<p>また、個人的に使う、あるいは一定の人数のグループで使うためのチャット・ボットという程度であればさしたる問題になりませんが、処理の速度、パフォーマンスという面では、「まぁまぁ、そこそこ」程度です。</p>
+<p>シビアな反応速度（レイテンシ）が求められる用途には向いていないです。<br>また、個人的なざっくりとした感覚ですが、チャットの参加人数は延べ100人程度までにしておくと良いかと思われます。<br>それを超える規模で必要であれば、別のGoogleアカウントを併用するなど、工夫が必要です。が、そうなると管理の手間が増えてしまいますし、GAS以外の選択肢が視野に入ってくるかと思われます。</p>
+<p>それと可用性の面ですが、GASはときどき止まります。これも感覚ですが、半年に1回とか。<br>トラブル（Googleが攻撃を受ける）等で停止することもありますし、全体的に問題なく動いている場合でも、不意に処理が抜け落ちる（応答がない、タイムアウトする）といった現象が起こりえます。<br>そういう「不意落ち」は、数ヶ月に1回位は見る気がします。これはプログラム側の問題や、その他の外部要因もあるだろうと思われ、一概にGASのサービス・レベルの問題とは言えないのかもしれませんが、それでも他のより本格的なクラウドサービスと比べた場合、割り引いて見ておくと良いかと思います。</p>
+<h1 id="目的"><a href="#目的" class="headerlink" title="目的"></a>目的</h1><h1 id="前提条件"><a href="#前提条件" class="headerlink" title="前提条件"></a>前提条件</h1><h1 id="必要な要素"><a href="#必要な要素" class="headerlink" title="必要な要素"></a>必要な要素</h1><h1 id="現時点までの状況"><a href="#現時点までの状況" class="headerlink" title="現時点までの状況"></a>現時点までの状況</h1><h1 id="今後の目標"><a href="#今後の目標" class="headerlink" title="今後の目標"></a>今後の目標</h1></div><script src="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/js/lightgallery.min.js"></script><script src="/js/lg-thumbnail.min.js"></script><script src="/js/lg-zoom.min.js"></script><script src="/js/lg-autoplay.min.js"></script><script src="/js/lg-fullscreen.min.js"></script><script src="/js/lg-pager.min.js"></script><script src="/js/lg-hash.min.js"></script><script>if (typeof lightGallery !== 'undefined') {
+        var options = {
+            selector: '.gallery-item'
+        };
+        lightGallery(document.getElementsByClassName('article-gallery')[0], options);
+        }</script><script>
+function addLoadEvent(func) {
+  const oldonload = window.onload;
+  if (typeof window.onload !== 'function') {
+    window.onload = func;
+  } else {
+    window.onload = () => {
+      oldonload();
+      func();
+    };
+  }
+}
+  addLoadEvent(() => {
+    try {
+      if (window.innerWidth < Number('768')) {
+        return;
+      }
+      const imgs = Array.from(document.body.querySelectorAll('.google-photos-album-images a'));
+      imgs.push(...Array.from(document.body.querySelectorAll('a.google-photos-album-image')));
+      for (const anchor of imgs) {
+        anchor.href = anchor.href.replace(/=s720\-no/i, '=s1920-no');
+      }
+    } catch (e) {
+      console.log(e);
+    }
+  });
+</script>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://pages.isnot.jp/2020-04/09-Create-a-Framework-for-Chatbot/" data-id="ckcm4f93k00022wbq5k0g3srl" data-title="チャット・ボットのためのフレームワークを開発してみた。序章" class="article-permalink">
+      
+      </a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/chatbot/" rel="tag">chatbot</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/gas/" rel="tag">gas</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/" rel="tag">javascript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/line/" rel="tag">line</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/telegram/" rel="tag">telegram</a></li></ul>
+
+    </footer>
+    <div class="article-footer">
+      
+      
+<div id="stageComment" class="comment fa fa-comment-o">
+  チャット・ボットのためのフレームワークを開発してみた。序章 について、
+  <a href="https://github.com/isnot/isnot.github.io/issues/new?labels=blog-comments&title=チャット・ボットのためのフレームワークを開発してみた。序章&body=About%20%5B%E3%83%81%E3%83%A3%E3%83%83%E3%83%88%E3%83%BB%E3%83%9C%E3%83%83%E3%83%88%E3%81%AE%E3%81%9F%E3%82%81%E3%81%AE%E3%83%95%E3%83%AC%E3%83%BC%E3%83%A0%E3%83%AF%E3%83%BC%E3%82%AF%E3%82%92%E9%96%8B%E7%99%BA%E3%81%97%E3%81%A6%E3%81%BF%E3%81%9F%E3%80%82%E5%BA%8F%E7%AB%A0%5D(https%3A%2F%2Fpages.isnot.jp%2F2020-04%2F09-Create-a-Framework-for-Chatbot%2Findex.html)" target="_blank" rel="noopener">
+    GitHubでコメントする
+  </a>
+</div>
+
+      
+    </div>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2020-06/25-hydrangea2020/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">次の記事</strong>
+      <div class="article-nav-title">
+        
+          アジサイ2020
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2019-11/18-apt-btrfs-snapshot-df/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">前の記事</strong>
+      <div class="article-nav-title">apt-btrfs-snapshotによるディスク容量の消費</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    <div id="owner" class="widget-wrap">
+  <h3 class="widget-title">&nbsp;</h3>
+  <div class="widget author">
+    <a href="/"><img class="avatar" src="/images/makino-otometsubaki512.png" alt=""></a>
+    <a href="/"><h3 class="author">isnot</h3></a>
+    <h4>いしだなおと の、ブログ的な。</h4>
+    <div class="social">
+      
+        
+          <a href="/atom.xml" title="rss" class="fa fa-rss" target="_blank"></a>
+        
+      
+        
+          <a href="https://github.com/isnot" title="github" class="fa fa-github" target="_blank"></a>
+        
+      
+        
+          <a href="https://soundcloud.com/isnot-jp" title="soundcloud" class="fa fa-soundcloud" target="_blank"></a>
+        
+      
+        
+          <a href="https://www.youtube.com/channel/UCy6ciW14LkMnyXFkxi9uwNw" title="youtube" class="fa fa-youtube" target="_blank"></a>
+        
+      
+        
+          <a href="https://t.me/isnot" title="telegram" class="fa fa-telegram" target="_blank"></a>
+        
+      
+        
+          <a href="https://mewe.com/i/naoto" title="user" class="fa fa-user" target="_blank"></a>
+        
+      
+    </div>
+  </div>
+</div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最近の投稿</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2020-06/25-hydrangea2020/">アジサイ2020</a>
+          </li>
+        
+          <li>
+            <a href="/2020-04/09-Create-a-Framework-for-Chatbot/">チャット・ボットのためのフレームワークを開発してみた。序章</a>
+          </li>
+        
+          <li>
+            <a href="/2019-11/18-apt-btrfs-snapshot-df/">apt-btrfs-snapshotによるディスク容量の消費</a>
+          </li>
+        
+          <li>
+            <a href="/2019-10/17-tamako-cycling/">多摩湖自転車歩行者道〜六道山〜文明堂壹番館</a>
+          </li>
+        
+          <li>
+            <a href="/2019-09/24-Avenir-Shards-Bookmarklet/">Avenir Shards Bookmarklet</a>
+          </li>
+        
+          <li>
+            <a href="/2019-06/23-GoogleSpreadsheetAPIv4/">GoogleSpreadsheetAPIv4</a>
+          </li>
+        
+          <li>
+            <a href="/2019-06/17-hydrangea/">アジサイ2019</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">タグ一覧</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/chatbot/" style="font-size: 10px;">chatbot</a> <a href="/tags/cycling/" style="font-size: 10px;">cycling</a> <a href="/tags/domain/" style="font-size: 10px;">domain</a> <a href="/tags/gas/" style="font-size: 10px;">gas</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/github-pages/" style="font-size: 10px;">github pages</a> <a href="/tags/hexo/" style="font-size: 17.5px;">hexo</a> <a href="/tags/ingress/" style="font-size: 10px;">ingress</a> <a href="/tags/isnot/" style="font-size: 10px;">isnot</a> <a href="/tags/javascript/" style="font-size: 20px;">javascript</a> <a href="/tags/line/" style="font-size: 10px;">line</a> <a href="/tags/npm/" style="font-size: 15px;">npm</a> <a href="/tags/photo/" style="font-size: 17.5px;">photo</a> <a href="/tags/rose/" style="font-size: 12.5px;">rose</a> <a href="/tags/sakura/" style="font-size: 10px;">sakura</a> <a href="/tags/skyscraper/" style="font-size: 10px;">skyscraper</a> <a href="/tags/telegram/" style="font-size: 10px;">telegram</a> <a href="/tags/ubuntu/" style="font-size: 10px;">ubuntu</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">カテゴリ</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/hexo/">hexo</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/javascript/">javascript</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/myself/">myself</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/photo/">photo</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/ubuntu/">ubuntu</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">アーカイブ</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">2020/06</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">2020/04</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">2019/11</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">2019/10</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">2019/09</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">2019/06</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">2019/05</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">2019/04</a></li></ul>
+    </div>
+  </div>
+
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 isnot<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives/" class="mobile-nav-link">Archives</a>
+  
+    <a href="/about/" class="mobile-nav-link">About</a>
+  
+    <a href="/tags/" class="mobile-nav-link">Tag</a>
+  
+</nav>
+    
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>

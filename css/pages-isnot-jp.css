@@ -10,10 +10,17 @@ article h3 { margin: 1.5em 0 0.5em 0; font-weight: bold; text-decoration: underl
 #owner .author h4 { margin: 1.5em 0 0.5em 0; font-weight: bold; color: black; font-size: 90%; }
 .category-list-item, .archive-list-item { letter-spacing: 1px; }
 
+.article-entry blockquote { border-left: dotted silver 4px; padding-left: 1ex; text-align: left; font-size: larger; }
+.article-entry blockquote:before { content: "❝"; color: silver; }
+.article-entry blockquote:after { content: "❞"; color: silver; }
+.article-entry blockquote p { margin: 0.3em auto; color: #337; }
+
 #stageComment { border: silver dotted 2px; padding: 8px 12px; margin: 4px auto; }
 #stageComment a { color: #33c; }
 
-.article-gallery { background: white; color:black; }
+#gotoTop { display: block; position: absolute; right: 2ex; color: white; font-size: 64px; }
+
+.article-gallery { background: white; color: #333; }
 .index-entry .google-photos-album-images { max-height: 100px; }
 
 @media screen and (max-width: 768px) {

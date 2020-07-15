@@ -119,7 +119,7 @@
 <p>このようにinspectを有効化してから、ブラウザ（Chromiumを利用）で<code>chrome://inspect</code>を開き、<code>Remote Target</code>の中に現れる<code>inspect this</code>から、デバッカーを開始する。</p>
 <p>これだと、デバッカーに馴れていない私にとっては、見たいところにたどり着くまでに手間取ってしまった。</p>
 <p>そこで、自身で開発中のプラグインの中に、任意のブレークポイントをあらかじめ挿入してしまう。</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">  <span class="keyword">debugger</span>;</span><br><span class="line"><span class="string">`</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">debugger</span>;</span><br></pre></td></tr></table></figure>
 
 <p>そして</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ node --inspect node_modules/hexo-cli/bin/hexo g --debug</span><br></pre></td></tr></table></figure>
@@ -163,7 +163,7 @@ function addLoadEvent(func) {
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://pages.isnot.jp/2019-05/06-study-about-hexos-internals-6/" data-id="ckcned515001khibq4oa62uuy" data-title="Hexo 内部探訪 (6) DevToolsを使ったデバッグ" class="article-permalink">
+      <a data-url="https://pages.isnot.jp/2019-05/06-study-about-hexos-internals-6/" data-id="ckcngngzz001iwkbq80khan3k" data-title="Hexo 内部探訪 (6) DevToolsを使ったデバッグ" class="article-permalink">
       
       </a>
       
@@ -326,9 +326,11 @@ function addLoadEvent(func) {
       <footer id="footer">
   
   <div class="outer">
+  <div id="gotoTop"><span class="fa fa-arrow-circle-up" title="↑Scroll to top of page">&nbsp;</span></div>
     <div id="footer-info" class="inner">
       &copy; 2020 isnot<br>
-      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>,
+      Theme &quot;Horizon&quot; based on <a href="https://github.com/hexojs/hexo-theme-landscape" target="_blank">Landscape</a>
     </div>
   </div>
 </footer>

@@ -11,4 +11,13 @@
     if (!container.classList.contains('mobile-nav-on')) return;
     container.classList.remove('mobile-nav-on');
   }, false);
+
+  // goto top of page
+  document.getElementById('gotoTop').addEventListener('click', (e) => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  }, false);
+
 })();

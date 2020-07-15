@@ -91,72 +91,128 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="<%= post.layout %>-<%= post.slug %>" class="h-entry article article-type-<%= post.layout %>" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+        <section id="main"><article id="post-hexo-tag-google-photos-album-is-arrived" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
-    <%- partial('post/date', {class_name: 'article-date', date_format: null}) %>
-    <%- partial('post/category') %>
+    <a href="/2019-04/30-hexo-tag-google-photos-album-is-arrived/" class="article-date">
+  <time class="dt-published" datetime="2019-04-29T16:36:16.000Z" itemprop="datePublished">2019-04-30</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/javascript/">javascript</a>
+  </div>
+
   </div>
   <div class="article-inner">
-    <%- partial('post/gallery') %>
-    <% if (post.link || post.title){ %>
+    
+    
       <header class="article-header">
-        <%- partial('post/title', {class_name: 'p-name article-title'}) %>
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      hexo-tag-google-photos-album 公開しました
+    </h1>
+  
+
       </header>
-    <% } %>
+    
     <div class="e-content article-entry" itemprop="articleBody">
-      <% if (post.excerpt && index){ %>
-        <%- post.excerpt %>
-        <% if (theme.excerpt_link){ %>
-          <p class="article-more-link">
-            <a href="<%- url_for(post.path) %>#more"><%= theme.excerpt_link %></a>
-          </p>
-        <% } %>
-      <% } else { %>
-        <%- post.content %>
-      <% } %>
+      
+        <link crossorigin="anonymous" media="screen" rel="stylesheet" href="/css/google_photos_album.css" /><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/lightgallery.js@1.1.3/dist/css/lightgallery.min.css" /><div class="article-gallery"><p>静的サイトジェネレータのひとつである、<a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>。<br>当ブログで使用している訳ですが、それ用のタグ・プラグインを作成、公開しました。</p>
+<p><a href="https://photos.google.com/" target="_blank" rel="noopener">Googleフォト</a> の、アルバムを埋め込みます。</p>
+<p><a href="https://nodei.co/npm/hexo-tag-google-photos-album/" target="_blank" rel="noopener"><img src="https://nodei.co/npm/hexo-tag-google-photos-album.png" alt="NPM"></a></p>
+<ul>
+<li>(GitHub) <a href="https://github.com/isnot/hexo-tag-google-photos-album" target="_blank" rel="noopener">hexo-tag-google-photos-album</a></li>
+<li>(npm) <a href="https://www.npmjs.com/package/hexo-tag-google-photos-album" target="_blank" rel="noopener">hexo-tag-google-photos-album</a></li>
+<li>(sample) <a href="https://pages.isnot.jp/2019-04/13-image-test/">https://pages.isnot.jp/2019-04/13-image-test/</a></li>
+</ul>
+<p>詳しくは、<a href="https://github.com/isnot/hexo-tag-google-photos-album/blob/master/README.ja.md" target="_blank" rel="noopener">簡単な説明</a>を書いたので、そちらをご参照ください。</p>
+<p>npmにモジュールを公開するのは初めてなのですが、思った以上に手続きというか手順が簡単ですね。</p>
+<p>成果物のほうはと言うと、初期のコンセプトに沿ったProof of conceptまではすぐに出来たのですが、細部の詰めを固めるのに、かなり手間取りました。</p>
+<p>あと、Googleフォトにある画像のURLをスクレイピングで抜き出している部分は、アドホックなものだという認識で、あちら次第で変わったりするのかなと思ってます。<br>og:imageに入っているカバー画像のURLだけは、比較的に永続性があると思われます。<br>それ以外は、まぁ、よくわからない😁。</p>
+</div><script src="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/js/lightgallery.min.js"></script><script src="/js/lg-thumbnail.min.js"></script><script src="/js/lg-zoom.min.js"></script><script src="/js/lg-autoplay.min.js"></script><script src="/js/lg-fullscreen.min.js"></script><script src="/js/lg-pager.min.js"></script><script src="/js/lg-hash.min.js"></script><script>if (typeof lightGallery !== 'undefined') {
+        var options = {
+            selector: '.gallery-item'
+        };
+        lightGallery(document.getElementsByClassName('article-gallery')[0], options);
+        }</script><script>
+function addLoadEvent(func) {
+  const oldonload = window.onload;
+  if (typeof window.onload !== 'function') {
+    window.onload = func;
+  } else {
+    window.onload = () => {
+      oldonload();
+      func();
+    };
+  }
+}
+  addLoadEvent(() => {
+    try {
+      if (window.innerWidth < Number('768')) {
+        return;
+      }
+      const imgs = Array.from(document.body.querySelectorAll('.google-photos-album-images a'));
+      imgs.push(...Array.from(document.body.querySelectorAll('a.google-photos-album-image')));
+      for (const anchor of imgs) {
+        anchor.href = anchor.href.replace(/=s720\-no/i, '=s1920-no');
+      }
+    } catch (e) {
+      console.log(e);
+    }
+  });
+</script>
+
+      
     </div>
     <footer class="article-footer">
-      <a data-url="<%- post.permalink %>" data-id="<%= post._id %>" data-title="<%= post.title %>" class="article-permalink">
-      <% if (page.updated && page.date.format() !== page.updated.format()) {%>
-        <time class="post__date" datetime="<%- page.updated.format() %>">
-        <%- '更新: ' + page.updated.format("YYYY.MM.DD") %>
-        </time>
-      <% } %>
+      <a data-url="https://pages.isnot.jp/2019-04/30-hexo-tag-google-photos-album-is-arrived/" data-id="ckcn8sebq000dzubqcxkw3maf" data-title="hexo-tag-google-photos-album 公開しました" class="article-permalink">
+      
       </a>
-      <% if (post.comments && config.disqus_shortname){ %>
-        <a href="<%- post.permalink %>#disqus_thread" class="article-comment-link"><%= __('comment') %></a>
-      <% } %>
-      <% if (post.comments && theme.valine.enable && theme.valine.appId && theme.valine.appKey ){ %>
-        <a href="<%- url_for(post.path) %>#comments" class="article-comment-link">
-          <span class="post-comments-count valine-comment-count" data-xid="<%- url_for(post.path) %>" itemprop="commentCount"></span>
-          <%= __('comment') %>
-        </a>
-      <% } %>
-      <%- partial('post/tag') %>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/github/" rel="tag">github</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hexo/" rel="tag">hexo</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/" rel="tag">javascript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/npm/" rel="tag">npm</a></li></ul>
+
     </footer>
     <div class="article-footer">
-      <% if (!index && post.comments){ %>
-      <%- partial('_partial/comment-on-issue', {post: page, index: false}) %>
-      <% } %>
+      
+      
+<div id="stageComment" class="comment fa fa-comment-o">
+  hexo-tag-google-photos-album 公開しました について、
+  <a href="https://github.com/isnot/isnot.github.io/issues/new?labels=blog-comments&title=hexo-tag-google-photos-album 公開しました&body=About%20%5Bhexo-tag-google-photos-album%20%E5%85%AC%E9%96%8B%E3%81%97%E3%81%BE%E3%81%97%E3%81%9F%5D(https%3A%2F%2Fpages.isnot.jp%2F2019-04%2F30-hexo-tag-google-photos-album-is-arrived%2Findex.html)" target="_blank" rel="noopener">
+    GitHubでコメントする
+  </a>
+</div>
+
+      
     </div>
   </div>
-  <% if (!index){ %>
-    <%- partial('post/nav') %>
-  <% } %>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2019-05/01-azalea/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">次の記事</strong>
+      <div class="article-nav-title">
+        
+          ツツジ
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2019-04/15-sakura2019/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">前の記事</strong>
+      <div class="article-nav-title">さくら 2019</div>
+    </a>
+  
+</nav>
+
+  
 </article>
 
-<% if (!index && post.comments && config.disqus_shortname){ %>
-<section id="comments">
-  <div id="disqus_thread">
-    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript" target="_blank" rel="noopener">comments powered by Disqus.</a></noscript>
-  </div>
-</section>
-<% } %>
-<% if (!index && post.comments && theme.valine.enable && theme.valine.appId && theme.valine.appKey){ %>
-  <section id="comments" class="vcomment">
 
-  </section>
-<% } %>
+
 </section>
         
           <aside id="sidebar">

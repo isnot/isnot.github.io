@@ -88,72 +88,149 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="<%= post.layout %>-<%= post.slug %>" class="h-entry article article-type-<%= post.layout %>" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+        <section id="main"><article id="post-study-about-hexos-internals-2" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
-    <%- partial('post/date', {class_name: 'article-date', date_format: null}) %>
-    <%- partial('post/category') %>
+    <a href="/2019-05/06-study-about-hexos-internals-2/" class="article-date">
+  <time class="dt-published" datetime="2019-05-05T15:02:00.000Z" itemprop="datePublished">2019-05-06</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/hexo/">hexo</a>
+  </div>
+
   </div>
   <div class="article-inner">
-    <%- partial('post/gallery') %>
-    <% if (post.link || post.title){ %>
+    
+    
       <header class="article-header">
-        <%- partial('post/title', {class_name: 'p-name article-title'}) %>
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      Hexo 内部探訪 (2) 準備 npm linkメモ
+    </h1>
+  
+
       </header>
-    <% } %>
+    
     <div class="e-content article-entry" itemprop="articleBody">
-      <% if (post.excerpt && index){ %>
-        <%- post.excerpt %>
-        <% if (theme.excerpt_link){ %>
-          <p class="article-more-link">
-            <a href="<%- url_for(post.path) %>#more"><%= theme.excerpt_link %></a>
-          </p>
-        <% } %>
-      <% } else { %>
-        <%- post.content %>
-      <% } %>
+      
+        <link crossorigin="anonymous" media="screen" rel="stylesheet" href="/css/google_photos_album.css" /><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/lightgallery.js@1.1.3/dist/css/lightgallery.min.css" /><div class="article-gallery"><h2 id="npm-linkを使いこなすには"><a href="#npm-linkを使いこなすには" class="headerlink" title="npm linkを使いこなすには"></a>npm linkを使いこなすには</h2><p><a href="https://docs.npmjs.com/cli/link.html" target="_blank" rel="noopener">npm link</a>という、ありがたい仕組みがあって、非公開のモジュール（または開発中のバージョン）を、node_modulesの中に配置することができる。<br>基本的には、シンボリック・リンクである。</p>
+<p>ここまでは、すぐに把握できたけど、実はうまく動作させるための、さらなる条件があった。</p>
+<p>モジュールを読み込む側と、読み込まれる側のモジュールが、ファイルシステム上で同階層になるように配置されている必要があるのだった。</p>
+<p>私の場合だけど、開発中のリポジトリは、ある場所にまとめてある。<br>例：<code>~/repository/hexo-tag-google-photos-album/</code><br>これが、Hexoプラグインを開発する場所。</p>
+<p>一方で、ただ使うだけのものは、別の場所にある。<br>Hexoで構成しているブログの作業場所は、こんな感じ。<br>例：<code>~/www/MyBlog/</code></p>
+<p>つまり、自分のブログに自分のプラグインを組み込むとすると、<br>例：<code>~/www/MyBlog/node_modules/hexo-tag-google-photos-album/</code><br>ということになる。</p>
+<p>しかしながら、npm link的には、上記の2箇所を直接リンクすることはできないわけだ。</p>
+<p>なので、さらに回りくどいが、以下のようにして、解決してみる。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">naoto@MyComputer:~/www/MyBlog$ <span class="built_in">cd</span> ..</span><br><span class="line">naoto@MyComputer:~/www$ ln -s ../repository/hexo-tag-google-photos-album</span><br><span class="line">naoto@MyComputer:~/www$ ls -l hexo-tag-google-photos-album</span><br><span class="line">lrwxrwxrwx 1 naoto naoto 42  5月  6 01:46 hexo-tag-google-photos-album -&gt; ../repository/hexo-tag-google-photos-album</span><br></pre></td></tr></table></figure>
+
+<p>こうすることで、開発中のプラグイン実体は従来通りのままとしつつ、link可能な場所にも配置できた。</p>
+<p>呼び出される側のlinkは、以下の通り。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">naoto@MyComputer:~/www$ <span class="built_in">cd</span> hexo-tag-google-photos-album</span><br><span class="line">naoto@MyComputer:~/www/hexo-tag-google-photos-album$ sudo npm link</span><br><span class="line">(snip)</span><br><span class="line">/usr/lib/node_modules/hexo-tag-google-photos-album -&gt; /home/naoto/repository/hexo-tag-google-photos-album</span><br></pre></td></tr></table></figure>
+
+<p>そして、呼び出す方で使う側の、つまりブログ側の（しつこい）linkはこの通り。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">naoto@MyComputer:~/www/hexo-tag-google-photos-album$ <span class="built_in">cd</span> ../MyBlog</span><br><span class="line">naoto@MyComputer:~/www/MyBlog$ npm link hexo-tag-google-photos-album</span><br><span class="line">/home/naoto/www/MyBlog/node_modules/hexo-tag-google-photos-album -&gt; /usr/lib/node_modules/hexo-tag-google-photos-album -&gt; /home/naoto/repository/hexo-tag-google-photos-album</span><br><span class="line">naoto@MyComputer:~/www/MyBlog$ grep photos package.json</span><br><span class="line">    <span class="string">"hexo-tag-google-photos-album"</span>: <span class="string">"git+https://github.com/isnot/hexo-tag-google-photos-album.git"</span>,</span><br><span class="line">naoto@MyComputer:~/www/MyBlog$ ls -l node_modules/hexo-tag-google-photos-album</span><br><span class="line">lrwxrwxrwx 1 naoto naoto 64  5月  6 01:50 node_modules/hexo-tag-google-photos-album -&gt; ../../../../../usr/lib/node_modules/hexo-tag-google-photos-album</span><br></pre></td></tr></table></figure>
+
+<p>これで、毎度git pushとnpm upを繰り返すこと無く、作業ができるようになる（はず）。<br>確かめてみよう。</p>
+<p>開発中のプラグインの中に、以下を書き加える。</p>
+<figure class="highlight javascript"><figcaption><span>~/repository/hexo-tag-google-photos-album/index.js</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> &#123; inspect &#125; = <span class="built_in">require</span>(<span class="string">'util'</span>);</span><br><span class="line"><span class="keyword">var</span> g = <span class="built_in">Function</span>(<span class="string">'return this'</span>)();</span><br><span class="line"><span class="built_in">console</span>.log(inspect(g, &#123; <span class="attr">depth</span>: <span class="number">0</span> &#125;));</span><br><span class="line"><span class="built_in">console</span>.log(inspect(hexo, &#123; <span class="attr">depth</span>: <span class="number">0</span> &#125;));</span><br></pre></td></tr></table></figure>
+
+<p>これを、コミットもせず、コピーもせず、動かしたい。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">naoto@MyComputer:~/www/MyBlog$ hexo list page</span><br><span class="line">Object [global] &#123;</span><br><span class="line">  global: [Circular],</span><br><span class="line">  process: [process],</span><br><span class="line">  Buffer: [Function],</span><br><span class="line">  clearImmediate: [Function: clearImmediate],</span><br><span class="line">  clearInterval: [Function: clearInterval],</span><br><span class="line">  clearTimeout: [Function: clearTimeout],</span><br><span class="line">  setImmediate: [Function],</span><br><span class="line">  setInterval: [Function: setInterval],</span><br><span class="line">  setTimeout: [Function] &#125;</span><br><span class="line">Hexo &#123;</span><br><span class="line">  _events: [Object: null prototype] &#123;&#125;,</span><br><span class="line">  _eventsCount: 0,</span><br><span class="line">  _maxListeners: undefined,</span><br><span class="line">  base_dir: <span class="string">'/home/naoto/www/MyBlog/'</span>,</span><br><span class="line">  public_dir: <span class="string">'/home/naoto/www/MyBlog/public/'</span>,</span><br><span class="line">  source_dir: <span class="string">'/home/naoto/www/MyBlog/source/'</span>,</span><br><span class="line">  plugin_dir: <span class="string">'/home/naoto/www/MyBlog/node_modules/'</span>,</span><br><span class="line">  script_dir: <span class="string">'/home/naoto/www/MyBlog/scripts/'</span>,</span><br><span class="line">  scaffold_dir: <span class="string">'/home/naoto/www/MyBlog/scaffolds/'</span>,</span><br><span class="line">  theme_dir: <span class="string">'/home/naoto/www/MyBlog/themes/stage/'</span>,</span><br><span class="line">  theme_script_dir: <span class="string">'/home/naoto/www/MyBlog/themes/stage/scripts/'</span>,</span><br><span class="line">  env: [Object],</span><br><span class="line">  extend: [Object],</span><br><span class="line">  config: [Object],</span><br><span class="line">  <span class="built_in">log</span>: [Logger],</span><br><span class="line">  render: [Render],</span><br><span class="line">  route: [Router],</span><br><span class="line">  post: [Post],</span><br><span class="line">  scaffold: [Scaffold],</span><br><span class="line">  _dbLoaded: <span class="literal">false</span>,</span><br><span class="line">  _isGenerating: <span class="literal">false</span>,</span><br><span class="line">  database: [Database],</span><br><span class="line">  config_path: <span class="string">'/home/naoto/www/MyBlog/_config.yml'</span>,</span><br><span class="line">  <span class="built_in">source</span>: [Source],</span><br><span class="line">  theme: [Theme],</span><br><span class="line">  locals: [Locals] &#125;</span><br><span class="line">INFO  Start processing</span><br><span class="line">INFO  ---- START COPYING TAG CLOUD FILES ----</span><br><span class="line">INFO  ---- END COPYING TAG CLOUD FILES ----</span><br><span class="line">Date        Title                          Path</span><br><span class="line">2019-04-09  Tags                           tags/index.md</span><br><span class="line">2019-04-13  About いしだなおと / isnot N3  about/index.md</span><br></pre></td></tr></table></figure>
+
+<p>できた！</p>
+<p>いいね。これで行こう。</p>
+<h2 id="運用中の注意事項"><a href="#運用中の注意事項" class="headerlink" title="運用中の注意事項"></a>運用中の注意事項</h2><p>上記のような手順でプラグインをlinkしてある状況下で、もし<code>npm update</code>したら、どういうことになるのだろうか？<br>試したところ、答えはlink状態が解除されて、package.jsonの記述内容の通りにモジュールが上書きされるということのようです。</p>
+<p>ところが、開発中のプラグインとは無関係に、他も含めたnpmモジュールをアップデートしたいということはあるだろうと考えられる。<br>こういった状態を回避するには、どうするべきか考えると、いくつか選択肢が思い浮かぶ。</p>
+<ul>
+<li>updateする頻度が低い場合は、毎回linkし直すという方法。あまり解決してない</li>
+<li>linkを維持したいモジュールは、package.jsonに書かなければいいのかな？試してない</li>
+<li>それ以外。何かあるかな？</li>
+</ul>
+</div><script src="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/js/lightgallery.min.js"></script><script src="/js/lg-thumbnail.min.js"></script><script src="/js/lg-zoom.min.js"></script><script src="/js/lg-autoplay.min.js"></script><script src="/js/lg-fullscreen.min.js"></script><script src="/js/lg-pager.min.js"></script><script src="/js/lg-hash.min.js"></script><script>if (typeof lightGallery !== 'undefined') {
+        var options = {
+            selector: '.gallery-item'
+        };
+        lightGallery(document.getElementsByClassName('article-gallery')[0], options);
+        }</script><script>
+function addLoadEvent(func) {
+  const oldonload = window.onload;
+  if (typeof window.onload !== 'function') {
+    window.onload = func;
+  } else {
+    window.onload = () => {
+      oldonload();
+      func();
+    };
+  }
+}
+  addLoadEvent(() => {
+    try {
+      if (window.innerWidth < Number('768')) {
+        return;
+      }
+      const imgs = Array.from(document.body.querySelectorAll('.google-photos-album-images a'));
+      imgs.push(...Array.from(document.body.querySelectorAll('a.google-photos-album-image')));
+      for (const anchor of imgs) {
+        anchor.href = anchor.href.replace(/=s720\-no/i, '=s1920-no');
+      }
+    } catch (e) {
+      console.log(e);
+    }
+  });
+</script>
+
+      
     </div>
     <footer class="article-footer">
-      <a data-url="<%- post.permalink %>" data-id="<%= post._id %>" data-title="<%= post.title %>" class="article-permalink">
-      <% if (page.updated && page.date.format() !== page.updated.format()) {%>
-        <time class="post__date" datetime="<%- page.updated.format() %>">
-        <%- '更新: ' + page.updated.format("YYYY.MM.DD") %>
-        </time>
-      <% } %>
+      <a data-url="https://pages.isnot.jp/2019-05/06-study-about-hexos-internals-2/" data-id="ckcn8sec60014zubq4ly23o5l" data-title="Hexo 内部探訪 (2) 準備 npm linkメモ" class="article-permalink">
+      
       </a>
-      <% if (post.comments && config.disqus_shortname){ %>
-        <a href="<%- post.permalink %>#disqus_thread" class="article-comment-link"><%= __('comment') %></a>
-      <% } %>
-      <% if (post.comments && theme.valine.enable && theme.valine.appId && theme.valine.appKey ){ %>
-        <a href="<%- url_for(post.path) %>#comments" class="article-comment-link">
-          <span class="post-comments-count valine-comment-count" data-xid="<%- url_for(post.path) %>" itemprop="commentCount"></span>
-          <%= __('comment') %>
-        </a>
-      <% } %>
-      <%- partial('post/tag') %>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hexo/" rel="tag">hexo</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/" rel="tag">javascript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/npm/" rel="tag">npm</a></li></ul>
+
     </footer>
     <div class="article-footer">
-      <% if (!index && post.comments){ %>
-      <%- partial('_partial/comment-on-issue', {post: page, index: false}) %>
-      <% } %>
+      
+      
+<div id="stageComment" class="comment fa fa-comment-o">
+  Hexo 内部探訪 (2) 準備 npm linkメモ について、
+  <a href="https://github.com/isnot/isnot.github.io/issues/new?labels=blog-comments&title=Hexo 内部探訪 (2) 準備 npm linkメモ&body=About%20%5BHexo%20%E5%86%85%E9%83%A8%E6%8E%A2%E8%A8%AA%20(2)%20%E6%BA%96%E5%82%99%20npm%20link%E3%83%A1%E3%83%A2%5D(https%3A%2F%2Fpages.isnot.jp%2F2019-05%2F06-study-about-hexos-internals-2%2Findex.html)" target="_blank" rel="noopener">
+    GitHubでコメントする
+  </a>
+</div>
+
+      
     </div>
   </div>
-  <% if (!index){ %>
-    <%- partial('post/nav') %>
-  <% } %>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2019-05/06-study-about-hexos-internals-3/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">次の記事</strong>
+      <div class="article-nav-title">
+        
+          Hexo 内部探訪 (3) コンテキストとしての&#34;hexo&#34;変数
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2019-05/05-study-about-hexos-internals-1/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">前の記事</strong>
+      <div class="article-nav-title">Hexo 内部探訪 (1) はじめに</div>
+    </a>
+  
+</nav>
+
+  
 </article>
 
-<% if (!index && post.comments && config.disqus_shortname){ %>
-<section id="comments">
-  <div id="disqus_thread">
-    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript" target="_blank" rel="noopener">comments powered by Disqus.</a></noscript>
-  </div>
-</section>
-<% } %>
-<% if (!index && post.comments && theme.valine.enable && theme.valine.appId && theme.valine.appKey){ %>
-  <section id="comments" class="vcomment">
 
-  </section>
-<% } %>
+
 </section>
         
           <aside id="sidebar">

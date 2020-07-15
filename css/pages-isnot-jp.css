@@ -1,15 +1,26 @@
 body { font-size: 20px; }
 #header { height: 340px; }
 #banner { background-size: contain; background-repeat: no-repeat; background-color: #4ac7ff; }
-#header-title h2 { color: #258fb8; }
-article h2 { color: black; border-bottom: solid 2px #bbb; margin: 2em 0 0.5em 0; }
+#logo { font-size: 300%; }
+#header-title h2 { color: #258fb8; text-shadow: 0 1px 4px rgba(0,0,0,0.3); }
+article h2 { color: black; border-bottom: solid 2px silver; margin: 2em 0 0.5em 0; }
 article h3 { margin: 1.5em 0 0.5em 0; font-weight: bold; text-decoration: underline; color: black; }
 
 #owner .avatar { width:250px }
-#owner .author h4 { margin: 1.5em 0 0.5em 0; font-weight: bold; color: black; font-size: 1em; }
-
+#owner .author h4 { margin: 1.5em 0 0.5em 0; font-weight: bold; color: black; font-size: 90%; }
+.category-list-item, .archive-list-item { letter-spacing: 1px; }
 
 #stageComment { border: silver dotted 2px; padding: 8px 12px; margin: 4px auto; }
 #stageComment a { color: #33c; }
 
 .article-gallery { background: white; color:black; }
+
+@media screen and (max-width: 768px) {
+  #header-title h2 { display: none; }
+  #header { height: 214px; }
+}
+@media screen and (max-width: 479px) {
+#logo { font-size: x-large; }
+  #header-title h2 { display: none; }
+  #header { height: 133px; }
+}

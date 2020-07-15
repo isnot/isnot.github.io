@@ -26,7 +26,7 @@
   
   
     
-<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Source+Code+Pro.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Code+Pro.css">
 
   
   
@@ -87,124 +87,72 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-Avenir-Shards-Bookmarklet" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+        <section id="main"><article id="<%= post.layout %>-<%= post.slug %>" class="h-entry article article-type-<%= post.layout %>" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
-    <a href="/2019-09/24-Avenir-Shards-Bookmarklet/" class="article-date">
-  <time class="dt-published" datetime="2019-09-23T18:10:23.000Z" itemprop="datePublished">2019-09-24</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/javascript/">javascript</a>
-  </div>
-
+    <%- partial('post/date', {class_name: 'article-date', date_format: null}) %>
+    <%- partial('post/category') %>
   </div>
   <div class="article-inner">
-    
-    
+    <%- partial('post/gallery') %>
+    <% if (post.link || post.title){ %>
       <header class="article-header">
-        
-  
-    <h1 class="p-name article-title" itemprop="headline name">
-      Avenir Shards Bookmarklet
-    </h1>
-  
-
+        <%- partial('post/title', {class_name: 'p-name article-title'}) %>
       </header>
-    
+    <% } %>
     <div class="e-content article-entry" itemprop="articleBody">
-      
-        <link crossorigin="anonymous" media="screen" rel="stylesheet" href="/css/google_photos_album.css" /><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/lightgallery.js@1.1.3/dist/css/lightgallery.min.css" /><div class="article-gallery"><p>Ingressでは、目下のところ公式のイベント「Avenir　Shards」が開催中であることは、ご存知かと思います。<br>Nianticの公式シャード情報ページでは、マップ上に軌跡を表示するなど、情報提供がされています。<br><a href="https://ingress.com/shards/avenir_shards" target="_blank" rel="noopener">https://ingress.com/shards/avenir_shards</a> （以下、公式シャード情報）</p>
-<p>一方で、私は各シャードの移動履歴をリスト形式で一覧表示したものが欲しかったので、以下のBookmarkletを作成しました。<br>Bookmarkletとは？ということについては、説明を省きますので、Google検索などで調べてください。</p>
-<h2 id="利用方法"><a href="#利用方法" class="headerlink" title="利用方法"></a>利用方法</h2><ul>
-<li>Bookmarkletをブラウザに登録する。これ→ <a href="javascript:(function(){const d=document;const h=d.createElement('div');h.innerHTML=points.map(e=>{return e.title}).join('<br>\n');d.getElementById('targets').appendChild(h)})();">PrintShardsHistory</a></li>
-<li>公式シャード情報を開き、そこでBookmarkletを実行する。</li>
-</ul>
-<h2 id="内容"><a href="#内容" class="headerlink" title="内容"></a>内容</h2><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">javascript:</span><br><span class="line">  (<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">const</span> d=<span class="built_in">document</span>;</span><br><span class="line">    <span class="keyword">const</span> h=d.createElement(<span class="string">'div'</span>);</span><br><span class="line">    h.innerHTML=points.map(<span class="function"><span class="params">e</span>=&gt;</span>&#123;<span class="keyword">return</span> e.title&#125;).join(<span class="string">'&amp;lt;br&amp;gt;\n'</span>);</span><br><span class="line">    d.getElementById(<span class="string">'targets'</span>).appendChild(h)</span><br><span class="line">  &#125;)();</span><br></pre></td></tr></table></figure>
-<p>上記PrintShardsHistoryに改行を加えて読みやすくしたものです。</p>
-</div><script src="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/js/lightgallery.min.js"></script><script src="/js/lg-thumbnail.min.js"></script><script src="/js/lg-zoom.min.js"></script><script src="/js/lg-autoplay.min.js"></script><script src="/js/lg-fullscreen.min.js"></script><script src="/js/lg-pager.min.js"></script><script src="/js/lg-hash.min.js"></script><script>if (typeof lightGallery !== 'undefined') {
-        var options = {
-            selector: '.gallery-item'
-        };
-        lightGallery(document.getElementsByClassName('article-gallery')[0], options);
-        }</script><script>
-function addLoadEvent(func) {
-  const oldonload = window.onload;
-  if (typeof window.onload !== 'function') {
-    window.onload = func;
-  } else {
-    window.onload = () => {
-      oldonload();
-      func();
-    };
-  }
-}
-  addLoadEvent(() => {
-    try {
-      if (window.innerWidth < Number('768')) {
-        return;
-      }
-      const imgs = Array.from(document.body.querySelectorAll('.google-photos-album-images a'));
-      imgs.push(...Array.from(document.body.querySelectorAll('a.google-photos-album-image')));
-      for (const anchor of imgs) {
-        anchor.href = anchor.href.replace(/=s720\-no/i, '=s1920-no');
-      }
-    } catch (e) {
-      console.log(e);
-    }
-  });
-</script>
-
-      
+      <% if (post.excerpt && index){ %>
+        <%- post.excerpt %>
+        <% if (theme.excerpt_link){ %>
+          <p class="article-more-link">
+            <a href="<%- url_for(post.path) %>#more"><%= theme.excerpt_link %></a>
+          </p>
+        <% } %>
+      <% } else { %>
+        <%- post.content %>
+      <% } %>
     </div>
     <footer class="article-footer">
-      <a data-url="https://pages.isnot.jp/2019-09/24-Avenir-Shards-Bookmarklet/" data-id="ckcn1mn220002l9bqaptqcjwo" data-title="Avenir Shards Bookmarklet" class="article-permalink">
-      
+      <a data-url="<%- post.permalink %>" data-id="<%= post._id %>" data-title="<%= post.title %>" class="article-permalink">
+      <% if (page.updated && page.date.format() !== page.updated.format()) {%>
+        <time class="post__date" datetime="<%- page.updated.format() %>">
+        <%- '更新: ' + page.updated.format("YYYY.MM.DD") %>
+        </time>
+      <% } %>
       </a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ingress/" rel="tag">ingress</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/" rel="tag">javascript</a></li></ul>
-
+      <% if (post.comments && config.disqus_shortname){ %>
+        <a href="<%- post.permalink %>#disqus_thread" class="article-comment-link"><%= __('comment') %></a>
+      <% } %>
+      <% if (post.comments && theme.valine.enable && theme.valine.appId && theme.valine.appKey ){ %>
+        <a href="<%- url_for(post.path) %>#comments" class="article-comment-link">
+          <span class="post-comments-count valine-comment-count" data-xid="<%- url_for(post.path) %>" itemprop="commentCount"></span>
+          <%= __('comment') %>
+        </a>
+      <% } %>
+      <%- partial('post/tag') %>
     </footer>
     <div class="article-footer">
-      
-      
-<div id="stageComment" class="comment fa fa-comment-o">
-  Avenir Shards Bookmarklet について、
-  <a href="https://github.com/isnot/isnot.github.io/issues/new?labels=blog-comments&title=Avenir Shards Bookmarklet&body=About%20%5BAvenir%20Shards%20Bookmarklet%5D(https%3A%2F%2Fpages.isnot.jp%2F2019-09%2F24-Avenir-Shards-Bookmarklet%2Findex.html)" target="_blank" rel="noopener">
-    GitHubでコメントする
-  </a>
-</div>
-
-      
+      <% if (!index && post.comments){ %>
+      <%- partial('_partial/comment-on-issue', {post: page, index: false}) %>
+      <% } %>
     </div>
   </div>
-  
-    
-<nav id="article-nav">
-  
-    <a href="/2019-10/17-tamako-cycling/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">次の記事</strong>
-      <div class="article-nav-title">
-        
-          多摩湖自転車歩行者道〜六道山〜文明堂壹番館
-        
-      </div>
-    </a>
-  
-  
-    <a href="/2019-06/23-GoogleSpreadsheetAPIv4/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">前の記事</strong>
-      <div class="article-nav-title">GoogleSpreadsheetAPIv4</div>
-    </a>
-  
-</nav>
-
-  
+  <% if (!index){ %>
+    <%- partial('post/nav') %>
+  <% } %>
 </article>
 
+<% if (!index && post.comments && config.disqus_shortname){ %>
+<section id="comments">
+  <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript" target="_blank" rel="noopener">comments powered by Disqus.</a></noscript>
+  </div>
+</section>
+<% } %>
+<% if (!index && post.comments && theme.valine.enable && theme.valine.appId && theme.valine.appKey){ %>
+  <section id="comments" class="vcomment">
 
-
+  </section>
+<% } %>
 </section>
         
           <aside id="sidebar">

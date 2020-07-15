@@ -25,7 +25,7 @@
   
   
     
-<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Source+Code+Pro.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Code+Pro.css">
 
   
   
@@ -86,127 +86,72 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-apt-btrfs-snapshot-df" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+        <section id="main"><article id="<%= post.layout %>-<%= post.slug %>" class="h-entry article article-type-<%= post.layout %>" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
-    <a href="/2019-11/18-apt-btrfs-snapshot-df/" class="article-date">
-  <time class="dt-published" datetime="2019-11-18T08:32:35.000Z" itemprop="datePublished">2019-11-18</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/ubuntu/">ubuntu</a>
-  </div>
-
+    <%- partial('post/date', {class_name: 'article-date', date_format: null}) %>
+    <%- partial('post/category') %>
   </div>
   <div class="article-inner">
-    
-    
+    <%- partial('post/gallery') %>
+    <% if (post.link || post.title){ %>
       <header class="article-header">
-        
-  
-    <h1 class="p-name article-title" itemprop="headline name">
-      apt-btrfs-snapshotによるディスク容量の消費
-    </h1>
-  
-
+        <%- partial('post/title', {class_name: 'p-name article-title'}) %>
       </header>
-    
+    <% } %>
     <div class="e-content article-entry" itemprop="articleBody">
-      
-        <link crossorigin="anonymous" media="screen" rel="stylesheet" href="/css/google_photos_album.css" /><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/lightgallery.js@1.1.3/dist/css/lightgallery.min.css" /><div class="article-gallery"><p>パソコンのディス容量がアップアップになっていたところを、今まで知らなかった方法で大きく改善した話。<br>一時的にディスフル（100％）になり、従来手法を使っても95％にしか減らず、それでは困るので別の手法を取り入れ、結果的に60%利用まで落ち着いた。</p>
-<p>Ubuntuのリリースサイクルは半年毎であり、最新の版は先月でた19.10 eoanであるということは、先刻ご承知であろうかと思う。<br>そして、私のパソコン（のひとつ）では、約1年と少し前にSSDを交換した後も、何かとディスク容量の空きに余裕がなく、苦慮していた。</p>
-<p>今回まずきっかけになったのは、VirtualBoxで動かしているWindows10のシステム更新をしたところ、問題発生、途中で停止したことによる。<br>ディスク容量が問題になっていることは、すぐに察した。今までに同様の件は経験済みである。</p>
-<p>このパソコンで最もディスクを消費しているものは、そのWindows10のHDDイメージで、約51GiBであった。<br>これを、まだディスクには余裕がるもう一つのパソコンに移動した。<br>つまり今後はVirtualBoxはそちらのほうで使うことにした。</p>
-<p>これでディスクには大きく余裕ができるハズだろうと思ったのに…。なんと100%→95%になっただけ。残り約10GiB。<br>これは何かがおかしいと思って、イロイロ調べることにした。</p>
-<p>dfや「btrfs filesystem usage /」で見ると、ディスクの割当て済みがほぼ100％近く、空きは上記のように約10GiBと表示される。<br>いっぽう、duやbaobabで調べる、つまり個々のファイルの大きさを積算していく方式で調べると、それは約53GiBであると判った。<br>これは、驚きを持って受け止められれるべき事柄でありつつ、たしかに、冷静に考えると（ある点を除いて）妥当だと納得いく数字。</p>
-<p>つまり、妥当であるのは、パソコンの利用状況などを考慮すれば、使用済みが53GiBであるという事実。200GiB超も使っているというほうが変だ。<br>そして納得できない、分からないのが、ディスク容量の使用済み（実数）と空きの合計が、ディスク（というよりパーティション）として確保している大きさに一致しないこと。<br>170GiB以上も、謎の差分があることになる。</p>
-<p>これは、古き伝統的（そしてごく単純な）ファイルシステムを管理していた頃の知識からは、ありえない、異常事態としか言いようがない。<br>しかしここはもはや、Btrfsの世界なのである。<br>なので、何を調べるべきかは、だいたい想像できることではあるのだ。ただ、私の経験と知識では、まだ知らない何かがあるのだろう、ということ。</p>
-<p>調べた。<br>その結果に辿り着いた答えが、aptのスナップショット機能によるものだったというわけ。<br>apt-btrfs-snapshotを使うと、それを確認でき、削除を含む管理ができる。<br>一番あたらしいものを一つだけ残して、あとは削除した。</p>
-<p>Ubuntuをインストールしているシステムのファイルシステムとして、Btrfsを使っている場合、アップグレードのタイミング等で、自動的にaptがスナップショットを保存する。<br>そして冒頭のリリースサイクルの話に繋がるが、当パソコンでは、cosmic、disco、eoanという3回のアップグレードを経ており、この通り蓄積が大きくなっていたわけ。<br>これは全て自動的に行われており、今までまったく意識していなかった。<br>ファイルシステムのスナップショット機能があることは理解していたし、それを使えば相応にディスク容量が消費されるのはまったく道理なのだが、自分で能動的にスナップショット機能を利用したことはないため、当初は思いに至らなかった。<br>また同時に、スナップショットの保存によって消費された分が、システム的に、具体的にはdf等にどのように反映される（見える）のかは、知らないでいた。<br>まぁ、「見えない数字」になるということが、今回判った。</p>
-<p>そして私は、この貴重な経験と共に、十分に余裕があるディスクスペースを確保することに成功した。<br>今後も、半年毎のリリースのたびに、このことを思い起こして不要なスナップショットを手動で削除する必要があるだろう…。</p>
-</div><script src="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/js/lightgallery.min.js"></script><script src="/js/lg-thumbnail.min.js"></script><script src="/js/lg-zoom.min.js"></script><script src="/js/lg-autoplay.min.js"></script><script src="/js/lg-fullscreen.min.js"></script><script src="/js/lg-pager.min.js"></script><script src="/js/lg-hash.min.js"></script><script>if (typeof lightGallery !== 'undefined') {
-        var options = {
-            selector: '.gallery-item'
-        };
-        lightGallery(document.getElementsByClassName('article-gallery')[0], options);
-        }</script><script>
-function addLoadEvent(func) {
-  const oldonload = window.onload;
-  if (typeof window.onload !== 'function') {
-    window.onload = func;
-  } else {
-    window.onload = () => {
-      oldonload();
-      func();
-    };
-  }
-}
-  addLoadEvent(() => {
-    try {
-      if (window.innerWidth < Number('768')) {
-        return;
-      }
-      const imgs = Array.from(document.body.querySelectorAll('.google-photos-album-images a'));
-      imgs.push(...Array.from(document.body.querySelectorAll('a.google-photos-album-image')));
-      for (const anchor of imgs) {
-        anchor.href = anchor.href.replace(/=s720\-no/i, '=s1920-no');
-      }
-    } catch (e) {
-      console.log(e);
-    }
-  });
-</script>
-
-      
+      <% if (post.excerpt && index){ %>
+        <%- post.excerpt %>
+        <% if (theme.excerpt_link){ %>
+          <p class="article-more-link">
+            <a href="<%- url_for(post.path) %>#more"><%= theme.excerpt_link %></a>
+          </p>
+        <% } %>
+      <% } else { %>
+        <%- post.content %>
+      <% } %>
     </div>
     <footer class="article-footer">
-      <a data-url="https://pages.isnot.jp/2019-11/18-apt-btrfs-snapshot-df/" data-id="ckcn1mn2a0009l9bq4o2hhpt5" data-title="apt-btrfs-snapshotによるディスク容量の消費" class="article-permalink">
-      
+      <a data-url="<%- post.permalink %>" data-id="<%= post._id %>" data-title="<%= post.title %>" class="article-permalink">
+      <% if (page.updated && page.date.format() !== page.updated.format()) {%>
+        <time class="post__date" datetime="<%- page.updated.format() %>">
+        <%- '更新: ' + page.updated.format("YYYY.MM.DD") %>
+        </time>
+      <% } %>
       </a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ubuntu/" rel="tag">ubuntu</a></li></ul>
-
+      <% if (post.comments && config.disqus_shortname){ %>
+        <a href="<%- post.permalink %>#disqus_thread" class="article-comment-link"><%= __('comment') %></a>
+      <% } %>
+      <% if (post.comments && theme.valine.enable && theme.valine.appId && theme.valine.appKey ){ %>
+        <a href="<%- url_for(post.path) %>#comments" class="article-comment-link">
+          <span class="post-comments-count valine-comment-count" data-xid="<%- url_for(post.path) %>" itemprop="commentCount"></span>
+          <%= __('comment') %>
+        </a>
+      <% } %>
+      <%- partial('post/tag') %>
     </footer>
     <div class="article-footer">
-      
-      
-<div id="stageComment" class="comment fa fa-comment-o">
-  apt-btrfs-snapshotによるディスク容量の消費 について、
-  <a href="https://github.com/isnot/isnot.github.io/issues/new?labels=blog-comments&title=apt-btrfs-snapshotによるディスク容量の消費&body=About%20%5Bapt-btrfs-snapshot%E3%81%AB%E3%82%88%E3%82%8B%E3%83%87%E3%82%A3%E3%82%B9%E3%82%AF%E5%AE%B9%E9%87%8F%E3%81%AE%E6%B6%88%E8%B2%BB%5D(https%3A%2F%2Fpages.isnot.jp%2F2019-11%2F18-apt-btrfs-snapshot-df%2Findex.html)" target="_blank" rel="noopener">
-    GitHubでコメントする
-  </a>
-</div>
-
-      
+      <% if (!index && post.comments){ %>
+      <%- partial('_partial/comment-on-issue', {post: page, index: false}) %>
+      <% } %>
     </div>
   </div>
-  
-    
-<nav id="article-nav">
-  
-    <a href="/2020-04/09-Create-a-Framework-for-Chatbot/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">次の記事</strong>
-      <div class="article-nav-title">
-        
-          チャット・ボットのためのフレームワークを開発してみた。序章
-        
-      </div>
-    </a>
-  
-  
-    <a href="/2019-10/17-tamako-cycling/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">前の記事</strong>
-      <div class="article-nav-title">多摩湖自転車歩行者道〜六道山〜文明堂壹番館</div>
-    </a>
-  
-</nav>
-
-  
+  <% if (!index){ %>
+    <%- partial('post/nav') %>
+  <% } %>
 </article>
 
+<% if (!index && post.comments && config.disqus_shortname){ %>
+<section id="comments">
+  <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript" target="_blank" rel="noopener">comments powered by Disqus.</a></noscript>
+  </div>
+</section>
+<% } %>
+<% if (!index && post.comments && theme.valine.enable && theme.valine.appId && theme.valine.appKey){ %>
+  <section id="comments" class="vcomment">
 
-
+  </section>
+<% } %>
 </section>
         
           <aside id="sidebar">

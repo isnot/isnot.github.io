@@ -5,12 +5,12 @@
   
   <title>画像のテスト | isnot N3 | isnot N3</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no">
-  <meta name="description" content="New photo by いしだなおと">
+  <meta name="description" content="New photo by いしだなおと    2019年4月18日8 new photos added to shared album          東京ゲートブリッジNew photo · Album by いしだなおと      if (typeof lightGallery !&#x3D;&#x3D; &#39;undefined&#39;) {         var options &#x3D; {             se">
 <meta property="og:type" content="article">
 <meta property="og:title" content="画像のテスト">
 <meta property="og:url" content="https://pages.isnot.jp/2019-04/13-image-test/index.html">
 <meta property="og:site_name" content="isnot N3">
-<meta property="og:description" content="New photo by いしだなおと">
+<meta property="og:description" content="New photo by いしだなおと    2019年4月18日8 new photos added to shared album          東京ゲートブリッジNew photo · Album by いしだなおと      if (typeof lightGallery !&#x3D;&#x3D; &#39;undefined&#39;) {         var options &#x3D; {             se">
 <meta property="og:locale" content="ja_JP">
 <meta property="og:image" content="https://lh3.googleusercontent.com/x2IVGsN2GRb1b4GrFc4lHI52SDDHC4hfD3EZf9X6DjCz_7JkazzNziRD7_bUNnTujkBias9boAYIG6JKcuu2HjI1W0HWBtQk8EXtGJ-X0yLHz4g-f9Zam22dsZz3LBVPhi6WkNCaBFU=w600-h315-p-k">
 <meta property="og:image" content="https://lh3.googleusercontent.com/UT9ZLJ58COPY1aqWW9LD2HTWVONf9jWsqN4I85RFeUqe0-8Ag63EeGZOGMhJtNBlmPCvNBi_l13OWAFVP5fW-xYDm5WWrtGnODVr027TxPElWdty_waXNYR1uN-9B52_ert8M36YwCg=w600-h315-p-k">
@@ -38,7 +38,7 @@
   
   
     
-<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Source+Code+Pro.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Code+Pro.css">
 
   
   
@@ -99,138 +99,72 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-image-test" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+        <section id="main"><article id="<%= post.layout %>-<%= post.slug %>" class="h-entry article article-type-<%= post.layout %>" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
-    <a href="/2019-04/13-image-test/" class="article-date">
-  <time class="dt-published" datetime="2019-04-13T07:06:56.000Z" itemprop="datePublished">2019-04-13</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/photo/">photo</a>
-  </div>
-
+    <%- partial('post/date', {class_name: 'article-date', date_format: null}) %>
+    <%- partial('post/category') %>
   </div>
   <div class="article-inner">
-    
-    
+    <%- partial('post/gallery') %>
+    <% if (post.link || post.title){ %>
       <header class="article-header">
-        
-  
-    <h1 class="p-name article-title" itemprop="headline name">
-      画像のテスト
-    </h1>
-  
-
+        <%- partial('post/title', {class_name: 'p-name article-title'}) %>
       </header>
-    
+    <% } %>
     <div class="e-content article-entry" itemprop="articleBody">
-      
-        <link crossorigin="anonymous" media="screen" rel="stylesheet" href="/css/google_photos_album.css" /><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/lightgallery.js@1.1.3/dist/css/lightgallery.min.css" /><div class="article-gallery"><div class="google-photos-album-area" id="google-photos-album-area6"><div class="metadatas"><a href="https://lh3.googleusercontent.com/x2IVGsN2GRb1b4GrFc4lHI52SDDHC4hfD3EZf9X6DjCz_7JkazzNziRD7_bUNnTujkBias9boAYIG6JKcuu2HjI1W0HWBtQk8EXtGJ-X0yLHz4g-f9Zam22dsZz3LBVPhi6WkNCaBFU=s720-no?authuser=0" class="google-photos-album-image gallery-item" target="_blank" rel="noopener"><a href="https://lh3.googleusercontent.com/x2IVGsN2GRb1b4GrFc4lHI52SDDHC4hfD3EZf9X6DjCz_7JkazzNziRD7_bUNnTujkBias9boAYIG6JKcuu2HjI1W0HWBtQk8EXtGJ-X0yLHz4g-f9Zam22dsZz3LBVPhi6WkNCaBFU=w600-h315-p-k" target="_blank" rel="noopener" class="gallery-item"><img src="https://lh3.googleusercontent.com/x2IVGsN2GRb1b4GrFc4lHI52SDDHC4hfD3EZf9X6DjCz_7JkazzNziRD7_bUNnTujkBias9boAYIG6JKcuu2HjI1W0HWBtQk8EXtGJ-X0yLHz4g-f9Zam22dsZz3LBVPhi6WkNCaBFU=w600-h315-p-k" class="og-image"></a></img></a><a href="https://photos.google.com/share/AF1QipNmcXWJW_3uTNCd80QqrtS0kuIAirZz-IigcpUimjIXIkU5wKSLGgo79VhmNmCZbQ?key=TnBRejJKRXlJZGFVcTlDemNvUVFMaG8wNEdaQ0Jn" class="og-url" target="_blank" rel="noopener"><span class="og-title">New photo by いしだなおと</span></a></div>
-<div class="google-photos-album-images clearfix"></div>
-</div>
-
-<a id="more"></a>
-
-<div class="google-photos-album-area" id="google-photos-album-area10"><div class="metadatas"><img src="https://lh3.googleusercontent.com/UT9ZLJ58COPY1aqWW9LD2HTWVONf9jWsqN4I85RFeUqe0-8Ag63EeGZOGMhJtNBlmPCvNBi_l13OWAFVP5fW-xYDm5WWrtGnODVr027TxPElWdty_waXNYR1uN-9B52_ert8M36YwCg=w600-h315-p-k" class="og-image nolink"></img><a href="https://photos.google.com/share/AF1QipM-qmCtmxuhoUj5Y2lP7OUWe9FH1KjHqVuDokH9IxM1mj3ayWcbHxNa43NfaBLe2A?key=SUIyM0k0RkQ4OTY4elZmQVBwNDBFOFhJZVZwRTBn" class="og-url" target="_blank" rel="noopener"><span class="og-title">2019年4月18日</span><span class="og-description">8 new photos added to shared album</span></a></div>
-<div class="google-photos-album-images clearfix"><a href="https://lh3.googleusercontent.com/POAIcyaMNHzc2hslHMj08htML9FtB5inQK6IrkUA1grUGIndo0FXCo_WbLVKXT0xJo_acPXXbiSNHTQ94xfSd8MqbNoNCmfczCBrBD6e_98s-6gqoHITFllFznfhRUHIKW8WZ7hE-Zg=s720-no" class="gallery-item" target="_blank" rel="noopener"><img src="https://lh3.googleusercontent.com/POAIcyaMNHzc2hslHMj08htML9FtB5inQK6IrkUA1grUGIndo0FXCo_WbLVKXT0xJo_acPXXbiSNHTQ94xfSd8MqbNoNCmfczCBrBD6e_98s-6gqoHITFllFznfhRUHIKW8WZ7hE-Zg=w225-no?authuser=0"></a>
-<a href="https://lh3.googleusercontent.com/GfDV8DCG0qrZIXHDCiJx5-dpDdC1Y4CX6N400lGdQgKSUlf-YeHvb065BHrunvJT92vRBToUDQKkksjARr_wm0D6nd0YlrQL-EEmumLpLxHG0Bsrjw8S-fvRBHfSJib5oXAg0Rt9ECY=s720-no" class="gallery-item" target="_blank" rel="noopener"><img src="https://lh3.googleusercontent.com/GfDV8DCG0qrZIXHDCiJx5-dpDdC1Y4CX6N400lGdQgKSUlf-YeHvb065BHrunvJT92vRBToUDQKkksjARr_wm0D6nd0YlrQL-EEmumLpLxHG0Bsrjw8S-fvRBHfSJib5oXAg0Rt9ECY=w225-no?authuser=0"></a>
-<a href="https://lh3.googleusercontent.com/Dl3Ku3qHe5aUeDlpu4hEwALwyzqcHbd9hbHlsyxYDPtv1dhLuOa20mgOJ4C6juUR47TNAjW9PfXaT-Pk2WThPz8nlunqVAdkjVrE4fWGHrVLHWK7jbdNldcMALJc117s_T8lHjXM-Ro=s720-no" class="gallery-item" target="_blank" rel="noopener"><img src="https://lh3.googleusercontent.com/Dl3Ku3qHe5aUeDlpu4hEwALwyzqcHbd9hbHlsyxYDPtv1dhLuOa20mgOJ4C6juUR47TNAjW9PfXaT-Pk2WThPz8nlunqVAdkjVrE4fWGHrVLHWK7jbdNldcMALJc117s_T8lHjXM-Ro=w225-no?authuser=0"></a>
-<a href="https://lh3.googleusercontent.com/WqSyuXpDnrpuO9jPhHFK1c61jiwuzZ536jyGWHG0drVc6a1x2Z8vwgyD2wkRvkvH496B7AZRESeXTCWfXMgPlZJdqGNwaYGbZxz9_xlDv7PDQk7sgxvzfr-moYcfK9lScOUo1uk1XJA=s720-no" class="gallery-item" target="_blank" rel="noopener"><img src="https://lh3.googleusercontent.com/WqSyuXpDnrpuO9jPhHFK1c61jiwuzZ536jyGWHG0drVc6a1x2Z8vwgyD2wkRvkvH496B7AZRESeXTCWfXMgPlZJdqGNwaYGbZxz9_xlDv7PDQk7sgxvzfr-moYcfK9lScOUo1uk1XJA=w225-no?authuser=0"></a>
-<a href="https://lh3.googleusercontent.com/fCM0HR6RiT1-yRE-xkFMlE_Ddak2fGSzLGlC-WUjrRdHYsvYc4nLigjY37JztY8-r6YpzU71t4YJ37dzS2vNSPVg-o2laIzlbZ6LyGPH5gq0-qR-aebWNCK-Z85zkJYLOOavYiib-zw=s720-no" class="gallery-item" target="_blank" rel="noopener"><img src="https://lh3.googleusercontent.com/fCM0HR6RiT1-yRE-xkFMlE_Ddak2fGSzLGlC-WUjrRdHYsvYc4nLigjY37JztY8-r6YpzU71t4YJ37dzS2vNSPVg-o2laIzlbZ6LyGPH5gq0-qR-aebWNCK-Z85zkJYLOOavYiib-zw=w225-no?authuser=0"></a>
-<a href="https://lh3.googleusercontent.com/KoaMPRIj3LCdk6DPeYmduXCAPRtXoxuixLVgrt2xd_qaenqWcRwWlQfpF1r9Wdf39cMl6OkBPRAV5QwJMTbd-D1y1jIwKPZlNu4CJ5MQ3m9UBW8Bs47RwOs8mEElWq3ZH-USxA-92g8=s720-no" class="gallery-item" target="_blank" rel="noopener"><img src="https://lh3.googleusercontent.com/KoaMPRIj3LCdk6DPeYmduXCAPRtXoxuixLVgrt2xd_qaenqWcRwWlQfpF1r9Wdf39cMl6OkBPRAV5QwJMTbd-D1y1jIwKPZlNu4CJ5MQ3m9UBW8Bs47RwOs8mEElWq3ZH-USxA-92g8=w225-no?authuser=0"></a>
-<a href="https://lh3.googleusercontent.com/fM3n0qwHFEvejwNzfVXJo5vAKhQHvf_V6oDXBg9IY4nhFEONgBAWP6J7oN5U7Qt7cpZVMT318pCfizCl3vj2yif8am9yctMuzH1VSkvExOzHuGpwFoLDHABmv0z23q7kbl4_CFt0DVA=s720-no" class="gallery-item" target="_blank" rel="noopener"><img src="https://lh3.googleusercontent.com/fM3n0qwHFEvejwNzfVXJo5vAKhQHvf_V6oDXBg9IY4nhFEONgBAWP6J7oN5U7Qt7cpZVMT318pCfizCl3vj2yif8am9yctMuzH1VSkvExOzHuGpwFoLDHABmv0z23q7kbl4_CFt0DVA=w225-no?authuser=0"></a>
-<a href="https://lh3.googleusercontent.com/UT9ZLJ58COPY1aqWW9LD2HTWVONf9jWsqN4I85RFeUqe0-8Ag63EeGZOGMhJtNBlmPCvNBi_l13OWAFVP5fW-xYDm5WWrtGnODVr027TxPElWdty_waXNYR1uN-9B52_ert8M36YwCg=s720-no" class="gallery-item" target="_blank" rel="noopener"><img src="https://lh3.googleusercontent.com/UT9ZLJ58COPY1aqWW9LD2HTWVONf9jWsqN4I85RFeUqe0-8Ag63EeGZOGMhJtNBlmPCvNBi_l13OWAFVP5fW-xYDm5WWrtGnODVr027TxPElWdty_waXNYR1uN-9B52_ert8M36YwCg=w225-no?authuser=0"></a></div>
-</div>
-<div class="google-photos-album-area" id="google-photos-album-area11"><div class="metadatas"><a href="https://lh3.googleusercontent.com/qlkOA4ZtdzUIZuMbf5dnxxd6gO9vDYO89NEByHsXiTllf9MWfmwRgVGy53E2apDsFVsiiAN42LmaoI48AWUJb4PrZ1xM-nwmra-mbP0OKrcaBNmjqJinvqwumOMBfK6RNhS6wVW3Wm8=s720-no?authuser=0" class="google-photos-album-image gallery-item" target="_blank" rel="noopener"><a href="https://lh3.googleusercontent.com/qlkOA4ZtdzUIZuMbf5dnxxd6gO9vDYO89NEByHsXiTllf9MWfmwRgVGy53E2apDsFVsiiAN42LmaoI48AWUJb4PrZ1xM-nwmra-mbP0OKrcaBNmjqJinvqwumOMBfK6RNhS6wVW3Wm8=w600-h315-p-k" target="_blank" rel="noopener" class="gallery-item"><img src="https://lh3.googleusercontent.com/qlkOA4ZtdzUIZuMbf5dnxxd6gO9vDYO89NEByHsXiTllf9MWfmwRgVGy53E2apDsFVsiiAN42LmaoI48AWUJb4PrZ1xM-nwmra-mbP0OKrcaBNmjqJinvqwumOMBfK6RNhS6wVW3Wm8=w600-h315-p-k" class="og-image"></a></img></a><a href="https://photos.google.com/share/AF1QipMK_K4nbbalWJCi7uL5QYpqSWHPfFsB2Abk0ATJSxiJz14HkDlgR45FN-YHO8kb4g?key=ZVFHU0pLTE5sQmxyWDhCQ1piZGp2c1QyUGFaR3VB" class="og-url" target="_blank" rel="noopener"><span class="og-title">東京ゲートブリッジ</span><span class="og-description">New photo · Album by いしだなおと</span></a></div>
-<div class="google-photos-album-images clearfix"></div>
-</div>
-
-
-<a href="https://lh3.googleusercontent.com/YHvAci91RfH8pwt2nHqnfdn6lp7eZj6Nnweo3flsIlarZoL_ikkgyRh6dNuzfTFpkaCDC8hYTuNcxJveem2Cz55ij7ysZ_Rkorlc2qg653JIy4BdBsMK8MSQsz23K5D5ParJvTuWyoixJlG52XJhbaZr3Co3xuksdbb_cSvGEBtQp3w5v-QXOYGoWL3YVJ6cwVIIDx-6ahPaUGvLaPtgO7T4jChyaPVbTbAXsrcQZDaWHKjFANRhO_pMw-rV7s8bBCzNiUBNWApyYb9gbfMnxw9xC5KZvNkZ2flyL3zqt3T5Ur4i8wuEADXJAv6QghxygH2rxEdX92hEXnAg2JsBqopjNwSi-LYhbcdtKK4bFXjIbPSGmsA2WM5D-fKkp17HklPoITZOIdkU9-CbgIgLHY7Kv2afzxlSkal4epbeEIkpPEeBJtSOF2QkCZ9Gl33zwrUrtpt0Tbn-jmbZ1rK7jBUOFVT3Tx-LrVWjDRyfLnxRXWkvLjbYWDXA7IHODGXdGVX3l5k6Aps2aOerxtotMU7KYOt4M1A1mFfBsX15ragK-RdYrn8k9ITIT7pQpPVj5QgGW9g3aH8qrnR2zt3rhUln-hsZs0iBXL03t1apStUMzpFdJ5_Z1M6eMz8Dj1RwTIYmeyLBF4EoEp5ENn34Uvh-FWXWALC7Y1ecuTTKjhy9xo7A40eQuxmXusPOdlJ9P8HHl2vz_cSWaybxqUFWIwJynA=s0-no" target="_blank" rel="noopener" class="gallery-item"><img src="https://lh3.googleusercontent.com/YHvAci91RfH8pwt2nHqnfdn6lp7eZj6Nnweo3flsIlarZoL_ikkgyRh6dNuzfTFpkaCDC8hYTuNcxJveem2Cz55ij7ysZ_Rkorlc2qg653JIy4BdBsMK8MSQsz23K5D5ParJvTuWyoixJlG52XJhbaZr3Co3xuksdbb_cSvGEBtQp3w5v-QXOYGoWL3YVJ6cwVIIDx-6ahPaUGvLaPtgO7T4jChyaPVbTbAXsrcQZDaWHKjFANRhO_pMw-rV7s8bBCzNiUBNWApyYb9gbfMnxw9xC5KZvNkZ2flyL3zqt3T5Ur4i8wuEADXJAv6QghxygH2rxEdX92hEXnAg2JsBqopjNwSi-LYhbcdtKK4bFXjIbPSGmsA2WM5D-fKkp17HklPoITZOIdkU9-CbgIgLHY7Kv2afzxlSkal4epbeEIkpPEeBJtSOF2QkCZ9Gl33zwrUrtpt0Tbn-jmbZ1rK7jBUOFVT3Tx-LrVWjDRyfLnxRXWkvLjbYWDXA7IHODGXdGVX3l5k6Aps2aOerxtotMU7KYOt4M1A1mFfBsX15ragK-RdYrn8k9ITIT7pQpPVj5QgGW9g3aH8qrnR2zt3rhUln-hsZs0iBXL03t1apStUMzpFdJ5_Z1M6eMz8Dj1RwTIYmeyLBF4EoEp5ENn34Uvh-FWXWALC7Y1ecuTTKjhy9xo7A40eQuxmXusPOdlJ9P8HHl2vz_cSWaybxqUFWIwJynA=s0-no" /></a>
-</div><script src="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/js/lightgallery.min.js"></script><script src="/js/lg-thumbnail.min.js"></script><script src="/js/lg-zoom.min.js"></script><script src="/js/lg-autoplay.min.js"></script><script src="/js/lg-fullscreen.min.js"></script><script src="/js/lg-pager.min.js"></script><script src="/js/lg-hash.min.js"></script><script>if (typeof lightGallery !== 'undefined') {
-        var options = {
-            selector: '.gallery-item'
-        };
-        lightGallery(document.getElementsByClassName('article-gallery')[0], options);
-        }</script><script>
-function addLoadEvent(func) {
-  const oldonload = window.onload;
-  if (typeof window.onload !== 'function') {
-    window.onload = func;
-  } else {
-    window.onload = () => {
-      oldonload();
-      func();
-    };
-  }
-}
-  addLoadEvent(() => {
-    try {
-      if (window.innerWidth < Number('768')) {
-        return;
-      }
-      const imgs = Array.from(document.body.querySelectorAll('.google-photos-album-images a'));
-      imgs.push(...Array.from(document.body.querySelectorAll('a.google-photos-album-image')));
-      for (const anchor of imgs) {
-        anchor.href = anchor.href.replace(/=s720\-no/i, '=s1920-no');
-      }
-    } catch (e) {
-      console.log(e);
-    }
-  });
-</script>
-
-      
+      <% if (post.excerpt && index){ %>
+        <%- post.excerpt %>
+        <% if (theme.excerpt_link){ %>
+          <p class="article-more-link">
+            <a href="<%- url_for(post.path) %>#more"><%= theme.excerpt_link %></a>
+          </p>
+        <% } %>
+      <% } else { %>
+        <%- post.content %>
+      <% } %>
     </div>
     <footer class="article-footer">
-      <a data-url="https://pages.isnot.jp/2019-04/13-image-test/" data-id="ckcn1mn2s000ol9bqhahtg8ve" data-title="画像のテスト" class="article-permalink">
-      
+      <a data-url="<%- post.permalink %>" data-id="<%= post._id %>" data-title="<%= post.title %>" class="article-permalink">
+      <% if (page.updated && page.date.format() !== page.updated.format()) {%>
+        <time class="post__date" datetime="<%- page.updated.format() %>">
+        <%- '更新: ' + page.updated.format("YYYY.MM.DD") %>
+        </time>
+      <% } %>
       </a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/photo/" rel="tag">photo</a></li></ul>
-
+      <% if (post.comments && config.disqus_shortname){ %>
+        <a href="<%- post.permalink %>#disqus_thread" class="article-comment-link"><%= __('comment') %></a>
+      <% } %>
+      <% if (post.comments && theme.valine.enable && theme.valine.appId && theme.valine.appKey ){ %>
+        <a href="<%- url_for(post.path) %>#comments" class="article-comment-link">
+          <span class="post-comments-count valine-comment-count" data-xid="<%- url_for(post.path) %>" itemprop="commentCount"></span>
+          <%= __('comment') %>
+        </a>
+      <% } %>
+      <%- partial('post/tag') %>
     </footer>
     <div class="article-footer">
-      
-      
-<div id="stageComment" class="comment fa fa-comment-o">
-  画像のテスト について、
-  <a href="https://github.com/isnot/isnot.github.io/issues/new?labels=blog-comments&title=画像のテスト&body=About%20%5B%E7%94%BB%E5%83%8F%E3%81%AE%E3%83%86%E3%82%B9%E3%83%88%5D(https%3A%2F%2Fpages.isnot.jp%2F2019-04%2F13-image-test%2Findex.html)" target="_blank" rel="noopener">
-    GitHubでコメントする
-  </a>
-</div>
-
-      
+      <% if (!index && post.comments){ %>
+      <%- partial('_partial/comment-on-issue', {post: page, index: false}) %>
+      <% } %>
     </div>
   </div>
-  
-    
-<nav id="article-nav">
-  
-    <a href="/2019-04/15-sakura2019/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">次の記事</strong>
-      <div class="article-nav-title">
-        
-          さくら 2019
-        
-      </div>
-    </a>
-  
-  
-    <a href="/2019-04/09-index/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">前の記事</strong>
-      <div class="article-nav-title">はじめまして！</div>
-    </a>
-  
-</nav>
-
-  
+  <% if (!index){ %>
+    <%- partial('post/nav') %>
+  <% } %>
 </article>
 
+<% if (!index && post.comments && config.disqus_shortname){ %>
+<section id="comments">
+  <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript" target="_blank" rel="noopener">comments powered by Disqus.</a></noscript>
+  </div>
+</section>
+<% } %>
+<% if (!index && post.comments && theme.valine.enable && theme.valine.appId && theme.valine.appKey){ %>
+  <section id="comments" class="vcomment">
 
-
+  </section>
+<% } %>
 </section>
         
           <aside id="sidebar">

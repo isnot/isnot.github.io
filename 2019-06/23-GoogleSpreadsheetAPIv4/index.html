@@ -26,7 +26,7 @@
   
   
     
-<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Source+Code+Pro.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Code+Pro.css">
 
   
   
@@ -87,124 +87,72 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-GoogleSpreadsheetAPIv4" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+        <section id="main"><article id="<%= post.layout %>-<%= post.slug %>" class="h-entry article article-type-<%= post.layout %>" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
-    <a href="/2019-06/23-GoogleSpreadsheetAPIv4/" class="article-date">
-  <time class="dt-published" datetime="2019-06-23T11:47:44.000Z" itemprop="datePublished">2019-06-23</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/javascript/">javascript</a>
-  </div>
-
+    <%- partial('post/date', {class_name: 'article-date', date_format: null}) %>
+    <%- partial('post/category') %>
   </div>
   <div class="article-inner">
-    
-    
+    <%- partial('post/gallery') %>
+    <% if (post.link || post.title){ %>
       <header class="article-header">
-        
-  
-    <h1 class="p-name article-title" itemprop="headline name">
-      GoogleSpreadsheetAPIv4
-    </h1>
-  
-
+        <%- partial('post/title', {class_name: 'p-name article-title'}) %>
       </header>
-    
+    <% } %>
     <div class="e-content article-entry" itemprop="articleBody">
-      
-        <link crossorigin="anonymous" media="screen" rel="stylesheet" href="/css/google_photos_album.css" /><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/lightgallery.js@1.1.3/dist/css/lightgallery.min.css" /><div class="article-gallery"><p>Node.jsからスプシを操作したいわけじゃないですか。<br><a href="https://developers.google.com/sheets/api/" target="_blank" rel="noopener">https://developers.google.com/sheets/api/</a></p>
-<p>なので、npmの中から適当なライブラリがないか、調べたのです。<br>すると、結構な数が検索で挙げられてきて、ひとつひとつ見ていくわけです。</p>
-<p>結局の所、殆どのものは、API v3を前提にしたもので、そのAPI v3は過去の存在なわけですね。</p>
-<p>つまるところ理解したのは、API v4を使うにあたって、いま、選択するべきライブラリといえば、Google自身によるgoogleapis。<br><a href="https://www.npmjs.com/package/googleapis" target="_blank" rel="noopener">https://www.npmjs.com/package/googleapis</a></p>
-<p>そうなってくると、サンプルが欲しいわけじゃないですか。</p>
-<p><a href="https://qiita.com/howdy39/items/22068b3f768f0f9a757d" target="_blank" rel="noopener">スプレッドシートをWebAPI化するサービスの作り方</a> から辿り、<br><a href="https://github.com/howdy39/sheets-to-webapi" target="_blank" rel="noopener">スプレッドシートを読み込んでWebAPI化するCloudFunctionsのソース</a> に行き着く。</p>
-<p>これはvalues.getを包むラッパーということですが、あとはリファレンスその他を見ながら、updateやappendも容易に実装できるわけです。</p>
-<p>googleapisは、ライブラリとしての使い心地も、まぁしっくりクル。<br>ただし、やはり記述が冗長になるので、ラッパーがあると良いよね、という。<br>このサンプル、ありがたいことです。</p>
-</div><script src="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/js/lightgallery.min.js"></script><script src="/js/lg-thumbnail.min.js"></script><script src="/js/lg-zoom.min.js"></script><script src="/js/lg-autoplay.min.js"></script><script src="/js/lg-fullscreen.min.js"></script><script src="/js/lg-pager.min.js"></script><script src="/js/lg-hash.min.js"></script><script>if (typeof lightGallery !== 'undefined') {
-        var options = {
-            selector: '.gallery-item'
-        };
-        lightGallery(document.getElementsByClassName('article-gallery')[0], options);
-        }</script><script>
-function addLoadEvent(func) {
-  const oldonload = window.onload;
-  if (typeof window.onload !== 'function') {
-    window.onload = func;
-  } else {
-    window.onload = () => {
-      oldonload();
-      func();
-    };
-  }
-}
-  addLoadEvent(() => {
-    try {
-      if (window.innerWidth < Number('768')) {
-        return;
-      }
-      const imgs = Array.from(document.body.querySelectorAll('.google-photos-album-images a'));
-      imgs.push(...Array.from(document.body.querySelectorAll('a.google-photos-album-image')));
-      for (const anchor of imgs) {
-        anchor.href = anchor.href.replace(/=s720\-no/i, '=s1920-no');
-      }
-    } catch (e) {
-      console.log(e);
-    }
-  });
-</script>
-
-      
+      <% if (post.excerpt && index){ %>
+        <%- post.excerpt %>
+        <% if (theme.excerpt_link){ %>
+          <p class="article-more-link">
+            <a href="<%- url_for(post.path) %>#more"><%= theme.excerpt_link %></a>
+          </p>
+        <% } %>
+      <% } else { %>
+        <%- post.content %>
+      <% } %>
     </div>
     <footer class="article-footer">
-      <a data-url="https://pages.isnot.jp/2019-06/23-GoogleSpreadsheetAPIv4/" data-id="ckcn1mn270006l9bqbeoodsju" data-title="GoogleSpreadsheetAPIv4" class="article-permalink">
-      
+      <a data-url="<%- post.permalink %>" data-id="<%= post._id %>" data-title="<%= post.title %>" class="article-permalink">
+      <% if (page.updated && page.date.format() !== page.updated.format()) {%>
+        <time class="post__date" datetime="<%- page.updated.format() %>">
+        <%- '更新: ' + page.updated.format("YYYY.MM.DD") %>
+        </time>
+      <% } %>
       </a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/" rel="tag">javascript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/npm/" rel="tag">npm</a></li></ul>
-
+      <% if (post.comments && config.disqus_shortname){ %>
+        <a href="<%- post.permalink %>#disqus_thread" class="article-comment-link"><%= __('comment') %></a>
+      <% } %>
+      <% if (post.comments && theme.valine.enable && theme.valine.appId && theme.valine.appKey ){ %>
+        <a href="<%- url_for(post.path) %>#comments" class="article-comment-link">
+          <span class="post-comments-count valine-comment-count" data-xid="<%- url_for(post.path) %>" itemprop="commentCount"></span>
+          <%= __('comment') %>
+        </a>
+      <% } %>
+      <%- partial('post/tag') %>
     </footer>
     <div class="article-footer">
-      
-      
-<div id="stageComment" class="comment fa fa-comment-o">
-  GoogleSpreadsheetAPIv4 について、
-  <a href="https://github.com/isnot/isnot.github.io/issues/new?labels=blog-comments&title=GoogleSpreadsheetAPIv4&body=About%20%5BGoogleSpreadsheetAPIv4%5D(https%3A%2F%2Fpages.isnot.jp%2F2019-06%2F23-GoogleSpreadsheetAPIv4%2Findex.html)" target="_blank" rel="noopener">
-    GitHubでコメントする
-  </a>
-</div>
-
-      
+      <% if (!index && post.comments){ %>
+      <%- partial('_partial/comment-on-issue', {post: page, index: false}) %>
+      <% } %>
     </div>
   </div>
-  
-    
-<nav id="article-nav">
-  
-    <a href="/2019-09/24-Avenir-Shards-Bookmarklet/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">次の記事</strong>
-      <div class="article-nav-title">
-        
-          Avenir Shards Bookmarklet
-        
-      </div>
-    </a>
-  
-  
-    <a href="/2019-06/17-hydrangea/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">前の記事</strong>
-      <div class="article-nav-title">アジサイ2019</div>
-    </a>
-  
-</nav>
-
-  
+  <% if (!index){ %>
+    <%- partial('post/nav') %>
+  <% } %>
 </article>
 
+<% if (!index && post.comments && config.disqus_shortname){ %>
+<section id="comments">
+  <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript" target="_blank" rel="noopener">comments powered by Disqus.</a></noscript>
+  </div>
+</section>
+<% } %>
+<% if (!index && post.comments && theme.valine.enable && theme.valine.appId && theme.valine.appKey){ %>
+  <section id="comments" class="vcomment">
 
-
+  </section>
+<% } %>
 </section>
         
           <aside id="sidebar">

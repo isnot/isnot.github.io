@@ -38,7 +38,7 @@
   
   
     
-<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Source+Code+Pro.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Code+Pro.css">
 
   
   
@@ -99,162 +99,72 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="page-" class="h-entry article article-type-page" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+        <section id="main"><article id="<%= post.layout %>-<%= post.slug %>" class="h-entry article article-type-<%= post.layout %>" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
-    <a href="/about/index.html" class="article-date">
-  <time class="dt-published" datetime="2020-07-14T15:55:20.411Z" itemprop="datePublished">2020-07-15</time>
-</a>
-    
+    <%- partial('post/date', {class_name: 'article-date', date_format: null}) %>
+    <%- partial('post/category') %>
   </div>
   <div class="article-inner">
-    
-    
+    <%- partial('post/gallery') %>
+    <% if (post.link || post.title){ %>
       <header class="article-header">
-        
-  
-    <h1 class="p-name article-title" itemprop="headline name">
-      About いしだなおと / isnot N3
-    </h1>
-  
-
+        <%- partial('post/title', {class_name: 'p-name article-title'}) %>
       </header>
-    
+    <% } %>
     <div class="e-content article-entry" itemprop="articleBody">
-      
-        <link crossorigin="anonymous" media="screen" rel="stylesheet" href="/css/google_photos_album.css" /><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/lightgallery.js@1.1.3/dist/css/lightgallery.min.css" /><div class="article-gallery"><h2 id="私について"><a href="#私について" class="headerlink" title="私について"></a>私について</h2><ul>
-<li>isnot</li>
-<li>いしだなおと</li>
-<li>日本出身・在住</li>
-</ul>
-<hr>
-<p>好きなこと。<br>睡眠、安らぎ、寛ぐこと。<br>旅行に行くこと。<br>おいしいものをいただく。<br>音楽を聞く。<br>インターネットネット・カルチャー（インターネット以前も含む）。<br>日本のオタク的なサブカルチャー全般。</p>
-<p>得意なこと。<br>プログラミング、論理的思考、設計。<br>コンピューター・アーキテクチャの理解。<br>コンピューターのネットワーク。<br>UNIX的なOS。特にUbuntu Linuxを愛好。</p>
-<h3 id="興味・スキル"><a href="#興味・スキル" class="headerlink" title="興味・スキル"></a>興味・スキル</h3><ul>
-<li>Ubuntu / Lubuntu</li>
-<li>Linux</li>
-<li>Emacs</li>
-<li>Javascript</li>
-<li>ES2018</li>
-<li>Google Apps Script</li>
-<li>Perl 5</li>
-<li>Git</li>
-<li>GitHub</li>
-<li>Mpris2</li>
-<li>MPD - Music Player Daemon</li>
-<li>Telegram Bot API</li>
-<li>Leaflet.js</li>
-<li>IITC</li>
-</ul>
-<h2 id="このウェブサイトについて"><a href="#このウェブサイトについて" class="headerlink" title="このウェブサイトについて"></a>このウェブサイトについて</h2><p>私の個人的なブログです。<br>主にテック・ブログとして、つまりテクノロジーに関してや、日常について書くと思います。</p>
-<p>N3 - <a href="https://www.kanzaki.com/docs/sw/n3.html" target="_blank" rel="noopener">Notation3</a></p>
-<h3 id="facility"><a href="#facility" class="headerlink" title="facility"></a>facility</h3><ul>
-<li>さくらインターネット <a href="https://domain.sakura.ad.jp/" target="_blank" rel="noopener">さくらのドメイン</a></li>
-<li><a href="https://pages.github.com/" target="_blank" rel="noopener">GitHub Pages</a></li>
-<li>ページ生成 <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> and <a href="https://github.com/markyong/hexo-theme-stage" target="_blank" rel="noopener">Stage</a></li>
-</ul>
-<h3 id="使用画像"><a href="#使用画像" class="headerlink" title="使用画像"></a>使用画像</h3><p>私が撮影した以下の画像を使っています。</p>
-<h4 id=""><a href="#" class="headerlink" title=""></a><a href="/images/makino-otometsubaki512.png" class="gallery-item"><img src="/images/makino-otometsubaki512.png" width="250" /></a></h4><ul>
-<li>アバター画像 <a href="/images/makino-otometsubaki512.png">乙女椿</a></li>
-<li>牧野記念庭園 (練馬区東大泉)</li>
-<li>2018年3月18日 撮影</li>
-</ul>
-<h4 id="-1"><a href="#-1" class="headerlink" title=""></a><a href="/images/ikebukuro_landscape_2.jpg" class="gallery-item"><img src="/images/ikebukuro_landscape_2.jpg" width="250" /></a></h4><ul>
-<li>ヘッダー画像 <a href="/images/ikebukuro_landscape_2.jpg">東京都心部遠景</a></li>
-<li>としまエコミューゼタウン 豊島の森 (東京都豊島区南池袋)</li>
-<li>2019年8月13日 撮影</li>
-</ul>
-<h4 id="-2"><a href="#-2" class="headerlink" title=""></a><a href="/images/default-header.jpg" class="gallery-item"><img src="/images/default-header.jpg" width="250" /></a></h4><ul>
-<li>旧ヘッダー画像 <a href="/images/default-header.jpg">滑走路と軽飛行機</a></li>
-<li>ホンダエアポート (埼玉県川島町)</li>
-<li>2019年1月5日 撮影</li>
-</ul>
-<h2 id="Links"><a href="#Links" class="headerlink" title="Links"></a>Links</h2><ul>
-<li>Website: <a href="https://isnot.jp/" target="_blank" rel="noopener">isnot.jp</a></li>
-<li>Blog: <a href="https://pages.isnot.jp/">isnot N3</a> Here!</li>
-<li>GitHub: <a href="https://github.com/isnot" target="_blank" rel="noopener">isnot</a></li>
-<li>SoundCloud: <a href="https://soundcloud.com/isnot-jp" target="_blank" rel="noopener">not なおと</a></li>
-<li>Youtube: <a href="https://www.youtube.com/channel/UCy6ciW14LkMnyXFkxi9uwNw" target="_blank" rel="noopener">いしだなおと</a></li>
-<li>Telegram: <a href="https://t.me/isnot" target="_blank" rel="noopener">@isnot</a></li>
-<li>MeWe: <a href="https://mewe.com/i/naoto" target="_blank" rel="noopener">いしだ なおと</a></li>
-<li>Google+: <a href="https://plus.google.com/+%E3%81%84%E3%81%97%E3%81%A0%E3%81%AA%E3%81%8A%E3%81%A8" target="_blank" rel="noopener">いしだなおと</a> Closed</li>
-</ul>
-<h3 id="GitHub"><a href="#GitHub" class="headerlink" title="GitHub"></a>GitHub</h3><div style="text-align: center">
-  <div class="github-card"
-    data-user="isnot"
-    data-repo=""
-    data-height="200"
-    data-width="250"
-    data-theme="medium"
-    data-target=""
-    data-client-id=""
-    data-client-secret=""
-  ></div>
-</div>
-<script src="/github-card-lib/githubcard.js"></script>
-
-</div><script src="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/js/lightgallery.min.js"></script><script src="/js/lg-thumbnail.min.js"></script><script src="/js/lg-zoom.min.js"></script><script src="/js/lg-autoplay.min.js"></script><script src="/js/lg-fullscreen.min.js"></script><script src="/js/lg-pager.min.js"></script><script src="/js/lg-hash.min.js"></script><script>if (typeof lightGallery !== 'undefined') {
-        var options = {
-            selector: '.gallery-item'
-        };
-        lightGallery(document.getElementsByClassName('article-gallery')[0], options);
-        }</script><script>
-function addLoadEvent(func) {
-  const oldonload = window.onload;
-  if (typeof window.onload !== 'function') {
-    window.onload = func;
-  } else {
-    window.onload = () => {
-      oldonload();
-      func();
-    };
-  }
-}
-  addLoadEvent(() => {
-    try {
-      if (window.innerWidth < Number('768')) {
-        return;
-      }
-      const imgs = Array.from(document.body.querySelectorAll('.google-photos-album-images a'));
-      imgs.push(...Array.from(document.body.querySelectorAll('a.google-photos-album-image')));
-      for (const anchor of imgs) {
-        anchor.href = anchor.href.replace(/=s720\-no/i, '=s1920-no');
-      }
-    } catch (e) {
-      console.log(e);
-    }
-  });
-</script>
-
-      
+      <% if (post.excerpt && index){ %>
+        <%- post.excerpt %>
+        <% if (theme.excerpt_link){ %>
+          <p class="article-more-link">
+            <a href="<%- url_for(post.path) %>#more"><%= theme.excerpt_link %></a>
+          </p>
+        <% } %>
+      <% } else { %>
+        <%- post.content %>
+      <% } %>
     </div>
     <footer class="article-footer">
-      <a data-url="https://pages.isnot.jp/about/index.html" data-id="ckcn1mn210001l9bqaccs98kr" data-title="About いしだなおと / isnot N3" class="article-permalink">
-      
+      <a data-url="<%- post.permalink %>" data-id="<%= post._id %>" data-title="<%= post.title %>" class="article-permalink">
+      <% if (page.updated && page.date.format() !== page.updated.format()) {%>
+        <time class="post__date" datetime="<%- page.updated.format() %>">
+        <%- '更新: ' + page.updated.format("YYYY.MM.DD") %>
+        </time>
+      <% } %>
       </a>
-      
-      
-      
+      <% if (post.comments && config.disqus_shortname){ %>
+        <a href="<%- post.permalink %>#disqus_thread" class="article-comment-link"><%= __('comment') %></a>
+      <% } %>
+      <% if (post.comments && theme.valine.enable && theme.valine.appId && theme.valine.appKey ){ %>
+        <a href="<%- url_for(post.path) %>#comments" class="article-comment-link">
+          <span class="post-comments-count valine-comment-count" data-xid="<%- url_for(post.path) %>" itemprop="commentCount"></span>
+          <%= __('comment') %>
+        </a>
+      <% } %>
+      <%- partial('post/tag') %>
     </footer>
     <div class="article-footer">
-      
-      
-<div id="stageComment" class="comment fa fa-comment-o">
-  About いしだなおと / isnot N3 について、
-  <a href="https://github.com/isnot/isnot.github.io/issues/new?labels=blog-comments&title=About いしだなおと / isnot N3&body=About%20%5BAbout%20%E3%81%84%E3%81%97%E3%81%A0%E3%81%AA%E3%81%8A%E3%81%A8%20%2F%20isnot%20N3%5D(https%3A%2F%2Fpages.isnot.jp%2Fabout%2Findex.html)" target="_blank" rel="noopener">
-    GitHubでコメントする
-  </a>
-</div>
-
-      
+      <% if (!index && post.comments){ %>
+      <%- partial('_partial/comment-on-issue', {post: page, index: false}) %>
+      <% } %>
     </div>
   </div>
-  
-    
-  
+  <% if (!index){ %>
+    <%- partial('post/nav') %>
+  <% } %>
 </article>
 
+<% if (!index && post.comments && config.disqus_shortname){ %>
+<section id="comments">
+  <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript" target="_blank" rel="noopener">comments powered by Disqus.</a></noscript>
+  </div>
+</section>
+<% } %>
+<% if (!index && post.comments && theme.valine.enable && theme.valine.appId && theme.valine.appKey){ %>
+  <section id="comments" class="vcomment">
 
-
+  </section>
+<% } %>
 </section>
         
           <aside id="sidebar">

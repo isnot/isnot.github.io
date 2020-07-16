@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  
+  <title>【HowTo】Hexoの新しいInjectorについて調べた【5.0】 | isnot N3 | isnot N3</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no">
+  <meta name="description" content="予てより、Hexoに新しいInjector機構を導入する動きがありました。それが、実際のコードとして試せる、かもしれない段階まで進展しているようです。先月の16日に、マスターブランチにマージされたからです。リリースは、次のメジャーバージョンアップとなる(筈の)、5.0になるようです。 PR: feat(extend&#x2F;injector): bring up new extend Injector #">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【HowTo】Hexoの新しいInjectorについて調べた【5.0】">
+<meta property="og:url" content="https://pages.isnot.jp/2020-07/16-HowTo-HexoInject/index.html">
+<meta property="og:site_name" content="isnot N3">
+<meta property="og:description" content="予てより、Hexoに新しいInjector機構を導入する動きがありました。それが、実際のコードとして試せる、かもしれない段階まで進展しているようです。先月の16日に、マスターブランチにマージされたからです。リリースは、次のメジャーバージョンアップとなる(筈の)、5.0になるようです。 PR: feat(extend&#x2F;injector): bring up new extend Injector #">
+<meta property="og:locale" content="ja_JP">
+<meta property="og:image" content="https://i.creativecommons.org/l/by/4.0/88x31.png">
+<meta property="article:published_time" content="2020-07-16T06:54:24.000Z">
+<meta property="article:modified_time" content="2020-07-16T06:54:24.000Z">
+<meta property="article:author" content="isnot">
+<meta property="article:tag" content="javascript">
+<meta property="article:tag" content="hexo">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i.creativecommons.org/l/by/4.0/88x31.png">
+  
+    <link rel="alternate" href="/atom.xml" title="isnot N3">
+  
+  
+    <link rel="icon" href="/favicon.ico">
+  
+  
+    
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Code+Pro#.css">
+
+  
+  
+    
+      
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/css/lightgallery.min.css">
+
+    
+      
+<link rel="stylesheet" href="/css/font-awesome.min.css">
+
+    
+      
+<link rel="stylesheet" href="/css/style.css">
+
+    
+      
+<link rel="stylesheet" href="/css/pages-isnot-jp.css">
+
+    
+  
+<meta name="generator" content="Hexo 4.2.1"><link rel="alternate" href="/atom.xml" title="isnot N3" type="application/atom+xml">
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">isnot N3</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          Javascript, Node.js, npm, git, GitHub, ChatBot, MPD, Ubuntu, Emacs, Photo
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives/">Archives</a>
+        
+          <a class="main-nav-link" href="/about/">About</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSSフィード"></a>
+        
+      </nav>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-HowTo-HexoInject" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2020-07/16-HowTo-HexoInject/" class="article-date">
+  <time class="dt-published" datetime="2020-07-16T06:54:24.000Z" itemprop="datePublished">2020-07-16</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/hexo/">hexo</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      【HowTo】Hexoの新しいInjectorについて調べた【5.0】
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <link crossorigin="anonymous" media="screen" rel="stylesheet" href="/css/google_photos_album.css" /><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/lightgallery.js@1.1.3/dist/css/lightgallery.min.css" /><div class="article-gallery"><p>予てより、<a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>に新しいInjector機構を導入する動きがありました。<br>それが、実際のコードとして試せる、かもしれない段階まで進展しているようです。<br>先月の16日に、マスターブランチにマージされたからです。<br>リリースは、次のメジャーバージョンアップとなる(筈の)、5.0になるようです。</p>
+<p>PR: feat(extend/injector): bring up new extend Injector <a href="https://github.com/hexojs/hexo/pull/4049" target="_blank" rel="noopener">#4049</a></p>
+<h2 id="これはなに？"><a href="#これはなに？" class="headerlink" title="これはなに？"></a>これはなに？</h2><p>まずHexoですが、いわゆる「静的サイトジェネレーター」とよばれる方式の、ブログ作成ツールです。<br>本ブログでも使っているものです。</p>
+<p>そして本件で言うInjectorとは、プログラムが生成するHTMLファイルに対して、cssやjavascriptなどの、code snippet(断片)を、後付で挿入する仕組みのことを指します。</p>
+<p>主なユースケースは、プラグインによって、テーマ(HTMLのテンプレート)を直に編集することなく、cssやjavascriptを挿入することになるでしょう。</p>
+<p>テーマ等が固定であれば、直接テンプレートに追加することで、本件要件は満たせます。<br>しかしHexo本体とは別に、各種テーマ、各種プラグインを好みによって導入できる仕組みであるために、このような機構が必要になってきます。</p>
+<h2 id="これまでの流れ"><a href="#これまでの流れ" class="headerlink" title="これまでの流れ"></a>これまでの流れ</h2><p>以前より同じ目的のために、<a href="https://github.com/hexojs/hexo-inject" target="_blank" rel="noopener">hexo-inject</a>プラグインが存在しました。<br>これはだいたい2016年3月頃までは開発が続けられていた模様で、その後にメンテナンスがされなくなり、またHexo本体のバージョンが上がると共に、動作しない状態になっていました。</p>
+<p>それが昨年の8月に、再び修正する機運が持ち上がっていたようなのですが、結局のところそれも中途で実用化されないままになっていたようです。</p>
+<p>私にもその理由は、なんとなく想像ができます。<br>Injector機構をプラグインによって実装することは、アドホック感ありありで、それならばHexo本体でサポートする方が、ずっとシンプルかつスマートに実現できると考えられるからです。<br>(修正しようとしていた開発者様が同じ考えだったかは、わかりません。)</p>
+<p>Issues: Deprecation <a href="https://github.com/hexojs/hexo-inject/issues/90" target="_blank" rel="noopener">#90</a></p>
+<h2 id="私とInjector"><a href="#私とInjector" class="headerlink" title="私とInjector"></a>私とInjector</h2><p>私がHexoを使い始めると同時に作り始めたプラグインがあります。<br><a href="https://pages.isnot.jp/2019-04/30-hexo-tag-google-photos-album-is-arrived/">hexo-tag-google-photos-album 公開しました</a> (<a href="https://www.npmjs.com/package/hexo-tag-google-photos-album" target="_blank" rel="noopener">npm</a>)</p>
+<p>このプラグインの中でも、cssやjavascriptを挿入する機能が必要になって、開発の過程でhexo-injectプラグインのことを知り、そして挫折しました。</p>
+<p>それで他作者様のプラグイン等を参考にして、独自にInjector機能を実装したもの、実は満足する動作を実現できていません。<br>ひとまず動く、かな、位の状況になっていて、後で必ず、作り直そうと決めていたのです。</p>
+<p>が、いかんせん、上記のように、プラグインからそれを実装するには原理的な困難があり、同時に他の開発者によって改善に動いている様子があることも知ったために、その進捗を待つこととして、私の作成するプラグインは、不完全なままで、時期が来るのを待つことにしていたのでした。</p>
+<h2 id="ドキュメント-私家版和訳"><a href="#ドキュメント-私家版和訳" class="headerlink" title="ドキュメント 私家版和訳"></a>ドキュメント 私家版和訳</h2><p>新しいAPIは、本番リリース前なので、現時点で公式サイトを探してもドキュメントがありません。</p>
+<p>そして公式サイトの更新も、プルリクが既に準備されており、開発ブランチを通してその中身を読むことが可能です。</p>
+<p>docs | <a href="https://github.com/SukkaW/hexo-site/blob/docs-api-injector/source/api/injector.md" target="_blank" rel="noopener">API/Injector</a> | Hexo</p>
+<p>今回、これを和訳してみようかと思います。</p>
+<p>↓↓↓和訳ここから</p>
+<hr>
+<p>Injector</p>
+<hr>
+<p>「Injector」は、静的なコードの断片(スニペット)を、生成されたHTMLファイル内の、head要素やbody要素に付け加えます。<br>Hexoは、<code>after_render:html</code>フィルターが処理される<strong>前に</strong>、Injectorを実行します。</p>
+<h2 id="Synopsis-使い方"><a href="#Synopsis-使い方" class="headerlink" title="Synopsis 使い方"></a>Synopsis 使い方</h2><figure class="highlight js"><table><tr><td class="code"><pre><span class="line">hexo.extend.injector.register(entry, value, to)</span><br></pre></td></tr></table></figure>
+
+<h3 id="entry-lt-string-gt"><a href="#entry-lt-string-gt" class="headerlink" title="entry &lt;string&gt;"></a>entry <code>&lt;string&gt;</code></h3><p>HTML内部において、目的のコードを挿入する場所を指定します。&lt;文字列&gt;</p>
+<p>以下の値を指定できます。</p>
+<ul>
+<li><code>head_begin</code>: <code>&lt;head&gt;</code>要素開始タグの直後に、コードを挿入します。(デフォルト)</li>
+<li><code>head_end</code>: <code>&lt;/head&gt;</code>要素閉じタグの直前 〃</li>
+<li><code>body_begin</code>: <code>&lt;body&gt;</code>要素開始タグの直後 〃</li>
+<li><code>body_end</code>: <code>&lt;/body&gt;</code>要素閉じタグの直前 〃</li>
+</ul>
+<h3 id="value-lt-string-gt-lt-Function-gt"><a href="#value-lt-string-gt-lt-Function-gt" class="headerlink" title="value &lt;string&gt; | &lt;Function&gt;"></a>value <code>&lt;string&gt; | &lt;Function&gt;</code></h3><p>挿入したい、コードの断片(スニペット)。&lt;文字列、もしくは関数&gt;</p>
+<blockquote>
+<p>文字列を返却する関数を指定することも可能です。</p>
+</blockquote>
+<h3 id="to-lt-string-gt"><a href="#to-lt-string-gt" class="headerlink" title="to &lt;string&gt;"></a>to <code>&lt;string&gt;</code></h3><p>どのページに対して、コードの断片を挿入するか。&lt;文字列&gt;</p>
+<ul>
+<li><code>default</code>: 全てのページ(デフォルト)</li>
+<li><code>home</code>: インデックスのみ (ヘルパー<code>is_home()</code> が <code>true</code> のとき)</li>
+<li><code>post</code>: ブログ記事のみ (ヘルパー<code>is_post()</code> が <code>true</code> のとき)</li>
+<li><code>page</code>:(postではない)静的ページのみ (ヘルパー<code>is_page()</code> が <code>true</code> のとき)</li>
+<li><code>archive</code>: アーカイブのみ (ヘルパー<code>is_archive()</code> が <code>true</code> のとき)</li>
+<li><code>category</code>: カテゴリーのみ (ヘルパー<code>is_category()</code> が <code>true</code> のとき)</li>
+<li><code>tag</code>: タグのみ (ヘルパー<code>is_tag()</code> が <code>true</code> のとき)</li>
+<li>カスタムレイアウト(Layout)の名前を指定することが可能です。参照：<a href="https://hexo.io/docs/writing#Layout" target="_blank" rel="noopener">Writing - Layout</a></li>
+</ul>
+<hr>
+<p>他にも内部的な機能がありますが、詳細は <a href="https://github.com/hexojs/hexo/pull/4049" target="_blank" rel="noopener">hexojs/hexo#4049</a> を参照してください。</p>
+<h2 id="Example-サンプル"><a href="#Example-サンプル" class="headerlink" title="Example サンプル"></a>Example サンプル</h2><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> css = hexo.extend.helper.get(<span class="string">'css'</span>);</span><br><span class="line"><span class="keyword">const</span> js = hexo.extend.helper.get(<span class="string">'js'</span>);</span><br><span class="line"></span><br><span class="line">hexo.extend.injector.register(<span class="string">'head_end'</span>, () =&gt; &#123;</span><br><span class="line">  <span class="keyword">return</span> css(<span class="string">'https://cdn.jsdelivr.net/npm/aplayer@1.10.1/dist/APlayer.min.css'</span>);</span><br><span class="line">&#125;, <span class="string">'music'</span>);</span><br><span class="line"></span><br><span class="line">hexo.extend.injector.register(<span class="string">'body_end'</span>, <span class="string">'&lt;script src="https://cdn.jsdelivr.net/npm/aplayer@1.10.1/dist/APlayer.min.js"&gt;'</span>, <span class="string">'music'</span>);</span><br><span class="line"></span><br><span class="line">hexo.extend.injector.register(<span class="string">'body_end'</span>, () =&gt; &#123;</span><br><span class="line">  <span class="keyword">return</span> js(<span class="string">'/js/jquery.js'</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p>上記の例では、<code>music</code>レイアウトを指定した全てのページに対して、<code>APlayer.min.css</code> (<code>&lt;link&gt;</code> 要素)を、<code>&lt;/head&gt;</code>要素閉じタグの前に挿入します。<br>同時に、<code>APlayer.min.js</code> (<code>&lt;script&gt;</code> 要素)を、それらのページの<code>&lt;/body&gt;</code>要素閉じタグの前に挿入します。</p>
+<p>そして最後の段落では、全ての生成されたページで、<code>jquery.js</code> (<code>&lt;script&gt;</code> 要素)を、<code>&lt;/body&gt;</code>要素閉じタグの前に挿入します。</p>
+<hr>
+<p>↑↑↑和訳ここまで</p>
+<p>この和訳は、 <a href="https://github.com/SukkaW/hexo-site/blob/docs-api-injector/source/api/injector.md" target="_blank" rel="noopener">API/Injector</a> を、私（isnot）が独自に翻訳したものです。原文はMIT Licenseです。</p>
+<p>私の和訳について、MIT Licenseもしくは、<a href="http://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">クリエイティブ・コモンズ 表示 4.0 国際 ライセンス</a>の下に提供されています。<br><a rel="license noopener" href="http://creativecommons.org/licenses/by/4.0/" target="_blank"><img alt="クリエイティブ・コモンズ・ライセンス" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" /></a></p>
+</div><script src="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/js/lightgallery.min.js"></script><script src="/js/lg-thumbnail.min.js"></script><script src="/js/lg-zoom.min.js"></script><script src="/js/lg-autoplay.min.js"></script><script src="/js/lg-fullscreen.min.js"></script><script src="/js/lg-pager.min.js"></script><script src="/js/lg-hash.min.js"></script><script>if (typeof lightGallery !== 'undefined') {
+        var options = {
+            selector: '.gallery-item'
+        };
+        lightGallery(document.getElementsByClassName('article-gallery')[0], options);
+        }</script><script>
+function addLoadEvent(func) {
+  const oldonload = window.onload;
+  if (typeof window.onload !== 'function') {
+    window.onload = func;
+  } else {
+    window.onload = () => {
+      oldonload();
+      func();
+    };
+  }
+}
+  addLoadEvent(() => {
+    try {
+      if (window.innerWidth < Number('768')) {
+        return;
+      }
+      const imgs = Array.from(document.body.querySelectorAll('.google-photos-album-images a'));
+      imgs.push(...Array.from(document.body.querySelectorAll('a.google-photos-album-image')));
+      for (const anchor of imgs) {
+        anchor.href = anchor.href.replace(/=s720\-no/i, '=s1920-no');
+      }
+    } catch (e) {
+      console.log(e);
+    }
+  });
+</script>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://pages.isnot.jp/2020-07/16-HowTo-HexoInject/" data-id="ckcokzp6k0009xabqfvefhk0f" data-title="【HowTo】Hexoの新しいInjectorについて調べた【5.0】" class="article-permalink">
+      
+      </a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hexo/" rel="tag">hexo</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/" rel="tag">javascript</a></li></ul>
+
+    </footer>
+    <div class="article-footer">
+      
+      
+<div id="stageComment" class="comment fa fa-comment-o">
+  【HowTo】Hexoの新しいInjectorについて調べた【5.0】 について、
+  <a href="https://github.com/isnot/isnot.github.io/issues/new?labels=blog-comments&title=【HowTo】Hexoの新しいInjectorについて調べた【5.0】&body=About%20%5B%E3%80%90HowTo%E3%80%91Hexo%E3%81%AE%E6%96%B0%E3%81%97%E3%81%84Injector%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6%E8%AA%BF%E3%81%B9%E3%81%9F%E3%80%905.0%E3%80%91%5D(https%3A%2F%2Fpages.isnot.jp%2F2020-07%2F16-HowTo-HexoInject%2Findex.html)" target="_blank" rel="noopener">
+    GitHubでコメントする
+  </a>
+</div>
+
+      
+    </div>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2020-06/25-hydrangea2020/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">前の記事</strong>
+      <div class="article-nav-title">アジサイ2020</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    <div id="owner" class="widget-wrap">
+  <h3 class="widget-title">&nbsp;</h3>
+  <div class="widget author">
+    <a href="/"><img class="avatar" src="/images/makino-otometsubaki512.png" alt=""></a>
+    <a href="/about/"><h3 class="author">About isnot</h3></a>
+    <h4>いしだなおとの、ブログ的な。</h4>
+    <div class="social">
+      
+        
+          <a href="/atom.xml" title="rss" class="fa fa-rss" target="_blank"></a>
+        
+      
+        
+          <a href="https://github.com/isnot" title="github" class="fa fa-github" target="_blank"></a>
+        
+      
+        
+          <a href="https://soundcloud.com/isnot-jp" title="soundcloud" class="fa fa-soundcloud" target="_blank"></a>
+        
+      
+        
+          <a href="https://www.youtube.com/channel/UCy6ciW14LkMnyXFkxi9uwNw" title="youtube" class="fa fa-youtube" target="_blank"></a>
+        
+      
+        
+          <a href="https://t.me/isnot" title="telegram" class="fa fa-telegram" target="_blank"></a>
+        
+      
+        
+          <a href="https://mewe.com/i/naoto" title="user" class="fa fa-user" target="_blank"></a>
+        
+      
+    </div>
+  </div>
+</div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最近の投稿</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2020-07/16-HowTo-HexoInject/">【HowTo】Hexoの新しいInjectorについて調べた【5.0】</a>
+          </li>
+        
+          <li>
+            <a href="/2020-06/25-hydrangea2020/">アジサイ2020</a>
+          </li>
+        
+          <li>
+            <a href="/2020-04/09-Create-a-Framework-for-Chatbot/">チャット・ボットのためのフレームワークを開発してみた。序章</a>
+          </li>
+        
+          <li>
+            <a href="/2019-11/18-apt-btrfs-snapshot-df/">apt-btrfs-snapshotによるディスク容量の消費</a>
+          </li>
+        
+          <li>
+            <a href="/2019-10/17-tamako-cycling/">多摩湖自転車歩行者道〜六道山〜文明堂壹番館</a>
+          </li>
+        
+          <li>
+            <a href="/2019-09/24-Avenir-Shards-Bookmarklet/">Avenir Shards Bookmarklet</a>
+          </li>
+        
+          <li>
+            <a href="/2019-06/23-GoogleSpreadsheetAPIv4/">GoogleSpreadsheetAPIv4</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">タグ一覧</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/chatbot/" style="font-size: 10px;">chatbot</a> <a href="/tags/cycling/" style="font-size: 10px;">cycling</a> <a href="/tags/domain/" style="font-size: 10px;">domain</a> <a href="/tags/gas/" style="font-size: 10px;">gas</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/github-pages/" style="font-size: 10px;">github pages</a> <a href="/tags/hexo/" style="font-size: 18px;">hexo</a> <a href="/tags/ingress/" style="font-size: 10px;">ingress</a> <a href="/tags/isnot/" style="font-size: 10px;">isnot</a> <a href="/tags/javascript/" style="font-size: 20px;">javascript</a> <a href="/tags/line/" style="font-size: 10px;">line</a> <a href="/tags/npm/" style="font-size: 14px;">npm</a> <a href="/tags/photo/" style="font-size: 16px;">photo</a> <a href="/tags/rose/" style="font-size: 12px;">rose</a> <a href="/tags/sakura/" style="font-size: 10px;">sakura</a> <a href="/tags/skyscraper/" style="font-size: 10px;">skyscraper</a> <a href="/tags/telegram/" style="font-size: 10px;">telegram</a> <a href="/tags/ubuntu/" style="font-size: 10px;">ubuntu</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">カテゴリ</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/hexo/">hexo</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/javascript/">javascript</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/myself/">myself</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/photo/">photo</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/ubuntu/">ubuntu</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">アーカイブ</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">2020/07</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">2020/06</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">2020/04</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">2019/11</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">2019/10</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">2019/09</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">2019/06</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">2019/05</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">2019/04</a></li></ul>
+    </div>
+  </div>
+
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+  <div id="gotoTop"><span class="fa fa-arrow-circle-up" title="↑Scroll to top of page">&nbsp;</span></div>
+    <div id="footer-info" class="inner">
+      &copy; 2020 isnot<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>,
+      Theme &quot;Horizon&quot; based on <a href="https://github.com/hexojs/hexo-theme-landscape" target="_blank">Landscape</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives/" class="mobile-nav-link">Archives</a>
+  
+    <a href="/about/" class="mobile-nav-link">About</a>
+  
+</nav>
+    
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>

@@ -19,7 +19,7 @@
 <meta property="article:tag" content="hexo">
 <meta name="twitter:card" content="summary">
   
-    <link rel="alternate" href="/atom.xml" title="isnot N3">
+    <link rel="alternate" href="/atom.xml" title="isnot N3" type="application/atom+xml">
   
   
     <link rel="icon" href="/favicon.ico">
@@ -48,8 +48,7 @@
 
     
   
-<meta name="generator" content="Hexo 4.2.1"><link rel="alternate" href="/atom.xml" title="isnot N3" type="application/atom+xml">
-</head>
+<!-- hexo injector head_end start --><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/lightgallery.js@1.1.3/dist/css/lightgallery.min.css" /><link crossorigin="anonymous" media="screen" rel="stylesheet" href="/css/google_photos_album.css" /><!-- hexo injector head_end end --><meta name="generator" content="Hexo 4.2.0"></head>
 
 <body>
   <div id="container">
@@ -61,10 +60,6 @@
       <h1 id="logo-wrap">
         <a href="/" id="logo">isnot N3</a>
       </h1>
-      
-        <h2 id="subtitle-wrap">
-          Javascript, Node.js, npm, git, GitHub, ChatBot, MPD, Ubuntu, Emacs, Photo
-        </h2>
       
     </div>
     <div id="header-inner" class="inner">
@@ -113,52 +108,20 @@
     
     <div class="e-content article-entry" itemprop="articleBody">
       
-        <link crossorigin="anonymous" media="screen" rel="stylesheet" href="/css/google_photos_album.css" /><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/lightgallery.js@1.1.3/dist/css/lightgallery.min.css" /><div class="article-gallery"><p>Hexoでは、なにはともあれ、コマンドライン（インタラクティブなコマンド・シェル、例えばBash）環境において、<code>hexo</code>コマンドを利用することで処理が始まる。</p>
+        <div class="article-gallery"><p>Hexoでは、なにはともあれ、コマンドライン（インタラクティブなコマンド・シェル、例えばBash）環境において、<code>hexo</code>コマンドを利用することで処理が始まる。</p>
 <h2 id="hexo-cliにある、コマンドラインの処理が始まる場所"><a href="#hexo-cliにある、コマンドラインの処理が始まる場所" class="headerlink" title="hexo-cliにある、コマンドラインの処理が始まる場所"></a>hexo-cliにある、コマンドラインの処理が始まる場所</h2><ul>
-<li><a href="https://github.com/hexojs/hexo-cli/blob/master/lib/hexo.js" target="_blank" rel="noopener">hexo-cli/lib/hexo.js</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo-cli/blob/master/lib/hexo.js">hexo-cli/lib/hexo.js</a></li>
 <li>hexo-cli/lib/context.js</li>
 <li>hexo-cli/lib/extend/console.js</li>
 </ul>
 <h2 id="Hexo-オブジェクト"><a href="#Hexo-オブジェクト" class="headerlink" title="Hexo オブジェクト"></a>Hexo オブジェクト</h2><ul>
-<li><a href="https://github.com/hexojs/hexo/blob/master/lib/hexo/index.js" target="_blank" rel="noopener">hexo/lib/hexo/index.js</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/blob/master/lib/hexo/index.js">hexo/lib/hexo/index.js</a></li>
 </ul>
-</div><script src="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/js/lightgallery.min.js"></script><script src="/js/lg-thumbnail.min.js"></script><script src="/js/lg-zoom.min.js"></script><script src="/js/lg-autoplay.min.js"></script><script src="/js/lg-fullscreen.min.js"></script><script src="/js/lg-pager.min.js"></script><script src="/js/lg-hash.min.js"></script><script>if (typeof lightGallery !== 'undefined') {
-        var options = {
-            selector: '.gallery-item'
-        };
-        lightGallery(document.getElementsByClassName('article-gallery')[0], options);
-        }</script><script>
-function addLoadEvent(func) {
-  const oldonload = window.onload;
-  if (typeof window.onload !== 'function') {
-    window.onload = func;
-  } else {
-    window.onload = () => {
-      oldonload();
-      func();
-    };
-  }
-}
-  addLoadEvent(() => {
-    try {
-      if (window.innerWidth < Number('768')) {
-        return;
-      }
-      const imgs = Array.from(document.body.querySelectorAll('.google-photos-album-images a'));
-      imgs.push(...Array.from(document.body.querySelectorAll('a.google-photos-album-image')));
-      for (const anchor of imgs) {
-        anchor.href = anchor.href.replace(/=s720\-no/i, '=s1920-no');
-      }
-    } catch (e) {
-      console.log(e);
-    }
-  });
-</script>
-
+</div>
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://pages.isnot.jp/2019-05/06-study-about-hexos-internals-5/" data-id="ckcokzp77001hxabqft5e7pkr" data-title="Hexo 内部探訪 (5) ライフサイクル" class="article-permalink">
+      <a data-url="https://pages.isnot.jp/2019-05/06-study-about-hexos-internals-5/" data-id="ckcosahek001kj9bqhcwvdu94" data-title="Hexo 内部探訪 (5) ライフサイクル" class="article-permalink">
       
       </a>
       
@@ -172,7 +135,7 @@ function addLoadEvent(func) {
       
 <div id="stageComment" class="comment fa fa-comment-o">
   Hexo 内部探訪 (5) ライフサイクル について、
-  <a href="https://github.com/isnot/isnot.github.io/issues/new?labels=blog-comments&title=Hexo 内部探訪 (5) ライフサイクル&body=About%20%5BHexo%20%E5%86%85%E9%83%A8%E6%8E%A2%E8%A8%AA%20(5)%20%E3%83%A9%E3%82%A4%E3%83%95%E3%82%B5%E3%82%A4%E3%82%AF%E3%83%AB%5D(https%3A%2F%2Fpages.isnot.jp%2F2019-05%2F06-study-about-hexos-internals-5%2Findex.html)" target="_blank" rel="noopener">
+  <a target="_blank" rel="noopener" href="https://github.com/isnot/isnot.github.io/issues/new?labels=blog-comments&title=Hexo 内部探訪 (5) ライフサイクル&body=About%20%5BHexo%20%E5%86%85%E9%83%A8%E6%8E%A2%E8%A8%AA%20(5)%20%E3%83%A9%E3%82%A4%E3%83%95%E3%82%B5%E3%82%A4%E3%82%AF%E3%83%AB%5D(https%3A%2F%2Fpages.isnot.jp%2F2019-05%2F06-study-about-hexos-internals-5%2Findex.html)">
     GitHubでコメントする
   </a>
 </div>
@@ -254,6 +217,10 @@ function addLoadEvent(func) {
       <ul>
         
           <li>
+            <a href="/2020-07/16-TestForInjectorOfHexo5/">Hexo 5.0 実装予定のInjectorを試す</a>
+          </li>
+        
+          <li>
             <a href="/2020-07/16-HowTo-HexoInject/">【HowTo】Hexoの新しいInjectorについて調べた【5.0】</a>
           </li>
         
@@ -275,10 +242,6 @@ function addLoadEvent(func) {
         
           <li>
             <a href="/2019-09/24-Avenir-Shards-Bookmarklet/">Avenir Shards Bookmarklet</a>
-          </li>
-        
-          <li>
-            <a href="/2019-06/23-GoogleSpreadsheetAPIv4/">GoogleSpreadsheetAPIv4</a>
           </li>
         
       </ul>
@@ -350,5 +313,35 @@ function addLoadEvent(func) {
 
 
   </div>
-</body>
+<!-- hexo injector body_end start --><script src="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/js/lightgallery.min.js"></script><script src="/js/lg-thumbnail.min.js"></script><script src="/js/lg-zoom.min.js"></script><script src="/js/lg-autoplay.min.js"></script><script src="/js/lg-fullscreen.min.js"></script><script src="/js/lg-pager.min.js"></script><script src="/js/lg-hash.min.js"></script>
+    <script>if (typeof lightGallery !== 'undefined') {
+      lightGallery(document.getElementsByClassName('article-gallery')[0], { selector: '.gallery-item' });
+    }</script><script>
+function addLoadEvent(func) {
+  const oldonload = window.onload;
+  if (typeof window.onload !== 'function') {
+    window.onload = func;
+  } else {
+    window.onload = () => {
+      oldonload();
+      func();
+    };
+  }
+}
+  addLoadEvent(() => {
+    try {
+      if (window.innerWidth < Number('768')) {
+        return;
+      }
+      const imgs = Array.from(document.body.querySelectorAll('.google-photos-album-images a'));
+      imgs.push(...Array.from(document.body.querySelectorAll('a.google-photos-album-image')));
+      for (const anchor of imgs) {
+        anchor.href = anchor.href.replace(/=s720\-no/i, '=s1920-no');
+      }
+    } catch (e) {
+      console.log(e);
+    }
+  });
+</script>
+<!-- hexo injector body_end end --></body>
 </html>

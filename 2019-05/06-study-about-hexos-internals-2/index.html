@@ -20,7 +20,7 @@
 <meta property="article:tag" content="hexo">
 <meta name="twitter:card" content="summary">
   
-    <link rel="alternate" href="/atom.xml" title="isnot N3">
+    <link rel="alternate" href="/atom.xml" title="isnot N3" type="application/atom+xml">
   
   
     <link rel="icon" href="/favicon.ico">
@@ -49,8 +49,7 @@
 
     
   
-<meta name="generator" content="Hexo 4.2.1"><link rel="alternate" href="/atom.xml" title="isnot N3" type="application/atom+xml">
-</head>
+<!-- hexo injector head_end start --><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/lightgallery.js@1.1.3/dist/css/lightgallery.min.css" /><link crossorigin="anonymous" media="screen" rel="stylesheet" href="/css/google_photos_album.css" /><!-- hexo injector head_end end --><meta name="generator" content="Hexo 4.2.0"></head>
 
 <body>
   <div id="container">
@@ -62,10 +61,6 @@
       <h1 id="logo-wrap">
         <a href="/" id="logo">isnot N3</a>
       </h1>
-      
-        <h2 id="subtitle-wrap">
-          Javascript, Node.js, npm, git, GitHub, ChatBot, MPD, Ubuntu, Emacs, Photo
-        </h2>
       
     </div>
     <div id="header-inner" class="inner">
@@ -114,7 +109,7 @@
     
     <div class="e-content article-entry" itemprop="articleBody">
       
-        <link crossorigin="anonymous" media="screen" rel="stylesheet" href="/css/google_photos_album.css" /><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/lightgallery.js@1.1.3/dist/css/lightgallery.min.css" /><div class="article-gallery"><h2 id="npm-linkを使いこなすには"><a href="#npm-linkを使いこなすには" class="headerlink" title="npm linkを使いこなすには"></a>npm linkを使いこなすには</h2><p><a href="https://docs.npmjs.com/cli/link.html" target="_blank" rel="noopener">npm link</a>という、ありがたい仕組みがあって、非公開のモジュール（または開発中のバージョン）を、node_modulesの中に配置することができる。<br>基本的には、シンボリック・リンクである。</p>
+        <div class="article-gallery"><h2 id="npm-linkを使いこなすには"><a href="#npm-linkを使いこなすには" class="headerlink" title="npm linkを使いこなすには"></a>npm linkを使いこなすには</h2><p><a target="_blank" rel="noopener" href="https://docs.npmjs.com/cli/link.html">npm link</a>という、ありがたい仕組みがあって、非公開のモジュール（または開発中のバージョン）を、node_modulesの中に配置することができる。<br>基本的には、シンボリック・リンクである。</p>
 <p>ここまでは、すぐに把握できたけど、実はうまく動作させるための、さらなる条件があった。</p>
 <p>モジュールを読み込む側と、読み込まれる側のモジュールが、ファイルシステム上で同階層になるように配置されている必要があるのだった。</p>
 <p>私の場合だけど、開発中のリポジトリは、ある場所にまとめてある。<br>例：<code>~/repository/hexo-tag-google-photos-album/</code><br>これが、Hexoプラグインを開発する場所。</p>
@@ -129,14 +124,14 @@
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">naoto@MyComputer:~/www$ <span class="built_in">cd</span> hexo-tag-google-photos-album</span><br><span class="line">naoto@MyComputer:~/www/hexo-tag-google-photos-album$ sudo npm link</span><br><span class="line">(snip)</span><br><span class="line">/usr/lib/node_modules/hexo-tag-google-photos-album -&gt; /home/naoto/repository/hexo-tag-google-photos-album</span><br></pre></td></tr></table></figure>
 
 <p>そして、呼び出す方で使う側の、つまりブログ側の（しつこい）linkはこの通り。</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">naoto@MyComputer:~/www/hexo-tag-google-photos-album$ <span class="built_in">cd</span> ../MyBlog</span><br><span class="line">naoto@MyComputer:~/www/MyBlog$ npm link hexo-tag-google-photos-album</span><br><span class="line">/home/naoto/www/MyBlog/node_modules/hexo-tag-google-photos-album -&gt; /usr/lib/node_modules/hexo-tag-google-photos-album -&gt; /home/naoto/repository/hexo-tag-google-photos-album</span><br><span class="line">naoto@MyComputer:~/www/MyBlog$ grep photos package.json</span><br><span class="line">    <span class="string">"hexo-tag-google-photos-album"</span>: <span class="string">"git+https://github.com/isnot/hexo-tag-google-photos-album.git"</span>,</span><br><span class="line">naoto@MyComputer:~/www/MyBlog$ ls -l node_modules/hexo-tag-google-photos-album</span><br><span class="line">lrwxrwxrwx 1 naoto naoto 64  5月  6 01:50 node_modules/hexo-tag-google-photos-album -&gt; ../../../../../usr/lib/node_modules/hexo-tag-google-photos-album</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">naoto@MyComputer:~/www/hexo-tag-google-photos-album$ <span class="built_in">cd</span> ../MyBlog</span><br><span class="line">naoto@MyComputer:~/www/MyBlog$ npm link hexo-tag-google-photos-album</span><br><span class="line">/home/naoto/www/MyBlog/node_modules/hexo-tag-google-photos-album -&gt; /usr/lib/node_modules/hexo-tag-google-photos-album -&gt; /home/naoto/repository/hexo-tag-google-photos-album</span><br><span class="line">naoto@MyComputer:~/www/MyBlog$ grep photos package.json</span><br><span class="line">    <span class="string">&quot;hexo-tag-google-photos-album&quot;</span>: <span class="string">&quot;git+https://github.com/isnot/hexo-tag-google-photos-album.git&quot;</span>,</span><br><span class="line">naoto@MyComputer:~/www/MyBlog$ ls -l node_modules/hexo-tag-google-photos-album</span><br><span class="line">lrwxrwxrwx 1 naoto naoto 64  5月  6 01:50 node_modules/hexo-tag-google-photos-album -&gt; ../../../../../usr/lib/node_modules/hexo-tag-google-photos-album</span><br></pre></td></tr></table></figure>
 
 <p>これで、毎度git pushとnpm upを繰り返すこと無く、作業ができるようになる（はず）。<br>確かめてみよう。</p>
 <p>開発中のプラグインの中に、以下を書き加える。</p>
-<figure class="highlight javascript"><figcaption><span>~/repository/hexo-tag-google-photos-album/index.js</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> &#123; inspect &#125; = <span class="built_in">require</span>(<span class="string">'util'</span>);</span><br><span class="line"><span class="keyword">var</span> g = <span class="built_in">Function</span>(<span class="string">'return this'</span>)();</span><br><span class="line"><span class="built_in">console</span>.log(inspect(g, &#123; <span class="attr">depth</span>: <span class="number">0</span> &#125;));</span><br><span class="line"><span class="built_in">console</span>.log(inspect(hexo, &#123; <span class="attr">depth</span>: <span class="number">0</span> &#125;));</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><figcaption><span>~/repository/hexo-tag-google-photos-album/index.js</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> &#123; inspect &#125; = <span class="built_in">require</span>(<span class="string">&#x27;util&#x27;</span>);</span><br><span class="line"><span class="keyword">var</span> g = <span class="built_in">Function</span>(<span class="string">&#x27;return this&#x27;</span>)();</span><br><span class="line"><span class="built_in">console</span>.log(inspect(g, &#123; <span class="attr">depth</span>: <span class="number">0</span> &#125;));</span><br><span class="line"><span class="built_in">console</span>.log(inspect(hexo, &#123; <span class="attr">depth</span>: <span class="number">0</span> &#125;));</span><br></pre></td></tr></table></figure>
 
 <p>これを、コミットもせず、コピーもせず、動かしたい。</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">naoto@MyComputer:~/www/MyBlog$ hexo list page</span><br><span class="line">Object [global] &#123;</span><br><span class="line">  global: [Circular],</span><br><span class="line">  process: [process],</span><br><span class="line">  Buffer: [Function],</span><br><span class="line">  clearImmediate: [Function: clearImmediate],</span><br><span class="line">  clearInterval: [Function: clearInterval],</span><br><span class="line">  clearTimeout: [Function: clearTimeout],</span><br><span class="line">  setImmediate: [Function],</span><br><span class="line">  setInterval: [Function: setInterval],</span><br><span class="line">  setTimeout: [Function] &#125;</span><br><span class="line">Hexo &#123;</span><br><span class="line">  _events: [Object: null prototype] &#123;&#125;,</span><br><span class="line">  _eventsCount: 0,</span><br><span class="line">  _maxListeners: undefined,</span><br><span class="line">  base_dir: <span class="string">'/home/naoto/www/MyBlog/'</span>,</span><br><span class="line">  public_dir: <span class="string">'/home/naoto/www/MyBlog/public/'</span>,</span><br><span class="line">  source_dir: <span class="string">'/home/naoto/www/MyBlog/source/'</span>,</span><br><span class="line">  plugin_dir: <span class="string">'/home/naoto/www/MyBlog/node_modules/'</span>,</span><br><span class="line">  script_dir: <span class="string">'/home/naoto/www/MyBlog/scripts/'</span>,</span><br><span class="line">  scaffold_dir: <span class="string">'/home/naoto/www/MyBlog/scaffolds/'</span>,</span><br><span class="line">  theme_dir: <span class="string">'/home/naoto/www/MyBlog/themes/stage/'</span>,</span><br><span class="line">  theme_script_dir: <span class="string">'/home/naoto/www/MyBlog/themes/stage/scripts/'</span>,</span><br><span class="line">  env: [Object],</span><br><span class="line">  extend: [Object],</span><br><span class="line">  config: [Object],</span><br><span class="line">  <span class="built_in">log</span>: [Logger],</span><br><span class="line">  render: [Render],</span><br><span class="line">  route: [Router],</span><br><span class="line">  post: [Post],</span><br><span class="line">  scaffold: [Scaffold],</span><br><span class="line">  _dbLoaded: <span class="literal">false</span>,</span><br><span class="line">  _isGenerating: <span class="literal">false</span>,</span><br><span class="line">  database: [Database],</span><br><span class="line">  config_path: <span class="string">'/home/naoto/www/MyBlog/_config.yml'</span>,</span><br><span class="line">  <span class="built_in">source</span>: [Source],</span><br><span class="line">  theme: [Theme],</span><br><span class="line">  locals: [Locals] &#125;</span><br><span class="line">INFO  Start processing</span><br><span class="line">INFO  ---- START COPYING TAG CLOUD FILES ----</span><br><span class="line">INFO  ---- END COPYING TAG CLOUD FILES ----</span><br><span class="line">Date        Title                          Path</span><br><span class="line">2019-04-09  Tags                           tags/index.md</span><br><span class="line">2019-04-13  About いしだなおと / isnot N3  about/index.md</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">naoto@MyComputer:~/www/MyBlog$ hexo list page</span><br><span class="line">Object [global] &#123;</span><br><span class="line">  global: [Circular],</span><br><span class="line">  process: [process],</span><br><span class="line">  Buffer: [Function],</span><br><span class="line">  clearImmediate: [Function: clearImmediate],</span><br><span class="line">  clearInterval: [Function: clearInterval],</span><br><span class="line">  clearTimeout: [Function: clearTimeout],</span><br><span class="line">  setImmediate: [Function],</span><br><span class="line">  setInterval: [Function: setInterval],</span><br><span class="line">  setTimeout: [Function] &#125;</span><br><span class="line">Hexo &#123;</span><br><span class="line">  _events: [Object: null prototype] &#123;&#125;,</span><br><span class="line">  _eventsCount: 0,</span><br><span class="line">  _maxListeners: undefined,</span><br><span class="line">  base_dir: <span class="string">&#x27;/home/naoto/www/MyBlog/&#x27;</span>,</span><br><span class="line">  public_dir: <span class="string">&#x27;/home/naoto/www/MyBlog/public/&#x27;</span>,</span><br><span class="line">  source_dir: <span class="string">&#x27;/home/naoto/www/MyBlog/source/&#x27;</span>,</span><br><span class="line">  plugin_dir: <span class="string">&#x27;/home/naoto/www/MyBlog/node_modules/&#x27;</span>,</span><br><span class="line">  script_dir: <span class="string">&#x27;/home/naoto/www/MyBlog/scripts/&#x27;</span>,</span><br><span class="line">  scaffold_dir: <span class="string">&#x27;/home/naoto/www/MyBlog/scaffolds/&#x27;</span>,</span><br><span class="line">  theme_dir: <span class="string">&#x27;/home/naoto/www/MyBlog/themes/stage/&#x27;</span>,</span><br><span class="line">  theme_script_dir: <span class="string">&#x27;/home/naoto/www/MyBlog/themes/stage/scripts/&#x27;</span>,</span><br><span class="line">  env: [Object],</span><br><span class="line">  extend: [Object],</span><br><span class="line">  config: [Object],</span><br><span class="line">  <span class="built_in">log</span>: [Logger],</span><br><span class="line">  render: [Render],</span><br><span class="line">  route: [Router],</span><br><span class="line">  post: [Post],</span><br><span class="line">  scaffold: [Scaffold],</span><br><span class="line">  _dbLoaded: <span class="literal">false</span>,</span><br><span class="line">  _isGenerating: <span class="literal">false</span>,</span><br><span class="line">  database: [Database],</span><br><span class="line">  config_path: <span class="string">&#x27;/home/naoto/www/MyBlog/_config.yml&#x27;</span>,</span><br><span class="line">  <span class="built_in">source</span>: [Source],</span><br><span class="line">  theme: [Theme],</span><br><span class="line">  locals: [Locals] &#125;</span><br><span class="line">INFO  Start processing</span><br><span class="line">INFO  ---- START COPYING TAG CLOUD FILES ----</span><br><span class="line">INFO  ---- END COPYING TAG CLOUD FILES ----</span><br><span class="line">Date        Title                          Path</span><br><span class="line">2019-04-09  Tags                           tags/index.md</span><br><span class="line">2019-04-13  About いしだなおと / isnot N3  about/index.md</span><br></pre></td></tr></table></figure>
 
 <p>できた！</p>
 <p>いいね。これで行こう。</p>
@@ -147,43 +142,11 @@
 <li>linkを維持したいモジュールは、package.jsonに書かなければいいのかな？試してない</li>
 <li>それ以外。何かあるかな？</li>
 </ul>
-</div><script src="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/js/lightgallery.min.js"></script><script src="/js/lg-thumbnail.min.js"></script><script src="/js/lg-zoom.min.js"></script><script src="/js/lg-autoplay.min.js"></script><script src="/js/lg-fullscreen.min.js"></script><script src="/js/lg-pager.min.js"></script><script src="/js/lg-hash.min.js"></script><script>if (typeof lightGallery !== 'undefined') {
-        var options = {
-            selector: '.gallery-item'
-        };
-        lightGallery(document.getElementsByClassName('article-gallery')[0], options);
-        }</script><script>
-function addLoadEvent(func) {
-  const oldonload = window.onload;
-  if (typeof window.onload !== 'function') {
-    window.onload = func;
-  } else {
-    window.onload = () => {
-      oldonload();
-      func();
-    };
-  }
-}
-  addLoadEvent(() => {
-    try {
-      if (window.innerWidth < Number('768')) {
-        return;
-      }
-      const imgs = Array.from(document.body.querySelectorAll('.google-photos-album-images a'));
-      imgs.push(...Array.from(document.body.querySelectorAll('a.google-photos-album-image')));
-      for (const anchor of imgs) {
-        anchor.href = anchor.href.replace(/=s720\-no/i, '=s1920-no');
-      }
-    } catch (e) {
-      console.log(e);
-    }
-  });
-</script>
-
+</div>
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://pages.isnot.jp/2019-05/06-study-about-hexos-internals-2/" data-id="ckcokzp730017xabqcib9a8jq" data-title="Hexo 内部探訪 (2) 準備 npm linkメモ" class="article-permalink">
+      <a data-url="https://pages.isnot.jp/2019-05/06-study-about-hexos-internals-2/" data-id="ckcosahec0019j9bqgci5f4uz" data-title="Hexo 内部探訪 (2) 準備 npm linkメモ" class="article-permalink">
       
       </a>
       
@@ -197,7 +160,7 @@ function addLoadEvent(func) {
       
 <div id="stageComment" class="comment fa fa-comment-o">
   Hexo 内部探訪 (2) 準備 npm linkメモ について、
-  <a href="https://github.com/isnot/isnot.github.io/issues/new?labels=blog-comments&title=Hexo 内部探訪 (2) 準備 npm linkメモ&body=About%20%5BHexo%20%E5%86%85%E9%83%A8%E6%8E%A2%E8%A8%AA%20(2)%20%E6%BA%96%E5%82%99%20npm%20link%E3%83%A1%E3%83%A2%5D(https%3A%2F%2Fpages.isnot.jp%2F2019-05%2F06-study-about-hexos-internals-2%2Findex.html)" target="_blank" rel="noopener">
+  <a target="_blank" rel="noopener" href="https://github.com/isnot/isnot.github.io/issues/new?labels=blog-comments&title=Hexo 内部探訪 (2) 準備 npm linkメモ&body=About%20%5BHexo%20%E5%86%85%E9%83%A8%E6%8E%A2%E8%A8%AA%20(2)%20%E6%BA%96%E5%82%99%20npm%20link%E3%83%A1%E3%83%A2%5D(https%3A%2F%2Fpages.isnot.jp%2F2019-05%2F06-study-about-hexos-internals-2%2Findex.html)">
     GitHubでコメントする
   </a>
 </div>
@@ -279,6 +242,10 @@ function addLoadEvent(func) {
       <ul>
         
           <li>
+            <a href="/2020-07/16-TestForInjectorOfHexo5/">Hexo 5.0 実装予定のInjectorを試す</a>
+          </li>
+        
+          <li>
             <a href="/2020-07/16-HowTo-HexoInject/">【HowTo】Hexoの新しいInjectorについて調べた【5.0】</a>
           </li>
         
@@ -300,10 +267,6 @@ function addLoadEvent(func) {
         
           <li>
             <a href="/2019-09/24-Avenir-Shards-Bookmarklet/">Avenir Shards Bookmarklet</a>
-          </li>
-        
-          <li>
-            <a href="/2019-06/23-GoogleSpreadsheetAPIv4/">GoogleSpreadsheetAPIv4</a>
           </li>
         
       </ul>
@@ -375,5 +338,35 @@ function addLoadEvent(func) {
 
 
   </div>
-</body>
+<!-- hexo injector body_end start --><script src="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/js/lightgallery.min.js"></script><script src="/js/lg-thumbnail.min.js"></script><script src="/js/lg-zoom.min.js"></script><script src="/js/lg-autoplay.min.js"></script><script src="/js/lg-fullscreen.min.js"></script><script src="/js/lg-pager.min.js"></script><script src="/js/lg-hash.min.js"></script>
+    <script>if (typeof lightGallery !== 'undefined') {
+      lightGallery(document.getElementsByClassName('article-gallery')[0], { selector: '.gallery-item' });
+    }</script><script>
+function addLoadEvent(func) {
+  const oldonload = window.onload;
+  if (typeof window.onload !== 'function') {
+    window.onload = func;
+  } else {
+    window.onload = () => {
+      oldonload();
+      func();
+    };
+  }
+}
+  addLoadEvent(() => {
+    try {
+      if (window.innerWidth < Number('768')) {
+        return;
+      }
+      const imgs = Array.from(document.body.querySelectorAll('.google-photos-album-images a'));
+      imgs.push(...Array.from(document.body.querySelectorAll('a.google-photos-album-image')));
+      for (const anchor of imgs) {
+        anchor.href = anchor.href.replace(/=s720\-no/i, '=s1920-no');
+      }
+    } catch (e) {
+      console.log(e);
+    }
+  });
+</script>
+<!-- hexo injector body_end end --></body>
 </html>

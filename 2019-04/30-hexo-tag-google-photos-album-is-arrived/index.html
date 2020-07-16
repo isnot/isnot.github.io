@@ -23,7 +23,7 @@
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://nodei.co/npm/hexo-tag-google-photos-album.png">
   
-    <link rel="alternate" href="/atom.xml" title="isnot N3">
+    <link rel="alternate" href="/atom.xml" title="isnot N3" type="application/atom+xml">
   
   
     <link rel="icon" href="/favicon.ico">
@@ -52,8 +52,7 @@
 
     
   
-<meta name="generator" content="Hexo 4.2.1"><link rel="alternate" href="/atom.xml" title="isnot N3" type="application/atom+xml">
-</head>
+<!-- hexo injector head_end start --><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/lightgallery.js@1.1.3/dist/css/lightgallery.min.css" /><link crossorigin="anonymous" media="screen" rel="stylesheet" href="/css/google_photos_album.css" /><!-- hexo injector head_end end --><meta name="generator" content="Hexo 4.2.0"></head>
 
 <body>
   <div id="container">
@@ -65,10 +64,6 @@
       <h1 id="logo-wrap">
         <a href="/" id="logo">isnot N3</a>
       </h1>
-      
-        <h2 id="subtitle-wrap">
-          Javascript, Node.js, npm, git, GitHub, ChatBot, MPD, Ubuntu, Emacs, Photo
-        </h2>
       
     </div>
     <div id="header-inner" class="inner">
@@ -117,55 +112,23 @@
     
     <div class="e-content article-entry" itemprop="articleBody">
       
-        <link crossorigin="anonymous" media="screen" rel="stylesheet" href="/css/google_photos_album.css" /><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/lightgallery.js@1.1.3/dist/css/lightgallery.min.css" /><div class="article-gallery"><p>静的サイトジェネレータのひとつである、<a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>。<br>当ブログで使用している訳ですが、それ用のタグ・プラグインを作成、公開しました。</p>
-<p><a href="https://photos.google.com/" target="_blank" rel="noopener">Googleフォト</a> の、アルバムを埋め込みます。</p>
-<p><a href="https://nodei.co/npm/hexo-tag-google-photos-album/" target="_blank" rel="noopener"><img src="https://nodei.co/npm/hexo-tag-google-photos-album.png" alt="NPM"></a></p>
+        <div class="article-gallery"><p>静的サイトジェネレータのひとつである、<a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>。<br>当ブログで使用している訳ですが、それ用のタグ・プラグインを作成、公開しました。</p>
+<p><a target="_blank" rel="noopener" href="https://photos.google.com/">Googleフォト</a> の、アルバムを埋め込みます。</p>
+<p><a target="_blank" rel="noopener" href="https://nodei.co/npm/hexo-tag-google-photos-album/"><img src="https://nodei.co/npm/hexo-tag-google-photos-album.png" alt="NPM"></a></p>
 <ul>
-<li>(GitHub) <a href="https://github.com/isnot/hexo-tag-google-photos-album" target="_blank" rel="noopener">hexo-tag-google-photos-album</a></li>
-<li>(npm) <a href="https://www.npmjs.com/package/hexo-tag-google-photos-album" target="_blank" rel="noopener">hexo-tag-google-photos-album</a></li>
+<li>(GitHub) <a target="_blank" rel="noopener" href="https://github.com/isnot/hexo-tag-google-photos-album">hexo-tag-google-photos-album</a></li>
+<li>(npm) <a target="_blank" rel="noopener" href="https://www.npmjs.com/package/hexo-tag-google-photos-album">hexo-tag-google-photos-album</a></li>
 <li>(sample) <a href="https://pages.isnot.jp/2019-04/13-image-test/">https://pages.isnot.jp/2019-04/13-image-test/</a></li>
 </ul>
-<p>詳しくは、<a href="https://github.com/isnot/hexo-tag-google-photos-album/blob/master/README.ja.md" target="_blank" rel="noopener">簡単な説明</a>を書いたので、そちらをご参照ください。</p>
+<p>詳しくは、<a target="_blank" rel="noopener" href="https://github.com/isnot/hexo-tag-google-photos-album/blob/master/README.ja.md">簡単な説明</a>を書いたので、そちらをご参照ください。</p>
 <p>npmにモジュールを公開するのは初めてなのですが、思った以上に手続きというか手順が簡単ですね。</p>
 <p>成果物のほうはと言うと、初期のコンセプトに沿ったProof of conceptまではすぐに出来たのですが、細部の詰めを固めるのに、かなり手間取りました。</p>
 <p>あと、Googleフォトにある画像のURLをスクレイピングで抜き出している部分は、アドホックなものだという認識で、あちら次第で変わったりするのかなと思ってます。<br>og:imageに入っているカバー画像のURLだけは、比較的に永続性があると思われます。<br>それ以外は、まぁ、よくわからない😁。</p>
-</div><script src="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/js/lightgallery.min.js"></script><script src="/js/lg-thumbnail.min.js"></script><script src="/js/lg-zoom.min.js"></script><script src="/js/lg-autoplay.min.js"></script><script src="/js/lg-fullscreen.min.js"></script><script src="/js/lg-pager.min.js"></script><script src="/js/lg-hash.min.js"></script><script>if (typeof lightGallery !== 'undefined') {
-        var options = {
-            selector: '.gallery-item'
-        };
-        lightGallery(document.getElementsByClassName('article-gallery')[0], options);
-        }</script><script>
-function addLoadEvent(func) {
-  const oldonload = window.onload;
-  if (typeof window.onload !== 'function') {
-    window.onload = func;
-  } else {
-    window.onload = () => {
-      oldonload();
-      func();
-    };
-  }
-}
-  addLoadEvent(() => {
-    try {
-      if (window.innerWidth < Number('768')) {
-        return;
-      }
-      const imgs = Array.from(document.body.querySelectorAll('.google-photos-album-images a'));
-      imgs.push(...Array.from(document.body.querySelectorAll('a.google-photos-album-image')));
-      for (const anchor of imgs) {
-        anchor.href = anchor.href.replace(/=s720\-no/i, '=s1920-no');
-      }
-    } catch (e) {
-      console.log(e);
-    }
-  });
-</script>
-
+</div>
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://pages.isnot.jp/2019-04/30-hexo-tag-google-photos-album-is-arrived/" data-id="ckcokzp6q000hxabqdxwl3mtc" data-title="hexo-tag-google-photos-album 公開しました" class="article-permalink">
+      <a data-url="https://pages.isnot.jp/2019-04/30-hexo-tag-google-photos-album-is-arrived/" data-id="ckcosahdw000jj9bqewf39who" data-title="hexo-tag-google-photos-album 公開しました" class="article-permalink">
       
       </a>
       
@@ -179,7 +142,7 @@ function addLoadEvent(func) {
       
 <div id="stageComment" class="comment fa fa-comment-o">
   hexo-tag-google-photos-album 公開しました について、
-  <a href="https://github.com/isnot/isnot.github.io/issues/new?labels=blog-comments&title=hexo-tag-google-photos-album 公開しました&body=About%20%5Bhexo-tag-google-photos-album%20%E5%85%AC%E9%96%8B%E3%81%97%E3%81%BE%E3%81%97%E3%81%9F%5D(https%3A%2F%2Fpages.isnot.jp%2F2019-04%2F30-hexo-tag-google-photos-album-is-arrived%2Findex.html)" target="_blank" rel="noopener">
+  <a target="_blank" rel="noopener" href="https://github.com/isnot/isnot.github.io/issues/new?labels=blog-comments&title=hexo-tag-google-photos-album 公開しました&body=About%20%5Bhexo-tag-google-photos-album%20%E5%85%AC%E9%96%8B%E3%81%97%E3%81%BE%E3%81%97%E3%81%9F%5D(https%3A%2F%2Fpages.isnot.jp%2F2019-04%2F30-hexo-tag-google-photos-album-is-arrived%2Findex.html)">
     GitHubでコメントする
   </a>
 </div>
@@ -261,6 +224,10 @@ function addLoadEvent(func) {
       <ul>
         
           <li>
+            <a href="/2020-07/16-TestForInjectorOfHexo5/">Hexo 5.0 実装予定のInjectorを試す</a>
+          </li>
+        
+          <li>
             <a href="/2020-07/16-HowTo-HexoInject/">【HowTo】Hexoの新しいInjectorについて調べた【5.0】</a>
           </li>
         
@@ -282,10 +249,6 @@ function addLoadEvent(func) {
         
           <li>
             <a href="/2019-09/24-Avenir-Shards-Bookmarklet/">Avenir Shards Bookmarklet</a>
-          </li>
-        
-          <li>
-            <a href="/2019-06/23-GoogleSpreadsheetAPIv4/">GoogleSpreadsheetAPIv4</a>
           </li>
         
       </ul>
@@ -357,5 +320,35 @@ function addLoadEvent(func) {
 
 
   </div>
-</body>
+<!-- hexo injector body_end start --><script src="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/js/lightgallery.min.js"></script><script src="/js/lg-thumbnail.min.js"></script><script src="/js/lg-zoom.min.js"></script><script src="/js/lg-autoplay.min.js"></script><script src="/js/lg-fullscreen.min.js"></script><script src="/js/lg-pager.min.js"></script><script src="/js/lg-hash.min.js"></script>
+    <script>if (typeof lightGallery !== 'undefined') {
+      lightGallery(document.getElementsByClassName('article-gallery')[0], { selector: '.gallery-item' });
+    }</script><script>
+function addLoadEvent(func) {
+  const oldonload = window.onload;
+  if (typeof window.onload !== 'function') {
+    window.onload = func;
+  } else {
+    window.onload = () => {
+      oldonload();
+      func();
+    };
+  }
+}
+  addLoadEvent(() => {
+    try {
+      if (window.innerWidth < Number('768')) {
+        return;
+      }
+      const imgs = Array.from(document.body.querySelectorAll('.google-photos-album-images a'));
+      imgs.push(...Array.from(document.body.querySelectorAll('a.google-photos-album-image')));
+      for (const anchor of imgs) {
+        anchor.href = anchor.href.replace(/=s720\-no/i, '=s1920-no');
+      }
+    } catch (e) {
+      console.log(e);
+    }
+  });
+</script>
+<!-- hexo injector body_end end --></body>
 </html>

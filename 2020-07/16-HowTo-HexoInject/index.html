@@ -21,7 +21,7 @@
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://i.creativecommons.org/l/by/4.0/88x31.png">
   
-    <link rel="alternate" href="/atom.xml" title="isnot N3">
+    <link rel="alternate" href="/atom.xml" title="isnot N3" type="application/atom+xml">
   
   
     <link rel="icon" href="/favicon.ico">
@@ -50,8 +50,7 @@
 
     
   
-<meta name="generator" content="Hexo 4.2.1"><link rel="alternate" href="/atom.xml" title="isnot N3" type="application/atom+xml">
-</head>
+<!-- hexo injector head_end start --><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/lightgallery.js@1.1.3/dist/css/lightgallery.min.css" /><link crossorigin="anonymous" media="screen" rel="stylesheet" href="/css/google_photos_album.css" /><!-- hexo injector head_end end --><meta name="generator" content="Hexo 4.2.0"></head>
 
 <body>
   <div id="container">
@@ -63,10 +62,6 @@
       <h1 id="logo-wrap">
         <a href="/" id="logo">isnot N3</a>
       </h1>
-      
-        <h2 id="subtitle-wrap">
-          Javascript, Node.js, npm, git, GitHub, ChatBot, MPD, Ubuntu, Emacs, Photo
-        </h2>
       
     </div>
     <div id="header-inner" class="inner">
@@ -115,23 +110,23 @@
     
     <div class="e-content article-entry" itemprop="articleBody">
       
-        <link crossorigin="anonymous" media="screen" rel="stylesheet" href="/css/google_photos_album.css" /><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/lightgallery.js@1.1.3/dist/css/lightgallery.min.css" /><div class="article-gallery"><p>予てより、<a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>に新しいInjector機構を導入する動きがありました。<br>それが、実際のコードとして試せる、かもしれない段階まで進展しているようです。<br>先月の16日に、マスターブランチにマージされたからです。<br>リリースは、次のメジャーバージョンアップとなる(筈の)、5.0になるようです。</p>
-<p>PR: feat(extend/injector): bring up new extend Injector <a href="https://github.com/hexojs/hexo/pull/4049" target="_blank" rel="noopener">#4049</a></p>
+        <div class="article-gallery"><p>予てより、<a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>に新しいInjector機構を導入する動きがありました。<br>それが、実際のコードとして試せる、かもしれない段階まで進展しているようです。<br>先月の16日に、マスターブランチにマージされたからです。<br>リリースは、次のメジャーバージョンアップとなる(筈の)、5.0になるようです。</p>
+<p>PR: feat(extend/injector): bring up new extend Injector <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/pull/4049">#4049</a></p>
 <h2 id="これはなに？"><a href="#これはなに？" class="headerlink" title="これはなに？"></a>これはなに？</h2><p>まずHexoですが、いわゆる「静的サイトジェネレーター」とよばれる方式の、ブログ作成ツールです。<br>本ブログでも使っているものです。</p>
 <p>そして本件で言うInjectorとは、プログラムが生成するHTMLファイルに対して、cssやjavascriptなどの、code snippet(断片)を、後付で挿入する仕組みのことを指します。</p>
 <p>主なユースケースは、プラグインによって、テーマ(HTMLのテンプレート)を直に編集することなく、cssやjavascriptを挿入することになるでしょう。</p>
 <p>テーマ等が固定であれば、直接テンプレートに追加することで、本件要件は満たせます。<br>しかしHexo本体とは別に、各種テーマ、各種プラグインを好みによって導入できる仕組みであるために、このような機構が必要になってきます。</p>
-<h2 id="これまでの流れ"><a href="#これまでの流れ" class="headerlink" title="これまでの流れ"></a>これまでの流れ</h2><p>以前より同じ目的のために、<a href="https://github.com/hexojs/hexo-inject" target="_blank" rel="noopener">hexo-inject</a>プラグインが存在しました。<br>これはだいたい2016年3月頃までは開発が続けられていた模様で、その後にメンテナンスがされなくなり、またHexo本体のバージョンが上がると共に、動作しない状態になっていました。</p>
+<h2 id="これまでの流れ"><a href="#これまでの流れ" class="headerlink" title="これまでの流れ"></a>これまでの流れ</h2><p>以前より同じ目的のために、<a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo-inject">hexo-inject</a>プラグインが存在しました。<br>これはだいたい2016年3月頃までは開発が続けられていた模様で、その後にメンテナンスがされなくなり、またHexo本体のバージョンが上がると共に、動作しない状態になっていました。</p>
 <p>それが昨年の8月に、再び修正する機運が持ち上がっていたようなのですが、結局のところそれも中途で実用化されないままになっていたようです。</p>
 <p>私にもその理由は、なんとなく想像ができます。<br>Injector機構をプラグインによって実装することは、アドホック感ありありで、それならばHexo本体でサポートする方が、ずっとシンプルかつスマートに実現できると考えられるからです。<br>(修正しようとしていた開発者様が同じ考えだったかは、わかりません。)</p>
-<p>Issues: Deprecation <a href="https://github.com/hexojs/hexo-inject/issues/90" target="_blank" rel="noopener">#90</a></p>
-<h2 id="私とInjector"><a href="#私とInjector" class="headerlink" title="私とInjector"></a>私とInjector</h2><p>私がHexoを使い始めると同時に作り始めたプラグインがあります。<br><a href="https://pages.isnot.jp/2019-04/30-hexo-tag-google-photos-album-is-arrived/">hexo-tag-google-photos-album 公開しました</a> (<a href="https://www.npmjs.com/package/hexo-tag-google-photos-album" target="_blank" rel="noopener">npm</a>)</p>
+<p>Issues: Deprecation <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo-inject/issues/90">#90</a></p>
+<h2 id="私とInjector"><a href="#私とInjector" class="headerlink" title="私とInjector"></a>私とInjector</h2><p>私がHexoを使い始めると同時に作り始めたプラグインがあります。<br><a href="https://pages.isnot.jp/2019-04/30-hexo-tag-google-photos-album-is-arrived/">hexo-tag-google-photos-album 公開しました</a> (<a target="_blank" rel="noopener" href="https://www.npmjs.com/package/hexo-tag-google-photos-album">npm</a>)</p>
 <p>このプラグインの中でも、cssやjavascriptを挿入する機能が必要になって、開発の過程でhexo-injectプラグインのことを知り、そして挫折しました。</p>
 <p>それで他作者様のプラグイン等を参考にして、独自にInjector機能を実装したもの、実は満足する動作を実現できていません。<br>ひとまず動く、かな、位の状況になっていて、後で必ず、作り直そうと決めていたのです。</p>
 <p>が、いかんせん、上記のように、プラグインからそれを実装するには原理的な困難があり、同時に他の開発者によって改善に動いている様子があることも知ったために、その進捗を待つこととして、私の作成するプラグインは、不完全なままで、時期が来るのを待つことにしていたのでした。</p>
 <h2 id="ドキュメント-私家版和訳"><a href="#ドキュメント-私家版和訳" class="headerlink" title="ドキュメント 私家版和訳"></a>ドキュメント 私家版和訳</h2><p>新しいAPIは、本番リリース前なので、現時点で公式サイトを探してもドキュメントがありません。</p>
 <p>そして公式サイトの更新も、プルリクが既に準備されており、開発ブランチを通してその中身を読むことが可能です。</p>
-<p>docs | <a href="https://github.com/SukkaW/hexo-site/blob/docs-api-injector/source/api/injector.md" target="_blank" rel="noopener">API/Injector</a> | Hexo</p>
+<p>docs | <a target="_blank" rel="noopener" href="https://github.com/SukkaW/hexo-site/blob/docs-api-injector/source/api/injector.md">API/Injector</a> | Hexo</p>
 <p>今回、これを和訳してみようかと思います。</p>
 <p>↓↓↓和訳ここから</p>
 <hr>
@@ -161,55 +156,23 @@
 <li><code>archive</code>: アーカイブのみ (ヘルパー<code>is_archive()</code> が <code>true</code> のとき)</li>
 <li><code>category</code>: カテゴリーのみ (ヘルパー<code>is_category()</code> が <code>true</code> のとき)</li>
 <li><code>tag</code>: タグのみ (ヘルパー<code>is_tag()</code> が <code>true</code> のとき)</li>
-<li>カスタムレイアウト(Layout)の名前を指定することが可能です。参照：<a href="https://hexo.io/docs/writing#Layout" target="_blank" rel="noopener">Writing - Layout</a></li>
+<li>カスタムレイアウト(Layout)の名前を指定することが可能です。参照：<a target="_blank" rel="noopener" href="https://hexo.io/docs/writing#Layout">Writing - Layout</a></li>
 </ul>
 <hr>
-<p>他にも内部的な機能がありますが、詳細は <a href="https://github.com/hexojs/hexo/pull/4049" target="_blank" rel="noopener">hexojs/hexo#4049</a> を参照してください。</p>
-<h2 id="Example-サンプル"><a href="#Example-サンプル" class="headerlink" title="Example サンプル"></a>Example サンプル</h2><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> css = hexo.extend.helper.get(<span class="string">'css'</span>);</span><br><span class="line"><span class="keyword">const</span> js = hexo.extend.helper.get(<span class="string">'js'</span>);</span><br><span class="line"></span><br><span class="line">hexo.extend.injector.register(<span class="string">'head_end'</span>, () =&gt; &#123;</span><br><span class="line">  <span class="keyword">return</span> css(<span class="string">'https://cdn.jsdelivr.net/npm/aplayer@1.10.1/dist/APlayer.min.css'</span>);</span><br><span class="line">&#125;, <span class="string">'music'</span>);</span><br><span class="line"></span><br><span class="line">hexo.extend.injector.register(<span class="string">'body_end'</span>, <span class="string">'&lt;script src="https://cdn.jsdelivr.net/npm/aplayer@1.10.1/dist/APlayer.min.js"&gt;'</span>, <span class="string">'music'</span>);</span><br><span class="line"></span><br><span class="line">hexo.extend.injector.register(<span class="string">'body_end'</span>, () =&gt; &#123;</span><br><span class="line">  <span class="keyword">return</span> js(<span class="string">'/js/jquery.js'</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>他にも内部的な機能がありますが、詳細は <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/pull/4049">hexojs/hexo#4049</a> を参照してください。</p>
+<h2 id="Example-サンプル"><a href="#Example-サンプル" class="headerlink" title="Example サンプル"></a>Example サンプル</h2><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> css = hexo.extend.helper.get(<span class="string">&#x27;css&#x27;</span>);</span><br><span class="line"><span class="keyword">const</span> js = hexo.extend.helper.get(<span class="string">&#x27;js&#x27;</span>);</span><br><span class="line"></span><br><span class="line">hexo.extend.injector.register(<span class="string">&#x27;head_end&#x27;</span>, <span class="function">() =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">return</span> css(<span class="string">&#x27;https://cdn.jsdelivr.net/npm/aplayer@1.10.1/dist/APlayer.min.css&#x27;</span>);</span><br><span class="line">&#125;, <span class="string">&#x27;music&#x27;</span>);</span><br><span class="line"></span><br><span class="line">hexo.extend.injector.register(<span class="string">&#x27;body_end&#x27;</span>, <span class="string">&#x27;&lt;script src=&quot;https://cdn.jsdelivr.net/npm/aplayer@1.10.1/dist/APlayer.min.js&quot;&gt;&#x27;</span>, <span class="string">&#x27;music&#x27;</span>);</span><br><span class="line"></span><br><span class="line">hexo.extend.injector.register(<span class="string">&#x27;body_end&#x27;</span>, <span class="function">() =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">return</span> js(<span class="string">&#x27;/js/jquery.js&#x27;</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
 
 <p>上記の例では、<code>music</code>レイアウトを指定した全てのページに対して、<code>APlayer.min.css</code> (<code>&lt;link&gt;</code> 要素)を、<code>&lt;/head&gt;</code>要素閉じタグの前に挿入します。<br>同時に、<code>APlayer.min.js</code> (<code>&lt;script&gt;</code> 要素)を、それらのページの<code>&lt;/body&gt;</code>要素閉じタグの前に挿入します。</p>
 <p>そして最後の段落では、全ての生成されたページで、<code>jquery.js</code> (<code>&lt;script&gt;</code> 要素)を、<code>&lt;/body&gt;</code>要素閉じタグの前に挿入します。</p>
 <hr>
 <p>↑↑↑和訳ここまで</p>
-<p>この和訳は、 <a href="https://github.com/SukkaW/hexo-site/blob/docs-api-injector/source/api/injector.md" target="_blank" rel="noopener">API/Injector</a> を、私（isnot）が独自に翻訳したものです。原文はMIT Licenseです。</p>
-<p>私の和訳について、MIT Licenseもしくは、<a href="http://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">クリエイティブ・コモンズ 表示 4.0 国際 ライセンス</a>の下に提供されています。<br><a rel="license noopener" href="http://creativecommons.org/licenses/by/4.0/" target="_blank"><img alt="クリエイティブ・コモンズ・ライセンス" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" /></a></p>
-</div><script src="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/js/lightgallery.min.js"></script><script src="/js/lg-thumbnail.min.js"></script><script src="/js/lg-zoom.min.js"></script><script src="/js/lg-autoplay.min.js"></script><script src="/js/lg-fullscreen.min.js"></script><script src="/js/lg-pager.min.js"></script><script src="/js/lg-hash.min.js"></script><script>if (typeof lightGallery !== 'undefined') {
-        var options = {
-            selector: '.gallery-item'
-        };
-        lightGallery(document.getElementsByClassName('article-gallery')[0], options);
-        }</script><script>
-function addLoadEvent(func) {
-  const oldonload = window.onload;
-  if (typeof window.onload !== 'function') {
-    window.onload = func;
-  } else {
-    window.onload = () => {
-      oldonload();
-      func();
-    };
-  }
-}
-  addLoadEvent(() => {
-    try {
-      if (window.innerWidth < Number('768')) {
-        return;
-      }
-      const imgs = Array.from(document.body.querySelectorAll('.google-photos-album-images a'));
-      imgs.push(...Array.from(document.body.querySelectorAll('a.google-photos-album-image')));
-      for (const anchor of imgs) {
-        anchor.href = anchor.href.replace(/=s720\-no/i, '=s1920-no');
-      }
-    } catch (e) {
-      console.log(e);
-    }
-  });
-</script>
-
+<p>この和訳は、 <a target="_blank" rel="noopener" href="https://github.com/SukkaW/hexo-site/blob/docs-api-injector/source/api/injector.md">API/Injector</a> を、私（isnot）が独自に翻訳したものです。原文はMIT Licenseです。</p>
+<p>私の和訳について、MIT Licenseもしくは、<a target="_blank" rel="noopener" href="http://creativecommons.org/licenses/by/4.0/">クリエイティブ・コモンズ 表示 4.0 国際 ライセンス</a>の下に提供されています。<br><a rel="license noopener" target="_blank" href="http://creativecommons.org/licenses/by/4.0/"><img alt="クリエイティブ・コモンズ・ライセンス" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" /></a></p>
+</div>
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://pages.isnot.jp/2020-07/16-HowTo-HexoInject/" data-id="ckcokzp6k0009xabqfvefhk0f" data-title="【HowTo】Hexoの新しいInjectorについて調べた【5.0】" class="article-permalink">
+      <a data-url="https://pages.isnot.jp/2020-07/16-HowTo-HexoInject/" data-id="ckcosahdo0008j9bqdlv38l8z" data-title="【HowTo】Hexoの新しいInjectorについて調べた【5.0】" class="article-permalink">
       
       </a>
       
@@ -223,7 +186,7 @@ function addLoadEvent(func) {
       
 <div id="stageComment" class="comment fa fa-comment-o">
   【HowTo】Hexoの新しいInjectorについて調べた【5.0】 について、
-  <a href="https://github.com/isnot/isnot.github.io/issues/new?labels=blog-comments&title=【HowTo】Hexoの新しいInjectorについて調べた【5.0】&body=About%20%5B%E3%80%90HowTo%E3%80%91Hexo%E3%81%AE%E6%96%B0%E3%81%97%E3%81%84Injector%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6%E8%AA%BF%E3%81%B9%E3%81%9F%E3%80%905.0%E3%80%91%5D(https%3A%2F%2Fpages.isnot.jp%2F2020-07%2F16-HowTo-HexoInject%2Findex.html)" target="_blank" rel="noopener">
+  <a target="_blank" rel="noopener" href="https://github.com/isnot/isnot.github.io/issues/new?labels=blog-comments&title=【HowTo】Hexoの新しいInjectorについて調べた【5.0】&body=About%20%5B%E3%80%90HowTo%E3%80%91Hexo%E3%81%AE%E6%96%B0%E3%81%97%E3%81%84Injector%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6%E8%AA%BF%E3%81%B9%E3%81%9F%E3%80%905.0%E3%80%91%5D(https%3A%2F%2Fpages.isnot.jp%2F2020-07%2F16-HowTo-HexoInject%2Findex.html)">
     GitHubでコメントする
   </a>
 </div>
@@ -234,6 +197,15 @@ function addLoadEvent(func) {
   
     
 <nav id="article-nav">
+  
+    <a href="/2020-07/16-TestForInjectorOfHexo5/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">次の記事</strong>
+      <div class="article-nav-title">
+        
+          Hexo 5.0 実装予定のInjectorを試す
+        
+      </div>
+    </a>
   
   
     <a href="/2020-06/25-hydrangea2020/" id="article-nav-older" class="article-nav-link-wrap">
@@ -296,6 +268,10 @@ function addLoadEvent(func) {
       <ul>
         
           <li>
+            <a href="/2020-07/16-TestForInjectorOfHexo5/">Hexo 5.0 実装予定のInjectorを試す</a>
+          </li>
+        
+          <li>
             <a href="/2020-07/16-HowTo-HexoInject/">【HowTo】Hexoの新しいInjectorについて調べた【5.0】</a>
           </li>
         
@@ -317,10 +293,6 @@ function addLoadEvent(func) {
         
           <li>
             <a href="/2019-09/24-Avenir-Shards-Bookmarklet/">Avenir Shards Bookmarklet</a>
-          </li>
-        
-          <li>
-            <a href="/2019-06/23-GoogleSpreadsheetAPIv4/">GoogleSpreadsheetAPIv4</a>
           </li>
         
       </ul>
@@ -392,5 +364,35 @@ function addLoadEvent(func) {
 
 
   </div>
-</body>
+<!-- hexo injector body_end start --><script src="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/js/lightgallery.min.js"></script><script src="/js/lg-thumbnail.min.js"></script><script src="/js/lg-zoom.min.js"></script><script src="/js/lg-autoplay.min.js"></script><script src="/js/lg-fullscreen.min.js"></script><script src="/js/lg-pager.min.js"></script><script src="/js/lg-hash.min.js"></script>
+    <script>if (typeof lightGallery !== 'undefined') {
+      lightGallery(document.getElementsByClassName('article-gallery')[0], { selector: '.gallery-item' });
+    }</script><script>
+function addLoadEvent(func) {
+  const oldonload = window.onload;
+  if (typeof window.onload !== 'function') {
+    window.onload = func;
+  } else {
+    window.onload = () => {
+      oldonload();
+      func();
+    };
+  }
+}
+  addLoadEvent(() => {
+    try {
+      if (window.innerWidth < Number('768')) {
+        return;
+      }
+      const imgs = Array.from(document.body.querySelectorAll('.google-photos-album-images a'));
+      imgs.push(...Array.from(document.body.querySelectorAll('a.google-photos-album-image')));
+      for (const anchor of imgs) {
+        anchor.href = anchor.href.replace(/=s720\-no/i, '=s1920-no');
+      }
+    } catch (e) {
+      console.log(e);
+    }
+  });
+</script>
+<!-- hexo injector body_end end --></body>
 </html>

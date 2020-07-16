@@ -13,19 +13,10 @@
 <meta property="og:description" content="https:&#x2F;&#x2F;pages.isnot.jp isnot N3">
 <meta property="og:locale" content="ja_JP">
 <meta property="article:author" content="isnot">
-<meta property="article:tag" content="Javascript">
-<meta property="article:tag" content=" Node.js">
-<meta property="article:tag" content=" npm">
-<meta property="article:tag" content=" git">
-<meta property="article:tag" content=" GitHub">
-<meta property="article:tag" content=" ChatBot">
-<meta property="article:tag" content=" MPD">
-<meta property="article:tag" content=" Ubuntu">
-<meta property="article:tag" content=" Emacs">
-<meta property="article:tag" content=" Photo">
+<meta property="article:tag" content="Javascript, Node.js, npm, git, GitHub, ChatBot, MPD, Ubuntu, Emacs, Photo">
 <meta name="twitter:card" content="summary">
   
-    <link rel="alternate" href="/atom.xml" title="isnot N3">
+    <link rel="alternate" href="/atom.xml" title="isnot N3" type="application/atom+xml">
   
   
     <link rel="icon" href="/favicon.ico">
@@ -54,8 +45,7 @@
 
     
   
-<meta name="generator" content="Hexo 4.2.1"><link rel="alternate" href="/atom.xml" title="isnot N3" type="application/atom+xml">
-</head>
+<!-- hexo injector head_end start --><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/lightgallery.js@1.1.3/dist/css/lightgallery.min.css" /><link crossorigin="anonymous" media="screen" rel="stylesheet" href="/css/google_photos_album.css" /><!-- hexo injector head_end end --><meta name="generator" content="Hexo 4.2.0"></head>
 
 <body>
   <div id="container">
@@ -67,10 +57,6 @@
       <h1 id="logo-wrap">
         <a href="/" id="logo">isnot N3</a>
       </h1>
-      
-        <h2 id="subtitle-wrap">
-          Javascript, Node.js, npm, git, GitHub, ChatBot, MPD, Ubuntu, Emacs, Photo
-        </h2>
       
     </div>
     <div id="header-inner" class="inner">
@@ -105,6 +91,25 @@
           <a href="/archives/2020" class="archive-year">2020</a>
         </div>
         <div class="archives">
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      <a href="/2020-07/16-TestForInjectorOfHexo5/" class="archive-article-date">
+  <time class="dt-published" datetime="2020-07-16T09:36:21.000Z" itemprop="datePublished">7月 16</time>
+</a>
+      
+  
+    <h1 itemprop="name">
+      <a class="archive-article-title" href="/2020-07/16-TestForInjectorOfHexo5/">Hexo 5.0 実装予定のInjectorを試す</a>
+    </h1>
+  
+
+    </header>
+  </div>
+</article>
+  
+    
     
     <article class="archive-article archive-type-post">
   <div class="archive-article-inner">
@@ -319,6 +324,10 @@
       <ul>
         
           <li>
+            <a href="/2020-07/16-TestForInjectorOfHexo5/">Hexo 5.0 実装予定のInjectorを試す</a>
+          </li>
+        
+          <li>
             <a href="/2020-07/16-HowTo-HexoInject/">【HowTo】Hexoの新しいInjectorについて調べた【5.0】</a>
           </li>
         
@@ -340,10 +349,6 @@
         
           <li>
             <a href="/2019-09/24-Avenir-Shards-Bookmarklet/">Avenir Shards Bookmarklet</a>
-          </li>
-        
-          <li>
-            <a href="/2019-06/23-GoogleSpreadsheetAPIv4/">GoogleSpreadsheetAPIv4</a>
           </li>
         
       </ul>
@@ -415,5 +420,35 @@
 
 
   </div>
-</body>
+<!-- hexo injector body_end start --><script src="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/js/lightgallery.min.js"></script><script src="/js/lg-thumbnail.min.js"></script><script src="/js/lg-zoom.min.js"></script><script src="/js/lg-autoplay.min.js"></script><script src="/js/lg-fullscreen.min.js"></script><script src="/js/lg-pager.min.js"></script><script src="/js/lg-hash.min.js"></script>
+    <script>if (typeof lightGallery !== 'undefined') {
+      lightGallery(document.getElementsByClassName('article-gallery')[0], { selector: '.gallery-item' });
+    }</script><script>
+function addLoadEvent(func) {
+  const oldonload = window.onload;
+  if (typeof window.onload !== 'function') {
+    window.onload = func;
+  } else {
+    window.onload = () => {
+      oldonload();
+      func();
+    };
+  }
+}
+  addLoadEvent(() => {
+    try {
+      if (window.innerWidth < Number('768')) {
+        return;
+      }
+      const imgs = Array.from(document.body.querySelectorAll('.google-photos-album-images a'));
+      imgs.push(...Array.from(document.body.querySelectorAll('a.google-photos-album-image')));
+      for (const anchor of imgs) {
+        anchor.href = anchor.href.replace(/=s720\-no/i, '=s1920-no');
+      }
+    } catch (e) {
+      console.log(e);
+    }
+  });
+</script>
+<!-- hexo injector body_end end --></body>
 </html>

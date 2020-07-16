@@ -13,19 +13,10 @@
 <meta property="og:description" content="https:&#x2F;&#x2F;pages.isnot.jp isnot N3">
 <meta property="og:locale" content="ja_JP">
 <meta property="article:author" content="isnot">
-<meta property="article:tag" content="Javascript">
-<meta property="article:tag" content=" Node.js">
-<meta property="article:tag" content=" npm">
-<meta property="article:tag" content=" git">
-<meta property="article:tag" content=" GitHub">
-<meta property="article:tag" content=" ChatBot">
-<meta property="article:tag" content=" MPD">
-<meta property="article:tag" content=" Ubuntu">
-<meta property="article:tag" content=" Emacs">
-<meta property="article:tag" content=" Photo">
+<meta property="article:tag" content="Javascript, Node.js, npm, git, GitHub, ChatBot, MPD, Ubuntu, Emacs, Photo">
 <meta name="twitter:card" content="summary">
   
-    <link rel="alternate" href="/atom.xml" title="isnot N3">
+    <link rel="alternate" href="/atom.xml" title="isnot N3" type="application/atom+xml">
   
   
     <link rel="icon" href="/favicon.ico">
@@ -54,8 +45,7 @@
 
     
   
-<meta name="generator" content="Hexo 4.2.1"><link rel="alternate" href="/atom.xml" title="isnot N3" type="application/atom+xml">
-</head>
+<!-- hexo injector head_end start --><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/lightgallery.js@1.1.3/dist/css/lightgallery.min.css" /><link crossorigin="anonymous" media="screen" rel="stylesheet" href="/css/google_photos_album.css" /><!-- hexo injector head_end end --><meta name="generator" content="Hexo 4.2.0"></head>
 
 <body>
   <div id="container">
@@ -67,10 +57,6 @@
       <h1 id="logo-wrap">
         <a href="/" id="logo">isnot N3</a>
       </h1>
-      
-        <h2 id="subtitle-wrap">
-          Javascript, Node.js, npm, git, GitHub, ChatBot, MPD, Ubuntu, Emacs, Photo
-        </h2>
       
     </div>
     <div id="header-inner" class="inner">
@@ -94,6 +80,62 @@
 </header>
       <div class="outer">
         <section id="main">
+  
+    <article id="post-TestForInjectorOfHexo5" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2020-07/16-TestForInjectorOfHexo5/" class="article-date">
+  <time class="dt-published" datetime="2020-07-16T09:36:21.000Z" itemprop="datePublished">2020-07-16</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/hexo/">hexo</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2020-07/16-TestForInjectorOfHexo5/">Hexo 5.0 実装予定のInjectorを試す</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry index-entry" itemprop="articleBody">
+      
+        <div class="article-gallery"><p>まずは、GitHubにある最新のHexoをインストールします。<br>今回は、4.2.1が可動していた環境に、上書きでインストールしました。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ <span class="built_in">cd</span> &lt;my-blog-dir&gt;</span><br><span class="line">$ npm i git+ssh://git@github.com/hexojs/hexo.git<span class="comment">#master --save</span></span><br><span class="line"></span><br><span class="line">$ ls -l node_modules/hexo/lib/extend/injector.js</span><br><span class="line">-rw-rw-r-- 1 naoto naoto 2341 10月 26  1985 node_modules/hexo/lib/extend/injector.js</span><br></pre></td></tr></table></figure>
+
+<p>そして拙作プラグインをInjector対応にしたものを、GitHub上の私の開発ブランチから導入します。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ npm i git+ssh://git@github.com:isnot/hexo-tag-google-photos-album.git<span class="comment">#new_injector --save</span></span><br><span class="line">$ fgrep injector node_modules/hexo-tag-google-photos-album/index.js</span><br><span class="line">hexo.extend.injector.register(<span class="string">&#x27;body_end&#x27;</span>, front.scriptHtml(config), <span class="string">&#x27;post&#x27;</span>);</span><br><span class="line">hexo.extend.injector.register(<span class="string">&#x27;body_end&#x27;</span>, front.scriptHtml(config), <span class="string">&#x27;page&#x27;</span>);</span><br><span class="line">  hexo.extend.injector.register(<span class="string">&#x27;head_end&#x27;</span>, `&lt;link crossorigin=<span class="string">&quot;anonymous&quot;</span> media=<span class="string">&quot;screen&quot;</span> rel=<span class="string">&quot;stylesheet&quot;</span> href=<span class="string">&quot;/css/<span class="variable">$&#123;pathFn.basename(config.defaultStyle)&#125;</span>&quot;</span> /&gt;`, <span class="string">&#x27;default&#x27;</span>);</span><br><span class="line"></span><br><span class="line">$</span><br></pre></td></tr></table></figure>
+
+</div>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://pages.isnot.jp/2020-07/16-TestForInjectorOfHexo5/" data-id="ckcosahdt000dj9bq1awi1zhw" data-title="Hexo 5.0 実装予定のInjectorを試す" class="article-permalink">
+      
+      </a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hexo/" rel="tag">hexo</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/" rel="tag">javascript</a></li></ul>
+
+    </footer>
+    <div class="article-footer">
+      
+    </div>
+  </div>
+  
+</article>
+
+
+
+
   
     <article id="post-HowTo-HexoInject" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
@@ -121,23 +163,23 @@
     
     <div class="e-content article-entry index-entry" itemprop="articleBody">
       
-        <link crossorigin="anonymous" media="screen" rel="stylesheet" href="/css/google_photos_album.css" /><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/lightgallery.js@1.1.3/dist/css/lightgallery.min.css" /><div class="article-gallery"><p>予てより、<a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>に新しいInjector機構を導入する動きがありました。<br>それが、実際のコードとして試せる、かもしれない段階まで進展しているようです。<br>先月の16日に、マスターブランチにマージされたからです。<br>リリースは、次のメジャーバージョンアップとなる(筈の)、5.0になるようです。</p>
-<p>PR: feat(extend/injector): bring up new extend Injector <a href="https://github.com/hexojs/hexo/pull/4049" target="_blank" rel="noopener">#4049</a></p>
+        <div class="article-gallery"><p>予てより、<a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>に新しいInjector機構を導入する動きがありました。<br>それが、実際のコードとして試せる、かもしれない段階まで進展しているようです。<br>先月の16日に、マスターブランチにマージされたからです。<br>リリースは、次のメジャーバージョンアップとなる(筈の)、5.0になるようです。</p>
+<p>PR: feat(extend/injector): bring up new extend Injector <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/pull/4049">#4049</a></p>
 <h2 id="これはなに？"><a href="#これはなに？" class="headerlink" title="これはなに？"></a>これはなに？</h2><p>まずHexoですが、いわゆる「静的サイトジェネレーター」とよばれる方式の、ブログ作成ツールです。<br>本ブログでも使っているものです。</p>
 <p>そして本件で言うInjectorとは、プログラムが生成するHTMLファイルに対して、cssやjavascriptなどの、code snippet(断片)を、後付で挿入する仕組みのことを指します。</p>
 <p>主なユースケースは、プラグインによって、テーマ(HTMLのテンプレート)を直に編集することなく、cssやjavascriptを挿入することになるでしょう。</p>
 <p>テーマ等が固定であれば、直接テンプレートに追加することで、本件要件は満たせます。<br>しかしHexo本体とは別に、各種テーマ、各種プラグインを好みによって導入できる仕組みであるために、このような機構が必要になってきます。</p>
-<h2 id="これまでの流れ"><a href="#これまでの流れ" class="headerlink" title="これまでの流れ"></a>これまでの流れ</h2><p>以前より同じ目的のために、<a href="https://github.com/hexojs/hexo-inject" target="_blank" rel="noopener">hexo-inject</a>プラグインが存在しました。<br>これはだいたい2016年3月頃までは開発が続けられていた模様で、その後にメンテナンスがされなくなり、またHexo本体のバージョンが上がると共に、動作しない状態になっていました。</p>
+<h2 id="これまでの流れ"><a href="#これまでの流れ" class="headerlink" title="これまでの流れ"></a>これまでの流れ</h2><p>以前より同じ目的のために、<a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo-inject">hexo-inject</a>プラグインが存在しました。<br>これはだいたい2016年3月頃までは開発が続けられていた模様で、その後にメンテナンスがされなくなり、またHexo本体のバージョンが上がると共に、動作しない状態になっていました。</p>
 <p>それが昨年の8月に、再び修正する機運が持ち上がっていたようなのですが、結局のところそれも中途で実用化されないままになっていたようです。</p>
 <p>私にもその理由は、なんとなく想像ができます。<br>Injector機構をプラグインによって実装することは、アドホック感ありありで、それならばHexo本体でサポートする方が、ずっとシンプルかつスマートに実現できると考えられるからです。<br>(修正しようとしていた開発者様が同じ考えだったかは、わかりません。)</p>
-<p>Issues: Deprecation <a href="https://github.com/hexojs/hexo-inject/issues/90" target="_blank" rel="noopener">#90</a></p>
-<h2 id="私とInjector"><a href="#私とInjector" class="headerlink" title="私とInjector"></a>私とInjector</h2><p>私がHexoを使い始めると同時に作り始めたプラグインがあります。<br><a href="https://pages.isnot.jp/2019-04/30-hexo-tag-google-photos-album-is-arrived/">hexo-tag-google-photos-album 公開しました</a> (<a href="https://www.npmjs.com/package/hexo-tag-google-photos-album" target="_blank" rel="noopener">npm</a>)</p>
+<p>Issues: Deprecation <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo-inject/issues/90">#90</a></p>
+<h2 id="私とInjector"><a href="#私とInjector" class="headerlink" title="私とInjector"></a>私とInjector</h2><p>私がHexoを使い始めると同時に作り始めたプラグインがあります。<br><a href="https://pages.isnot.jp/2019-04/30-hexo-tag-google-photos-album-is-arrived/">hexo-tag-google-photos-album 公開しました</a> (<a target="_blank" rel="noopener" href="https://www.npmjs.com/package/hexo-tag-google-photos-album">npm</a>)</p>
 <p>このプラグインの中でも、cssやjavascriptを挿入する機能が必要になって、開発の過程でhexo-injectプラグインのことを知り、そして挫折しました。</p>
 <p>それで他作者様のプラグイン等を参考にして、独自にInjector機能を実装したもの、実は満足する動作を実現できていません。<br>ひとまず動く、かな、位の状況になっていて、後で必ず、作り直そうと決めていたのです。</p>
 <p>が、いかんせん、上記のように、プラグインからそれを実装するには原理的な困難があり、同時に他の開発者によって改善に動いている様子があることも知ったために、その進捗を待つこととして、私の作成するプラグインは、不完全なままで、時期が来るのを待つことにしていたのでした。</p>
 <h2 id="ドキュメント-私家版和訳"><a href="#ドキュメント-私家版和訳" class="headerlink" title="ドキュメント 私家版和訳"></a>ドキュメント 私家版和訳</h2><p>新しいAPIは、本番リリース前なので、現時点で公式サイトを探してもドキュメントがありません。</p>
 <p>そして公式サイトの更新も、プルリクが既に準備されており、開発ブランチを通してその中身を読むことが可能です。</p>
-<p>docs | <a href="https://github.com/SukkaW/hexo-site/blob/docs-api-injector/source/api/injector.md" target="_blank" rel="noopener">API/Injector</a> | Hexo</p>
+<p>docs | <a target="_blank" rel="noopener" href="https://github.com/SukkaW/hexo-site/blob/docs-api-injector/source/api/injector.md">API/Injector</a> | Hexo</p>
 <p>今回、これを和訳してみようかと思います。</p>
 <p>↓↓↓和訳ここから</p>
 <hr>
@@ -167,55 +209,23 @@
 <li><code>archive</code>: アーカイブのみ (ヘルパー<code>is_archive()</code> が <code>true</code> のとき)</li>
 <li><code>category</code>: カテゴリーのみ (ヘルパー<code>is_category()</code> が <code>true</code> のとき)</li>
 <li><code>tag</code>: タグのみ (ヘルパー<code>is_tag()</code> が <code>true</code> のとき)</li>
-<li>カスタムレイアウト(Layout)の名前を指定することが可能です。参照：<a href="https://hexo.io/docs/writing#Layout" target="_blank" rel="noopener">Writing - Layout</a></li>
+<li>カスタムレイアウト(Layout)の名前を指定することが可能です。参照：<a target="_blank" rel="noopener" href="https://hexo.io/docs/writing#Layout">Writing - Layout</a></li>
 </ul>
 <hr>
-<p>他にも内部的な機能がありますが、詳細は <a href="https://github.com/hexojs/hexo/pull/4049" target="_blank" rel="noopener">hexojs/hexo#4049</a> を参照してください。</p>
-<h2 id="Example-サンプル"><a href="#Example-サンプル" class="headerlink" title="Example サンプル"></a>Example サンプル</h2><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> css = hexo.extend.helper.get(<span class="string">'css'</span>);</span><br><span class="line"><span class="keyword">const</span> js = hexo.extend.helper.get(<span class="string">'js'</span>);</span><br><span class="line"></span><br><span class="line">hexo.extend.injector.register(<span class="string">'head_end'</span>, () =&gt; &#123;</span><br><span class="line">  <span class="keyword">return</span> css(<span class="string">'https://cdn.jsdelivr.net/npm/aplayer@1.10.1/dist/APlayer.min.css'</span>);</span><br><span class="line">&#125;, <span class="string">'music'</span>);</span><br><span class="line"></span><br><span class="line">hexo.extend.injector.register(<span class="string">'body_end'</span>, <span class="string">'&lt;script src="https://cdn.jsdelivr.net/npm/aplayer@1.10.1/dist/APlayer.min.js"&gt;'</span>, <span class="string">'music'</span>);</span><br><span class="line"></span><br><span class="line">hexo.extend.injector.register(<span class="string">'body_end'</span>, () =&gt; &#123;</span><br><span class="line">  <span class="keyword">return</span> js(<span class="string">'/js/jquery.js'</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>他にも内部的な機能がありますが、詳細は <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/pull/4049">hexojs/hexo#4049</a> を参照してください。</p>
+<h2 id="Example-サンプル"><a href="#Example-サンプル" class="headerlink" title="Example サンプル"></a>Example サンプル</h2><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> css = hexo.extend.helper.get(<span class="string">&#x27;css&#x27;</span>);</span><br><span class="line"><span class="keyword">const</span> js = hexo.extend.helper.get(<span class="string">&#x27;js&#x27;</span>);</span><br><span class="line"></span><br><span class="line">hexo.extend.injector.register(<span class="string">&#x27;head_end&#x27;</span>, <span class="function">() =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">return</span> css(<span class="string">&#x27;https://cdn.jsdelivr.net/npm/aplayer@1.10.1/dist/APlayer.min.css&#x27;</span>);</span><br><span class="line">&#125;, <span class="string">&#x27;music&#x27;</span>);</span><br><span class="line"></span><br><span class="line">hexo.extend.injector.register(<span class="string">&#x27;body_end&#x27;</span>, <span class="string">&#x27;&lt;script src=&quot;https://cdn.jsdelivr.net/npm/aplayer@1.10.1/dist/APlayer.min.js&quot;&gt;&#x27;</span>, <span class="string">&#x27;music&#x27;</span>);</span><br><span class="line"></span><br><span class="line">hexo.extend.injector.register(<span class="string">&#x27;body_end&#x27;</span>, <span class="function">() =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">return</span> js(<span class="string">&#x27;/js/jquery.js&#x27;</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
 
 <p>上記の例では、<code>music</code>レイアウトを指定した全てのページに対して、<code>APlayer.min.css</code> (<code>&lt;link&gt;</code> 要素)を、<code>&lt;/head&gt;</code>要素閉じタグの前に挿入します。<br>同時に、<code>APlayer.min.js</code> (<code>&lt;script&gt;</code> 要素)を、それらのページの<code>&lt;/body&gt;</code>要素閉じタグの前に挿入します。</p>
 <p>そして最後の段落では、全ての生成されたページで、<code>jquery.js</code> (<code>&lt;script&gt;</code> 要素)を、<code>&lt;/body&gt;</code>要素閉じタグの前に挿入します。</p>
 <hr>
 <p>↑↑↑和訳ここまで</p>
-<p>この和訳は、 <a href="https://github.com/SukkaW/hexo-site/blob/docs-api-injector/source/api/injector.md" target="_blank" rel="noopener">API/Injector</a> を、私（isnot）が独自に翻訳したものです。原文はMIT Licenseです。</p>
-<p>私の和訳について、MIT Licenseもしくは、<a href="http://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">クリエイティブ・コモンズ 表示 4.0 国際 ライセンス</a>の下に提供されています。<br><a rel="license noopener" href="http://creativecommons.org/licenses/by/4.0/" target="_blank"><img alt="クリエイティブ・コモンズ・ライセンス" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" /></a></p>
-</div><script src="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/js/lightgallery.min.js"></script><script src="/js/lg-thumbnail.min.js"></script><script src="/js/lg-zoom.min.js"></script><script src="/js/lg-autoplay.min.js"></script><script src="/js/lg-fullscreen.min.js"></script><script src="/js/lg-pager.min.js"></script><script src="/js/lg-hash.min.js"></script><script>if (typeof lightGallery !== 'undefined') {
-        var options = {
-            selector: '.gallery-item'
-        };
-        lightGallery(document.getElementsByClassName('article-gallery')[0], options);
-        }</script><script>
-function addLoadEvent(func) {
-  const oldonload = window.onload;
-  if (typeof window.onload !== 'function') {
-    window.onload = func;
-  } else {
-    window.onload = () => {
-      oldonload();
-      func();
-    };
-  }
-}
-  addLoadEvent(() => {
-    try {
-      if (window.innerWidth < Number('768')) {
-        return;
-      }
-      const imgs = Array.from(document.body.querySelectorAll('.google-photos-album-images a'));
-      imgs.push(...Array.from(document.body.querySelectorAll('a.google-photos-album-image')));
-      for (const anchor of imgs) {
-        anchor.href = anchor.href.replace(/=s720\-no/i, '=s1920-no');
-      }
-    } catch (e) {
-      console.log(e);
-    }
-  });
-</script>
-
+<p>この和訳は、 <a target="_blank" rel="noopener" href="https://github.com/SukkaW/hexo-site/blob/docs-api-injector/source/api/injector.md">API/Injector</a> を、私（isnot）が独自に翻訳したものです。原文はMIT Licenseです。</p>
+<p>私の和訳について、MIT Licenseもしくは、<a target="_blank" rel="noopener" href="http://creativecommons.org/licenses/by/4.0/">クリエイティブ・コモンズ 表示 4.0 国際 ライセンス</a>の下に提供されています。<br><a rel="license noopener" target="_blank" href="http://creativecommons.org/licenses/by/4.0/"><img alt="クリエイティブ・コモンズ・ライセンス" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" /></a></p>
+</div>
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://pages.isnot.jp/2020-07/16-HowTo-HexoInject/" data-id="ckcokzp6k0009xabqfvefhk0f" data-title="【HowTo】Hexoの新しいInjectorについて調べた【5.0】" class="article-permalink">
+      <a data-url="https://pages.isnot.jp/2020-07/16-HowTo-HexoInject/" data-id="ckcosahdo0008j9bqdlv38l8z" data-title="【HowTo】Hexoの新しいInjectorについて調べた【5.0】" class="article-permalink">
       
       </a>
       
@@ -261,8 +271,8 @@ function addLoadEvent(func) {
     
     <div class="e-content article-entry index-entry" itemprop="articleBody">
       
-        <link crossorigin="anonymous" media="screen" rel="stylesheet" href="/css/google_photos_album.css" /><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/lightgallery.js@1.1.3/dist/css/lightgallery.min.css" /><div class="article-gallery"><p>今年のアジサイ。</p>
-<p>去年に北原第一公園で見た、花の姿形がおもしろいアジサイは、見に行ったけど株ごとなくなっているようだったのが、残念。<br><a href="https://goo.gl/maps/YJxkcyvybj4jXpQa7" target="_blank" rel="noopener">https://goo.gl/maps/YJxkcyvybj4jXpQa7</a></p>
+        <div class="article-gallery"><p>今年のアジサイ。</p>
+<p>去年に北原第一公園で見た、花の姿形がおもしろいアジサイは、見に行ったけど株ごとなくなっているようだったのが、残念。<br><a target="_blank" rel="noopener" href="https://goo.gl/maps/YJxkcyvybj4jXpQa7">https://goo.gl/maps/YJxkcyvybj4jXpQa7</a></p>
 <div class="google-photos-album-area" id="google-photos-album-area5"><div class="metadatas"><img src="https://lh3.googleusercontent.com/1D-kR6jZw11S0ezUmaXlzouHl9q-fLjDMVKBV9rG6FYUqHot0UbM02VpfkQwiB6kbjrbU5Rjq-W1PFtl7InSpfoWFB4q5MvIYpjjYmmW6xFrBOXoNseOsbSaenI2E1o-OHSvZ6cMzR0=w600-h315-p-k" class="og-image nolink"></img><a href="https://photos.google.com/share/AF1QipO9mJMi3rfajcT2_3xPjgeFIqY9Ssps352Ja5NgtRvgdV64fvZTX77JE32FUVyHCw?key=djAtQUl5MUI3MWVFUHg1bjBiQjZTckd6VFgxV3RR" class="og-url" target="_blank" rel="noopener"><span class="og-title">2020年アジサイ</span><span class="og-description">14 new photos added to shared album</span></a></div>
 <div class="google-photos-album-images clearfix"><a href="https://lh3.googleusercontent.com/dGq9RKwgENL4mZyDmlxNHF8dJj9mS_OODn_12eR0Aw4H6BopVOGdaK1lv6Z4kY9pNK2JsPcpLGpVi2IXqibJyLi8sy7HIYqYmoLbqltM4APeXDc9rCfVrb0XdJihcSch4EenI17xODM=s720-no" class="gallery-item" target="_blank" rel="noopener"><img src="https://lh3.googleusercontent.com/dGq9RKwgENL4mZyDmlxNHF8dJj9mS_OODn_12eR0Aw4H6BopVOGdaK1lv6Z4kY9pNK2JsPcpLGpVi2IXqibJyLi8sy7HIYqYmoLbqltM4APeXDc9rCfVrb0XdJihcSch4EenI17xODM=w225-no?authuser=0"></a>
 <a href="https://lh3.googleusercontent.com/pZxSY9riZtBjz1CHtlR2tUEfPgZJXv4UZOxb8yvWnDdaHzW109yta6VETggxg6YKk8_H9PztSTjDaRejp0pI-berovDX0XoCpKAR-ypAkpq3ItSoHOnmSWp-o1wGt0huqoODjE2V_Cs=s720-no" class="gallery-item" target="_blank" rel="noopener"><img src="https://lh3.googleusercontent.com/pZxSY9riZtBjz1CHtlR2tUEfPgZJXv4UZOxb8yvWnDdaHzW109yta6VETggxg6YKk8_H9PztSTjDaRejp0pI-berovDX0XoCpKAR-ypAkpq3ItSoHOnmSWp-o1wGt0huqoODjE2V_Cs=w225-no?authuser=0"></a>
@@ -279,43 +289,11 @@ function addLoadEvent(func) {
 <a href="https://lh3.googleusercontent.com/9lhoWl_fTEFkDlh7ANagLwafyLMgt7hvdkMH7BHa1r0XNt6axT6EuFFqbvXpQV5R2X0P3zYHZ9tnxeuUKot5CgELLHv31fO0adTR3i0ZN2-qh_qjt33QPEkBB3O6hcGNsqtLwX7ChBE=s720-no" class="gallery-item" target="_blank" rel="noopener"><img src="https://lh3.googleusercontent.com/9lhoWl_fTEFkDlh7ANagLwafyLMgt7hvdkMH7BHa1r0XNt6axT6EuFFqbvXpQV5R2X0P3zYHZ9tnxeuUKot5CgELLHv31fO0adTR3i0ZN2-qh_qjt33QPEkBB3O6hcGNsqtLwX7ChBE=w225-no?authuser=0"></a>
 <a href="https://lh3.googleusercontent.com/Cbe_aEPYn4rrsSP5-Y3oSaLTpdrauFa5I3BM1q2oG6TvfAlBgDMJhCBV3VJZrGN3r6-9T6dxj0LLdV--YRi5ksJGldABz1HYPqAkoUXHYj43PLAxcWUXuF7GnrxpqwtdBZ8hGsMUh2U=s720-no" class="gallery-item" target="_blank" rel="noopener"><img src="https://lh3.googleusercontent.com/Cbe_aEPYn4rrsSP5-Y3oSaLTpdrauFa5I3BM1q2oG6TvfAlBgDMJhCBV3VJZrGN3r6-9T6dxj0LLdV--YRi5ksJGldABz1HYPqAkoUXHYj43PLAxcWUXuF7GnrxpqwtdBZ8hGsMUh2U=w225-no?authuser=0"></a></div>
 </div>
-</div><script src="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/js/lightgallery.min.js"></script><script src="/js/lg-thumbnail.min.js"></script><script src="/js/lg-zoom.min.js"></script><script src="/js/lg-autoplay.min.js"></script><script src="/js/lg-fullscreen.min.js"></script><script src="/js/lg-pager.min.js"></script><script src="/js/lg-hash.min.js"></script><script>if (typeof lightGallery !== 'undefined') {
-        var options = {
-            selector: '.gallery-item'
-        };
-        lightGallery(document.getElementsByClassName('article-gallery')[0], options);
-        }</script><script>
-function addLoadEvent(func) {
-  const oldonload = window.onload;
-  if (typeof window.onload !== 'function') {
-    window.onload = func;
-  } else {
-    window.onload = () => {
-      oldonload();
-      func();
-    };
-  }
-}
-  addLoadEvent(() => {
-    try {
-      if (window.innerWidth < Number('768')) {
-        return;
-      }
-      const imgs = Array.from(document.body.querySelectorAll('.google-photos-album-images a'));
-      imgs.push(...Array.from(document.body.querySelectorAll('a.google-photos-album-image')));
-      for (const anchor of imgs) {
-        anchor.href = anchor.href.replace(/=s720\-no/i, '=s1920-no');
-      }
-    } catch (e) {
-      console.log(e);
-    }
-  });
-</script>
-
+</div>
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://pages.isnot.jp/2020-06/25-hydrangea2020/" data-id="ckcokzp6u000pxabqdz9884tj" data-title="アジサイ2020" class="article-permalink">
+      <a data-url="https://pages.isnot.jp/2020-06/25-hydrangea2020/" data-id="ckcosahe0000tj9bqaqq72y98" data-title="アジサイ2020" class="article-permalink">
       
       </a>
       
@@ -361,7 +339,7 @@ function addLoadEvent(func) {
     
     <div class="e-content article-entry index-entry" itemprop="articleBody">
       
-        <link crossorigin="anonymous" media="screen" rel="stylesheet" href="/css/google_photos_album.css" /><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/lightgallery.js@1.1.3/dist/css/lightgallery.min.css" /><div class="article-gallery"><p>GASでChat Botを動かすためのFrameworkを作成する。</p>
+        <div class="article-gallery"><p>GASでChat Botを動かすためのFrameworkを作成する。</p>
 <h1 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h1><p>ここで言うチャットとは、LINEやTelegramのような、グループチャットのことです。<br>また興味の対象としては、アプリとしてよりも、プラットフォーム（サービスの基盤）として、見ています。</p>
 <p>チャット・ボット（Chat Bot、単にBotと呼ぶ場合が多い）とは、そのようなチャットの中で、機能的、あるいは非機能的な振る舞いをする、自動的なプログラムのことを指します。</p>
 <p>各チャットのサービス（プラットフォーム）を提供する事業者は、そういったBotを作成・動作させるための仕組みを、一般の第三者に対して提供しています。<br>つまり利用者（私、Botの開発者）がプログラムを作成し、動かすことによって、チャットの中に独自の機能や価値を、組み入れていくことができます。</p>
@@ -377,43 +355,11 @@ function addLoadEvent(func) {
 <p>また、個人的に使う、あるいは一定の人数のグループで使うためのチャット・ボットという程度であればさしたる問題になりませんが、処理の速度、パフォーマンスという面では、「まぁまぁ、そこそこ」程度です。</p>
 <p>シビアな反応速度（レイテンシ）が求められる用途には向いていないです。<br>また、個人的なざっくりとした感覚ですが、チャットの参加人数は延べ100人程度までにしておくと良いかと思われます。<br>それを超える規模で必要であれば、別のGoogleアカウントを併用するなど、工夫が必要です。が、そうなると管理の手間が増えてしまいますし、GAS以外の選択肢が視野に入ってくるかと思われます。</p>
 <p>それと可用性の面ですが、GASはときどき止まります。これも感覚ですが、半年に1回とか。<br>トラブル（Googleが攻撃を受ける）等で停止することもありますし、全体的に問題なく動いている場合でも、不意に処理が抜け落ちる（応答がない、タイムアウトする）といった現象が起こりえます。<br>そういう「不意落ち」は、数ヶ月に1回位は見る気がします。これはプログラム側の問題や、その他の外部要因もあるだろうと思われ、一概にGASのサービス・レベルの問題とは言えないのかもしれませんが、それでも他のより本格的なクラウドサービスと比べた場合、割り引いて見ておくと良いかと思います。</p>
-<h1 id="目的"><a href="#目的" class="headerlink" title="目的"></a>目的</h1><h1 id="前提条件"><a href="#前提条件" class="headerlink" title="前提条件"></a>前提条件</h1><h1 id="必要な要素"><a href="#必要な要素" class="headerlink" title="必要な要素"></a>必要な要素</h1><h1 id="現時点までの状況"><a href="#現時点までの状況" class="headerlink" title="現時点までの状況"></a>現時点までの状況</h1><h1 id="今後の目標"><a href="#今後の目標" class="headerlink" title="今後の目標"></a>今後の目標</h1></div><script src="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/js/lightgallery.min.js"></script><script src="/js/lg-thumbnail.min.js"></script><script src="/js/lg-zoom.min.js"></script><script src="/js/lg-autoplay.min.js"></script><script src="/js/lg-fullscreen.min.js"></script><script src="/js/lg-pager.min.js"></script><script src="/js/lg-hash.min.js"></script><script>if (typeof lightGallery !== 'undefined') {
-        var options = {
-            selector: '.gallery-item'
-        };
-        lightGallery(document.getElementsByClassName('article-gallery')[0], options);
-        }</script><script>
-function addLoadEvent(func) {
-  const oldonload = window.onload;
-  if (typeof window.onload !== 'function') {
-    window.onload = func;
-  } else {
-    window.onload = () => {
-      oldonload();
-      func();
-    };
-  }
-}
-  addLoadEvent(() => {
-    try {
-      if (window.innerWidth < Number('768')) {
-        return;
-      }
-      const imgs = Array.from(document.body.querySelectorAll('.google-photos-album-images a'));
-      imgs.push(...Array.from(document.body.querySelectorAll('a.google-photos-album-image')));
-      for (const anchor of imgs) {
-        anchor.href = anchor.href.replace(/=s720\-no/i, '=s1920-no');
-      }
-    } catch (e) {
-      console.log(e);
-    }
-  });
-</script>
-
+<h1 id="目的"><a href="#目的" class="headerlink" title="目的"></a>目的</h1><h1 id="前提条件"><a href="#前提条件" class="headerlink" title="前提条件"></a>前提条件</h1><h1 id="必要な要素"><a href="#必要な要素" class="headerlink" title="必要な要素"></a>必要な要素</h1><h1 id="現時点までの状況"><a href="#現時点までの状況" class="headerlink" title="現時点までの状況"></a>現時点までの状況</h1><h1 id="今後の目標"><a href="#今後の目標" class="headerlink" title="今後の目標"></a>今後の目標</h1></div>
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://pages.isnot.jp/2020-04/09-Create-a-Framework-for-Chatbot/" data-id="ckcokzp6d0002xabqh71ecrib" data-title="チャット・ボットのためのフレームワークを開発してみた。序章" class="article-permalink">
+      <a data-url="https://pages.isnot.jp/2020-04/09-Create-a-Framework-for-Chatbot/" data-id="ckcosahdi0003j9bqdhhtazgj" data-title="チャット・ボットのためのフレームワークを開発してみた。序章" class="article-permalink">
       
       </a>
       
@@ -459,7 +405,7 @@ function addLoadEvent(func) {
     
     <div class="e-content article-entry index-entry" itemprop="articleBody">
       
-        <link crossorigin="anonymous" media="screen" rel="stylesheet" href="/css/google_photos_album.css" /><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/lightgallery.js@1.1.3/dist/css/lightgallery.min.css" /><div class="article-gallery"><p>パソコンのディス容量がアップアップになっていたところを、今まで知らなかった方法で大きく改善した話。<br>一時的にディスフル（100％）になり、従来手法を使っても95％にしか減らず、それでは困るので別の手法を取り入れ、結果的に60%利用まで落ち着いた。</p>
+        <div class="article-gallery"><p>パソコンのディス容量がアップアップになっていたところを、今まで知らなかった方法で大きく改善した話。<br>一時的にディスフル（100％）になり、従来手法を使っても95％にしか減らず、それでは困るので別の手法を取り入れ、結果的に60%利用まで落ち着いた。</p>
 <p>Ubuntuのリリースサイクルは半年毎であり、最新の版は先月でた19.10 eoanであるということは、先刻ご承知であろうかと思う。<br>そして、私のパソコン（のひとつ）では、約1年と少し前にSSDを交換した後も、何かとディスク容量の空きに余裕がなく、苦慮していた。</p>
 <p>今回まずきっかけになったのは、VirtualBoxで動かしているWindows10のシステム更新をしたところ、問題発生、途中で停止したことによる。<br>ディスク容量が問題になっていることは、すぐに察した。今までに同様の件は経験済みである。</p>
 <p>このパソコンで最もディスクを消費しているものは、そのWindows10のHDDイメージで、約51GiBであった。<br>これを、まだディスクには余裕がるもう一つのパソコンに移動した。<br>つまり今後はVirtualBoxはそちらのほうで使うことにした。</p>
@@ -470,43 +416,11 @@ function addLoadEvent(func) {
 <p>調べた。<br>その結果に辿り着いた答えが、aptのスナップショット機能によるものだったというわけ。<br>apt-btrfs-snapshotを使うと、それを確認でき、削除を含む管理ができる。<br>一番あたらしいものを一つだけ残して、あとは削除した。</p>
 <p>Ubuntuをインストールしているシステムのファイルシステムとして、Btrfsを使っている場合、アップグレードのタイミング等で、自動的にaptがスナップショットを保存する。<br>そして冒頭のリリースサイクルの話に繋がるが、当パソコンでは、cosmic、disco、eoanという3回のアップグレードを経ており、この通り蓄積が大きくなっていたわけ。<br>これは全て自動的に行われており、今までまったく意識していなかった。<br>ファイルシステムのスナップショット機能があることは理解していたし、それを使えば相応にディスク容量が消費されるのはまったく道理なのだが、自分で能動的にスナップショット機能を利用したことはないため、当初は思いに至らなかった。<br>また同時に、スナップショットの保存によって消費された分が、システム的に、具体的にはdf等にどのように反映される（見える）のかは、知らないでいた。<br>まぁ、「見えない数字」になるということが、今回判った。</p>
 <p>そして私は、この貴重な経験と共に、十分に余裕があるディスクスペースを確保することに成功した。<br>今後も、半年毎のリリースのたびに、このことを思い起こして不要なスナップショットを手動で削除する必要があるだろう…。</p>
-</div><script src="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/js/lightgallery.min.js"></script><script src="/js/lg-thumbnail.min.js"></script><script src="/js/lg-zoom.min.js"></script><script src="/js/lg-autoplay.min.js"></script><script src="/js/lg-fullscreen.min.js"></script><script src="/js/lg-pager.min.js"></script><script src="/js/lg-hash.min.js"></script><script>if (typeof lightGallery !== 'undefined') {
-        var options = {
-            selector: '.gallery-item'
-        };
-        lightGallery(document.getElementsByClassName('article-gallery')[0], options);
-        }</script><script>
-function addLoadEvent(func) {
-  const oldonload = window.onload;
-  if (typeof window.onload !== 'function') {
-    window.onload = func;
-  } else {
-    window.onload = () => {
-      oldonload();
-      func();
-    };
-  }
-}
-  addLoadEvent(() => {
-    try {
-      if (window.innerWidth < Number('768')) {
-        return;
-      }
-      const imgs = Array.from(document.body.querySelectorAll('.google-photos-album-images a'));
-      imgs.push(...Array.from(document.body.querySelectorAll('a.google-photos-album-image')));
-      for (const anchor of imgs) {
-        anchor.href = anchor.href.replace(/=s720\-no/i, '=s1920-no');
-      }
-    } catch (e) {
-      console.log(e);
-    }
-  });
-</script>
-
+</div>
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://pages.isnot.jp/2019-11/18-apt-btrfs-snapshot-df/" data-id="ckcokzp6n000cxabq5oumc1qc" data-title="apt-btrfs-snapshotによるディスク容量の消費" class="article-permalink">
+      <a data-url="https://pages.isnot.jp/2019-11/18-apt-btrfs-snapshot-df/" data-id="ckcosahdr000cj9bq8uh64qx7" data-title="apt-btrfs-snapshotによるディスク容量の消費" class="article-permalink">
       
       </a>
       
@@ -552,7 +466,7 @@ function addLoadEvent(func) {
     
     <div class="e-content article-entry index-entry" itemprop="articleBody">
       
-        <link crossorigin="anonymous" media="screen" rel="stylesheet" href="/css/google_photos_album.css" /><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/lightgallery.js@1.1.3/dist/css/lightgallery.min.css" /><div class="article-gallery"><p>今日、自転車に乗って出かけた。<br>多摩湖自転車歩行者道の始点から入り、西へ。<br>すぐに落ち葉焚きの匂いが。さらに合わせて金木犀の匂いも被さる。<br>金木犀は、この先の道々方々で強烈な芳香を放っていた。</p>
+        <div class="article-gallery"><p>今日、自転車に乗って出かけた。<br>多摩湖自転車歩行者道の始点から入り、西へ。<br>すぐに落ち葉焚きの匂いが。さらに合わせて金木犀の匂いも被さる。<br>金木犀は、この先の道々方々で強烈な芳香を放っていた。</p>
 <div class="google-photos-album-area" id="google-photos-album-area9"><div class="metadatas"><img src="https://lh3.googleusercontent.com/BjiPqQfLq1K1PYpJ6XrhE6m2aojVlvqUnBmBb_0jVUYhLVRcdqIzn1FF7NufIID1DMTiIy2VXMrQ95iepuylus6b3POlSnhnMlzM1LIYTwolcCFNyulRHq1CkRGCPtKhr3Df5nWb2sc=w600-h315-p-k" class="og-image nolink"></img><a href="https://photos.google.com/share/AF1QipOwckFkodETO1SKaanBgEfAeZdu6RkBSpnnUbnWIzpHSyWf4DAFZ52zcBq6fFBAOA?key=MUFwQzJydUp0RU9xVVFKdHR3ckFtR05IVU9lUUhB" class="og-url" target="_blank" rel="noopener"><span class="og-title">多摩湖自転車歩行者道〜六道山〜文明堂壹番館</span><span class="og-description">12 new photos added to shared album</span></a></div>
 <div class="google-photos-album-images clearfix"><a href="https://lh3.googleusercontent.com/uWBH-uaL_aypPKK4hmm0WLovyVlBJuTLvup4_RddezAsnmPjT10mqzKd9dM8MK5IgcH6pe3ZcnlXmEvEEtZHwJd92lFxBV_P9omNqU4XsrO2RQf7f20YH4K73Uotn37OYE8KZdExYdg=s720-no" class="gallery-item" target="_blank" rel="noopener"><img src="https://lh3.googleusercontent.com/uWBH-uaL_aypPKK4hmm0WLovyVlBJuTLvup4_RddezAsnmPjT10mqzKd9dM8MK5IgcH6pe3ZcnlXmEvEEtZHwJd92lFxBV_P9omNqU4XsrO2RQf7f20YH4K73Uotn37OYE8KZdExYdg=w225-no?authuser=0"></a>
 <a href="https://lh3.googleusercontent.com/oUW8ZJjLQ8A6UG4bWhIQqyGtuK6JHP62VNbBC20EtQu8Rt2LQq935O6Zm8nodIYEcob8KCkGIMw6I1g6aylNiupNgl2FT035dJfFTNZiLHKb1Ghi1rWeks4kwRAu4nqztsoHe3AZxJY=s720-no" class="gallery-item" target="_blank" rel="noopener"><img src="https://lh3.googleusercontent.com/oUW8ZJjLQ8A6UG4bWhIQqyGtuK6JHP62VNbBC20EtQu8Rt2LQq935O6Zm8nodIYEcob8KCkGIMw6I1g6aylNiupNgl2FT035dJfFTNZiLHKb1Ghi1rWeks4kwRAu4nqztsoHe3AZxJY=w225-no?authuser=0"></a>
@@ -569,50 +483,18 @@ function addLoadEvent(func) {
 </div>
 
 <p>萩山駅〜八坂駅の間のストレート区間で、ギアをアウター・トップに入れて、思いっきりペダルを踏み込んでみた。<br>しかし息が上がってしまって最後まで踏み切れず。心肺と脚力が大幅に弱まっている。むむぅ。</p>
-<p>狭山公園の入口を素通り、多摩湖南岸側を進み、中堤防を渡る。<br>中堤防は、正しくは村山上貯水池堰堤と言い、堤体強化工事が進行中。下流側の、一段低い広場がある部分を削り、「抑え盛り土」を堤頂と同じ高さまで盛り立てるようだ。<br>どうやらあと4年かけて完工予定のようだ。<br><a href="http://akutamako.g2.xrea.com/8-reinforce2/8-reinforce2.html" target="_blank" rel="noopener">http://akutamako.g2.xrea.com/8-reinforce2/8-reinforce2.html</a></p>
+<p>狭山公園の入口を素通り、多摩湖南岸側を進み、中堤防を渡る。<br>中堤防は、正しくは村山上貯水池堰堤と言い、堤体強化工事が進行中。下流側の、一段低い広場がある部分を削り、「抑え盛り土」を堤頂と同じ高さまで盛り立てるようだ。<br>どうやらあと4年かけて完工予定のようだ。<br><a target="_blank" rel="noopener" href="http://akutamako.g2.xrea.com/8-reinforce2/8-reinforce2.html">http://akutamako.g2.xrea.com/8-reinforce2/8-reinforce2.html</a></p>
 <p>武蔵村山市学校給食センターの横からゲートを抜けて、六道山公園方面へ進む。<br>都立野山北・六道山公園の北端をなぞるように、未舗装路の尾根道を走ると、爽快な気分になってきた。</p>
-<p>瑞穂町立文化の森・六道山公園の、展望塔へ登る。<br>南側の眺望はそこそこ楽しめた。しかし東側の地平線あたりはモヤで見通しが悪く、かろうじて新宿の高層ビル群がシルエットで見える程度だった。<br>西側は、残念ながら富士山はまったく見えず。雲が覆っていた。<br><a href="http://www.town.mizuho.tokyo.jp/shisetsu/006/p004205.html" target="_blank" rel="noopener">http://www.town.mizuho.tokyo.jp/shisetsu/006/p004205.html</a></p>
+<p>瑞穂町立文化の森・六道山公園の、展望塔へ登る。<br>南側の眺望はそこそこ楽しめた。しかし東側の地平線あたりはモヤで見通しが悪く、かろうじて新宿の高層ビル群がシルエットで見える程度だった。<br>西側は、残念ながら富士山はまったく見えず。雲が覆っていた。<br><a target="_blank" rel="noopener" href="http://www.town.mizuho.tokyo.jp/shisetsu/006/p004205.html">http://www.town.mizuho.tokyo.jp/shisetsu/006/p004205.html</a></p>
 <p>瑞穂町スカイタワーの展望広場にも立ち寄る。横田基地の北側が見渡せる。まぁ六道山のほうが遠くまで見えるな…。</p>
-<p>ここで、雨が降り出す。日暮れまで降らない予報だったので、何の支度もしていなかったので、以降濡れることに。<br>迷ったが、まぁいいかということで、そのまま文明堂壹番館（工場直売所）へ。<br>バームクーヘンと、生南部サブレ、五三カステラ切り落としを購入。<br><a href="http://www.1ban-can.com/ichbankan/accsess/index.html" target="_blank" rel="noopener">http://www.1ban-can.com/ichbankan/accsess/index.html</a></p>
+<p>ここで、雨が降り出す。日暮れまで降らない予報だったので、何の支度もしていなかったので、以降濡れることに。<br>迷ったが、まぁいいかということで、そのまま文明堂壹番館（工場直売所）へ。<br>バームクーヘンと、生南部サブレ、五三カステラ切り落としを購入。<br><a target="_blank" rel="noopener" href="http://www.1ban-can.com/ichbankan/accsess/index.html">http://www.1ban-can.com/ichbankan/accsess/index.html</a></p>
 <p>その頃には、本降り。<br>帰路につく。自転車のブレーキが濡れたおかげで、効きがかなり弱くて、マイッタ。<br>そして寒い。寒い。寒い。</p>
 <p>帰宅したら、ざっと洗車してからシャワー浴びて一息ついた。</p>
-</div><script src="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/js/lightgallery.min.js"></script><script src="/js/lg-thumbnail.min.js"></script><script src="/js/lg-zoom.min.js"></script><script src="/js/lg-autoplay.min.js"></script><script src="/js/lg-fullscreen.min.js"></script><script src="/js/lg-pager.min.js"></script><script src="/js/lg-hash.min.js"></script><script>if (typeof lightGallery !== 'undefined') {
-        var options = {
-            selector: '.gallery-item'
-        };
-        lightGallery(document.getElementsByClassName('article-gallery')[0], options);
-        }</script><script>
-function addLoadEvent(func) {
-  const oldonload = window.onload;
-  if (typeof window.onload !== 'function') {
-    window.onload = func;
-  } else {
-    window.onload = () => {
-      oldonload();
-      func();
-    };
-  }
-}
-  addLoadEvent(() => {
-    try {
-      if (window.innerWidth < Number('768')) {
-        return;
-      }
-      const imgs = Array.from(document.body.querySelectorAll('.google-photos-album-images a'));
-      imgs.push(...Array.from(document.body.querySelectorAll('a.google-photos-album-image')));
-      for (const anchor of imgs) {
-        anchor.href = anchor.href.replace(/=s720\-no/i, '=s1920-no');
-      }
-    } catch (e) {
-      console.log(e);
-    }
-  });
-</script>
-
+</div>
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://pages.isnot.jp/2019-10/17-tamako-cycling/" data-id="ckcokzp79001oxabq8ct0bamw" data-title="多摩湖自転車歩行者道〜六道山〜文明堂壹番館" class="article-permalink">
+      <a data-url="https://pages.isnot.jp/2019-10/17-tamako-cycling/" data-id="ckcosaher001sj9bq4uffg7yg" data-title="多摩湖自転車歩行者道〜六道山〜文明堂壹番館" class="article-permalink">
       
       </a>
       
@@ -658,51 +540,19 @@ function addLoadEvent(func) {
     
     <div class="e-content article-entry index-entry" itemprop="articleBody">
       
-        <link crossorigin="anonymous" media="screen" rel="stylesheet" href="/css/google_photos_album.css" /><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/lightgallery.js@1.1.3/dist/css/lightgallery.min.css" /><div class="article-gallery"><p>Ingressでは、目下のところ公式のイベント「Avenir　Shards」が開催中であることは、ご存知かと思います。<br>Nianticの公式シャード情報ページでは、マップ上に軌跡を表示するなど、情報提供がされています。<br><a href="https://ingress.com/shards/avenir_shards" target="_blank" rel="noopener">https://ingress.com/shards/avenir_shards</a> （以下、公式シャード情報）</p>
+        <div class="article-gallery"><p>Ingressでは、目下のところ公式のイベント「Avenir　Shards」が開催中であることは、ご存知かと思います。<br>Nianticの公式シャード情報ページでは、マップ上に軌跡を表示するなど、情報提供がされています。<br><a target="_blank" rel="noopener" href="https://ingress.com/shards/avenir_shards">https://ingress.com/shards/avenir_shards</a> （以下、公式シャード情報）</p>
 <p>一方で、私は各シャードの移動履歴をリスト形式で一覧表示したものが欲しかったので、以下のBookmarkletを作成しました。<br>Bookmarkletとは？ということについては、説明を省きますので、Google検索などで調べてください。</p>
 <h2 id="利用方法"><a href="#利用方法" class="headerlink" title="利用方法"></a>利用方法</h2><ul>
 <li>Bookmarkletをブラウザに登録する。これ→ <a href="javascript:(function(){const d=document;const h=d.createElement('div');h.innerHTML=points.map(e=>{return e.title}).join('<br>\n');d.getElementById('targets').appendChild(h)})();">PrintShardsHistory</a></li>
 <li>公式シャード情報を開き、そこでBookmarkletを実行する。</li>
 </ul>
-<h2 id="内容"><a href="#内容" class="headerlink" title="内容"></a>内容</h2><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">javascript:</span><br><span class="line">  (<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">const</span> d=<span class="built_in">document</span>;</span><br><span class="line">    <span class="keyword">const</span> h=d.createElement(<span class="string">'div'</span>);</span><br><span class="line">    h.innerHTML=points.map(<span class="function"><span class="params">e</span>=&gt;</span>&#123;<span class="keyword">return</span> e.title&#125;).join(<span class="string">'&amp;lt;br&amp;gt;\n'</span>);</span><br><span class="line">    d.getElementById(<span class="string">'targets'</span>).appendChild(h)</span><br><span class="line">  &#125;)();</span><br></pre></td></tr></table></figure>
+<h2 id="内容"><a href="#内容" class="headerlink" title="内容"></a>内容</h2><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">javascript:</span><br><span class="line">  (<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">const</span> d=<span class="built_in">document</span>;</span><br><span class="line">    <span class="keyword">const</span> h=d.createElement(<span class="string">&#x27;div&#x27;</span>);</span><br><span class="line">    h.innerHTML=points.map(<span class="function"><span class="params">e</span>=&gt;</span>&#123;<span class="keyword">return</span> e.title&#125;).join(<span class="string">&#x27;&amp;lt;br&amp;gt;\n&#x27;</span>);</span><br><span class="line">    d.getElementById(<span class="string">&#x27;targets&#x27;</span>).appendChild(h)</span><br><span class="line">  &#125;)();</span><br></pre></td></tr></table></figure>
 <p>上記PrintShardsHistoryに改行を加えて読みやすくしたものです。</p>
-</div><script src="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/js/lightgallery.min.js"></script><script src="/js/lg-thumbnail.min.js"></script><script src="/js/lg-zoom.min.js"></script><script src="/js/lg-autoplay.min.js"></script><script src="/js/lg-fullscreen.min.js"></script><script src="/js/lg-pager.min.js"></script><script src="/js/lg-hash.min.js"></script><script>if (typeof lightGallery !== 'undefined') {
-        var options = {
-            selector: '.gallery-item'
-        };
-        lightGallery(document.getElementsByClassName('article-gallery')[0], options);
-        }</script><script>
-function addLoadEvent(func) {
-  const oldonload = window.onload;
-  if (typeof window.onload !== 'function') {
-    window.onload = func;
-  } else {
-    window.onload = () => {
-      oldonload();
-      func();
-    };
-  }
-}
-  addLoadEvent(() => {
-    try {
-      if (window.innerWidth < Number('768')) {
-        return;
-      }
-      const imgs = Array.from(document.body.querySelectorAll('.google-photos-album-images a'));
-      imgs.push(...Array.from(document.body.querySelectorAll('a.google-photos-album-image')));
-      for (const anchor of imgs) {
-        anchor.href = anchor.href.replace(/=s720\-no/i, '=s1920-no');
-      }
-    } catch (e) {
-      console.log(e);
-    }
-  });
-</script>
-
+</div>
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://pages.isnot.jp/2019-09/24-Avenir-Shards-Bookmarklet/" data-id="ckcokzp630000xabq81f61wgx" data-title="Avenir Shards Bookmarklet" class="article-permalink">
+      <a data-url="https://pages.isnot.jp/2019-09/24-Avenir-Shards-Bookmarklet/" data-id="ckcosahde0001j9bq3ity6mrp" data-title="Avenir Shards Bookmarklet" class="article-permalink">
       
       </a>
       
@@ -748,51 +598,19 @@ function addLoadEvent(func) {
     
     <div class="e-content article-entry index-entry" itemprop="articleBody">
       
-        <link crossorigin="anonymous" media="screen" rel="stylesheet" href="/css/google_photos_album.css" /><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/lightgallery.js@1.1.3/dist/css/lightgallery.min.css" /><div class="article-gallery"><p>Node.jsからスプシを操作したいわけじゃないですか。<br><a href="https://developers.google.com/sheets/api/" target="_blank" rel="noopener">https://developers.google.com/sheets/api/</a></p>
+        <div class="article-gallery"><p>Node.jsからスプシを操作したいわけじゃないですか。<br><a target="_blank" rel="noopener" href="https://developers.google.com/sheets/api/">https://developers.google.com/sheets/api/</a></p>
 <p>なので、npmの中から適当なライブラリがないか、調べたのです。<br>すると、結構な数が検索で挙げられてきて、ひとつひとつ見ていくわけです。</p>
 <p>結局の所、殆どのものは、API v3を前提にしたもので、そのAPI v3は過去の存在なわけですね。</p>
-<p>つまるところ理解したのは、API v4を使うにあたって、いま、選択するべきライブラリといえば、Google自身によるgoogleapis。<br><a href="https://www.npmjs.com/package/googleapis" target="_blank" rel="noopener">https://www.npmjs.com/package/googleapis</a></p>
+<p>つまるところ理解したのは、API v4を使うにあたって、いま、選択するべきライブラリといえば、Google自身によるgoogleapis。<br><a target="_blank" rel="noopener" href="https://www.npmjs.com/package/googleapis">https://www.npmjs.com/package/googleapis</a></p>
 <p>そうなってくると、サンプルが欲しいわけじゃないですか。</p>
-<p><a href="https://qiita.com/howdy39/items/22068b3f768f0f9a757d" target="_blank" rel="noopener">スプレッドシートをWebAPI化するサービスの作り方</a> から辿り、<br><a href="https://github.com/howdy39/sheets-to-webapi" target="_blank" rel="noopener">スプレッドシートを読み込んでWebAPI化するCloudFunctionsのソース</a> に行き着く。</p>
+<p><a target="_blank" rel="noopener" href="https://qiita.com/howdy39/items/22068b3f768f0f9a757d">スプレッドシートをWebAPI化するサービスの作り方</a> から辿り、<br><a target="_blank" rel="noopener" href="https://github.com/howdy39/sheets-to-webapi">スプレッドシートを読み込んでWebAPI化するCloudFunctionsのソース</a> に行き着く。</p>
 <p>これはvalues.getを包むラッパーということですが、あとはリファレンスその他を見ながら、updateやappendも容易に実装できるわけです。</p>
 <p>googleapisは、ライブラリとしての使い心地も、まぁしっくりクル。<br>ただし、やはり記述が冗長になるので、ラッパーがあると良いよね、という。<br>このサンプル、ありがたいことです。</p>
-</div><script src="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/js/lightgallery.min.js"></script><script src="/js/lg-thumbnail.min.js"></script><script src="/js/lg-zoom.min.js"></script><script src="/js/lg-autoplay.min.js"></script><script src="/js/lg-fullscreen.min.js"></script><script src="/js/lg-pager.min.js"></script><script src="/js/lg-hash.min.js"></script><script>if (typeof lightGallery !== 'undefined') {
-        var options = {
-            selector: '.gallery-item'
-        };
-        lightGallery(document.getElementsByClassName('article-gallery')[0], options);
-        }</script><script>
-function addLoadEvent(func) {
-  const oldonload = window.onload;
-  if (typeof window.onload !== 'function') {
-    window.onload = func;
-  } else {
-    window.onload = () => {
-      oldonload();
-      func();
-    };
-  }
-}
-  addLoadEvent(() => {
-    try {
-      if (window.innerWidth < Number('768')) {
-        return;
-      }
-      const imgs = Array.from(document.body.querySelectorAll('.google-photos-album-images a'));
-      imgs.push(...Array.from(document.body.querySelectorAll('a.google-photos-album-image')));
-      for (const anchor of imgs) {
-        anchor.href = anchor.href.replace(/=s720\-no/i, '=s1920-no');
-      }
-    } catch (e) {
-      console.log(e);
-    }
-  });
-</script>
-
+</div>
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://pages.isnot.jp/2019-06/23-GoogleSpreadsheetAPIv4/" data-id="ckcokzp6i0006xabqdcoo4gww" data-title="GoogleSpreadsheetAPIv4" class="article-permalink">
+      <a data-url="https://pages.isnot.jp/2019-06/23-GoogleSpreadsheetAPIv4/" data-id="ckcosahdn0007j9bqbzbz6ipe" data-title="GoogleSpreadsheetAPIv4" class="article-permalink">
       
       </a>
       
@@ -838,7 +656,7 @@ function addLoadEvent(func) {
     
     <div class="e-content article-entry index-entry" itemprop="articleBody">
       
-        <link crossorigin="anonymous" media="screen" rel="stylesheet" href="/css/google_photos_album.css" /><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/lightgallery.js@1.1.3/dist/css/lightgallery.min.css" /><div class="article-gallery"><p>今年のアジサイ。<br>近所および市内にて撮影したものを、まとめてみました。</p>
+        <div class="article-gallery"><p>今年のアジサイ。<br>近所および市内にて撮影したものを、まとめてみました。</p>
 <p>同じ株の中に、個々の花房で色が微妙に違っているようなのが、好みです。</p>
 <p>思いも寄らないような形の花であったり、細かなディテールであったりに、目がとまりました。</p>
 <div class="google-photos-album-area" id="google-photos-album-area4"><div class="metadatas"><img src="https://lh3.googleusercontent.com/5IBhgmqjt2kzQiSU6ONcD1rAkCObQh9T_-SDPUp5_JSyOZ23Z4ragwYAI5QM-eyTcaxxUR7Jam0cBAAD5w6o_wV25AbIyzpsRzYex8i8tpyjZQT32PqLRMZlnP_C22GjErmHgHkOAaI=w600-h315-p-k" class="og-image nolink"></img><a href="https://photos.google.com/share/AF1QipMxHFKzIeVENr6m_e-zVHc7l-4vB1F9JJdUeBXLxb3RdD_cYBEphkEvw17HnFy4cg?key=SkVGeG85dUVjbTN4R2xrV2Q0RW13emdlRy1mUmln" class="og-url" target="_blank" rel="noopener"><span class="og-title">2019年6月アジサイ</span><span class="og-description">11 new photos added to shared album</span></a></div>
@@ -854,43 +672,11 @@ function addLoadEvent(func) {
 <a href="https://lh3.googleusercontent.com/gatjnz_l0xe41mghyvDKAatd5tO_0c_ZCqtcSVErACRq8H4iNpvuggWYMGLBNKc1vMkk8t-EkGDaU0E9YeS4Dd94CGZiLjLKyNZH59Gf6ehcmTBtluh7Y8MINMGCPiYpylmnKKSUY4M=s720-no" class="gallery-item" target="_blank" rel="noopener"><img src="https://lh3.googleusercontent.com/gatjnz_l0xe41mghyvDKAatd5tO_0c_ZCqtcSVErACRq8H4iNpvuggWYMGLBNKc1vMkk8t-EkGDaU0E9YeS4Dd94CGZiLjLKyNZH59Gf6ehcmTBtluh7Y8MINMGCPiYpylmnKKSUY4M=w225-no?authuser=0"></a>
 <a href="https://lh3.googleusercontent.com/E2xCMabqYMUuS6D16TBw-8EL0qR9_UTv1bTQXv93b1koFa3Y-ptj88PQ4FsPiATUfrhktW2lereSknJpxqZeB9Mde2UOFpNBbaGrjL-ICLxYshrESDxt6yJBr8ZTMLlHpjk1IsfAFoY=s720-no" class="gallery-item" target="_blank" rel="noopener"><img src="https://lh3.googleusercontent.com/E2xCMabqYMUuS6D16TBw-8EL0qR9_UTv1bTQXv93b1koFa3Y-ptj88PQ4FsPiATUfrhktW2lereSknJpxqZeB9Mde2UOFpNBbaGrjL-ICLxYshrESDxt6yJBr8ZTMLlHpjk1IsfAFoY=w225-no?authuser=0"></a></div>
 </div>
-</div><script src="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/js/lightgallery.min.js"></script><script src="/js/lg-thumbnail.min.js"></script><script src="/js/lg-zoom.min.js"></script><script src="/js/lg-autoplay.min.js"></script><script src="/js/lg-fullscreen.min.js"></script><script src="/js/lg-pager.min.js"></script><script src="/js/lg-hash.min.js"></script><script>if (typeof lightGallery !== 'undefined') {
-        var options = {
-            selector: '.gallery-item'
-        };
-        lightGallery(document.getElementsByClassName('article-gallery')[0], options);
-        }</script><script>
-function addLoadEvent(func) {
-  const oldonload = window.onload;
-  if (typeof window.onload !== 'function') {
-    window.onload = func;
-  } else {
-    window.onload = () => {
-      oldonload();
-      func();
-    };
-  }
-}
-  addLoadEvent(() => {
-    try {
-      if (window.innerWidth < Number('768')) {
-        return;
-      }
-      const imgs = Array.from(document.body.querySelectorAll('.google-photos-album-images a'));
-      imgs.push(...Array.from(document.body.querySelectorAll('a.google-photos-album-image')));
-      for (const anchor of imgs) {
-        anchor.href = anchor.href.replace(/=s720\-no/i, '=s1920-no');
-      }
-    } catch (e) {
-      console.log(e);
-    }
-  });
-</script>
-
+</div>
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://pages.isnot.jp/2019-06/17-hydrangea/" data-id="ckcokzp6t000oxabq6pt04n7e" data-title="アジサイ2019" class="article-permalink">
+      <a data-url="https://pages.isnot.jp/2019-06/17-hydrangea/" data-id="ckcosahdy000pj9bqhl4tb0mp" data-title="アジサイ2019" class="article-permalink">
       
       </a>
       
@@ -936,179 +722,42 @@ function addLoadEvent(func) {
     
     <div class="e-content article-entry index-entry" itemprop="articleBody">
       
-        <link crossorigin="anonymous" media="screen" rel="stylesheet" href="/css/google_photos_album.css" /><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/lightgallery.js@1.1.3/dist/css/lightgallery.min.css" /><div class="article-gallery"><h2 id="metascraperにおけるXSS対応と、その影響"><a href="#metascraperにおけるXSS対応と、その影響" class="headerlink" title="metascraperにおけるXSS対応と、その影響"></a>metascraperにおけるXSS対応と、その影響</h2><p>自作のHexo向けプラグインであるhexo-tag-google-photos-albumでは、<a href="https://metascraper.js.org/#/" target="_blank" rel="noopener">metascraper</a>というnpmライブラリを利用しています。<br>Google Photosの共有リンクから辿って、いくつかのメタデータを抽出するためです。</p>
+        <div class="article-gallery"><h2 id="metascraperにおけるXSS対応と、その影響"><a href="#metascraperにおけるXSS対応と、その影響" class="headerlink" title="metascraperにおけるXSS対応と、その影響"></a>metascraperにおけるXSS対応と、その影響</h2><p>自作のHexo向けプラグインであるhexo-tag-google-photos-albumでは、<a target="_blank" rel="noopener" href="https://metascraper.js.org/#/">metascraper</a>というnpmライブラリを利用しています。<br>Google Photosの共有リンクから辿って、いくつかのメタデータを抽出するためです。</p>
 <p>そのmetascraperで、XSS脆弱性の報告がありました。（現時点では修正対応済）</p>
 <p>その解決に伴い、hexo-tag-google-photos-albumでは、修正済みバージョンを利用するように、修正をしました。</p>
 <ul>
 <li>metascraperのGitHubリポジトリにおけるイシュー<ul>
-<li>NPM Reporting as CSS Vulnerability <a href="https://github.com/microlinkhq/metascraper/issues/153" target="_blank" rel="noopener">#153</a></li>
-<li>Add escape parameter to escape html data by default <a href="https://github.com/microlinkhq/metascraper/issues/168" target="_blank" rel="noopener">#168</a></li>
+<li>NPM Reporting as CSS Vulnerability <a target="_blank" rel="noopener" href="https://github.com/microlinkhq/metascraper/issues/153">#153</a></li>
+<li>Add escape parameter to escape html data by default <a target="_blank" rel="noopener" href="https://github.com/microlinkhq/metascraper/issues/168">#168</a></li>
 </ul>
 </li>
 <li>npmのセキュリティ勧告<ul>
-<li><a href="https://www.npmjs.com/advisories/603" target="_blank" rel="noopener">Cross-Site Scripting metascraper</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.npmjs.com/advisories/603">Cross-Site Scripting metascraper</a></li>
 </ul>
 </li>
 <li>報告の元になったレポート<ul>
-<li>[metascraper] Stored XSS in Open Graph meta properties read by metascrapper <a href="https://hackerone.com/reports/309367" target="_blank" rel="noopener">hackerone.com #309367</a></li>
+<li>[metascraper] Stored XSS in Open Graph meta properties read by metascrapper <a target="_blank" rel="noopener" href="https://hackerone.com/reports/309367">hackerone.com #309367</a></li>
 </ul>
 </li>
 <li>isnot/hexo-tag-google-photos-album 修正の差分<ul>
-<li>metascraper up to @5.4.2 <a href="https://github.com/isnot/hexo-tag-google-photos-album/commit/02366cc046ccd932cdca89d2562f4ae5dd60adf4#diff-b9cfc7f2cdf78a7f4b91a753d10865a2" target="_blank" rel="noopener">#02366cc</a></li>
+<li>metascraper up to @5.4.2 <a target="_blank" rel="noopener" href="https://github.com/isnot/hexo-tag-google-photos-album/commit/02366cc046ccd932cdca89d2562f4ae5dd60adf4#diff-b9cfc7f2cdf78a7f4b91a753d10865a2">#02366cc</a></li>
 </ul>
 </li>
 </ul>
 <h2 id="修正後の確認"><a href="#修正後の確認" class="headerlink" title="修正後の確認"></a>修正後の確認</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo-tag-google-photos-album$ npm audit</span><br><span class="line"></span><br><span class="line">                       === npm audit security report ===</span><br><span class="line"></span><br><span class="line">found 0 vulnerabilities</span><br><span class="line"> <span class="keyword">in</span> 2702 scanned packages</span><br><span class="line"></span><br><span class="line">(snip)</span><br><span class="line"></span><br><span class="line">blog$ npm view hexo-tag-google-photos-album version</span><br><span class="line">1.0.5</span><br><span class="line">blog$ hexo clean</span><br><span class="line">(node:29044) [DEP0061] DeprecationWarning: fs.SyncWriteStream is deprecated.</span><br><span class="line">INFO  Deleted database.</span><br><span class="line">INFO  Deleted public folder.</span><br></pre></td></tr></table></figure>
 
 <p>特に問題なし。</p>
-</div><script src="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/js/lightgallery.min.js"></script><script src="/js/lg-thumbnail.min.js"></script><script src="/js/lg-zoom.min.js"></script><script src="/js/lg-autoplay.min.js"></script><script src="/js/lg-fullscreen.min.js"></script><script src="/js/lg-pager.min.js"></script><script src="/js/lg-hash.min.js"></script><script>if (typeof lightGallery !== 'undefined') {
-        var options = {
-            selector: '.gallery-item'
-        };
-        lightGallery(document.getElementsByClassName('article-gallery')[0], options);
-        }</script><script>
-function addLoadEvent(func) {
-  const oldonload = window.onload;
-  if (typeof window.onload !== 'function') {
-    window.onload = func;
-  } else {
-    window.onload = () => {
-      oldonload();
-      func();
-    };
-  }
-}
-  addLoadEvent(() => {
-    try {
-      if (window.innerWidth < Number('768')) {
-        return;
-      }
-      const imgs = Array.from(document.body.querySelectorAll('.google-photos-album-images a'));
-      imgs.push(...Array.from(document.body.querySelectorAll('a.google-photos-album-image')));
-      for (const anchor of imgs) {
-        anchor.href = anchor.href.replace(/=s720\-no/i, '=s1920-no');
-      }
-    } catch (e) {
-      console.log(e);
-    }
-  });
-</script>
-
+</div>
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://pages.isnot.jp/2019-06/08-update-hexo-tag-gpa/" data-id="ckcokzp7d001sxabqa9iv2z47" data-title="hexo-tag-google-photos-album をアップデートした" class="article-permalink">
+      <a data-url="https://pages.isnot.jp/2019-06/08-update-hexo-tag-gpa/" data-id="ckcosahet001wj9bq6xzh7ljn" data-title="hexo-tag-google-photos-album をアップデートした" class="article-permalink">
       
       </a>
       
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hexo/" rel="tag">hexo</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/" rel="tag">javascript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/npm/" rel="tag">npm</a></li></ul>
-
-    </footer>
-    <div class="article-footer">
-      
-    </div>
-  </div>
-  
-</article>
-
-
-
-
-  
-    <article id="post-TMG-Observatories" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2019-05/30-TMG-Observatories/" class="article-date">
-  <time class="dt-published" datetime="2019-05-30T00:35:00.000Z" itemprop="datePublished">2019-05-30</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/photo/">photo</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2019-05/30-TMG-Observatories/">東京都庁展望室</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry index-entry" itemprop="articleBody">
-      
-        <link crossorigin="anonymous" media="screen" rel="stylesheet" href="/css/google_photos_album.css" /><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/lightgallery.js@1.1.3/dist/css/lightgallery.min.css" /><div class="article-gallery"><div class="google-photos-album-area" id="google-photos-album-area1"><div class="metadatas"><img src="https://lh3.googleusercontent.com/jt3aBfODmA9iiXw6tYzVMUPWLXHM37tnOmZNkH7VO1pf6DggroqRhEto-NJCjkm5ilSZmDcWcAheCN9dCOvVBA5m0nx1oEkm1m5JSTv9t1gpxQkAtV1uRuLd7IUPvs7mXNdh5zw4MNc=w600-h315-p-k" class="og-image nolink"></img><a href="https://photos.google.com/share/AF1QipMD9ss75KU_MBAFJyyi_YbVwHrNUC927qxErfwxfP-NkDwr2Vgz2-kFzIii8ZAC4A?key=TXVEbHdRSUFOdDVCWGY1YTV5N09PNUdXSVBxOHBn" class="og-url" target="_blank" rel="noopener"><span class="og-title">2019年5月29日 東京都庁展望室（南展望室）</span><span class="og-description">17 new photos added to shared album</span></a></div>
-<div class="google-photos-album-images clearfix"><a href="https://lh3.googleusercontent.com/bdW1Cy2hr0M0Mxset4W8enSP2I7wQ3bczOqQw6QzhZXo8hp9UnT2mTbd_8T9IgkXhb6Y7T4VN5mX3OSwZeBG_x13TcTopORpt2yR-M97DSAHaeswSLpJmw14El_JYuJ4PxaKtrZhZ98=s720-no" class="gallery-item" target="_blank" rel="noopener"><img src="https://lh3.googleusercontent.com/bdW1Cy2hr0M0Mxset4W8enSP2I7wQ3bczOqQw6QzhZXo8hp9UnT2mTbd_8T9IgkXhb6Y7T4VN5mX3OSwZeBG_x13TcTopORpt2yR-M97DSAHaeswSLpJmw14El_JYuJ4PxaKtrZhZ98=w225-no?authuser=0"></a>
-<a href="https://lh3.googleusercontent.com/9r6abvkYCWjoHLlsO46cIW68oDlxLN5l9FkNZFhRLbTXZg3-DtKQwJSM5700TqD8MOecM9pxRUtE17R9Vmq6XrQrjpbgHBK_FxCkU6wNwXqLW3r9LVFGmj_jqdULfg83_Mwd_kV6DIs=s720-no" class="gallery-item" target="_blank" rel="noopener"><img src="https://lh3.googleusercontent.com/9r6abvkYCWjoHLlsO46cIW68oDlxLN5l9FkNZFhRLbTXZg3-DtKQwJSM5700TqD8MOecM9pxRUtE17R9Vmq6XrQrjpbgHBK_FxCkU6wNwXqLW3r9LVFGmj_jqdULfg83_Mwd_kV6DIs=w225-no?authuser=0"></a>
-<a href="https://lh3.googleusercontent.com/1RVCazeLJN8cd6LVENBdOKWyO83_TZMXQYqiRiFbjK_sD92Beq3zlJK57-5pJdzEWZcPzuoLjyD87JTMsKyBFYvfw5XyuplzvWOf2bWHDL5DDsXo8N4BFOWJlctw3UpNyG-84AqIe4M=s720-no" class="gallery-item" target="_blank" rel="noopener"><img src="https://lh3.googleusercontent.com/1RVCazeLJN8cd6LVENBdOKWyO83_TZMXQYqiRiFbjK_sD92Beq3zlJK57-5pJdzEWZcPzuoLjyD87JTMsKyBFYvfw5XyuplzvWOf2bWHDL5DDsXo8N4BFOWJlctw3UpNyG-84AqIe4M=w225-no?authuser=0"></a>
-<a href="https://lh3.googleusercontent.com/Ti1bjTRLmBnqTBdCHfsdxZ9eTg6Ozw7Ce4QKc0Ghgxd46jPFidaxSR8VDRXgLXgCazNhZSwoXUm51o9I9HNDhlyJGed90Fb2_3wkoEsBR2mnms4kanwVROzBYssDRNRFz6YQIIPRDeA=s720-no" class="gallery-item" target="_blank" rel="noopener"><img src="https://lh3.googleusercontent.com/Ti1bjTRLmBnqTBdCHfsdxZ9eTg6Ozw7Ce4QKc0Ghgxd46jPFidaxSR8VDRXgLXgCazNhZSwoXUm51o9I9HNDhlyJGed90Fb2_3wkoEsBR2mnms4kanwVROzBYssDRNRFz6YQIIPRDeA=w225-no?authuser=0"></a>
-<a href="https://lh3.googleusercontent.com/USF6Vt24MzrwXPv5BtAjE3NGOUFgodYKYlhLyM-Tjei9EC1Et9_34kMs3T3wVESbPTCDB_slLaZAZG5F8dLLHFrOsuNzUCdhbFnsGUxapd2gAMhkudwLlfaQ-WWSi-zhj9P7ELLVupg=s720-no" class="gallery-item" target="_blank" rel="noopener"><img src="https://lh3.googleusercontent.com/USF6Vt24MzrwXPv5BtAjE3NGOUFgodYKYlhLyM-Tjei9EC1Et9_34kMs3T3wVESbPTCDB_slLaZAZG5F8dLLHFrOsuNzUCdhbFnsGUxapd2gAMhkudwLlfaQ-WWSi-zhj9P7ELLVupg=w225-no?authuser=0"></a>
-<a href="https://lh3.googleusercontent.com/jt3aBfODmA9iiXw6tYzVMUPWLXHM37tnOmZNkH7VO1pf6DggroqRhEto-NJCjkm5ilSZmDcWcAheCN9dCOvVBA5m0nx1oEkm1m5JSTv9t1gpxQkAtV1uRuLd7IUPvs7mXNdh5zw4MNc=s720-no" class="gallery-item" target="_blank" rel="noopener"><img src="https://lh3.googleusercontent.com/jt3aBfODmA9iiXw6tYzVMUPWLXHM37tnOmZNkH7VO1pf6DggroqRhEto-NJCjkm5ilSZmDcWcAheCN9dCOvVBA5m0nx1oEkm1m5JSTv9t1gpxQkAtV1uRuLd7IUPvs7mXNdh5zw4MNc=w225-no?authuser=0"></a>
-<a href="https://lh3.googleusercontent.com/-i17S8V4EUoFmKC9znh2tILNxMVz8D4BzbJL_ceOAjJ6EttVELb9VoieBKBUMeR9ngK6LJkZPFEKoYBriU1vcHoJmqCM5Wm-XdobQKw2S5ZQbAqtEtU5DkreuPIpUa0l6GVXl0CeFR0=s720-no" class="gallery-item" target="_blank" rel="noopener"><img src="https://lh3.googleusercontent.com/-i17S8V4EUoFmKC9znh2tILNxMVz8D4BzbJL_ceOAjJ6EttVELb9VoieBKBUMeR9ngK6LJkZPFEKoYBriU1vcHoJmqCM5Wm-XdobQKw2S5ZQbAqtEtU5DkreuPIpUa0l6GVXl0CeFR0=w225-no?authuser=0"></a>
-<a href="https://lh3.googleusercontent.com/Z12G12thoQ38jLhdtkY6jm1--jqpNb4c-Pc0d0TJrn1GQK6qc7X8FhLSp_d5vSsm16IO1XyYh3Frg88x5nFZ3o6vO3XyLIzAAA49wy_yV8er4fCINdPTOhAF7ItIllsYoDqoMYGGsJI=s720-no" class="gallery-item" target="_blank" rel="noopener"><img src="https://lh3.googleusercontent.com/Z12G12thoQ38jLhdtkY6jm1--jqpNb4c-Pc0d0TJrn1GQK6qc7X8FhLSp_d5vSsm16IO1XyYh3Frg88x5nFZ3o6vO3XyLIzAAA49wy_yV8er4fCINdPTOhAF7ItIllsYoDqoMYGGsJI=w225-no?authuser=0"></a>
-<a href="https://lh3.googleusercontent.com/YhQtiI5BeneCPUuh-qHIZ-mPpZqg6ExybDllMCFRkmIj-k4bqJLk4U9B5V4LdcKH7WKlNtsO_jmUUSLbZ6EN2u-7cAKFSk009J9bFn3DgRaH5P0fJ8Ux1wS8hWeASX0gf38nr339pAE=s720-no" class="gallery-item" target="_blank" rel="noopener"><img src="https://lh3.googleusercontent.com/YhQtiI5BeneCPUuh-qHIZ-mPpZqg6ExybDllMCFRkmIj-k4bqJLk4U9B5V4LdcKH7WKlNtsO_jmUUSLbZ6EN2u-7cAKFSk009J9bFn3DgRaH5P0fJ8Ux1wS8hWeASX0gf38nr339pAE=w225-no?authuser=0"></a>
-<a href="https://lh3.googleusercontent.com/Tw21oFrNWb-KPY1QeuZr_KYv9Zvux0FTAtmAZhGf3khwrKKDlJ1lQPp1QkiYuooNUGfW2RuaJiKFnsZjSJ9u-C9aU611zcvIdc8xBtM7jxT3bPk5wA4201KMGqbswX8kGVUOZzRKZh8=s720-no" class="gallery-item" target="_blank" rel="noopener"><img src="https://lh3.googleusercontent.com/Tw21oFrNWb-KPY1QeuZr_KYv9Zvux0FTAtmAZhGf3khwrKKDlJ1lQPp1QkiYuooNUGfW2RuaJiKFnsZjSJ9u-C9aU611zcvIdc8xBtM7jxT3bPk5wA4201KMGqbswX8kGVUOZzRKZh8=w225-no?authuser=0"></a>
-<a href="https://lh3.googleusercontent.com/so8xstYNUSIaLp2vzRJFS1o2aeqwjhgfGqYYqYVQ7SWhOQJ4n4P3ZLaH2wwSvOyqRon-kTsUkmzaKDXPcQNeZEdyMy_K_1cKnZGmRMRI5Q6MIXvxIGteViNyFf2h4Ia4_4qX-b0JAYo=s720-no" class="gallery-item" target="_blank" rel="noopener"><img src="https://lh3.googleusercontent.com/so8xstYNUSIaLp2vzRJFS1o2aeqwjhgfGqYYqYVQ7SWhOQJ4n4P3ZLaH2wwSvOyqRon-kTsUkmzaKDXPcQNeZEdyMy_K_1cKnZGmRMRI5Q6MIXvxIGteViNyFf2h4Ia4_4qX-b0JAYo=w225-no?authuser=0"></a>
-<a href="https://lh3.googleusercontent.com/QRy_8LJ5FMKyi9JfMd20xnnEDUYsQebCIYe_yPinlpoX70u8_uLfFrGXJFrSOItr6rAASpwK4CS6qxWdtpbBzkG4QoIA2MlfO2O8_oZ63_1J3b10HUVb79nXoor1WOp4Gdu_El9dnDE=s720-no" class="gallery-item" target="_blank" rel="noopener"><img src="https://lh3.googleusercontent.com/QRy_8LJ5FMKyi9JfMd20xnnEDUYsQebCIYe_yPinlpoX70u8_uLfFrGXJFrSOItr6rAASpwK4CS6qxWdtpbBzkG4QoIA2MlfO2O8_oZ63_1J3b10HUVb79nXoor1WOp4Gdu_El9dnDE=w225-no?authuser=0"></a>
-<a href="https://lh3.googleusercontent.com/27JX251NmUUCLd9u3h_LYho7OBt9OD0VYjyDAb6TTVwS3fc04S7XmbAyXs_UYP75xpvGxDInYp5gXSDEiyLbU42RcvWISDzDPOiS3jdu6WLUA-1ogwyGCh35V_FktsTcHG1gq7SUu9A=s720-no" class="gallery-item" target="_blank" rel="noopener"><img src="https://lh3.googleusercontent.com/27JX251NmUUCLd9u3h_LYho7OBt9OD0VYjyDAb6TTVwS3fc04S7XmbAyXs_UYP75xpvGxDInYp5gXSDEiyLbU42RcvWISDzDPOiS3jdu6WLUA-1ogwyGCh35V_FktsTcHG1gq7SUu9A=w225-no?authuser=0"></a>
-<a href="https://lh3.googleusercontent.com/WvgswDZTH_y9_-OsXyVRC51OB-R82PQ7e72zBDLNwq83jTbd9Y0YYIAWpaiHEQT4DXIcba9JFrOiGWaCSI5FwzWArmkgtLQyHjY5Syt_SgRfp2-rJW7ekCAt4xRjlfW8bYPS93uAEJE=s720-no" class="gallery-item" target="_blank" rel="noopener"><img src="https://lh3.googleusercontent.com/WvgswDZTH_y9_-OsXyVRC51OB-R82PQ7e72zBDLNwq83jTbd9Y0YYIAWpaiHEQT4DXIcba9JFrOiGWaCSI5FwzWArmkgtLQyHjY5Syt_SgRfp2-rJW7ekCAt4xRjlfW8bYPS93uAEJE=w225-no?authuser=0"></a>
-<a href="https://lh3.googleusercontent.com/c9o_dg9UPwIo7nxdqihCKxbcbgHPHR75vDT6qwjooETF5pN1R6rrj1Pd77Lv9VvPeCoaevCZY1gg_EftKGXNLBpICbnARkd8bo6NvGxOD5-RkQqN_LOp-vh0Ga7wBMCz_jDqZS6YnYM=s720-no" class="gallery-item" target="_blank" rel="noopener"><img src="https://lh3.googleusercontent.com/c9o_dg9UPwIo7nxdqihCKxbcbgHPHR75vDT6qwjooETF5pN1R6rrj1Pd77Lv9VvPeCoaevCZY1gg_EftKGXNLBpICbnARkd8bo6NvGxOD5-RkQqN_LOp-vh0Ga7wBMCz_jDqZS6YnYM=w225-no?authuser=0"></a>
-<a href="https://lh3.googleusercontent.com/t2CBHFrUkPJBUNh4fZAGm9VAdF7DsJpE2frQInwfbwyOLIa48Hs-SJlAyFLIE9sbblUgsJZ6zda8nY20kc6lsBga0SI68mAnTMA5k6SW-O7ZEdnIsktriwgzd4dB7pM5RY0Af3NcZjw=s720-no" class="gallery-item" target="_blank" rel="noopener"><img src="https://lh3.googleusercontent.com/t2CBHFrUkPJBUNh4fZAGm9VAdF7DsJpE2frQInwfbwyOLIa48Hs-SJlAyFLIE9sbblUgsJZ6zda8nY20kc6lsBga0SI68mAnTMA5k6SW-O7ZEdnIsktriwgzd4dB7pM5RY0Af3NcZjw=w225-no?authuser=0"></a>
-<a href="https://lh3.googleusercontent.com/UWhUwjChtOI5ay7toifQWJUm4VQgH_Mb5o4RYvTQpwVTCggm5GuTuu7lszwYG26662Es6Z2DoW-S51DasMpkXq382KsVYqujeBfWifOr-frHaLdaOJfS6VeRGTrsgqH7IR85515X--I=s720-no" class="gallery-item" target="_blank" rel="noopener"><img src="https://lh3.googleusercontent.com/UWhUwjChtOI5ay7toifQWJUm4VQgH_Mb5o4RYvTQpwVTCggm5GuTuu7lszwYG26662Es6Z2DoW-S51DasMpkXq382KsVYqujeBfWifOr-frHaLdaOJfS6VeRGTrsgqH7IR85515X--I=w225-no?authuser=0"></a></div>
-</div>
-
-<p>東京都庁 <a href="http://www.yokoso.metro.tokyo.jp/tenbou/index.html" target="_blank" rel="noopener">展望室のご利用案内</a></p>
-<p>よく訪れている北展望室（半分がカフェ＆レストランになっている方）が、来年1月まで改装工事中だそうで、珍しく南展望室でした。<br>南は、エレベーターのある側を除いたほぼ全周が見えるのが良いですね。</p>
-<p>今回はあまり良い写真が撮れませんでした。<br>せっかく夕暮れ時だったのに、ちょうど日が落ちる間合いに、ボサッとして他のことに気を取られていたのが敗因。<br>あとは言い訳ですが、地平線付近の透明度があまり良くなかったのと、雲の具合があまり好みの感じでもなかったな😰。</p>
-</div><script src="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/js/lightgallery.min.js"></script><script src="/js/lg-thumbnail.min.js"></script><script src="/js/lg-zoom.min.js"></script><script src="/js/lg-autoplay.min.js"></script><script src="/js/lg-fullscreen.min.js"></script><script src="/js/lg-pager.min.js"></script><script src="/js/lg-hash.min.js"></script><script>if (typeof lightGallery !== 'undefined') {
-        var options = {
-            selector: '.gallery-item'
-        };
-        lightGallery(document.getElementsByClassName('article-gallery')[0], options);
-        }</script><script>
-function addLoadEvent(func) {
-  const oldonload = window.onload;
-  if (typeof window.onload !== 'function') {
-    window.onload = func;
-  } else {
-    window.onload = () => {
-      oldonload();
-      func();
-    };
-  }
-}
-  addLoadEvent(() => {
-    try {
-      if (window.innerWidth < Number('768')) {
-        return;
-      }
-      const imgs = Array.from(document.body.querySelectorAll('.google-photos-album-images a'));
-      imgs.push(...Array.from(document.body.querySelectorAll('a.google-photos-album-image')));
-      for (const anchor of imgs) {
-        anchor.href = anchor.href.replace(/=s720\-no/i, '=s1920-no');
-      }
-    } catch (e) {
-      console.log(e);
-    }
-  });
-</script>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://pages.isnot.jp/2019-05/30-TMG-Observatories/" data-id="ckcokzp6j0008xabq2ni5h3hr" data-title="東京都庁展望室" class="article-permalink">
-      
-      </a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/photo/" rel="tag">photo</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/skyscraper/" rel="tag">skyscraper</a></li></ul>
 
     </footer>
     <div class="article-footer">
@@ -1177,6 +826,10 @@ function addLoadEvent(func) {
       <ul>
         
           <li>
+            <a href="/2020-07/16-TestForInjectorOfHexo5/">Hexo 5.0 実装予定のInjectorを試す</a>
+          </li>
+        
+          <li>
             <a href="/2020-07/16-HowTo-HexoInject/">【HowTo】Hexoの新しいInjectorについて調べた【5.0】</a>
           </li>
         
@@ -1198,10 +851,6 @@ function addLoadEvent(func) {
         
           <li>
             <a href="/2019-09/24-Avenir-Shards-Bookmarklet/">Avenir Shards Bookmarklet</a>
-          </li>
-        
-          <li>
-            <a href="/2019-06/23-GoogleSpreadsheetAPIv4/">GoogleSpreadsheetAPIv4</a>
           </li>
         
       </ul>
@@ -1273,5 +922,35 @@ function addLoadEvent(func) {
 
 
   </div>
-</body>
+<!-- hexo injector body_end start --><script src="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/js/lightgallery.min.js"></script><script src="/js/lg-thumbnail.min.js"></script><script src="/js/lg-zoom.min.js"></script><script src="/js/lg-autoplay.min.js"></script><script src="/js/lg-fullscreen.min.js"></script><script src="/js/lg-pager.min.js"></script><script src="/js/lg-hash.min.js"></script>
+    <script>if (typeof lightGallery !== 'undefined') {
+      lightGallery(document.getElementsByClassName('article-gallery')[0], { selector: '.gallery-item' });
+    }</script><script>
+function addLoadEvent(func) {
+  const oldonload = window.onload;
+  if (typeof window.onload !== 'function') {
+    window.onload = func;
+  } else {
+    window.onload = () => {
+      oldonload();
+      func();
+    };
+  }
+}
+  addLoadEvent(() => {
+    try {
+      if (window.innerWidth < Number('768')) {
+        return;
+      }
+      const imgs = Array.from(document.body.querySelectorAll('.google-photos-album-images a'));
+      imgs.push(...Array.from(document.body.querySelectorAll('a.google-photos-album-image')));
+      for (const anchor of imgs) {
+        anchor.href = anchor.href.replace(/=s720\-no/i, '=s1920-no');
+      }
+    } catch (e) {
+      console.log(e);
+    }
+  });
+</script>
+<!-- hexo injector body_end end --></body>
 </html>

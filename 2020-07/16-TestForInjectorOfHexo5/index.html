@@ -5,12 +5,12 @@
   
   <title>Hexo 5.0 実装予定のInjectorを試す | isnot N3 | isnot N3</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no">
-  <meta name="description" content="まずは、GitHubにある最新のHexoをインストールします。今回は、4.2.1が可動していた環境に、上書きでインストールしました。 $ cd &lt;my-blog-dir&gt;$ npm i git+ssh:&#x2F;&#x2F;git@github.com&#x2F;hexojs&#x2F;hexo.git#master --save$ ls -l node_modules&#x2F;hexo&#x2F;lib&#x2F;extend&#x2F;injector.j">
+  <meta name="description" content="まずは、GitHubにある最新のHexoをインストールします。今回は、4.2.1が可動していた環境に、上書きでインストールしました。 $ cd &lt;my-blog-dir&gt;$ npm i git+ssh:&#x2F;&#x2F;git@github.com&#x2F;hexojs&#x2F;hexo.git#master$ ls -l node_modules&#x2F;hexo&#x2F;lib&#x2F;extend&#x2F;injector.js-rw-rw">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Hexo 5.0 実装予定のInjectorを試す">
 <meta property="og:url" content="https://pages.isnot.jp/2020-07/16-TestForInjectorOfHexo5/index.html">
 <meta property="og:site_name" content="isnot N3">
-<meta property="og:description" content="まずは、GitHubにある最新のHexoをインストールします。今回は、4.2.1が可動していた環境に、上書きでインストールしました。 $ cd &lt;my-blog-dir&gt;$ npm i git+ssh:&#x2F;&#x2F;git@github.com&#x2F;hexojs&#x2F;hexo.git#master --save$ ls -l node_modules&#x2F;hexo&#x2F;lib&#x2F;extend&#x2F;injector.j">
+<meta property="og:description" content="まずは、GitHubにある最新のHexoをインストールします。今回は、4.2.1が可動していた環境に、上書きでインストールしました。 $ cd &lt;my-blog-dir&gt;$ npm i git+ssh:&#x2F;&#x2F;git@github.com&#x2F;hexojs&#x2F;hexo.git#master$ ls -l node_modules&#x2F;hexo&#x2F;lib&#x2F;extend&#x2F;injector.js-rw-rw">
 <meta property="og:locale" content="ja_JP">
 <meta property="article:published_time" content="2020-07-16T09:36:21.000Z">
 <meta property="article:modified_time" content="2020-07-16T09:36:21.000Z">
@@ -108,17 +108,28 @@
     
     <div class="e-content article-entry" itemprop="articleBody">
       
-        <div class="article-gallery"><p>まずは、GitHubにある最新のHexoをインストールします。<br>今回は、4.2.1が可動していた環境に、上書きでインストールしました。</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ <span class="built_in">cd</span> &lt;my-blog-dir&gt;</span><br><span class="line">$ npm i git+ssh://git@github.com/hexojs/hexo.git<span class="comment">#master --save</span></span><br><span class="line"></span><br><span class="line">$ ls -l node_modules/hexo/lib/extend/injector.js</span><br><span class="line">-rw-rw-r-- 1 naoto naoto 2341 10月 26  1985 node_modules/hexo/lib/extend/injector.js</span><br></pre></td></tr></table></figure>
+        <div class="article-gallery"><p>まずは、GitHubにある最新の<a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo">Hexo</a>をインストールします。<br>今回は、4.2.1が可動していた環境に、上書きでインストールしました。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ <span class="built_in">cd</span> &lt;my-blog-dir&gt;</span><br><span class="line">$ npm i git+ssh://git@github.com/hexojs/hexo.git<span class="comment">#master</span></span><br><span class="line"></span><br><span class="line">$ ls -l node_modules/hexo/lib/extend/injector.js</span><br><span class="line">-rw-rw-r-- 1 naoto naoto 2341 10月 26  1985 node_modules/hexo/lib/extend/injector.js</span><br></pre></td></tr></table></figure>
 
-<p>そして拙作プラグインをInjector対応にしたものを、GitHub上の私の開発ブランチから導入します。</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ npm i git+ssh://git@github.com:isnot/hexo-tag-google-photos-album.git<span class="comment">#new_injector --save</span></span><br><span class="line">$ fgrep injector node_modules/hexo-tag-google-photos-album/index.js</span><br><span class="line">hexo.extend.injector.register(<span class="string">&#x27;body_end&#x27;</span>, front.scriptHtml(config), <span class="string">&#x27;post&#x27;</span>);</span><br><span class="line">hexo.extend.injector.register(<span class="string">&#x27;body_end&#x27;</span>, front.scriptHtml(config), <span class="string">&#x27;page&#x27;</span>);</span><br><span class="line">  hexo.extend.injector.register(<span class="string">&#x27;head_end&#x27;</span>, `&lt;link crossorigin=<span class="string">&quot;anonymous&quot;</span> media=<span class="string">&quot;screen&quot;</span> rel=<span class="string">&quot;stylesheet&quot;</span> href=<span class="string">&quot;/css/<span class="variable">$&#123;pathFn.basename(config.defaultStyle)&#125;</span>&quot;</span> /&gt;`, <span class="string">&#x27;default&#x27;</span>);</span><br><span class="line"></span><br><span class="line">$</span><br></pre></td></tr></table></figure>
+<p>そして拙作プラグインをInjector対応にしたものを、GitHub上の私の開発ブランチから導入します。<br><a target="_blank" rel="noopener" href="https://github.com/isnot/hexo-tag-google-photos-album/tree/new_injector">hexo-tag-google-photos-album</a><br>参考：<a target="_blank" rel="noopener" href="https://github.com/isnot/hexo-tag-google-photos-album/compare/new_injector">修正内容</a></p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ npm i git+ssh://git@github.com:isnot/hexo-tag-google-photos-album.git<span class="comment">#new_injector</span></span><br><span class="line">$ fgrep injector node_modules/hexo-tag-google-photos-album/index.js</span><br><span class="line">hexo.extend.injector.register(<span class="string">&#x27;body_end&#x27;</span>, front.scriptHtml(config), <span class="string">&#x27;post&#x27;</span>);</span><br><span class="line">hexo.extend.injector.register(<span class="string">&#x27;body_end&#x27;</span>, front.scriptHtml(config), <span class="string">&#x27;page&#x27;</span>);</span><br><span class="line">  hexo.extend.injector.register(<span class="string">&#x27;head_end&#x27;</span>, `&lt;link crossorigin=<span class="string">&quot;anonymous&quot;</span> media=<span class="string">&quot;screen&quot;</span> rel=<span class="string">&quot;stylesheet&quot;</span> href=<span class="string">&quot;/css/<span class="variable">$&#123;pathFn.basename(config.defaultStyle)&#125;</span>&quot;</span> /&gt;`, <span class="string">&#x27;default&#x27;</span>);</span><br><span class="line"></span><br><span class="line">$</span><br></pre></td></tr></table></figure>
 
+<p>さらに、<a target="_blank" rel="noopener" href="https://github.com/isnot/hexo-light-gallery/tree/isnot-hexo5">hexo-light-gallery</a>もHexo 5.0 w/ Injector対応したので、これも導入します。<br>参考：<a target="_blank" rel="noopener" href="https://github.com/lzane/hexo-light-gallery/compare/master...isnot:isnot-hexo5?expand=1">修正内容</a></p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ npm i git+ssh://git@github.com/isnot/hexo-light-gallery.git<span class="comment">#isnot-hexo5</span></span><br></pre></td></tr></table></figure>
+
+<p>動作確認。</p>
+<p>インデックスの場合。同一画面内に複数記事があり、各々にギャラリーがあったりなかったりするパターン。<br><a href="https://pages.isnot.jp/">https://pages.isnot.jp/</a></p>
+<p>post個別ページで、画面内にギャラリーが単一のみ存在するパターン。<br><a href="https://pages.isnot.jp/2019-05/30-TMG-Observatories/">https://pages.isnot.jp/2019-05/30-TMG-Observatories/</a></p>
+<p>post個別ページで、画面内にギャラリーが複数あったり、直接画像タグを使って画像を貼るなど混在しているパターン。<br><a href="https://pages.isnot.jp/2019-04/13-image-test/">https://pages.isnot.jp/2019-04/13-image-test/</a></p>
+<p>postではない、個別のpageのパターン。<br><a href="https://pages.isnot.jp/about/">https://pages.isnot.jp/about/</a></p>
+<p>ひとまず、これはマズイなぁという感じの動作が改善されていることを確認できました。<br>仕様レベルで調整をする余地はあるかとはおもいますが、OKということにしましょう。</p>
+<p>Hexo 5.0がリリースになった暁には、hexo-tag-google-photos-albumの修正をnpmにパブリッシュしたい。<br>4系、3系の場合を考慮したバージョンチェック的なコードを付け加えたほうがいいかも。</p>
+<p>※補足<br><a target="_blank" rel="noopener" href="https://sachinchoolur.github.io/lightgallery.js/">lightgallery.js</a>は、jQueryに依存しない、lightbox風ギャラリーです。<br>Hexo界隈でよく見られるfancyboxは、jQuery依存なので、かわりにこちらを使っています。</p>
 </div>
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://pages.isnot.jp/2020-07/16-TestForInjectorOfHexo5/" data-id="ckcp2ebqf000cxmbq7at5bp4s" data-title="Hexo 5.0 実装予定のInjectorを試す" class="article-permalink">
+      <a data-url="https://pages.isnot.jp/2020-07/16-TestForInjectorOfHexo5/" data-id="ckcp3cuh5000c5rbq2ptd0986" data-title="Hexo 5.0 実装予定のInjectorを試す" class="article-permalink">
       
       </a>
       

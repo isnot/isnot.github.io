@@ -107,17 +107,28 @@
     
     <div class="e-content article-entry index-entry" itemprop="articleBody">
       
-        <div class="article-gallery"><p>まずは、GitHubにある最新のHexoをインストールします。<br>今回は、4.2.1が可動していた環境に、上書きでインストールしました。</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ <span class="built_in">cd</span> &lt;my-blog-dir&gt;</span><br><span class="line">$ npm i git+ssh://git@github.com/hexojs/hexo.git<span class="comment">#master --save</span></span><br><span class="line"></span><br><span class="line">$ ls -l node_modules/hexo/lib/extend/injector.js</span><br><span class="line">-rw-rw-r-- 1 naoto naoto 2341 10月 26  1985 node_modules/hexo/lib/extend/injector.js</span><br></pre></td></tr></table></figure>
+        <div class="article-gallery"><p>まずは、GitHubにある最新の<a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo">Hexo</a>をインストールします。<br>今回は、4.2.1が可動していた環境に、上書きでインストールしました。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ <span class="built_in">cd</span> &lt;my-blog-dir&gt;</span><br><span class="line">$ npm i git+ssh://git@github.com/hexojs/hexo.git<span class="comment">#master</span></span><br><span class="line"></span><br><span class="line">$ ls -l node_modules/hexo/lib/extend/injector.js</span><br><span class="line">-rw-rw-r-- 1 naoto naoto 2341 10月 26  1985 node_modules/hexo/lib/extend/injector.js</span><br></pre></td></tr></table></figure>
 
-<p>そして拙作プラグインをInjector対応にしたものを、GitHub上の私の開発ブランチから導入します。</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ npm i git+ssh://git@github.com:isnot/hexo-tag-google-photos-album.git<span class="comment">#new_injector --save</span></span><br><span class="line">$ fgrep injector node_modules/hexo-tag-google-photos-album/index.js</span><br><span class="line">hexo.extend.injector.register(<span class="string">&#x27;body_end&#x27;</span>, front.scriptHtml(config), <span class="string">&#x27;post&#x27;</span>);</span><br><span class="line">hexo.extend.injector.register(<span class="string">&#x27;body_end&#x27;</span>, front.scriptHtml(config), <span class="string">&#x27;page&#x27;</span>);</span><br><span class="line">  hexo.extend.injector.register(<span class="string">&#x27;head_end&#x27;</span>, `&lt;link crossorigin=<span class="string">&quot;anonymous&quot;</span> media=<span class="string">&quot;screen&quot;</span> rel=<span class="string">&quot;stylesheet&quot;</span> href=<span class="string">&quot;/css/<span class="variable">$&#123;pathFn.basename(config.defaultStyle)&#125;</span>&quot;</span> /&gt;`, <span class="string">&#x27;default&#x27;</span>);</span><br><span class="line"></span><br><span class="line">$</span><br></pre></td></tr></table></figure>
+<p>そして拙作プラグインをInjector対応にしたものを、GitHub上の私の開発ブランチから導入します。<br><a target="_blank" rel="noopener" href="https://github.com/isnot/hexo-tag-google-photos-album/tree/new_injector">hexo-tag-google-photos-album</a><br>参考：<a target="_blank" rel="noopener" href="https://github.com/isnot/hexo-tag-google-photos-album/compare/new_injector">修正内容</a></p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ npm i git+ssh://git@github.com:isnot/hexo-tag-google-photos-album.git<span class="comment">#new_injector</span></span><br><span class="line">$ fgrep injector node_modules/hexo-tag-google-photos-album/index.js</span><br><span class="line">hexo.extend.injector.register(<span class="string">&#x27;body_end&#x27;</span>, front.scriptHtml(config), <span class="string">&#x27;post&#x27;</span>);</span><br><span class="line">hexo.extend.injector.register(<span class="string">&#x27;body_end&#x27;</span>, front.scriptHtml(config), <span class="string">&#x27;page&#x27;</span>);</span><br><span class="line">  hexo.extend.injector.register(<span class="string">&#x27;head_end&#x27;</span>, `&lt;link crossorigin=<span class="string">&quot;anonymous&quot;</span> media=<span class="string">&quot;screen&quot;</span> rel=<span class="string">&quot;stylesheet&quot;</span> href=<span class="string">&quot;/css/<span class="variable">$&#123;pathFn.basename(config.defaultStyle)&#125;</span>&quot;</span> /&gt;`, <span class="string">&#x27;default&#x27;</span>);</span><br><span class="line"></span><br><span class="line">$</span><br></pre></td></tr></table></figure>
 
+<p>さらに、<a target="_blank" rel="noopener" href="https://github.com/isnot/hexo-light-gallery/tree/isnot-hexo5">hexo-light-gallery</a>もHexo 5.0 w/ Injector対応したので、これも導入します。<br>参考：<a target="_blank" rel="noopener" href="https://github.com/lzane/hexo-light-gallery/compare/master...isnot:isnot-hexo5?expand=1">修正内容</a></p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ npm i git+ssh://git@github.com/isnot/hexo-light-gallery.git<span class="comment">#isnot-hexo5</span></span><br></pre></td></tr></table></figure>
+
+<p>動作確認。</p>
+<p>インデックスの場合。同一画面内に複数記事があり、各々にギャラリーがあったりなかったりするパターン。<br><a href="https://pages.isnot.jp/">https://pages.isnot.jp/</a></p>
+<p>post個別ページで、画面内にギャラリーが単一のみ存在するパターン。<br><a href="https://pages.isnot.jp/2019-05/30-TMG-Observatories/">https://pages.isnot.jp/2019-05/30-TMG-Observatories/</a></p>
+<p>post個別ページで、画面内にギャラリーが複数あったり、直接画像タグを使って画像を貼るなど混在しているパターン。<br><a href="https://pages.isnot.jp/2019-04/13-image-test/">https://pages.isnot.jp/2019-04/13-image-test/</a></p>
+<p>postではない、個別のpageのパターン。<br><a href="https://pages.isnot.jp/about/">https://pages.isnot.jp/about/</a></p>
+<p>ひとまず、これはマズイなぁという感じの動作が改善されていることを確認できました。<br>仕様レベルで調整をする余地はあるかとはおもいますが、OKということにしましょう。</p>
+<p>Hexo 5.0がリリースになった暁には、hexo-tag-google-photos-albumの修正をnpmにパブリッシュしたい。<br>4系、3系の場合を考慮したバージョンチェック的なコードを付け加えたほうがいいかも。</p>
+<p>※補足<br><a target="_blank" rel="noopener" href="https://sachinchoolur.github.io/lightgallery.js/">lightgallery.js</a>は、jQueryに依存しない、lightbox風ギャラリーです。<br>Hexo界隈でよく見られるfancyboxは、jQuery依存なので、かわりにこちらを使っています。</p>
 </div>
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://pages.isnot.jp/2020-07/16-TestForInjectorOfHexo5/" data-id="ckcp2ebqf000cxmbq7at5bp4s" data-title="Hexo 5.0 実装予定のInjectorを試す" class="article-permalink">
+      <a data-url="https://pages.isnot.jp/2020-07/16-TestForInjectorOfHexo5/" data-id="ckcp3cuh5000c5rbq2ptd0986" data-title="Hexo 5.0 実装予定のInjectorを試す" class="article-permalink">
       
       </a>
       
@@ -225,7 +236,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://pages.isnot.jp/2020-07/16-HowTo-HexoInject/" data-id="ckcp2ebqb0008xmbq15wwfbgq" data-title="【HowTo】Hexoの新しいInjectorについて調べた【5.0】" class="article-permalink">
+      <a data-url="https://pages.isnot.jp/2020-07/16-HowTo-HexoInject/" data-id="ckcp3cuh000085rbq0elx7juz" data-title="【HowTo】Hexoの新しいInjectorについて調べた【5.0】" class="article-permalink">
       
       </a>
       
@@ -293,7 +304,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://pages.isnot.jp/2020-06/25-hydrangea2020/" data-id="ckcp2ebqo000txmbqb64fhnr8" data-title="アジサイ2020" class="article-permalink">
+      <a data-url="https://pages.isnot.jp/2020-06/25-hydrangea2020/" data-id="ckcp3cuhi000t5rbq3ln5g9p9" data-title="アジサイ2020" class="article-permalink">
       
       </a>
       
@@ -359,7 +370,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://pages.isnot.jp/2020-04/09-Create-a-Framework-for-Chatbot/" data-id="ckcp2ebq60003xmbq4ihy5nyo" data-title="チャット・ボットのためのフレームワークを開発してみた。序章" class="article-permalink">
+      <a data-url="https://pages.isnot.jp/2020-04/09-Create-a-Framework-for-Chatbot/" data-id="ckcp3cugu00035rbq1ks49wbo" data-title="チャット・ボットのためのフレームワークを開発してみた。序章" class="article-permalink">
       
       </a>
       
@@ -420,7 +431,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://pages.isnot.jp/2019-11/18-apt-btrfs-snapshot-df/" data-id="ckcp2ebqh000dxmbqcye57mix" data-title="apt-btrfs-snapshotによるディスク容量の消費" class="article-permalink">
+      <a data-url="https://pages.isnot.jp/2019-11/18-apt-btrfs-snapshot-df/" data-id="ckcp3cuh6000d5rbqabcw9lh4" data-title="apt-btrfs-snapshotによるディスク容量の消費" class="article-permalink">
       
       </a>
       
@@ -494,7 +505,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://pages.isnot.jp/2019-10/17-tamako-cycling/" data-id="ckcp2ebra001sxmbq3yrf7use" data-title="多摩湖自転車歩行者道〜六道山〜文明堂壹番館" class="article-permalink">
+      <a data-url="https://pages.isnot.jp/2019-10/17-tamako-cycling/" data-id="ckcp3cui4001s5rbqe8au1qwe" data-title="多摩湖自転車歩行者道〜六道山〜文明堂壹番館" class="article-permalink">
       
       </a>
       
@@ -552,7 +563,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://pages.isnot.jp/2019-09/24-Avenir-Shards-Bookmarklet/" data-id="ckcp2ebq20001xmbqc1brh7qo" data-title="Avenir Shards Bookmarklet" class="article-permalink">
+      <a data-url="https://pages.isnot.jp/2019-09/24-Avenir-Shards-Bookmarklet/" data-id="ckcp3cugr00015rbqdzoo1d5q" data-title="Avenir Shards Bookmarklet" class="article-permalink">
       
       </a>
       
@@ -610,7 +621,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://pages.isnot.jp/2019-06/23-GoogleSpreadsheetAPIv4/" data-id="ckcp2ebqa0007xmbq1woe5xuf" data-title="GoogleSpreadsheetAPIv4" class="article-permalink">
+      <a data-url="https://pages.isnot.jp/2019-06/23-GoogleSpreadsheetAPIv4/" data-id="ckcp3cugz00075rbqcj1za25f" data-title="GoogleSpreadsheetAPIv4" class="article-permalink">
       
       </a>
       
@@ -676,7 +687,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://pages.isnot.jp/2019-06/17-hydrangea/" data-id="ckcp2ebqn000pxmbqffpi48ny" data-title="アジサイ2019" class="article-permalink">
+      <a data-url="https://pages.isnot.jp/2019-06/17-hydrangea/" data-id="ckcp3cuhc000p5rbqgb75gpxm" data-title="アジサイ2019" class="article-permalink">
       
       </a>
       
@@ -751,7 +762,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://pages.isnot.jp/2019-06/08-update-hexo-tag-gpa/" data-id="ckcp2ebrc001wxmbq626a85y2" data-title="hexo-tag-google-photos-album をアップデートした" class="article-permalink">
+      <a data-url="https://pages.isnot.jp/2019-06/08-update-hexo-tag-gpa/" data-id="ckcp3cui6001w5rbqazvwb04e" data-title="hexo-tag-google-photos-album をアップデートした" class="article-permalink">
       
       </a>
       

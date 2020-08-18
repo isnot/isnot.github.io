@@ -149,12 +149,12 @@
     display: none;
   }
   #mymap { height: 650px; }
-  .mapboxgl-control-container button { max-width: 50px; }
-  .article-gallery table img { max-width: 150px; }
+  .mapboxgl-control-container button { max-width: 35px; }
+  .article-gallery table img { max-width: 130px; }
   .marker {
     background-size: cover;
-    width: 60px;
-    height: 60px;
+    width: 65px;
+    height: 65px;
     border-radius: 50%;
     cursor: pointer;
     font-size: 30px;
@@ -221,32 +221,32 @@ map.addControl(new mapboxgl.ScaleControl({
 }));
 
 const waypoints = [
-  {number: 1,  point: [139.5137486, 35.7942739], title: 'とある魔術の禁書⽬録 '},
-  {number: 2,  point: [139.5135064, 35.7946822], title: 'Re:ゼロから始める異世界⽣活'},
-  {number: 3,  point: [139.5133731, 35.7948793], title: '機動戦⼠ガンダム THE ORIGIN'},
-  {number: 4,  point: [139.5132256, 35.795111],  title: 'ファイブスター物語'},
+  {number: 1,  point: [139.513754, 35.7942728],  title: 'とある魔術の禁書⽬録 '},
+  {number: 2,  point: [139.513503, 35.7946942],  title: 'Re:ゼロから始める異世界⽣活'},
+  {number: 3,  point: [139.5133771, 35.7948869], title: '機動戦⼠ガンダム THE ORIGIN'},
+  {number: 4,  point: [139.5132216, 35.7951213], title: 'ファイブスター物語'},
   {number: 5,  point: [139.5138867, 35.7948521], title: 'アニメツーリズム協会公式キャラ じゅんれいちゃん'},
   {number: 6,  point: [139.5130465, 35.7953405], title: '⽂豪ストレイドッグス '},
-  {number: 7,  point: [139.5127501, 35.7958214], title: '宇崎ちゃんは遊びたい！'},
-  {number: 8,  point: [139.5123843, 35.7963579], title: 'ヤマトタケル '},
-  {number: 9,  point: [139.5120698, 35.7968033], title: '涼宮ハルヒの憂鬱 '},
-  {number: 10, point: [139.5120899, 35.7969453], title: 'らき☆すた'},
+  {number: 7,  point: [139.5127447, 35.7958306], title: '宇崎ちゃんは遊びたい！'},
+  {number: 8,  point: [139.5124366, 35.7962883], title: 'ヤマトタケル '},
+  {number: 9,  point: [139.5120765, 35.7968289], title: '涼宮ハルヒの憂鬱 '},
+  {number: 10, point: [139.5120886, 35.7969545], title: 'らき☆すた'},
   {number: 11, point: [139.5118773, 35.7971063], title: 'スレイヤーズ '},
-  {number: 12, point: [139.5115407, 35.7976301], title: 'デート・ア・ライブ'},
-  {number: 13, point: [139.5112024, 35.7981522], title: 'アニメツーリズム協会公式キャラ じゅんれいちゃん'},
-  {number: 14, point: [139.5109437, 35.7985576], title: 'オーバーロード'},
+  {number: 12, point: [139.5115441, 35.797641],  title: 'デート・ア・ライブ'},
+  {number: 13, point: [139.5112044, 35.7981696], title: 'アニメツーリズム協会公式キャラ じゅんれいちゃん'},
+  {number: 14, point: [139.5110289, 35.7984352], title: 'オーバーロード'},
   {number: 15, point: [139.5103256, 35.7984062], title: 'ソードアート・オンライン '},
   {number: 16, point: [139.5106521, 35.7985632], title: 'フルメタル・パニック！'},
-  {number: 17, point: [139.5107406, 35.7985491], title: '機動戦⼠ガンダム THE ORIGIN'},
-  {number: 18, point: [139.5113444, 35.7976512], title: '⻘春ブタ野郎はバニーガール先輩の夢を⾒ない'},
-  {number: 19, point: [139.511728,  35.7970299], title: '新世紀エヴァンゲリオン'},
+  {number: 17, point: [139.5107473, 35.798567],  title: '機動戦⼠ガンダム THE ORIGIN'},
+  {number: 18, point: [139.5113377, 35.7976507], title: '⻘春ブタ野郎はバニーガール先輩の夢を⾒ない'},
+  {number: 19, point: [139.511728, 35.7970299],  title: '新世紀エヴァンゲリオン'},
   {number: 20, point: [139.5117065, 35.7969081], title: 'ロードス島戦記'},
   {number: 21, point: [139.5117655, 35.7967753], title: 'ケロロ軍曹'},
-  {number: 22, point: [139.5119292, 35.7967286], title: '機動戦⼠ガンダム THE ORIGIN'},
-  {number: 23, point: [139.5123114, 35.7961468], title: 'ヤマトタケル '},
-  {number: 24, point: [139.5126507, 35.795642],  title: '狼と⾹⾟料'},
+  {number: 22, point: [139.5119393, 35.7967221], title: '機動戦⼠ガンダム THE ORIGIN'},
+  {number: 23, point: [139.5123463, 35.7961033], title: 'ヤマトタケル '},
+  {number: 24, point: [139.5126239, 35.7957187], title: '狼と⾹⾟料'},
   {number: 25, point: [139.5129887, 35.7951296], title: 'この素晴らしい世界に祝福を！ '},
-  {number: 26, point: [139.5136091, 35.7942114], title: 'キノの旅 the Beautiful World '},
+  {number: 26, point: [139.5136118, 35.7942027], title: 'キノの旅 the Beautiful World '},
   {number: 27, point: [139.5106054, 35.796248],  title: 'この勇者が俺TUEEEくせに慎重すぎる'},
   {number: 28, point: [139.5094592, 35.7958631], title: '機動戦⼠ガンダム THE ORIGIN'}
 ];
@@ -448,7 +448,7 @@ map.on('load', (ctx) => {
 </tbody></table>
 <ul>
 <li><a target="_blank" rel="noopener" href="https://tokorozawa-sakuratown.jp/">ところざわサクラタウン</a></li>
-<li><a target="_blank" rel="noopener" href="http://www.city.tokorozawa.saitama.jp/kurashi/gesuido/oshirase/ilumnhole.html">上下水道局よりお知らせ -&gt; 株式会社KADOKAWAのイラストを掲載した、日本初のLED発光する「イルミネーションマンホール」が東所沢に登場！</a></li>
+<li><a target="_blank" rel="noopener" href="http://www.city.tokorozawa.saitama.jp/kurashi/gesuido/oshirase/ilumnhole.html">上下水道局よりお知らせ 株式会社KADOKAWAのイラストを掲載した、日本初のLED発光する「イルミネーションマンホール」が東所沢に登場！</a></li>
 <li><a target="_blank" rel="noopener" href="https://ascii.jp/elem/000/004/022/4022618/">ところざわサクラタウンがプレオープン、KADOKAWA作品のイラストのLEDマンホールが彩る！(2020年08月06日 ASCII.jp)</a></li>
 </ul>
 <p>「とある魔術の禁書目録」イラスト：はいむらきよたか　ⓒ鎌池和馬 2020 「Re:ゼロから始める異世界生活」ⓒ長月達平　イラスト：大塚真一郎 「機動戦士ガンダム THE ORIGIN」イラスト：安彦良和　ⓒ創通・サンライズ 「ファイブスター物語」イラスト：永野 護　ⓒEDIT 「アニメツーリズム協会公式キャラ　じゅんれいちゃん」ⓒ2020 ATA／HCS 「文豪ストレイドッグス」イラスト：春河35　ⓒ朝霧カフカ・春河35 「宇崎ちゃんは遊びたい！」イラスト：丈　ⓒTake/KADOKAWA 2020 「ヤマトタケル」イラスト：安彦良和　ⓒ安彦良和 「涼宮ハルヒの憂鬱」イラスト：いとうのいぢ　ⓒ谷川流／いとうのいぢ 「らき☆すた」イラスト：美水かがみ　ⓒ美水かがみ／KADOKAWA 「スレイヤーズ」イラスト：あらいずみるい　©神坂一・あらいずみるい 「デート・ア・ライブ」イラスト：つなこ　ⓒKoushi Tachibana,Tsunako 「オーバーロード」イラスト：so-bin　ⓒKugane Maruyama 「ソードアート・オンライン」イラスト：abec　ⓒReki Kawahara 2018 「フルメタル・パニック！」イラスト：四季童子　ⓒ賀東招二・四季童子 「青春ブタ野郎はバニーガール先輩の夢を見ない」イラスト：溝口ケージ　ⓒHajime Kamoshida 2014 「新世紀エヴァンゲリオン」イラスト：貞本義行　ⓒカラー 「ロードス島戦記」イラスト：左　ⓒ水野良・グループSNE・出渕裕 「ケロロ軍曹」イラスト：吉崎観音　ⓒMine Yoshizaki 「狼と香辛料」イラスト：文倉十　ⓒIsuna Hasekura 2006 「この素晴らしい世界に祝福を！」イラスト：三嶋くろね　ⓒ暁なつめ・三嶋くろね 「キノの旅 the Beautiful World」イラスト：黒星紅白　ⓒKeiichi Sigsawa 2011 「この勇者が俺ＴＵＥＥＥくせに慎重すぎる」イラスト：とよた瑣織　ⓒ土日月・とよた瑣織</p>
@@ -456,7 +456,7 @@ map.on('load', (ctx) => {
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://pages.isnot.jp/works/higashi_tokorozawa_lumin_manhole/index.html" data-id="ckdzppazy000843bq2ukv0da0" data-title="東所沢の『光るマンホール』探勝マップ" class="article-permalink">
+      <a data-url="https://pages.isnot.jp/works/higashi_tokorozawa_lumin_manhole/index.html" data-id="cke081x4l0008qjbq7jx84jvo" data-title="東所沢の『光るマンホール』探勝マップ" class="article-permalink">
       
       </a>
       

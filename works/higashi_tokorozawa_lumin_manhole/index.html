@@ -172,6 +172,11 @@
   h3.picTitle .title { letter-spacing: 0.2em; }
   h3.picTitle .number { margin: 0 0.3em; font-size: 200%; font-weight: 600; font-family: "Impact", monospace; }
   .pic { max-width: 94% !important; }
+  .PopupMessage { margin: 0.5em 0.3em 0 1em; }
+  .PopupMessage::before {
+    content: "🧭 "
+  }
+  .mapboxgl-popup-content p { margin: 0.5em 0 0 0; padding: 0; }
 
   #main {
     display: block;
@@ -215,18 +220,23 @@ const map = new mapboxgl.Map({
   hash: true
 });
 
+const userTrack = new Set();
 map.addControl(new mapboxgl.NavigationControl(), 'bottom-right');
+map.addControl(new mapboxgl.FullscreenControl());
 map.addControl(new mapboxgl.ScaleControl({
   maxWidth: 80,
   unit: 'metric'
 }));
-map.addControl(new mapboxgl.GeolocateControl({
+const geolocate = new mapboxgl.GeolocateControl({
   positionOptions: {
     enableHighAccuracy: true
   },
   trackUserLocation: true
-}));
-map.addControl(new mapboxgl.FullscreenControl());
+});
+map.addControl(geolocate);
+geolocate.on('geolocate', (pos) => {
+  userTrack.add(pos);
+});
 
 const pics_postfix = ['', '_i.png', '_d.jpg', '_n.jpg'];
 const waypoints = [
@@ -273,7 +283,20 @@ map.on('load', (ctx) => {
 <p>
   <a href="/works/higashi_tokorozawa_lumin_manhole/images/${item.picture}_d.jpg" class="gallery-item"><img class="pic picDaytime" src="/works/higashi_tokorozawa_lumin_manhole/images/${item.picture}_d.jpg" /></a>
   <a href="/works/higashi_tokorozawa_lumin_manhole/images/${item.picture}_n.jpg" class="gallery-item"><img class="pic picNight" src="/works/higashi_tokorozawa_lumin_manhole/images/${item.picture}_n.jpg" /></a>
-</p>`)
+  <span class="PopupMessage"></span>
+</p>`);
+    popup.on('open', (pane) => {
+      if (userTrack.size < 1) {
+        return undefined;
+      }
+      const last_pos = Array.from(userTrack)[userTrack.size - 1];
+      const geo = last_pos.coords;
+      const dist = pane.target.getLngLat().distanceTo(new mapboxgl.LngLat(geo.longitude, geo.latitude));
+      const popEl = pane.target.getElement();
+      const messageEl = popEl.querySelector('.PopupMessage');
+      messageEl.innerText = `${parseInt(dist).toLocaleString('ja-JP')}[m] ${new Date(last_pos.timestamp).toLocaleTimeString()}`;
+      console.debug('##popupOnOpen|', [new Date(last_pos.timestamp), dist, userTrack.size] );
+    });
 
     new mapboxgl.Marker(el)
       .setLngLat(item.point)
@@ -496,7 +519,7 @@ map.on('load', (ctx) => {
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://pages.isnot.jp/works/higashi_tokorozawa_lumin_manhole/index.html" data-id="cke1n0y0r004a9bbqasoghpkx" data-title="東所沢の『光るマンホール』探勝マップ" class="article-permalink">
+      <a data-url="https://pages.isnot.jp/works/higashi_tokorozawa_lumin_manhole/index.html" data-id="cke44ua3l004av2bq9af9c43s" data-title="東所沢の『光るマンホール』探勝マップ" class="article-permalink">
       
       </a>
       

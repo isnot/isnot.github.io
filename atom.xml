@@ -6,7 +6,7 @@
   <link href="https://pages.isnot.jp/atom.xml" rel="self"/>
   
   <link href="https://pages.isnot.jp/"/>
-  <updated>2020-07-16T09:36:21.000Z</updated>
+  <updated>2020-08-22T12:56:39.000Z</updated>
   <id>https://pages.isnot.jp/</id>
   
   <author>
@@ -15,6 +15,27 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Injectorの挙動を再現するテスト</title>
+    <link href="https://pages.isnot.jp/2020-08/22-test-injector-probrem/"/>
+    <id>https://pages.isnot.jp/2020-08/22-test-injector-probrem/</id>
+    <published>2020-08-22T12:56:39.000Z</published>
+    <updated>2020-08-22T12:56:39.000Z</updated>
+    
+    <content type="html"><![CDATA[<div class="article-gallery"><p>Injectorの挙動に不可思議な挙動が見られ、もしかしたらバグかもしれないので、再現する方法を記録する。</p><h2 id="組み合わせ"><a href="#組み合わせ" class="headerlink" title="組み合わせ"></a>組み合わせ</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hyexo version</span><br><span class="line">hyexo: コマンドが見つかりません</span><br><span class="line">naoto@nuc8:~/www/pages$ hexo version</span><br><span class="line">INFO  Validating config</span><br><span class="line">hexo: 5.1.0</span><br><span class="line">hexo-cli: 1.1.0</span><br><span class="line">os: Linux 5.4.0-42-lowlatency linux x64</span><br><span class="line">http_parser: 2.9.3</span><br><span class="line">node: 10.19.0</span><br><span class="line">v8: 6.8.275.32-node.55</span><br><span class="line">uv: 1.34.2</span><br><span class="line">zlib: 1.2.11</span><br><span class="line">brotli: 1.0.7</span><br><span class="line">ares: 1.15.0</span><br><span class="line">modules: 64</span><br><span class="line">nghttp2: 1.40.0</span><br><span class="line">napi: 5</span><br><span class="line">openssl: 1.1.1d</span><br><span class="line">icu: 66.1</span><br><span class="line">unicode: 13.0</span><br><span class="line">cldr: 36.1</span><br><span class="line">tz: 2020a</span><br></pre></td></tr></table></figure><ul><li>head_endにスタイルシートを挿入するための、タグプラグイン（自作）</li></ul><p>以下の内容。</p><!-- InjectHead -->  <p class="red-and-big">This text maybe red and big.</p><h2 id="手順"><a href="#手順" class="headerlink" title="手順"></a>手順</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ cat <span class="built_in">source</span>/_posts/<span class="built_in">test</span>-injector-probrem.md</span><br><span class="line">$ hexo clean</span><br><span class="line">$ hexo g</span><br><span class="line">$ cp public/2020-08/22-test-injector-probrem/index.html /tmp/backup.html</span><br><span class="line">$ hexo g</span><br><span class="line">(snip)</span><br><span class="line">INFO  Generated: 2020-08/22-test-injector-probrem/index.html</span><br></pre></td></tr></table></figure><figure class="highlight diff"><table><tr><td class="code"><pre><span class="line">$ diff -u /tmp/backup.html public/2020-08/22-test-injector-probrem/index.html</span><br><span class="line"><span class="comment">--- /tmp/backup.html2020-08-22 22:17:58.308118899 +0900</span></span><br><span class="line"><span class="comment">+++ public/2020-08/22-test-injector-probrem/index.html2020-08-22 22:18:03.912311398 +0900</span></span><br><span class="line"><span class="meta">@@ -47,9 +47,7 @@</span></span><br><span class="line"> </span><br><span class="line">     </span><br><span class="line">   </span><br><span class="line"><span class="deletion">-&lt;!-- hexo injector head_end start --&gt;&lt;style&gt;</span></span><br><span class="line"><span class="deletion">-  .red-and-big &#123; font-size: 300%; color: red; &#125;</span></span><br><span class="line"><span class="deletion">-&lt;/style&gt;&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;https://cdn.jsdelivr.net/npm/lightgallery.js@1.2.0/dist/css/lightgallery.min.css&quot; /&gt;&lt;link rel=&quot;stylesheet&quot; href=&quot;https://cdn.jsdelivr.net/npm/hexo-tag-google-photos-album@1.2.0/css/google_photos_album.css&quot; integrity=&quot;sha256-+fmg1peSAbhT32GtVA2D9f1zAjN3v6lX+9Y14jKmYBs=&quot; crossorigin=&quot;anonymous&quot;&gt;&lt;!-- hexo injector head_end end --&gt;&lt;meta name=&quot;generator&quot; content=&quot;Hexo 5.1.0&quot;&gt;&lt;/head&gt;</span></span><br><span class="line"><span class="addition">+&lt;!-- hexo injector head_end start --&gt;&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;https://cdn.jsdelivr.net/npm/lightgallery.js@1.2.0/dist/css/lightgallery.min.css&quot; /&gt;&lt;link rel=&quot;stylesheet&quot; href=&quot;https://cdn.jsdelivr.net/npm/hexo-tag-google-photos-album@1.2.0/css/google_photos_album.css&quot; integrity=&quot;sha256-+fmg1peSAbhT32GtVA2D9f1zAjN3v6lX+9Y14jKmYBs=&quot; crossorigin=&quot;anonymous&quot;&gt;&lt;!-- hexo injector head_end end --&gt;&lt;meta name=&quot;generator&quot; content=&quot;Hexo 5.1.0&quot;&gt;&lt;/head&gt;</span></span><br><span class="line"> </span><br><span class="line"> &lt;body&gt;</span><br><span class="line">   &lt;div id=&quot;container&quot;&gt;</span><br></pre></td></tr></table></figure><p>再現おわり。</p></div>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;div class=&quot;article-gallery&quot;&gt;&lt;p&gt;Injectorの挙動に不可思議な挙動が見られ、もしかしたらバグかもしれないので、再現する方法を記録する。&lt;/p&gt;
+&lt;h2 id=&quot;組み合わせ&quot;&gt;&lt;a href=&quot;#組み合わせ&quot; class=&quot;headerlink&quot;</summary>
+      
+    
+    
+    
+    
+  </entry>
   
   <entry>
     <title>Hexo 5.0 実装予定のInjectorを試す</title>
@@ -517,30 +538,6 @@
     <category term="javascript" scheme="https://pages.isnot.jp/tags/javascript/"/>
     
     <category term="hexo" scheme="https://pages.isnot.jp/tags/hexo/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>ツツジ</title>
-    <link href="https://pages.isnot.jp/2019-05/01-azalea/"/>
-    <id>https://pages.isnot.jp/2019-05/01-azalea/</id>
-    <published>2019-05-01T13:16:43.000Z</published>
-    <updated>2019-05-01T13:16:43.000Z</updated>
-    
-    <content type="html"><![CDATA[<div class="article-gallery"><div class="google-photos-album-area" id="google-photos-album-area2"><div class="metadatas"><img src="https://lh3.googleusercontent.com/cbbekekHcy5oNIWSUnqRcepSFEO9PpjYgYiqy2Jojpsvru6uaSS4boq2hw5ErcLm25CouS0hDwPizVynr6C2aDC5FWtIfo5f0sN9VD-o3zjBAl2DHPKraWpQXh4seihUrTnlKxfVPzk=w600-h315-p-k" class="og-image nolink"></img><a href="https://photos.google.com/share/AF1QipMdbjXa2yQDxvxPW0AohkV5eHAIYVHpgKdLZbCfPMGJiD7X98s1DcKny0BHpr71iw?key=c1pkQTYxOGtXTEV4TjVsYUMtelRRSUpWQVVKbnBn" class="og-url" target="_blank" rel="noopener"><span class="og-title">ツツジ</span><span class="og-description">8 new photos added to shared album</span></a></div><div class="google-photos-album-images clearfix"><a href="https://lh3.googleusercontent.com/cbbekekHcy5oNIWSUnqRcepSFEO9PpjYgYiqy2Jojpsvru6uaSS4boq2hw5ErcLm25CouS0hDwPizVynr6C2aDC5FWtIfo5f0sN9VD-o3zjBAl2DHPKraWpQXh4seihUrTnlKxfVPzk=s720-no" class="gallery-item" target="_blank" rel="noopener"><img src="https://lh3.googleusercontent.com/cbbekekHcy5oNIWSUnqRcepSFEO9PpjYgYiqy2Jojpsvru6uaSS4boq2hw5ErcLm25CouS0hDwPizVynr6C2aDC5FWtIfo5f0sN9VD-o3zjBAl2DHPKraWpQXh4seihUrTnlKxfVPzk=w225-no?authuser=0"></a><a href="https://lh3.googleusercontent.com/XigLNzXANLlEWVc6Vo6celJ4h_lInH9i4vC5Eo5XWVVqUnLd0UaLe3RQffAXecCDLpqag72brmyRig6FV1nLz3__uRYTdsGs1n-jGN_zHxtWTsFnxaKKtUHzjVIiOdHo94dV51zQQg0=s720-no" class="gallery-item" target="_blank" rel="noopener"><img src="https://lh3.googleusercontent.com/XigLNzXANLlEWVc6Vo6celJ4h_lInH9i4vC5Eo5XWVVqUnLd0UaLe3RQffAXecCDLpqag72brmyRig6FV1nLz3__uRYTdsGs1n-jGN_zHxtWTsFnxaKKtUHzjVIiOdHo94dV51zQQg0=w225-no?authuser=0"></a><a href="https://lh3.googleusercontent.com/AeoLfJ1VTjx52y6okGpmNH6DucmgiC8D2-3VLSXV49C18MO8sGFoyAOIdjFA_3qDPooRhddnHAVh8aWiWlz4_KlDN4itcamCL9_CYDweO_jg7HOtSotkYKb11cTTAf9NZiz9Sa9oAck=s720-no" class="gallery-item" target="_blank" rel="noopener"><img src="https://lh3.googleusercontent.com/AeoLfJ1VTjx52y6okGpmNH6DucmgiC8D2-3VLSXV49C18MO8sGFoyAOIdjFA_3qDPooRhddnHAVh8aWiWlz4_KlDN4itcamCL9_CYDweO_jg7HOtSotkYKb11cTTAf9NZiz9Sa9oAck=w225-no?authuser=0"></a><a href="https://lh3.googleusercontent.com/UuXzKZ295hX2dm8GiAQpUQroT9juuIiqqYQzk7HkPSk0FyDhSgEJfL242rbzaWkMeYyTUM83mfRHSnVHkCgyyvfVmUsuzmFOuW5h5nNkFu74Tqh1y9LzuJi7Chfd4EuMwxpn_FNzWIk=s720-no" class="gallery-item" target="_blank" rel="noopener"><img src="https://lh3.googleusercontent.com/UuXzKZ295hX2dm8GiAQpUQroT9juuIiqqYQzk7HkPSk0FyDhSgEJfL242rbzaWkMeYyTUM83mfRHSnVHkCgyyvfVmUsuzmFOuW5h5nNkFu74Tqh1y9LzuJi7Chfd4EuMwxpn_FNzWIk=w225-no?authuser=0"></a><a href="https://lh3.googleusercontent.com/yRwmGV0rKjcf88spJuApw5Ct8COhsyVOtWDHl47VMPXiQAP116_LBNpjUcSSdW7Q1I1fBSRqBDOmmlNE4Bz5qNVa5-4MRKSal8IPs_hGip8TYiMG46NmjP5ky1rAfp4OLttd5rv4hko=s720-no" class="gallery-item" target="_blank" rel="noopener"><img src="https://lh3.googleusercontent.com/yRwmGV0rKjcf88spJuApw5Ct8COhsyVOtWDHl47VMPXiQAP116_LBNpjUcSSdW7Q1I1fBSRqBDOmmlNE4Bz5qNVa5-4MRKSal8IPs_hGip8TYiMG46NmjP5ky1rAfp4OLttd5rv4hko=w225-no?authuser=0"></a><a href="https://lh3.googleusercontent.com/JlQDZHtdrk7UiMmbjw0LGb-P1e_2CXYo9fWnPnbTxPu44vhHA7VRDzQxAjjc_DussghnswuOcOp_u8c4m9sxHg1Or2gVsNJOH2R6Kg1p1ef7ThkJ1cWapwjaQKyX24Np2H-H79zCP3c=s720-no" class="gallery-item" target="_blank" rel="noopener"><img src="https://lh3.googleusercontent.com/JlQDZHtdrk7UiMmbjw0LGb-P1e_2CXYo9fWnPnbTxPu44vhHA7VRDzQxAjjc_DussghnswuOcOp_u8c4m9sxHg1Or2gVsNJOH2R6Kg1p1ef7ThkJ1cWapwjaQKyX24Np2H-H79zCP3c=w225-no?authuser=0"></a><a href="https://lh3.googleusercontent.com/pT4awqpjsjV_h4Sc2mawIUaRGHYzgejg1TvLlwsfpLxmvD9TJ2NN5bxnQZvu6xQwIuAXU6Z_hg_idxwm-p7cN2yqF15i7twIQ2g3dypz29zWfxAyFQG1o6wph8hjlYB7948jGG7qWIY=s720-no" class="gallery-item" target="_blank" rel="noopener"><img src="https://lh3.googleusercontent.com/pT4awqpjsjV_h4Sc2mawIUaRGHYzgejg1TvLlwsfpLxmvD9TJ2NN5bxnQZvu6xQwIuAXU6Z_hg_idxwm-p7cN2yqF15i7twIQ2g3dypz29zWfxAyFQG1o6wph8hjlYB7948jGG7qWIY=w225-no?authuser=0"></a><a href="https://lh3.googleusercontent.com/qs7O5vM49M4Nax5gwAbx7D7Mxnh_I2VS2oHaOofxSIOjwqCDOERJURR8UblBxiY1_xHgs3k-BSfO-tIzdevK88IjNAO-maJJmIRYbd4g0DzLl1nu3gW-v68mQIAIZbzwg-0KmRo9_Ok=s720-no" class="gallery-item" target="_blank" rel="noopener"><img src="https://lh3.googleusercontent.com/qs7O5vM49M4Nax5gwAbx7D7Mxnh_I2VS2oHaOofxSIOjwqCDOERJURR8UblBxiY1_xHgs3k-BSfO-tIzdevK88IjNAO-maJJmIRYbd4g0DzLl1nu3gW-v68mQIAIZbzwg-0KmRo9_Ok=w225-no?authuser=0"></a></div></div></div>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;div class=&quot;article-gallery&quot;&gt;&lt;div class=&quot;google-photos-album-area&quot; id=&quot;google-photos-album-area2&quot;&gt;&lt;div class=&quot;metadatas&quot;&gt;&lt;img src=&quot;https://l</summary>
-      
-    
-    
-    
-    <category term="photo" scheme="https://pages.isnot.jp/categories/photo/"/>
-    
-    
-    <category term="photo" scheme="https://pages.isnot.jp/tags/photo/"/>
     
   </entry>
   

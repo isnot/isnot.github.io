@@ -5,12 +5,12 @@
   
   <title>東所沢の『光るマンホール』探勝マップ | isnot N3 | isnot N3</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no">
-  <meta name="description" content="#mymap { height: 660px; }   button + button { margin-left: 0 !important; } &#x2F;* NavigationControl buttons *&#x2F;   .fa-question-circle, .fa-home, .helpLegend { font-size: 24px; } &#x2F;* Home and Help Co">
+  <meta name="description" content="&#x2F;* Global variables *&#x2F; const waypoints &#x3D; [   {number: 1,  point: [139.513754, 35.7942728],  title: &#39;とある魔術の禁書⽬録&#39;, picture: &#39;01index&#39;},   {number: 2,  point: [139.513503, 35.7946942],  title: &#39;Re:">
 <meta property="og:type" content="website">
 <meta property="og:title" content="東所沢の『光るマンホール』探勝マップ">
 <meta property="og:url" content="https://pages.isnot.jp/works/higashi_tokorozawa_lumin_manhole/index.html">
 <meta property="og:site_name" content="isnot N3">
-<meta property="og:description" content="#mymap { height: 660px; }   button + button { margin-left: 0 !important; } &#x2F;* NavigationControl buttons *&#x2F;   .fa-question-circle, .fa-home, .helpLegend { font-size: 24px; } &#x2F;* Home and Help Co">
+<meta property="og:description" content="&#x2F;* Global variables *&#x2F; const waypoints &#x3D; [   {number: 1,  point: [139.513754, 35.7942728],  title: &#39;とある魔術の禁書⽬録&#39;, picture: &#39;01index&#39;},   {number: 2,  point: [139.513503, 35.7946942],  title: &#39;Re:">
 <meta property="og:locale" content="ja_JP">
 <meta property="og:image" content="https://pages.isnot.jp/works/higashi_tokorozawa_lumin_manhole/images/$%7Bitem.picture%7D_d.jpg">
 <meta property="og:image" content="https://pages.isnot.jp/works/higashi_tokorozawa_lumin_manhole/images/$%7Bitem.picture%7D_n.jpg">
@@ -50,7 +50,7 @@
 
     
   
-<!-- hexo injector head_end start --><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/lightgallery.js@1.2.0/dist/css/lightgallery.min.css" /><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-tag-google-photos-album@1.2.0/css/google_photos_album.css" integrity="sha256-+fmg1peSAbhT32GtVA2D9f1zAjN3v6lX+9Y14jKmYBs=" crossorigin="anonymous"><!-- hexo injector head_end end --><meta name="generator" content="Hexo 5.0.2"></head>
+<!-- hexo injector head_end start --><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/lightgallery.js@1.2.0/dist/css/lightgallery.min.css" /><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-tag-google-photos-album@1.2.0/css/google_photos_album.css" integrity="sha256-+fmg1peSAbhT32GtVA2D9f1zAjN3v6lX+9Y14jKmYBs=" crossorigin="anonymous"><!-- hexo injector head_end end --><meta name="generator" content="Hexo 5.1.0"></head>
 
 <body>
   <div id="container">
@@ -86,7 +86,7 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="page-" class="h-entry article article-type-page" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+        <section id="main"><article id="HigashiTokorozawa-" class="h-entry article article-type-HigashiTokorozawa" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/works/higashi_tokorozawa_lumin_manhole/index.html" class="article-date">
   <time class="dt-published" datetime="2020-08-17T18:55:05.000Z" itemprop="datePublished">2020-08-18</time>
@@ -108,104 +108,9 @@
     
     <div class="e-content article-entry" itemprop="articleBody">
       
-        <div class="article-gallery">
-<link rel="stylesheet" href="https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.css" />
-<link rel="stylesheet" href="https://ssl.gstatic.com/docs/script/css/add-ons.css">
-  <style>
-  #mymap { height: 660px; }
-  button + button { margin-left: 0 !important; } /* NavigationControl buttons */
-  .fa-question-circle, .fa-home, .helpLegend { font-size: 24px; } /* Home and Help Control buttons */
+        <div class="article-gallery"><!-- InjectHead -->
 
-  #popupHelpContent {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    margin: 0;
-    padding: 10px;
-    z-index: 9000;
-    color: white;
-    background: rgba(0, 0, 0, 0.6);
-    text-shadow: 1px 1px 0px #111, 3px 3px 3px #111;
-  }
-  #popupHelpContent p, #popupHelpContent ul {
-    margin: 10px 50px 20px 50px;
-    font-size: 15px;
-  }
-  #popupHelpContent h3.helpContent {
-    margin: 20px;
-    color: white;
-    text-shadow: 2px 2px 0px #111;
-    font-size: 30px;
-  }
 
-  .marker {
-    background-size: cover;
-    width: 65px;
-    height: 65px;
-    border-radius: 50%;
-    cursor: pointer;
-    font-size: 30px;
-    color: white;
-    padding: 4px 0 0 2px;
-    font-family: "Impact", monospace;
-    font-weight: 600;
-    text-shadow: 2px 2px 0 #111, 1px -1px 0 #111, -1px 1px 0 #111, -1px -1px 0 #111;
-  }
-  #marker1  { background-image: url('/works/higashi_tokorozawa_lumin_manhole/images/01index_i.png'); }
-  #marker2  { background-image: url('/works/higashi_tokorozawa_lumin_manhole/images/02rezero_i.png'); }
-  #marker3  { background-image: url('/works/higashi_tokorozawa_lumin_manhole/images/03origin_i.png'); }
-  #marker4  { background-image: url('/works/higashi_tokorozawa_lumin_manhole/images/04fss_i.png'); }
-  #marker5  { background-image: url('/works/higashi_tokorozawa_lumin_manhole/images/05junrei_i.png'); }
-  #marker6  { background-image: url('/works/higashi_tokorozawa_lumin_manhole/images/06bungou_i.png'); }
-  #marker7  { background-image: url('/works/higashi_tokorozawa_lumin_manhole/images/07uzaki_i.png'); }
-  #marker8  { background-image: url('/works/higashi_tokorozawa_lumin_manhole/images/08yamato_i.png'); }
-  #marker9  { background-image: url('/works/higashi_tokorozawa_lumin_manhole/images/09haruhi_i.png'); }
-  #marker10 { background-image: url('/works/higashi_tokorozawa_lumin_manhole/images/10lucky_i.png'); }
-  #marker11 { background-image: url('/works/higashi_tokorozawa_lumin_manhole/images/11slayers_i.png'); }
-  #marker12 { background-image: url('/works/higashi_tokorozawa_lumin_manhole/images/12dorl_i.png'); }
-  #marker13 { background-image: url('/works/higashi_tokorozawa_lumin_manhole/images/13junrei_i.png'); }
-  #marker14 { background-image: url('/works/higashi_tokorozawa_lumin_manhole/images/14over_i.png'); }
-  #marker15 { background-image: url('/works/higashi_tokorozawa_lumin_manhole/images/15sao_i.png'); }
-  #marker16 { background-image: url('/works/higashi_tokorozawa_lumin_manhole/images/16fullmeta_i.png'); }
-  #marker17 { background-image: url('/works/higashi_tokorozawa_lumin_manhole/images/17amuro_i.png'); }
-  #marker18 { background-image: url('/works/higashi_tokorozawa_lumin_manhole/images/18aobuta_i.png'); }
-  #marker19 { background-image: url('/works/higashi_tokorozawa_lumin_manhole/images/19evang_i.png'); }
-  #marker20 { background-image: url('/works/higashi_tokorozawa_lumin_manhole/images/20lodoss_i.png'); }
-  #marker21 { background-image: url('/works/higashi_tokorozawa_lumin_manhole/images/21keroro_i.png'); }
-  #marker22 { background-image: url('/works/higashi_tokorozawa_lumin_manhole/images/22orig_i.png'); }
-  #marker23 { background-image: url('/works/higashi_tokorozawa_lumin_manhole/images/23yamato_i.png'); }
-  #marker24 { background-image: url('/works/higashi_tokorozawa_lumin_manhole/images/24spice_i.png'); }
-  #marker25 { background-image: url('/works/higashi_tokorozawa_lumin_manhole/images/25kono_i.png'); }
-  #marker26 { background-image: url('/works/higashi_tokorozawa_lumin_manhole/images/26kino_i.png'); }
-  #marker27 { background-image: url('/works/higashi_tokorozawa_lumin_manhole/images/27oretuee_i.png'); }
-  #marker28 { background-image: url('/works/higashi_tokorozawa_lumin_manhole/images/28syaa_i.png'); }
-
-  .mapbox-popup { width: 100% !important; }
-  h3.picTitle { text-decoration: none !important; }
-  h3.picTitle .title { letter-spacing: 0.2em; }
-  h3.picTitle .number { margin: 0 0.3em; font-size: 200%; font-weight: 600; font-family: "Impact", monospace; }
-  .pic { max-width: 49% !important; margin: 0 !important; display: inline !important; }
-  .PopupMessage { margin: 0.5em 0.3em 0 1em; }
-  .mapboxgl-popup-content p { margin: 0.5em 0 0 0; padding: 0; }
-
-  .article-gallery table img { max-height: 200px; }
-  .hidden { display: none; }
-  #main, #sidebar {
-    display: block;
-    float: left;
-    width: 100%;
-    margin: 0;
-  }
-  .article-meta { display: none; }
-  .widget-wrap { display: none; }
-  #owner { display: block; }
-
-  @media screen and (max-width: 768px) {
-    img.ListPic2, img.ListPic3 { display: none; }
-  }
-</style>
 <div id="mymap"></div>
 <script src="https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.js"></script>
 <script>
@@ -615,7 +520,7 @@ map.on('load', () => {
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://pages.isnot.jp/works/higashi_tokorozawa_lumin_manhole/index.html" data-id="cke5a3hpl004a5fbqdmu36144" data-title="東所沢の『光るマンホール』探勝マップ" class="article-permalink">
+      <a data-url="https://pages.isnot.jp/works/higashi_tokorozawa_lumin_manhole/index.html" data-id="cke5p0c9a004bawbq99kmhebs" data-title="東所沢の『光るマンホール』探勝マップ" class="article-permalink">
       
       </a>
       
@@ -690,6 +595,10 @@ map.on('load', () => {
       <ul>
         
           <li>
+            <a href="/2020-08/22-test-injector-probrem/">Injectorの挙動を再現するテスト</a>
+          </li>
+        
+          <li>
             <a href="/2020-07/16-TestForInjectorOfHexo5/">Hexo 5.0 実装予定のInjectorを試す</a>
           </li>
         
@@ -711,10 +620,6 @@ map.on('load', () => {
         
           <li>
             <a href="/2019-10/17-tamako-cycling/">多摩湖自転車歩行者道〜六道山〜文明堂壹番館</a>
-          </li>
-        
-          <li>
-            <a href="/2019-09/24-Avenir-Shards-Bookmarklet/">Avenir Shards Bookmarklet</a>
           </li>
         
       </ul>
@@ -745,7 +650,7 @@ map.on('load', () => {
   <div class="widget-wrap">
     <h3 class="widget-title">アーカイブ</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">2020/07</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">2020/06</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">2020/04</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">2019/11</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">2019/10</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">2019/09</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">2019/06</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">2019/05</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">2019/04</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">2020/08</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">2020/07</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">2020/06</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">2020/04</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">2019/11</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">2019/10</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">2019/09</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">2019/06</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">2019/05</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">2019/04</a></li></ul>
     </div>
   </div>
 

@@ -5,12 +5,12 @@
   
   <title>東所沢の『光るマンホール』探勝マップ | isnot N3 | isnot N3</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no">
-  <meta name="description" content="#mymap { height: 600px; }   .mapboxgl-control-container button { max-width: 30px; }   .fa-question-circle, .fa-home { font-size: 24px; }    .marker {     background-size: cover;     width: 65p">
+  <meta name="description" content="#mymap { height: 660px; }   button + button { margin-left: 0 !important; } &#x2F;* NavigationControl buttons *&#x2F;   .fa-question-circle, .fa-home, .helpLegend { font-size: 24px; } &#x2F;* Home and Help Co">
 <meta property="og:type" content="website">
 <meta property="og:title" content="東所沢の『光るマンホール』探勝マップ">
 <meta property="og:url" content="https://pages.isnot.jp/works/higashi_tokorozawa_lumin_manhole/index.html">
 <meta property="og:site_name" content="isnot N3">
-<meta property="og:description" content="#mymap { height: 600px; }   .mapboxgl-control-container button { max-width: 30px; }   .fa-question-circle, .fa-home { font-size: 24px; }    .marker {     background-size: cover;     width: 65p">
+<meta property="og:description" content="#mymap { height: 660px; }   button + button { margin-left: 0 !important; } &#x2F;* NavigationControl buttons *&#x2F;   .fa-question-circle, .fa-home, .helpLegend { font-size: 24px; } &#x2F;* Home and Help Co">
 <meta property="og:locale" content="ja_JP">
 <meta property="og:image" content="https://pages.isnot.jp/works/higashi_tokorozawa_lumin_manhole/images/$%7Bitem.picture%7D_d.jpg">
 <meta property="og:image" content="https://pages.isnot.jp/works/higashi_tokorozawa_lumin_manhole/images/$%7Bitem.picture%7D_n.jpg">
@@ -112,9 +112,33 @@
 <link rel="stylesheet" href="https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.css" />
 <link rel="stylesheet" href="https://ssl.gstatic.com/docs/script/css/add-ons.css">
   <style>
-  #mymap { height: 600px; }
-  .mapboxgl-control-container button { max-width: 30px; }
-  .fa-question-circle, .fa-home { font-size: 24px; }
+  #mymap { height: 660px; }
+  button + button { margin-left: 0 !important; } /* NavigationControl buttons */
+  .fa-question-circle, .fa-home, .helpLegend { font-size: 24px; } /* Home and Help Control buttons */
+
+  #popupHelpContent {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 10px;
+    z-index: 9000;
+    color: white;
+    background: rgba(0, 0, 0, 0.6);
+    text-shadow: 1px 1px 0px #111, 3px 3px 3px #111;
+  }
+  #popupHelpContent p, #popupHelpContent ul {
+    margin: 10px 50px 20px 50px;
+    font-size: 15px;
+  }
+  #popupHelpContent h3.helpContent {
+    margin: 20px;
+    color: white;
+    text-shadow: 2px 2px 0px #111;
+    font-size: 30px;
+  }
 
   .marker {
     background-size: cover;
@@ -162,11 +186,11 @@
   h3.picTitle { text-decoration: none !important; }
   h3.picTitle .title { letter-spacing: 0.2em; }
   h3.picTitle .number { margin: 0 0.3em; font-size: 200%; font-weight: 600; font-family: "Impact", monospace; }
-  .pic { max-width: 95% !important; }
+  .pic { max-width: 49% !important; margin: 0 !important; display: inline !important; }
   .PopupMessage { margin: 0.5em 0.3em 0 1em; }
   .mapboxgl-popup-content p { margin: 0.5em 0 0 0; padding: 0; }
 
-  .article-gallery table img { max-height: 220px; }
+  .article-gallery table img { max-height: 200px; }
   .hidden { display: none; }
   #main, #sidebar {
     display: block;
@@ -179,8 +203,6 @@
   #owner { display: block; }
 
   @media screen and (max-width: 768px) {
-    .mapbox-popup { width: 100% !important; max-width: 100% !important; }
-    .pic { max-width: 49% !important; margin: 0 !important; display: inline !important; }
     img.ListPic2, img.ListPic3 { display: none; }
   }
 </style>
@@ -222,7 +244,8 @@ const pics_postfix = ['', '_i.png', '_d.jpg', '_n.jpg'];
 const higashi_tokorozawa_loc = {
   center: [139.512527, 35.79513],
   zoom: 17,
-  pitch: 60
+  pitch: 60,
+  bearing: 0
 };
 const userTrack = new Set();
 
@@ -242,16 +265,21 @@ class AbstractUserControl {
 }
 
 class MoveToHomeControl extends AbstractUserControl {
+  constructor(options = {}) {
+    super();
+    this._options = options;
+  }
+
   onAdd(map) {
     this._map = map;
     this._container = document.createElement('div');
     this._container.className = 'mapboxgl-ctrl';
-    this._container.innerHTML = `<button class="mapboxgl-ctrl-Help" type="button" aria-label="Goto higashi tokorozawa" title="&#x1F3E0;Goto higashi tokorozawa">
-    <span class="mapboxgl-ctrl-icon fa fa-home" aria-hidden="true">&nbsp;</span>
-  </button>`;
+    this._container.innerHTML = `<button class="mapboxgl-ctrl-MoveToHome" type="button" aria-label="Move to Home" title="&#x1F3E0;Move to Home">
+  <span class="mapboxgl-ctrl-icon fa fa-home" aria-hidden="true">&nbsp;</span>
+</button>`;
     this._container.addEventListener('click', () => {
       if (map.loaded()) {
-        map.jumpTo(higashi_tokorozawa_loc);
+        map.jumpTo(this._options);
       }
     });
     return this._container;
@@ -259,6 +287,33 @@ class MoveToHomeControl extends AbstractUserControl {
 }
 
 class HelpControl {
+  constructor() {
+    const popupHelpContent = document.createElement('div');
+    popupHelpContent.id = 'popupHelpContent';
+    popupHelpContent.className = 'hidden';
+    popupHelpContent.innerHTML = `<h3 class="helpContent">Help</h3>
+<p>
+  ※マップのどこかをクリックすると、このHelp画面を閉じます。
+</p>
+<p>
+  マンホールの位置に、各々の作品を表したマーカーを表示しています。<br />
+  クリックすると、番号と作品名、撮影した画像（昼間と夜間）等をポップアップ表示します。<br />
+  ポップアップ内の下部には、ユーザーの位置情報を有効にしている場合、そのマンホールまでの距離を、メートル単位で表示します。距離の右側は、位置情報を取得した時刻になります。
+</p>
+<ul class="legend">
+  <li><span class="fa fa-arrows-alt helpLegend" aria-hidden="true">&nbsp;</span>　全画面表示にします</li>
+  <li><span class="fa fa-location helpLegend" aria-hidden="true">&#x26EF;</span>　ユーザーの位置情報を取得して、画面内に青い丸で表示します。また、各マンホールまでの距離を計測します</li>
+  <li><span class="fa fa-home helpLegend" aria-hidden="true">&nbsp;</span> マップの表示範囲を、東所沢へ移動します</li>
+  <li><span class="fa fa-question-circle helpLegend" aria-hidden="true">&nbsp;</span>　このヘルプメッセージを表示します</li>
+  <li>[zoom] ズームと方位 ※画面右下</li>
+  <li>[scale] スケール（縮尺）※画面左下</li>
+</ul>`;
+    popupHelpContent.addEventListener('click', () => {
+      document.getElementById('popupHelpContent').classList.toggle('hidden');
+    });
+    document.getElementById('mymap').appendChild(popupHelpContent);
+  }
+
   onAdd(map) {
     this._map = map;
     this._container = document.createElement('div');
@@ -269,6 +324,7 @@ class HelpControl {
   </button>`;
     this._container.addEventListener('click', () => {
       console.log('HelpControl onClick ocurred');
+      document.getElementById('popupHelpContent').classList.toggle('hidden');
     });
     return this._container;
   }
@@ -285,12 +341,15 @@ const map = new mapboxgl.Map({
   hash: true
 });
 
-map.addControl(new mapboxgl.NavigationControl(), 'bottom-right');
-map.addControl(new mapboxgl.FullscreenControl());
+function onGeolocate(pos) {
+  userTrack.add(pos);
+}
+
 map.addControl(new mapboxgl.ScaleControl({
-  maxWidth: 80,
+  maxWidth: 100,
   unit: 'metric'
 }));
+map.addControl(new mapboxgl.FullscreenControl());
 const geolocate = new mapboxgl.GeolocateControl({
   positionOptions: {
     enableHighAccuracy: true
@@ -298,22 +357,23 @@ const geolocate = new mapboxgl.GeolocateControl({
   trackUserLocation: true
 });
 map.addControl(geolocate);
-geolocate.on('geolocate', (pos) => {
-  userTrack.add(pos);
-});
-map.addControl(new MoveToHomeControl());
+geolocate.on('geolocate', onGeolocate);
+map.addControl(new MoveToHomeControl(higashi_tokorozawa_loc));
 map.addControl(new HelpControl());
+map.addControl(new mapboxgl.NavigationControl(), 'bottom-right');
 
 map.on('load', () => {
-  waypoints.forEach((item, idx) => {
+  waypoints.forEach((item) => {
     const el = document.createElement('div');
     el.id = `marker${item.number}`;
     el.className = 'marker';
     el.title = item.title;
     el.appendChild(document.createTextNode(String(item.number)));
 
-    const popup = new mapboxgl.Popup({maxWidth: '400px'})
-      .setHTML(`<h3 class="picTitle"><span class="number">${item.number}</span><span class="title">${item.title}</span></h3>
+    const popup = new mapboxgl.Popup({maxWidth: '600px'})
+      .setHTML(`<h3 class="picTitle">
+  <span class="number">${item.number}</span><span class="title">${item.title}</span>
+</h3>
 <p>
   <a href="/works/higashi_tokorozawa_lumin_manhole/images/${item.picture}_d.jpg" class="gallery-item"><img class="pic picDaytime" src="/works/higashi_tokorozawa_lumin_manhole/images/${item.picture}_d.jpg" /></a>
   <a href="/works/higashi_tokorozawa_lumin_manhole/images/${item.picture}_n.jpg" class="gallery-item"><img class="pic picNight" src="/works/higashi_tokorozawa_lumin_manhole/images/${item.picture}_n.jpg" /></a>
@@ -555,7 +615,7 @@ map.on('load', () => {
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://pages.isnot.jp/works/higashi_tokorozawa_lumin_manhole/index.html" data-id="cke4fqru9004aumbqhz11b2q7" data-title="東所沢の『光るマンホール』探勝マップ" class="article-permalink">
+      <a data-url="https://pages.isnot.jp/works/higashi_tokorozawa_lumin_manhole/index.html" data-id="cke5a3hpl004a5fbqdmu36144" data-title="東所沢の『光るマンホール』探勝マップ" class="article-permalink">
       
       </a>
       

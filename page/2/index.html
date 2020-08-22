@@ -83,81 +83,6 @@
       <div class="outer">
         <section id="main">
   
-    <article id="post-update-hexo-tag-gpa" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2019-06/08-update-hexo-tag-gpa/" class="article-date">
-  <time class="dt-published" datetime="2019-06-08T05:40:03.000Z" itemprop="datePublished">2019-06-08</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/hexo/">hexo</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2019-06/08-update-hexo-tag-gpa/">hexo-tag-google-photos-album をアップデートした</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry index-entry" itemprop="articleBody">
-      
-        <div class="article-gallery"><h2 id="metascraperにおけるXSS対応と、その影響"><a href="#metascraperにおけるXSS対応と、その影響" class="headerlink" title="metascraperにおけるXSS対応と、その影響"></a>metascraperにおけるXSS対応と、その影響</h2><p>自作のHexo向けプラグインであるhexo-tag-google-photos-albumでは、<a target="_blank" rel="noopener" href="https://metascraper.js.org/#/">metascraper</a>というnpmライブラリを利用しています。<br>Google Photosの共有リンクから辿って、いくつかのメタデータを抽出するためです。</p>
-<p>そのmetascraperで、XSS脆弱性の報告がありました。（現時点では修正対応済）</p>
-<p>その解決に伴い、hexo-tag-google-photos-albumでは、修正済みバージョンを利用するように、修正をしました。</p>
-<ul>
-<li>metascraperのGitHubリポジトリにおけるイシュー<ul>
-<li>NPM Reporting as CSS Vulnerability <a target="_blank" rel="noopener" href="https://github.com/microlinkhq/metascraper/issues/153">#153</a></li>
-<li>Add escape parameter to escape html data by default <a target="_blank" rel="noopener" href="https://github.com/microlinkhq/metascraper/issues/168">#168</a></li>
-</ul>
-</li>
-<li>npmのセキュリティ勧告<ul>
-<li><a target="_blank" rel="noopener" href="https://www.npmjs.com/advisories/603">Cross-Site Scripting metascraper</a></li>
-</ul>
-</li>
-<li>報告の元になったレポート<ul>
-<li>[metascraper] Stored XSS in Open Graph meta properties read by metascrapper <a target="_blank" rel="noopener" href="https://hackerone.com/reports/309367">hackerone.com #309367</a></li>
-</ul>
-</li>
-<li>isnot/hexo-tag-google-photos-album 修正の差分<ul>
-<li>metascraper up to @5.4.2 <a target="_blank" rel="noopener" href="https://github.com/isnot/hexo-tag-google-photos-album/commit/02366cc046ccd932cdca89d2562f4ae5dd60adf4#diff-b9cfc7f2cdf78a7f4b91a753d10865a2">#02366cc</a></li>
-</ul>
-</li>
-</ul>
-<h2 id="修正後の確認"><a href="#修正後の確認" class="headerlink" title="修正後の確認"></a>修正後の確認</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo-tag-google-photos-album$ npm audit</span><br><span class="line"></span><br><span class="line">                       === npm audit security report ===</span><br><span class="line"></span><br><span class="line">found 0 vulnerabilities</span><br><span class="line"> <span class="keyword">in</span> 2702 scanned packages</span><br><span class="line"></span><br><span class="line">(snip)</span><br><span class="line"></span><br><span class="line">blog$ npm view hexo-tag-google-photos-album version</span><br><span class="line">1.0.5</span><br><span class="line">blog$ hexo clean</span><br><span class="line">(node:29044) [DEP0061] DeprecationWarning: fs.SyncWriteStream is deprecated.</span><br><span class="line">INFO  Deleted database.</span><br><span class="line">INFO  Deleted public folder.</span><br></pre></td></tr></table></figure>
-
-<p>特に問題なし。</p>
-</div>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://pages.isnot.jp/2019-06/08-update-hexo-tag-gpa/" data-id="cke5p0c8p0020awbqgdmshstq" data-title="hexo-tag-google-photos-album をアップデートした" class="article-permalink">
-      
-      </a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hexo/" rel="tag">hexo</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/" rel="tag">javascript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/npm/" rel="tag">npm</a></li></ul>
-
-    </footer>
-    <div class="article-footer">
-      
-    </div>
-  </div>
-  
-</article>
-
-
-
-
-  
     <article id="post-TMG-Observatories" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/2019-05/30-TMG-Observatories/" class="article-date">
@@ -211,7 +136,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://pages.isnot.jp/2019-05/30-TMG-Observatories/" data-id="cke5p0c7s0009awbq9v8maeqr" data-title="東京都庁展望室" class="article-permalink">
+      <a data-url="https://pages.isnot.jp/2019-05/30-TMG-Observatories/" data-id="cke5rkfgm000anabq6cle01l8" data-title="東京都庁展望室" class="article-permalink">
       
       </a>
       
@@ -301,7 +226,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://pages.isnot.jp/2019-05/30-shikinokaori-rose-garden/" data-id="cke5p0c890013awbqc3irhx7t" data-title="四季の香ローズガーデン2019" class="article-permalink">
+      <a data-url="https://pages.isnot.jp/2019-05/30-shikinokaori-rose-garden/" data-id="cke5rkfh30014nabqgix1g4dp" data-title="四季の香ローズガーデン2019" class="article-permalink">
       
       </a>
       
@@ -378,7 +303,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://pages.isnot.jp/2019-05/26-hoya-rose-garden/" data-id="cke5p0c81000oawbq7px22ity" data-title="保谷町ローズガーデン2019" class="article-permalink">
+      <a data-url="https://pages.isnot.jp/2019-05/26-hoya-rose-garden/" data-id="cke5rkfgu000pnabqb8rofj1f" data-title="保谷町ローズガーデン2019" class="article-permalink">
       
       </a>
       
@@ -442,7 +367,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://pages.isnot.jp/2019-05/06-study-about-hexos-internals-6/" data-id="cke5p0c8h001oawbq2ezqhu72" data-title="Hexo 内部探訪 (6) DevToolsを使ったデバッグ" class="article-permalink">
+      <a data-url="https://pages.isnot.jp/2019-05/06-study-about-hexos-internals-6/" data-id="cke5rkfhb001pnabqcmu08ne1" data-title="Hexo 内部探訪 (6) DevToolsを使ったデバッグ" class="article-permalink">
       
       </a>
       
@@ -501,7 +426,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://pages.isnot.jp/2019-05/06-study-about-hexos-internals-5/" data-id="cke5p0c8g001kawbq4fyyedjz" data-title="Hexo 内部探訪 (5) ライフサイクル" class="article-permalink">
+      <a data-url="https://pages.isnot.jp/2019-05/06-study-about-hexos-internals-5/" data-id="cke5rkfha001lnabq8mof0ogn" data-title="Hexo 内部探訪 (5) ライフサイクル" class="article-permalink">
       
       </a>
       
@@ -552,7 +477,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://pages.isnot.jp/2019-05/06-study-about-hexos-internals-4/" data-id="cke5p0c8e001gawbq1792ahvu" data-title="Hexo 内部探訪 (4) プラグインのロード" class="article-permalink">
+      <a data-url="https://pages.isnot.jp/2019-05/06-study-about-hexos-internals-4/" data-id="cke5rkfh8001hnabqa7ia506z" data-title="Hexo 内部探訪 (4) プラグインのロード" class="article-permalink">
       
       </a>
       
@@ -618,7 +543,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://pages.isnot.jp/2019-05/06-study-about-hexos-internals-3/" data-id="cke5p0c8d001cawbq3f69fnu7" data-title="Hexo 内部探訪 (3) コンテキストとしての&#34;hexo&#34;変数" class="article-permalink">
+      <a data-url="https://pages.isnot.jp/2019-05/06-study-about-hexos-internals-3/" data-id="cke5rkfh7001dnabq8txz16mm" data-title="Hexo 内部探訪 (3) コンテキストとしての&#34;hexo&#34;変数" class="article-permalink">
       
       </a>
       
@@ -701,7 +626,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://pages.isnot.jp/2019-05/06-study-about-hexos-internals-2/" data-id="cke5p0c8c0019awbq9imrf9oq" data-title="Hexo 内部探訪 (2) 準備 npm linkメモ" class="article-permalink">
+      <a data-url="https://pages.isnot.jp/2019-05/06-study-about-hexos-internals-2/" data-id="cke5rkfh5001anabqbx6eb7g7" data-title="Hexo 内部探訪 (2) 準備 npm linkメモ" class="article-permalink">
       
       </a>
       
@@ -777,13 +702,73 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://pages.isnot.jp/2019-05/05-study-about-hexos-internals-1/" data-id="cke5p0c8a0016awbqh0y5cq9r" data-title="Hexo 内部探訪 (1) はじめに" class="article-permalink">
+      <a data-url="https://pages.isnot.jp/2019-05/05-study-about-hexos-internals-1/" data-id="cke5rkfh40017nabq7jzn2vzn" data-title="Hexo 内部探訪 (1) はじめに" class="article-permalink">
       
       </a>
       
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hexo/" rel="tag">hexo</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/" rel="tag">javascript</a></li></ul>
+
+    </footer>
+    <div class="article-footer">
+      
+    </div>
+  </div>
+  
+</article>
+
+
+
+
+  
+    <article id="post-azalea" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2019-05/01-azalea/" class="article-date">
+  <time class="dt-published" datetime="2019-05-01T13:16:43.000Z" itemprop="datePublished">2019-05-01</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/photo/">photo</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2019-05/01-azalea/">ツツジ</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry index-entry" itemprop="articleBody">
+      
+        <div class="article-gallery"><div class="google-photos-album-area" id="google-photos-album-area2"><div class="metadatas"><img src="https://lh3.googleusercontent.com/cbbekekHcy5oNIWSUnqRcepSFEO9PpjYgYiqy2Jojpsvru6uaSS4boq2hw5ErcLm25CouS0hDwPizVynr6C2aDC5FWtIfo5f0sN9VD-o3zjBAl2DHPKraWpQXh4seihUrTnlKxfVPzk=w600-h315-p-k" class="og-image nolink"></img><a href="https://photos.google.com/share/AF1QipMdbjXa2yQDxvxPW0AohkV5eHAIYVHpgKdLZbCfPMGJiD7X98s1DcKny0BHpr71iw?key=c1pkQTYxOGtXTEV4TjVsYUMtelRRSUpWQVVKbnBn" class="og-url" target="_blank" rel="noopener"><span class="og-title">ツツジ</span><span class="og-description">8 new photos added to shared album</span></a></div>
+<div class="google-photos-album-images clearfix"><a href="https://lh3.googleusercontent.com/cbbekekHcy5oNIWSUnqRcepSFEO9PpjYgYiqy2Jojpsvru6uaSS4boq2hw5ErcLm25CouS0hDwPizVynr6C2aDC5FWtIfo5f0sN9VD-o3zjBAl2DHPKraWpQXh4seihUrTnlKxfVPzk=s720-no" class="gallery-item" target="_blank" rel="noopener"><img src="https://lh3.googleusercontent.com/cbbekekHcy5oNIWSUnqRcepSFEO9PpjYgYiqy2Jojpsvru6uaSS4boq2hw5ErcLm25CouS0hDwPizVynr6C2aDC5FWtIfo5f0sN9VD-o3zjBAl2DHPKraWpQXh4seihUrTnlKxfVPzk=w225-no?authuser=0"></a>
+<a href="https://lh3.googleusercontent.com/XigLNzXANLlEWVc6Vo6celJ4h_lInH9i4vC5Eo5XWVVqUnLd0UaLe3RQffAXecCDLpqag72brmyRig6FV1nLz3__uRYTdsGs1n-jGN_zHxtWTsFnxaKKtUHzjVIiOdHo94dV51zQQg0=s720-no" class="gallery-item" target="_blank" rel="noopener"><img src="https://lh3.googleusercontent.com/XigLNzXANLlEWVc6Vo6celJ4h_lInH9i4vC5Eo5XWVVqUnLd0UaLe3RQffAXecCDLpqag72brmyRig6FV1nLz3__uRYTdsGs1n-jGN_zHxtWTsFnxaKKtUHzjVIiOdHo94dV51zQQg0=w225-no?authuser=0"></a>
+<a href="https://lh3.googleusercontent.com/AeoLfJ1VTjx52y6okGpmNH6DucmgiC8D2-3VLSXV49C18MO8sGFoyAOIdjFA_3qDPooRhddnHAVh8aWiWlz4_KlDN4itcamCL9_CYDweO_jg7HOtSotkYKb11cTTAf9NZiz9Sa9oAck=s720-no" class="gallery-item" target="_blank" rel="noopener"><img src="https://lh3.googleusercontent.com/AeoLfJ1VTjx52y6okGpmNH6DucmgiC8D2-3VLSXV49C18MO8sGFoyAOIdjFA_3qDPooRhddnHAVh8aWiWlz4_KlDN4itcamCL9_CYDweO_jg7HOtSotkYKb11cTTAf9NZiz9Sa9oAck=w225-no?authuser=0"></a>
+<a href="https://lh3.googleusercontent.com/UuXzKZ295hX2dm8GiAQpUQroT9juuIiqqYQzk7HkPSk0FyDhSgEJfL242rbzaWkMeYyTUM83mfRHSnVHkCgyyvfVmUsuzmFOuW5h5nNkFu74Tqh1y9LzuJi7Chfd4EuMwxpn_FNzWIk=s720-no" class="gallery-item" target="_blank" rel="noopener"><img src="https://lh3.googleusercontent.com/UuXzKZ295hX2dm8GiAQpUQroT9juuIiqqYQzk7HkPSk0FyDhSgEJfL242rbzaWkMeYyTUM83mfRHSnVHkCgyyvfVmUsuzmFOuW5h5nNkFu74Tqh1y9LzuJi7Chfd4EuMwxpn_FNzWIk=w225-no?authuser=0"></a>
+<a href="https://lh3.googleusercontent.com/yRwmGV0rKjcf88spJuApw5Ct8COhsyVOtWDHl47VMPXiQAP116_LBNpjUcSSdW7Q1I1fBSRqBDOmmlNE4Bz5qNVa5-4MRKSal8IPs_hGip8TYiMG46NmjP5ky1rAfp4OLttd5rv4hko=s720-no" class="gallery-item" target="_blank" rel="noopener"><img src="https://lh3.googleusercontent.com/yRwmGV0rKjcf88spJuApw5Ct8COhsyVOtWDHl47VMPXiQAP116_LBNpjUcSSdW7Q1I1fBSRqBDOmmlNE4Bz5qNVa5-4MRKSal8IPs_hGip8TYiMG46NmjP5ky1rAfp4OLttd5rv4hko=w225-no?authuser=0"></a>
+<a href="https://lh3.googleusercontent.com/JlQDZHtdrk7UiMmbjw0LGb-P1e_2CXYo9fWnPnbTxPu44vhHA7VRDzQxAjjc_DussghnswuOcOp_u8c4m9sxHg1Or2gVsNJOH2R6Kg1p1ef7ThkJ1cWapwjaQKyX24Np2H-H79zCP3c=s720-no" class="gallery-item" target="_blank" rel="noopener"><img src="https://lh3.googleusercontent.com/JlQDZHtdrk7UiMmbjw0LGb-P1e_2CXYo9fWnPnbTxPu44vhHA7VRDzQxAjjc_DussghnswuOcOp_u8c4m9sxHg1Or2gVsNJOH2R6Kg1p1ef7ThkJ1cWapwjaQKyX24Np2H-H79zCP3c=w225-no?authuser=0"></a>
+<a href="https://lh3.googleusercontent.com/pT4awqpjsjV_h4Sc2mawIUaRGHYzgejg1TvLlwsfpLxmvD9TJ2NN5bxnQZvu6xQwIuAXU6Z_hg_idxwm-p7cN2yqF15i7twIQ2g3dypz29zWfxAyFQG1o6wph8hjlYB7948jGG7qWIY=s720-no" class="gallery-item" target="_blank" rel="noopener"><img src="https://lh3.googleusercontent.com/pT4awqpjsjV_h4Sc2mawIUaRGHYzgejg1TvLlwsfpLxmvD9TJ2NN5bxnQZvu6xQwIuAXU6Z_hg_idxwm-p7cN2yqF15i7twIQ2g3dypz29zWfxAyFQG1o6wph8hjlYB7948jGG7qWIY=w225-no?authuser=0"></a>
+<a href="https://lh3.googleusercontent.com/qs7O5vM49M4Nax5gwAbx7D7Mxnh_I2VS2oHaOofxSIOjwqCDOERJURR8UblBxiY1_xHgs3k-BSfO-tIzdevK88IjNAO-maJJmIRYbd4g0DzLl1nu3gW-v68mQIAIZbzwg-0KmRo9_Ok=s720-no" class="gallery-item" target="_blank" rel="noopener"><img src="https://lh3.googleusercontent.com/qs7O5vM49M4Nax5gwAbx7D7Mxnh_I2VS2oHaOofxSIOjwqCDOERJURR8UblBxiY1_xHgs3k-BSfO-tIzdevK88IjNAO-maJJmIRYbd4g0DzLl1nu3gW-v68mQIAIZbzwg-0KmRo9_Ok=w225-no?authuser=0"></a></div>
+</div>
+</div>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://pages.isnot.jp/2019-05/01-azalea/" data-id="cke5rkfgs000inabqanj66ij7" data-title="ツツジ" class="article-permalink">
+      
+      </a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/photo/" rel="tag">photo</a></li></ul>
 
     </footer>
     <div class="article-footer">
@@ -852,10 +837,6 @@
       <ul>
         
           <li>
-            <a href="/2020-08/22-test-injector-probrem/">Injectorの挙動を再現するテスト</a>
-          </li>
-        
-          <li>
             <a href="/2020-07/16-TestForInjectorOfHexo5/">Hexo 5.0 実装予定のInjectorを試す</a>
           </li>
         
@@ -877,6 +858,10 @@
         
           <li>
             <a href="/2019-10/17-tamako-cycling/">多摩湖自転車歩行者道〜六道山〜文明堂壹番館</a>
+          </li>
+        
+          <li>
+            <a href="/2019-09/24-Avenir-Shards-Bookmarklet/">Avenir Shards Bookmarklet</a>
           </li>
         
       </ul>
@@ -907,7 +892,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">アーカイブ</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">2020/08</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">2020/07</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">2020/06</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">2020/04</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">2019/11</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">2019/10</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">2019/09</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">2019/06</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">2019/05</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">2019/04</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">2020/07</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">2020/06</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">2020/04</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">2019/11</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">2019/10</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">2019/09</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">2019/06</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">2019/05</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">2019/04</a></li></ul>
     </div>
   </div>
 

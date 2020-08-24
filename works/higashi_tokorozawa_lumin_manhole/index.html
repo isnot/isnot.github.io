@@ -340,8 +340,8 @@ class userLocationHistory {
     this.history = new Set();
     this.last_location = undefined;
     this.min_duration = 2;
-    this.max_history = 100;
-    this.time_exceed = 60;
+    this.max_history = 150;
+    this.time_exceed = 3600;
   }
 
   _hasProperty(obj, prop) {
@@ -377,15 +377,11 @@ class userLocationHistory {
       this.history = new Set(this.getLast(size));
     }
     return;
-
-    // for (const item of this.getLast(size)) {
-    //   this.history.add(item);
-    // }
   }
 
   elapseTimeInSeconds(geolocate) {
     if (this.last_location === undefined) {
-      return 0;//this.min_duration + 1;
+      return 0;
     }
     if (!this._hasProperty(geolocate, 'timestamp')) {
       return 0;
@@ -742,7 +738,7 @@ map.on('load', () => {
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://pages.isnot.jp/works/higashi_tokorozawa_lumin_manhole/index.html" data-id="cke8jd2ap004bpabqef424ehm" data-title="東所沢の『光るマンホール』探勝マップ" class="article-permalink">
+      <a data-url="https://pages.isnot.jp/works/higashi_tokorozawa_lumin_manhole/index.html" data-id="cke8l5ted004bmsbq498hdrxh" data-title="東所沢の『光るマンホール』探勝マップ" class="article-permalink">
       
       </a>
       

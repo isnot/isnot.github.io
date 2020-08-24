@@ -253,7 +253,6 @@ const higashi_tokorozawa_loc = {
   pitch: 60,
   bearing: 0
 };
-const userTrack = new Set();
 
 class AbstractUserControl {
   onAdd(map) {
@@ -329,12 +328,94 @@ class HelpControl {
     <span class="mapboxgl-ctrl-icon fa fa-question-circle" aria-hidden="true">&nbsp;</span>
   </button>`;
     this._container.addEventListener('click', () => {
-      console.log('HelpControl onClick ocurred');
+      // console.debug('HelpControl onClick ocurred');
       document.getElementById('popupHelpContent').classList.toggle('hidden');
     });
     return this._container;
   }
 }
+
+class userLocationHistory {
+  constructor() {
+    this.history = new Set();
+    this.last_location = undefined;
+    this.min_duration = 2;
+    this.max_history = 10;
+    this.time_exceed = 3600;
+  }
+
+  _hasProperty(obj, prop) {
+    return Object.prototype.hasOwnProperty.call(obj, prop);
+  }
+
+  _add(geolocate) {
+    if (this._hasProperty(geolocate, 'timestamp')) {
+      this.history.add(geolocate);
+      this.last_location = geolocate;
+    }
+  }
+
+  size() {
+    return this.history.size;
+  }
+
+  getLast(size = 1) {
+    const asize = this.size < size ? this.size : parseInt(size, 10);
+    if (asize === 1) {
+      return this.last_location;
+    }
+    return Array.from(this.history).slice(-1 * asize);
+  }
+
+  reduce(size) {
+    if (this.size < 2) {
+      return;
+    }
+    if (size === 0) {
+      this.history.clear();
+    } else {
+      this.history = new Set(this.getLast(size));
+    }
+    return;
+
+    // for (const item of this.getLast(size)) {
+    //   this.history.add(item);
+    // }
+  }
+
+  elapseTimeInSeconds(geolocate) {
+    if (this.last_location === undefined) {
+      return 0;//this.min_duration + 1;
+    }
+    if (!this._hasProperty(geolocate, 'timestamp')) {
+      return 0;
+    }
+    return parseInt((geolocate.timestamp - this.last_location.timestamp) / 1000, 10);
+  }
+
+  addGeolocate(geolocate) {
+    // console.debug(geolocate, this.history);
+    const elapse = this.elapseTimeInSeconds(geolocate);
+
+    if (this.last_location === undefined) {
+      this._add(geolocate);
+    } else if (elapse > this.min_duration) {
+      this._add(geolocate);
+    }
+    const new_size = elapse > this.time_exceed ? 0 : this.max_history;
+    this.reduce(new_size);
+  }
+
+  getUserTrack() {
+    const t = [];
+    for (const item of this.getLast(this.max_history)) {
+      t.push([item.coords.longitude, item.coords.latitude]);
+    }
+    return t;
+  }
+}
+
+const userTrack = new userLocationHistory();
 
 mapboxgl.accessToken = 'pk.eyJ1IjoiaXNub3QiLCJhIjoiY2tkemV4MnR2MXRyMDJ4a2pzd2h1eHg1ayJ9.ALgtUeaHBDuvqvOR7008vA';
 const map = new mapboxgl.Map({
@@ -347,8 +428,47 @@ const map = new mapboxgl.Map({
   hash: true
 });
 
+function setupGeoLine() {
+  map.addSource('route', {
+    'type': 'geojson',
+    'data': {
+      'type': 'Feature',
+      'properties': {},
+      'geometry': {
+        'type': 'LineString',
+        'coordinates': []
+      }
+    }
+  });
+  map.addLayer({
+    'id': 'route',
+    'type': 'line',
+    'source': 'route',
+    'layout': {
+      'line-join': 'round',
+      'line-cap': 'round'
+    },
+    'paint': {
+      'line-color': '#888',
+      'line-width': 4
+    }
+  });
+}
+
+function updateGeoLine(coordinates) {
+  map.getSource('route').setData({
+    'type': 'Feature',
+    'properties': {},
+    'geometry': {
+      'type': 'LineString',
+      'coordinates': coordinates
+    }
+  });
+}
+
 function onGeolocate(pos) {
-  userTrack.add(pos);
+  userTrack.addGeolocate(pos);
+  updateGeoLine(userTrack.getUserTrack());
 }
 
 map.addControl(new mapboxgl.ScaleControl({
@@ -369,6 +489,7 @@ map.addControl(new HelpControl());
 map.addControl(new mapboxgl.NavigationControl(), 'bottom-right');
 
 map.on('load', () => {
+  setupGeoLine();
   waypoints.forEach((item) => {
     const el = document.createElement('div');
     el.id = `marker${item.number}`;
@@ -391,14 +512,14 @@ map.on('load', () => {
       if (userTrack.size < 1) {
         return undefined;
       }
-      const last_pos = Array.from(userTrack)[userTrack.size - 1];
+      const last_pos = userTrack.getLast();
       const geo = last_pos.coords;
       const dist = pane.target.getLngLat().distanceTo(new mapboxgl.LngLat(geo.longitude, geo.latitude));
       const popEl = pane.target.getElement();
       const messageEl = popEl.querySelector('.PopupMessage');
-      messageEl.innerHTML = `<span class="fa fa-compass" title="&#x1F9ED;"></span> ${parseInt(dist).toLocaleString('ja-JP')}[m]&nbsp;
+      messageEl.innerHTML = `<span class="fa fa-compass" title="&#x1F9ED;"></span> ${parseInt(dist, 10).toLocaleString('ja-JP')}[m]&nbsp;
                              <span class="fa fa-clock-o" title="&#x23F0;"></span> ${new Date(last_pos.timestamp).toLocaleTimeString()}`;
-      console.debug('##popupOnOpen:', [new Date(last_pos.timestamp), dist, userTrack.size]);
+      // console.debug('##popupOnOpen:', [new Date(last_pos.timestamp), dist, userTrack.size]);
     });
 
     new mapboxgl.Marker(el)
@@ -621,7 +742,7 @@ map.on('load', () => {
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://pages.isnot.jp/works/higashi_tokorozawa_lumin_manhole/index.html" data-id="cke5rkfi50047nabq8q8u5ez1" data-title="東所沢の『光るマンホール』探勝マップ" class="article-permalink">
+      <a data-url="https://pages.isnot.jp/works/higashi_tokorozawa_lumin_manhole/index.html" data-id="cke8j0jd9004be6bqe5lo6dmi" data-title="東所沢の『光るマンホール』探勝マップ" class="article-permalink">
       
       </a>
       

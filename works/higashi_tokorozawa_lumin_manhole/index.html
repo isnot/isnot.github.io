@@ -256,7 +256,7 @@ const higashi_tokorozawa_loc = {
 
 class AbstractUserControl {
   onAdd(map) {
-    throw new Exception('Imprement this!');
+    throw new Exception('Implement this!');
   }
 
   onRemove() {
@@ -291,8 +291,9 @@ class MoveToHomeControl extends AbstractUserControl {
   }
 }
 
-class HelpControl {
+class HelpControl extends AbstractUserControl {
   constructor() {
+    super();
     const popupHelpContent = document.createElement('div');
     popupHelpContent.id = 'popupHelpContent';
     popupHelpContent.className = 'hidden';
@@ -738,7 +739,7 @@ map.on('load', () => {
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://pages.isnot.jp/works/higashi_tokorozawa_lumin_manhole/index.html" data-id="ckek5sob7004hi8bq23lccjp3" data-title="東所沢の『光るマンホール』探勝マップ" class="article-permalink">
+      <a data-url="https://pages.isnot.jp/works/higashi_tokorozawa_lumin_manhole/index.html" data-id="ckek6butt004d17bq41n08jo7" data-title="東所沢の『光るマンホール』探勝マップ" class="article-permalink">
       
       </a>
       

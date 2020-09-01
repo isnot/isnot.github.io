@@ -3,17 +3,22 @@
 <head>
   <meta charset="UTF-8">
   
-  <title>タグ: chatbot | isnot N3 | isnot N3</title>
+  <title>「東所沢の『光るマンホール』探勝マップ」を作った | isnot N3 | isnot N3</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no">
-  <meta name="description" content="https:&#x2F;&#x2F;pages.isnot.jp isnot N3">
-<meta property="og:type" content="website">
-<meta property="og:title" content="isnot N3">
-<meta property="og:url" content="https://pages.isnot.jp/tags/chatbot/index.html">
+  <meta name="description" content="東所沢の『光るマンホール』探勝マップ これは何？埼玉県所沢市には、アニメ作品をモチーフにした、『光るマンホール』があるという。JR武蔵野線 東所沢駅から北へ向かい、東所沢公園付近に至るまでの間に、全28基が設置されている。 それらを鑑賞して楽しむためのガイドブックとして、また、撮影した画像を地図上に重ね合わせて表示し、見て楽しむためのコンテンツとして、マップを作成しました。 今回、私としては初めて">
+<meta property="og:type" content="article">
+<meta property="og:title" content="「東所沢の『光るマンホール』探勝マップ」を作った">
+<meta property="og:url" content="https://pages.isnot.jp/2020-09/02-higatoko-manhole-map/index.html">
 <meta property="og:site_name" content="isnot N3">
-<meta property="og:description" content="https:&#x2F;&#x2F;pages.isnot.jp isnot N3">
+<meta property="og:description" content="東所沢の『光るマンホール』探勝マップ これは何？埼玉県所沢市には、アニメ作品をモチーフにした、『光るマンホール』があるという。JR武蔵野線 東所沢駅から北へ向かい、東所沢公園付近に至るまでの間に、全28基が設置されている。 それらを鑑賞して楽しむためのガイドブックとして、また、撮影した画像を地図上に重ね合わせて表示し、見て楽しむためのコンテンツとして、マップを作成しました。 今回、私としては初めて">
 <meta property="og:locale" content="ja_JP">
+<meta property="article:published_time" content="2020-09-01T15:17:33.000Z">
+<meta property="article:modified_time" content="2020-09-01T15:17:33.000Z">
 <meta property="article:author" content="isnot">
-<meta property="article:tag" content="Javascript, Node.js, npm, git, GitHub, ChatBot, MPD, Ubuntu, Emacs, Photo">
+<meta property="article:tag" content="javascript">
+<meta property="article:tag" content="map">
+<meta property="article:tag" content="mapbox">
+<meta property="article:tag" content="tokorozawa">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternate" href="/atom.xml" title="isnot N3" type="application/atom+xml">
@@ -81,39 +86,104 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main">
-  
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2020" class="archive-year">2020</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2020-04/09-Create-a-Framework-for-Chatbot/" class="archive-article-date">
-  <time class="dt-published" datetime="2020-04-08T22:54:19.000Z" itemprop="datePublished">4月 9</time>
+        <section id="main"><article id="post-higatoko-manhole-map" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2020-09/02-higatoko-manhole-map/" class="article-date">
+  <time class="dt-published" datetime="2020-09-01T15:17:33.000Z" itemprop="datePublished">2020-09-02</time>
 </a>
-      
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/javascript/">javascript</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020-04/09-Create-a-Framework-for-Chatbot/">チャット・ボットのためのフレームワークを開発してみた。序章</a>
+    <h1 class="p-name article-title" itemprop="headline name">
+      「東所沢の『光るマンホール』探勝マップ」を作った
     </h1>
   
 
-    </header>
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <div class="article-gallery"><p><a href="/works/higashi_tokorozawa_lumin_manhole/">東所沢の『光るマンホール』探勝マップ</a></p>
+<h2 id="これは何？"><a href="#これは何？" class="headerlink" title="これは何？"></a>これは何？</h2><p>埼玉県所沢市には、アニメ作品をモチーフにした、『光るマンホール』があるという。<br>JR武蔵野線 東所沢駅から北へ向かい、東所沢公園付近に至るまでの間に、全28基が設置されている。</p>
+<p>それらを鑑賞して楽しむためのガイドブックとして、また、撮影した画像を地図上に重ね合わせて表示し、見て楽しむためのコンテンツとして、マップを作成しました。</p>
+<p>今回、私としては初めての試みとして、マップを表示するためのライブラリとして、Mapboxを利用することにしました。</p>
+<p>基本的には公式ドキュメントに記載されているサンプルほぼそのままに、SDKの機能を呼び出している（組み合わせた）のですが、一部、オリジナルの機能を実現するために、独自に実装した機能もあります。</p>
+<h2 id="説明スライド"><a href="#説明スライド" class="headerlink" title="説明スライド"></a>説明スライド</h2>
+<iframe src="https://docs.google.com/presentation/d/e/2PACX-1vQtT9YTFg1LlyMjs5Z4vdoZdI57ZG8nyWlACW_7nS0ANhKUdhYv5cc3dQpXx_Hj2sgi7ajw7xTb02lI/embed?start=false&loop=false&delayms=3000" frameborder="0" width="800" height="500" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
+
+
+<h2 id="特徴"><a href="#特徴" class="headerlink" title="特徴"></a>特徴</h2><ul>
+<li>マップには、Mapbox GL JSを使用。3D風の、斜め見下ろし視点</li>
+<li>28基のマンホールがある位置には、マーカーを配置。番号と作品イラストで分かりやすく</li>
+<li>マーカーをクリック（タップ）すると、ポップアップを表示。撮影したマンホールの画像を閲覧できる</li>
+<li>ユーザーの現在位置を表示できる（端末の位置情報を有効にした場合）</li>
+<li>ユーザーの移動に合わせて、軌跡を表示（グレーの線）</li>
+<li>現在位置から各マンホールまでの、直線距離を表示（ポップアップの下部）</li>
+</ul>
+<h2 id="独自に実装した機能"><a href="#独自に実装した機能" class="headerlink" title="独自に実装した機能"></a>独自に実装した機能</h2><ul>
+<li>ユーザーの軌跡を線で表示する<ul>
+<li>位置情報の履歴を保持して、それをgeojson形式に整形、ラインとしてマップ上にレイヤーを描画</li>
+</ul>
+</li>
+<li>特定の座標（東所沢）へマップの表示範囲を移動するボタン<ul>
+<li>独自のコントロールを追加できる機能を使い、実装。クリックイベントに、マップの移動をするコールバック関数を登録した</li>
+</ul>
+</li>
+<li>ヘルプを表示するボタン<ul>
+<li>上記同様、独自のコントロール。予めヘルプを書いておいたHTML要素を、表示/非表示切り替え、CSSでオーバーレイ表示している</li>
+</ul>
+</li>
+</ul>
+</div>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://pages.isnot.jp/2020-09/02-higatoko-manhole-map/" data-id="ckek5so9s000pi8bq4tn7780p" data-title="「東所沢の『光るマンホール』探勝マップ」を作った" class="article-permalink">
+      
+      </a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/" rel="tag">javascript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/map/" rel="tag">map</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/mapbox/" rel="tag">mapbox</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/tokorozawa/" rel="tag">tokorozawa</a></li></ul>
+
+    </footer>
+    <div class="article-footer">
+      
+      
+<div id="stageComment" class="comment fa fa-comment-o">
+  「東所沢の『光るマンホール』探勝マップ」を作った について、
+  <a target="_blank" rel="noopener" href="https://github.com/isnot/isnot.github.io/issues/new?labels=blog-comments&title=「東所沢の『光るマンホール』探勝マップ」を作った&body=About%20%5B%E3%80%8C%E6%9D%B1%E6%89%80%E6%B2%A2%E3%81%AE%E3%80%8E%E5%85%89%E3%82%8B%E3%83%9E%E3%83%B3%E3%83%9B%E3%83%BC%E3%83%AB%E3%80%8F%E6%8E%A2%E5%8B%9D%E3%83%9E%E3%83%83%E3%83%97%E3%80%8D%E3%82%92%E4%BD%9C%E3%81%A3%E3%81%9F%5D(https%3A%2F%2Fpages.isnot.jp%2F2020-09%2F02-higatoko-manhole-map%2Findex.html)">
+    GitHubでコメントする
+  </a>
+</div>
+
+      
+    </div>
   </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2020-07/16-TestForInjectorOfHexo5/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">前の記事</strong>
+      <div class="article-nav-title">Hexo 5.0 実装予定のInjectorを試す</div>
+    </a>
+  
+</nav>
+
+  
 </article>
-  
-  
-    </div></section>
-  
+
 
 
 </section>

@@ -83,6 +83,87 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-higatoko-manhole-map" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2020-09/02-higatoko-manhole-map/" class="article-date">
+  <time class="dt-published" datetime="2020-09-01T15:17:33.000Z" itemprop="datePublished">2020-09-02</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/javascript/">javascript</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2020-09/02-higatoko-manhole-map/">「東所沢の『光るマンホール』探勝マップ」を作った</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry index-entry" itemprop="articleBody">
+      
+        <div class="article-gallery"><p><a href="/works/higashi_tokorozawa_lumin_manhole/">東所沢の『光るマンホール』探勝マップ</a></p>
+<h2 id="これは何？"><a href="#これは何？" class="headerlink" title="これは何？"></a>これは何？</h2><p>埼玉県所沢市には、アニメ作品をモチーフにした、『光るマンホール』があるという。<br>JR武蔵野線 東所沢駅から北へ向かい、東所沢公園付近に至るまでの間に、全28基が設置されている。</p>
+<p>それらを鑑賞して楽しむためのガイドブックとして、また、撮影した画像を地図上に重ね合わせて表示し、見て楽しむためのコンテンツとして、マップを作成しました。</p>
+<p>今回、私としては初めての試みとして、マップを表示するためのライブラリとして、Mapboxを利用することにしました。</p>
+<p>基本的には公式ドキュメントに記載されているサンプルほぼそのままに、SDKの機能を呼び出している（組み合わせた）のですが、一部、オリジナルの機能を実現するために、独自に実装した機能もあります。</p>
+<h2 id="説明スライド"><a href="#説明スライド" class="headerlink" title="説明スライド"></a>説明スライド</h2>
+<iframe src="https://docs.google.com/presentation/d/e/2PACX-1vQtT9YTFg1LlyMjs5Z4vdoZdI57ZG8nyWlACW_7nS0ANhKUdhYv5cc3dQpXx_Hj2sgi7ajw7xTb02lI/embed?start=false&loop=false&delayms=3000" frameborder="0" width="800" height="500" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
+
+
+<h2 id="特徴"><a href="#特徴" class="headerlink" title="特徴"></a>特徴</h2><ul>
+<li>マップには、Mapbox GL JSを使用。3D風の、斜め見下ろし視点</li>
+<li>28基のマンホールがある位置には、マーカーを配置。番号と作品イラストで分かりやすく</li>
+<li>マーカーをクリック（タップ）すると、ポップアップを表示。撮影したマンホールの画像を閲覧できる</li>
+<li>ユーザーの現在位置を表示できる（端末の位置情報を有効にした場合）</li>
+<li>ユーザーの移動に合わせて、軌跡を表示（グレーの線）</li>
+<li>現在位置から各マンホールまでの、直線距離を表示（ポップアップの下部）</li>
+</ul>
+<h2 id="独自に実装した機能"><a href="#独自に実装した機能" class="headerlink" title="独自に実装した機能"></a>独自に実装した機能</h2><ul>
+<li>ユーザーの軌跡を線で表示する<ul>
+<li>位置情報の履歴を保持して、それをgeojson形式に整形、ラインとしてマップ上にレイヤーを描画</li>
+</ul>
+</li>
+<li>特定の座標（東所沢）へマップの表示範囲を移動するボタン<ul>
+<li>独自のコントロールを追加できる機能を使い、実装。クリックイベントに、マップの移動をするコールバック関数を登録した</li>
+</ul>
+</li>
+<li>ヘルプを表示するボタン<ul>
+<li>上記同様、独自のコントロール。予めヘルプを書いておいたHTML要素を、表示/非表示切り替え、CSSでオーバーレイ表示している</li>
+</ul>
+</li>
+</ul>
+</div>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://pages.isnot.jp/2020-09/02-higatoko-manhole-map/" data-id="ckek5so9s000pi8bq4tn7780p" data-title="「東所沢の『光るマンホール』探勝マップ」を作った" class="article-permalink">
+      
+      </a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/" rel="tag">javascript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/map/" rel="tag">map</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/mapbox/" rel="tag">mapbox</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/tokorozawa/" rel="tag">tokorozawa</a></li></ul>
+
+    </footer>
+    <div class="article-footer">
+      
+    </div>
+  </div>
+  
+</article>
+
+
+
+
+  
     <article id="post-TestForInjectorOfHexo5" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/2020-07/16-TestForInjectorOfHexo5/" class="article-date">
@@ -130,7 +211,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://pages.isnot.jp/2020-07/16-TestForInjectorOfHexo5/" data-id="cke8l5tcx000dmsbq3m1q44nj" data-title="Hexo 5.0 実装予定のInjectorを試す" class="article-permalink">
+      <a data-url="https://pages.isnot.jp/2020-07/16-TestForInjectorOfHexo5/" data-id="ckek5so9m000di8bq8lwa7enb" data-title="Hexo 5.0 実装予定のInjectorを試す" class="article-permalink">
       
       </a>
       
@@ -238,7 +319,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://pages.isnot.jp/2020-07/16-HowTo-HexoInject/" data-id="cke8l5tct0009msbqbtwcao6k" data-title="【HowTo】Hexoの新しいInjectorについて調べた【5.0】" class="article-permalink">
+      <a data-url="https://pages.isnot.jp/2020-07/16-HowTo-HexoInject/" data-id="ckek5so9j0009i8bq2pwqg8de" data-title="【HowTo】Hexoの新しいInjectorについて調べた【5.0】" class="article-permalink">
       
       </a>
       
@@ -306,7 +387,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://pages.isnot.jp/2020-06/25-hydrangea2020/" data-id="cke8l5td6000umsbq3dro8rou" data-title="アジサイ2020" class="article-permalink">
+      <a data-url="https://pages.isnot.jp/2020-06/25-hydrangea2020/" data-id="ckek5so9w000wi8bqaq4p3ziz" data-title="アジサイ2020" class="article-permalink">
       
       </a>
       
@@ -372,7 +453,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://pages.isnot.jp/2020-04/09-Create-a-Framework-for-Chatbot/" data-id="cke8l5tco0005msbqev4hf426" data-title="チャット・ボットのためのフレームワークを開発してみた。序章" class="article-permalink">
+      <a data-url="https://pages.isnot.jp/2020-04/09-Create-a-Framework-for-Chatbot/" data-id="ckek5so9e0005i8bqactybcjl" data-title="チャット・ボットのためのフレームワークを開発してみた。序章" class="article-permalink">
       
       </a>
       
@@ -433,7 +514,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://pages.isnot.jp/2019-11/18-apt-btrfs-snapshot-df/" data-id="cke8l5tcy000emsbqfvszdoz3" data-title="apt-btrfs-snapshotによるディスク容量の消費" class="article-permalink">
+      <a data-url="https://pages.isnot.jp/2019-11/18-apt-btrfs-snapshot-df/" data-id="ckek5so9n000ei8bqdfm31srs" data-title="apt-btrfs-snapshotによるディスク容量の消費" class="article-permalink">
       
       </a>
       
@@ -507,7 +588,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://pages.isnot.jp/2019-10/17-tamako-cycling/" data-id="cke8l5tdl001tmsbq5m2r8enx" data-title="多摩湖自転車歩行者道〜六道山〜文明堂壹番館" class="article-permalink">
+      <a data-url="https://pages.isnot.jp/2019-10/17-tamako-cycling/" data-id="ckek5soab001xi8bq8edu1yrr" data-title="多摩湖自転車歩行者道〜六道山〜文明堂壹番館" class="article-permalink">
       
       </a>
       
@@ -565,7 +646,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://pages.isnot.jp/2019-09/24-Avenir-Shards-Bookmarklet/" data-id="cke8l5tcm0003msbq70dxe8pl" data-title="Avenir Shards Bookmarklet" class="article-permalink">
+      <a data-url="https://pages.isnot.jp/2019-09/24-Avenir-Shards-Bookmarklet/" data-id="ckek5so9c0003i8bqc7bih8uj" data-title="Avenir Shards Bookmarklet" class="article-permalink">
       
       </a>
       
@@ -623,7 +704,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://pages.isnot.jp/2019-06/23-GoogleSpreadsheetAPIv4/" data-id="cke8l5tcs0008msbqe84k04s0" data-title="GoogleSpreadsheetAPIv4" class="article-permalink">
+      <a data-url="https://pages.isnot.jp/2019-06/23-GoogleSpreadsheetAPIv4/" data-id="ckek5so9i0008i8bqhufzf0ok" data-title="GoogleSpreadsheetAPIv4" class="article-permalink">
       
       </a>
       
@@ -689,88 +770,13 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://pages.isnot.jp/2019-06/17-hydrangea/" data-id="cke8l5td4000qmsbqa5ak1f8z" data-title="アジサイ2019" class="article-permalink">
+      <a data-url="https://pages.isnot.jp/2019-06/17-hydrangea/" data-id="ckek5so9v000ui8bqfymu7i7l" data-title="アジサイ2019" class="article-permalink">
       
       </a>
       
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/photo/" rel="tag">photo</a></li></ul>
-
-    </footer>
-    <div class="article-footer">
-      
-    </div>
-  </div>
-  
-</article>
-
-
-
-
-  
-    <article id="post-update-hexo-tag-gpa" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2019-06/08-update-hexo-tag-gpa/" class="article-date">
-  <time class="dt-published" datetime="2019-06-08T05:40:03.000Z" itemprop="datePublished">2019-06-08</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/hexo/">hexo</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2019-06/08-update-hexo-tag-gpa/">hexo-tag-google-photos-album をアップデートした</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry index-entry" itemprop="articleBody">
-      
-        <div class="article-gallery"><h2 id="metascraperにおけるXSS対応と、その影響"><a href="#metascraperにおけるXSS対応と、その影響" class="headerlink" title="metascraperにおけるXSS対応と、その影響"></a>metascraperにおけるXSS対応と、その影響</h2><p>自作のHexo向けプラグインであるhexo-tag-google-photos-albumでは、<a target="_blank" rel="noopener" href="https://metascraper.js.org/#/">metascraper</a>というnpmライブラリを利用しています。<br>Google Photosの共有リンクから辿って、いくつかのメタデータを抽出するためです。</p>
-<p>そのmetascraperで、XSS脆弱性の報告がありました。（現時点では修正対応済）</p>
-<p>その解決に伴い、hexo-tag-google-photos-albumでは、修正済みバージョンを利用するように、修正をしました。</p>
-<ul>
-<li>metascraperのGitHubリポジトリにおけるイシュー<ul>
-<li>NPM Reporting as CSS Vulnerability <a target="_blank" rel="noopener" href="https://github.com/microlinkhq/metascraper/issues/153">#153</a></li>
-<li>Add escape parameter to escape html data by default <a target="_blank" rel="noopener" href="https://github.com/microlinkhq/metascraper/issues/168">#168</a></li>
-</ul>
-</li>
-<li>npmのセキュリティ勧告<ul>
-<li><a target="_blank" rel="noopener" href="https://www.npmjs.com/advisories/603">Cross-Site Scripting metascraper</a></li>
-</ul>
-</li>
-<li>報告の元になったレポート<ul>
-<li>[metascraper] Stored XSS in Open Graph meta properties read by metascrapper <a target="_blank" rel="noopener" href="https://hackerone.com/reports/309367">hackerone.com #309367</a></li>
-</ul>
-</li>
-<li>isnot/hexo-tag-google-photos-album 修正の差分<ul>
-<li>metascraper up to @5.4.2 <a target="_blank" rel="noopener" href="https://github.com/isnot/hexo-tag-google-photos-album/commit/02366cc046ccd932cdca89d2562f4ae5dd60adf4#diff-b9cfc7f2cdf78a7f4b91a753d10865a2">#02366cc</a></li>
-</ul>
-</li>
-</ul>
-<h2 id="修正後の確認"><a href="#修正後の確認" class="headerlink" title="修正後の確認"></a>修正後の確認</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo-tag-google-photos-album$ npm audit</span><br><span class="line"></span><br><span class="line">                       === npm audit security report ===</span><br><span class="line"></span><br><span class="line">found 0 vulnerabilities</span><br><span class="line"> <span class="keyword">in</span> 2702 scanned packages</span><br><span class="line"></span><br><span class="line">(snip)</span><br><span class="line"></span><br><span class="line">blog$ npm view hexo-tag-google-photos-album version</span><br><span class="line">1.0.5</span><br><span class="line">blog$ hexo clean</span><br><span class="line">(node:29044) [DEP0061] DeprecationWarning: fs.SyncWriteStream is deprecated.</span><br><span class="line">INFO  Deleted database.</span><br><span class="line">INFO  Deleted public folder.</span><br></pre></td></tr></table></figure>
-
-<p>特に問題なし。</p>
-</div>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://pages.isnot.jp/2019-06/08-update-hexo-tag-gpa/" data-id="cke8l5tdn001xmsbqheto9xvp" data-title="hexo-tag-google-photos-album をアップデートした" class="article-permalink">
-      
-      </a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hexo/" rel="tag">hexo</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/" rel="tag">javascript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/npm/" rel="tag">npm</a></li></ul>
 
     </footer>
     <div class="article-footer">
@@ -839,6 +845,10 @@
       <ul>
         
           <li>
+            <a href="/2020-09/02-higatoko-manhole-map/">「東所沢の『光るマンホール』探勝マップ」を作った</a>
+          </li>
+        
+          <li>
             <a href="/2020-07/16-TestForInjectorOfHexo5/">Hexo 5.0 実装予定のInjectorを試す</a>
           </li>
         
@@ -862,10 +872,6 @@
             <a href="/2019-10/17-tamako-cycling/">多摩湖自転車歩行者道〜六道山〜文明堂壹番館</a>
           </li>
         
-          <li>
-            <a href="/2019-09/24-Avenir-Shards-Bookmarklet/">Avenir Shards Bookmarklet</a>
-          </li>
-        
       </ul>
     </div>
   </div>
@@ -875,7 +881,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">タグ一覧</h3>
     <div class="widget tagcloud">
-      <a href="/tags/chatbot/" style="font-size: 10px;">chatbot</a> <a href="/tags/cycling/" style="font-size: 10px;">cycling</a> <a href="/tags/domain/" style="font-size: 10px;">domain</a> <a href="/tags/gas/" style="font-size: 10px;">gas</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/github-pages/" style="font-size: 10px;">github pages</a> <a href="/tags/hexo/" style="font-size: 18px;">hexo</a> <a href="/tags/ingress/" style="font-size: 10px;">ingress</a> <a href="/tags/isnot/" style="font-size: 10px;">isnot</a> <a href="/tags/javascript/" style="font-size: 20px;">javascript</a> <a href="/tags/line/" style="font-size: 10px;">line</a> <a href="/tags/npm/" style="font-size: 14px;">npm</a> <a href="/tags/photo/" style="font-size: 16px;">photo</a> <a href="/tags/rose/" style="font-size: 12px;">rose</a> <a href="/tags/sakura/" style="font-size: 10px;">sakura</a> <a href="/tags/skyscraper/" style="font-size: 10px;">skyscraper</a> <a href="/tags/telegram/" style="font-size: 10px;">telegram</a> <a href="/tags/ubuntu/" style="font-size: 10px;">ubuntu</a>
+      <a href="/tags/chatbot/" style="font-size: 10px;">chatbot</a> <a href="/tags/cycling/" style="font-size: 10px;">cycling</a> <a href="/tags/domain/" style="font-size: 10px;">domain</a> <a href="/tags/gas/" style="font-size: 10px;">gas</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/github-pages/" style="font-size: 10px;">github pages</a> <a href="/tags/hexo/" style="font-size: 18px;">hexo</a> <a href="/tags/ingress/" style="font-size: 10px;">ingress</a> <a href="/tags/isnot/" style="font-size: 10px;">isnot</a> <a href="/tags/javascript/" style="font-size: 20px;">javascript</a> <a href="/tags/line/" style="font-size: 10px;">line</a> <a href="/tags/map/" style="font-size: 10px;">map</a> <a href="/tags/mapbox/" style="font-size: 10px;">mapbox</a> <a href="/tags/npm/" style="font-size: 14px;">npm</a> <a href="/tags/photo/" style="font-size: 16px;">photo</a> <a href="/tags/rose/" style="font-size: 12px;">rose</a> <a href="/tags/sakura/" style="font-size: 10px;">sakura</a> <a href="/tags/skyscraper/" style="font-size: 10px;">skyscraper</a> <a href="/tags/telegram/" style="font-size: 10px;">telegram</a> <a href="/tags/tokorozawa/" style="font-size: 10px;">tokorozawa</a> <a href="/tags/ubuntu/" style="font-size: 10px;">ubuntu</a>
     </div>
   </div>
 
@@ -894,7 +900,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">アーカイブ</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">2020/07</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">2020/06</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">2020/04</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">2019/11</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">2019/10</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">2019/09</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">2019/06</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">2019/05</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">2019/04</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/09/">2020/09</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">2020/07</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">2020/06</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">2020/04</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">2019/11</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">2019/10</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">2019/09</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">2019/06</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">2019/05</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">2019/04</a></li></ul>
     </div>
   </div>
 

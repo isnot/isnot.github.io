@@ -6,7 +6,7 @@
   <link href="https://pages.isnot.jp/atom.xml" rel="self"/>
   
   <link href="https://pages.isnot.jp/"/>
-  <updated>2020-07-16T09:36:21.000Z</updated>
+  <updated>2020-09-01T15:17:33.000Z</updated>
   <id>https://pages.isnot.jp/</id>
   
   <author>
@@ -15,6 +15,37 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>「東所沢の『光るマンホール』探勝マップ」を作った</title>
+    <link href="https://pages.isnot.jp/2020-09/02-higatoko-manhole-map/"/>
+    <id>https://pages.isnot.jp/2020-09/02-higatoko-manhole-map/</id>
+    <published>2020-09-01T15:17:33.000Z</published>
+    <updated>2020-09-01T15:17:33.000Z</updated>
+    
+    <content type="html"><![CDATA[<div class="article-gallery"><p><a href="/works/higashi_tokorozawa_lumin_manhole/">東所沢の『光るマンホール』探勝マップ</a></p><h2 id="これは何？"><a href="#これは何？" class="headerlink" title="これは何？"></a>これは何？</h2><p>埼玉県所沢市には、アニメ作品をモチーフにした、『光るマンホール』があるという。<br>JR武蔵野線 東所沢駅から北へ向かい、東所沢公園付近に至るまでの間に、全28基が設置されている。</p><p>それらを鑑賞して楽しむためのガイドブックとして、また、撮影した画像を地図上に重ね合わせて表示し、見て楽しむためのコンテンツとして、マップを作成しました。</p><p>今回、私としては初めての試みとして、マップを表示するためのライブラリとして、Mapboxを利用することにしました。</p><p>基本的には公式ドキュメントに記載されているサンプルほぼそのままに、SDKの機能を呼び出している（組み合わせた）のですが、一部、オリジナルの機能を実現するために、独自に実装した機能もあります。</p><h2 id="説明スライド"><a href="#説明スライド" class="headerlink" title="説明スライド"></a>説明スライド</h2><iframe src="https://docs.google.com/presentation/d/e/2PACX-1vQtT9YTFg1LlyMjs5Z4vdoZdI57ZG8nyWlACW_7nS0ANhKUdhYv5cc3dQpXx_Hj2sgi7ajw7xTb02lI/embed?start=false&loop=false&delayms=3000" frameborder="0" width="800" height="500" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe><h2 id="特徴"><a href="#特徴" class="headerlink" title="特徴"></a>特徴</h2><ul><li>マップには、Mapbox GL JSを使用。3D風の、斜め見下ろし視点</li><li>28基のマンホールがある位置には、マーカーを配置。番号と作品イラストで分かりやすく</li><li>マーカーをクリック（タップ）すると、ポップアップを表示。撮影したマンホールの画像を閲覧できる</li><li>ユーザーの現在位置を表示できる（端末の位置情報を有効にした場合）</li><li>ユーザーの移動に合わせて、軌跡を表示（グレーの線）</li><li>現在位置から各マンホールまでの、直線距離を表示（ポップアップの下部）</li></ul><h2 id="独自に実装した機能"><a href="#独自に実装した機能" class="headerlink" title="独自に実装した機能"></a>独自に実装した機能</h2><ul><li>ユーザーの軌跡を線で表示する<ul><li>位置情報の履歴を保持して、それをgeojson形式に整形、ラインとしてマップ上にレイヤーを描画</li></ul></li><li>特定の座標（東所沢）へマップの表示範囲を移動するボタン<ul><li>独自のコントロールを追加できる機能を使い、実装。クリックイベントに、マップの移動をするコールバック関数を登録した</li></ul></li><li>ヘルプを表示するボタン<ul><li>上記同様、独自のコントロール。予めヘルプを書いておいたHTML要素を、表示/非表示切り替え、CSSでオーバーレイ表示している</li></ul></li></ul></div>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;div class=&quot;article-gallery&quot;&gt;&lt;p&gt;&lt;a href=&quot;/works/higashi_tokorozawa_lumin_manhole/&quot;&gt;東所沢の『光るマンホール』探勝マップ&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&quot;これは何？&quot;&gt;&lt;a href=&quot;#これは何？</summary>
+      
+    
+    
+    
+    <category term="javascript" scheme="https://pages.isnot.jp/categories/javascript/"/>
+    
+    
+    <category term="javascript" scheme="https://pages.isnot.jp/tags/javascript/"/>
+    
+    <category term="map" scheme="https://pages.isnot.jp/tags/map/"/>
+    
+    <category term="mapbox" scheme="https://pages.isnot.jp/tags/mapbox/"/>
+    
+    <category term="tokorozawa" scheme="https://pages.isnot.jp/tags/tokorozawa/"/>
+    
+  </entry>
   
   <entry>
     <title>Hexo 5.0 実装予定のInjectorを試す</title>
@@ -517,30 +548,6 @@
     <category term="javascript" scheme="https://pages.isnot.jp/tags/javascript/"/>
     
     <category term="hexo" scheme="https://pages.isnot.jp/tags/hexo/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>ツツジ</title>
-    <link href="https://pages.isnot.jp/2019-05/01-azalea/"/>
-    <id>https://pages.isnot.jp/2019-05/01-azalea/</id>
-    <published>2019-05-01T13:16:43.000Z</published>
-    <updated>2019-05-01T13:16:43.000Z</updated>
-    
-    <content type="html"><![CDATA[<div class="article-gallery"><div class="google-photos-album-area" id="google-photos-album-area2"><div class="metadatas"><img src="https://lh3.googleusercontent.com/cbbekekHcy5oNIWSUnqRcepSFEO9PpjYgYiqy2Jojpsvru6uaSS4boq2hw5ErcLm25CouS0hDwPizVynr6C2aDC5FWtIfo5f0sN9VD-o3zjBAl2DHPKraWpQXh4seihUrTnlKxfVPzk=w600-h315-p-k" class="og-image nolink"></img><a href="https://photos.google.com/share/AF1QipMdbjXa2yQDxvxPW0AohkV5eHAIYVHpgKdLZbCfPMGJiD7X98s1DcKny0BHpr71iw?key=c1pkQTYxOGtXTEV4TjVsYUMtelRRSUpWQVVKbnBn" class="og-url" target="_blank" rel="noopener"><span class="og-title">ツツジ</span><span class="og-description">8 new photos added to shared album</span></a></div><div class="google-photos-album-images clearfix"><a href="https://lh3.googleusercontent.com/cbbekekHcy5oNIWSUnqRcepSFEO9PpjYgYiqy2Jojpsvru6uaSS4boq2hw5ErcLm25CouS0hDwPizVynr6C2aDC5FWtIfo5f0sN9VD-o3zjBAl2DHPKraWpQXh4seihUrTnlKxfVPzk=s720-no" class="gallery-item" target="_blank" rel="noopener"><img src="https://lh3.googleusercontent.com/cbbekekHcy5oNIWSUnqRcepSFEO9PpjYgYiqy2Jojpsvru6uaSS4boq2hw5ErcLm25CouS0hDwPizVynr6C2aDC5FWtIfo5f0sN9VD-o3zjBAl2DHPKraWpQXh4seihUrTnlKxfVPzk=w225-no?authuser=0"></a><a href="https://lh3.googleusercontent.com/XigLNzXANLlEWVc6Vo6celJ4h_lInH9i4vC5Eo5XWVVqUnLd0UaLe3RQffAXecCDLpqag72brmyRig6FV1nLz3__uRYTdsGs1n-jGN_zHxtWTsFnxaKKtUHzjVIiOdHo94dV51zQQg0=s720-no" class="gallery-item" target="_blank" rel="noopener"><img src="https://lh3.googleusercontent.com/XigLNzXANLlEWVc6Vo6celJ4h_lInH9i4vC5Eo5XWVVqUnLd0UaLe3RQffAXecCDLpqag72brmyRig6FV1nLz3__uRYTdsGs1n-jGN_zHxtWTsFnxaKKtUHzjVIiOdHo94dV51zQQg0=w225-no?authuser=0"></a><a href="https://lh3.googleusercontent.com/AeoLfJ1VTjx52y6okGpmNH6DucmgiC8D2-3VLSXV49C18MO8sGFoyAOIdjFA_3qDPooRhddnHAVh8aWiWlz4_KlDN4itcamCL9_CYDweO_jg7HOtSotkYKb11cTTAf9NZiz9Sa9oAck=s720-no" class="gallery-item" target="_blank" rel="noopener"><img src="https://lh3.googleusercontent.com/AeoLfJ1VTjx52y6okGpmNH6DucmgiC8D2-3VLSXV49C18MO8sGFoyAOIdjFA_3qDPooRhddnHAVh8aWiWlz4_KlDN4itcamCL9_CYDweO_jg7HOtSotkYKb11cTTAf9NZiz9Sa9oAck=w225-no?authuser=0"></a><a href="https://lh3.googleusercontent.com/UuXzKZ295hX2dm8GiAQpUQroT9juuIiqqYQzk7HkPSk0FyDhSgEJfL242rbzaWkMeYyTUM83mfRHSnVHkCgyyvfVmUsuzmFOuW5h5nNkFu74Tqh1y9LzuJi7Chfd4EuMwxpn_FNzWIk=s720-no" class="gallery-item" target="_blank" rel="noopener"><img src="https://lh3.googleusercontent.com/UuXzKZ295hX2dm8GiAQpUQroT9juuIiqqYQzk7HkPSk0FyDhSgEJfL242rbzaWkMeYyTUM83mfRHSnVHkCgyyvfVmUsuzmFOuW5h5nNkFu74Tqh1y9LzuJi7Chfd4EuMwxpn_FNzWIk=w225-no?authuser=0"></a><a href="https://lh3.googleusercontent.com/yRwmGV0rKjcf88spJuApw5Ct8COhsyVOtWDHl47VMPXiQAP116_LBNpjUcSSdW7Q1I1fBSRqBDOmmlNE4Bz5qNVa5-4MRKSal8IPs_hGip8TYiMG46NmjP5ky1rAfp4OLttd5rv4hko=s720-no" class="gallery-item" target="_blank" rel="noopener"><img src="https://lh3.googleusercontent.com/yRwmGV0rKjcf88spJuApw5Ct8COhsyVOtWDHl47VMPXiQAP116_LBNpjUcSSdW7Q1I1fBSRqBDOmmlNE4Bz5qNVa5-4MRKSal8IPs_hGip8TYiMG46NmjP5ky1rAfp4OLttd5rv4hko=w225-no?authuser=0"></a><a href="https://lh3.googleusercontent.com/JlQDZHtdrk7UiMmbjw0LGb-P1e_2CXYo9fWnPnbTxPu44vhHA7VRDzQxAjjc_DussghnswuOcOp_u8c4m9sxHg1Or2gVsNJOH2R6Kg1p1ef7ThkJ1cWapwjaQKyX24Np2H-H79zCP3c=s720-no" class="gallery-item" target="_blank" rel="noopener"><img src="https://lh3.googleusercontent.com/JlQDZHtdrk7UiMmbjw0LGb-P1e_2CXYo9fWnPnbTxPu44vhHA7VRDzQxAjjc_DussghnswuOcOp_u8c4m9sxHg1Or2gVsNJOH2R6Kg1p1ef7ThkJ1cWapwjaQKyX24Np2H-H79zCP3c=w225-no?authuser=0"></a><a href="https://lh3.googleusercontent.com/pT4awqpjsjV_h4Sc2mawIUaRGHYzgejg1TvLlwsfpLxmvD9TJ2NN5bxnQZvu6xQwIuAXU6Z_hg_idxwm-p7cN2yqF15i7twIQ2g3dypz29zWfxAyFQG1o6wph8hjlYB7948jGG7qWIY=s720-no" class="gallery-item" target="_blank" rel="noopener"><img src="https://lh3.googleusercontent.com/pT4awqpjsjV_h4Sc2mawIUaRGHYzgejg1TvLlwsfpLxmvD9TJ2NN5bxnQZvu6xQwIuAXU6Z_hg_idxwm-p7cN2yqF15i7twIQ2g3dypz29zWfxAyFQG1o6wph8hjlYB7948jGG7qWIY=w225-no?authuser=0"></a><a href="https://lh3.googleusercontent.com/qs7O5vM49M4Nax5gwAbx7D7Mxnh_I2VS2oHaOofxSIOjwqCDOERJURR8UblBxiY1_xHgs3k-BSfO-tIzdevK88IjNAO-maJJmIRYbd4g0DzLl1nu3gW-v68mQIAIZbzwg-0KmRo9_Ok=s720-no" class="gallery-item" target="_blank" rel="noopener"><img src="https://lh3.googleusercontent.com/qs7O5vM49M4Nax5gwAbx7D7Mxnh_I2VS2oHaOofxSIOjwqCDOERJURR8UblBxiY1_xHgs3k-BSfO-tIzdevK88IjNAO-maJJmIRYbd4g0DzLl1nu3gW-v68mQIAIZbzwg-0KmRo9_Ok=w225-no?authuser=0"></a></div></div></div>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;div class=&quot;article-gallery&quot;&gt;&lt;div class=&quot;google-photos-album-area&quot; id=&quot;google-photos-album-area2&quot;&gt;&lt;div class=&quot;metadatas&quot;&gt;&lt;img src=&quot;https://l</summary>
-      
-    
-    
-    
-    <category term="photo" scheme="https://pages.isnot.jp/categories/photo/"/>
-    
-    
-    <category term="photo" scheme="https://pages.isnot.jp/tags/photo/"/>
     
   </entry>
   

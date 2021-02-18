@@ -387,6 +387,14 @@ map.addControl(new HelpControl());
 map.addControl(new mapboxgl.NavigationControl(), 'bottom-right');
 
 map.on('load', () => {
+  map.addSource('mapbox-dem', {
+    'type': 'raster-dem',
+    'url': 'mapbox://mapbox.mapbox-terrain-dem-v1',
+    'tileSize': 512,
+    'maxzoom': 17
+  });
+  map.setTerrain({ 'source': 'mapbox-dem', 'exaggeration': 1.5 });
+
   map.addLayer({
     'id': 'sky',
     'type': 'sky',
@@ -408,7 +416,7 @@ map.on('load', () => {
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://pages.isnot.jp/works/sample.html" data-id="cklaqj98s000c1bbqblt8f3uz" data-title="Sample Map" class="article-permalink">
+      <a data-url="https://pages.isnot.jp/works/sample.html" data-id="cklavha1n000ga1bqgvr5fnx5" data-title="Sample Map" class="article-permalink">
       
       </a>
       

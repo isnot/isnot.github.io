@@ -16,14 +16,14 @@
   </url>
   
   <url>
-    <loc>https://pages.isnot.jp/works/sample-custom-buttons.html</loc>
+    <loc>https://pages.isnot.jp/works/sample.html</loc>
     
     <lastmod>2020-12-15</lastmod>
     
   </url>
   
   <url>
-    <loc>https://pages.isnot.jp/works/sample.html</loc>
+    <loc>https://pages.isnot.jp/works/sample-custom-buttons.html</loc>
     
     <lastmod>2020-12-15</lastmod>
     
@@ -256,34 +256,6 @@
   </url>
   
   <url>
-    <loc>https://pages.isnot.jp/tags/npm/</loc>
-    <lastmod>2021-02-18</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://pages.isnot.jp/tags/hexo/</loc>
-    <lastmod>2021-02-18</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://pages.isnot.jp/tags/photo/</loc>
-    <lastmod>2021-02-18</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://pages.isnot.jp/tags/skyscraper/</loc>
-    <lastmod>2021-02-18</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://pages.isnot.jp/tags/gas/</loc>
     <lastmod>2021-02-18</lastmod>
     <changefreq>daily</changefreq>
@@ -312,7 +284,42 @@
   </url>
   
   <url>
+    <loc>https://pages.isnot.jp/tags/npm/</loc>
+    <lastmod>2021-02-18</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://pages.isnot.jp/tags/hexo/</loc>
+    <lastmod>2021-02-18</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://pages.isnot.jp/tags/photo/</loc>
+    <lastmod>2021-02-18</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://pages.isnot.jp/tags/skyscraper/</loc>
+    <lastmod>2021-02-18</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://pages.isnot.jp/tags/ubuntu/</loc>
+    <lastmod>2021-02-18</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://pages.isnot.jp/tags/github/</loc>
     <lastmod>2021-02-18</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -369,13 +376,6 @@
   
   <url>
     <loc>https://pages.isnot.jp/tags/sakura/</loc>
-    <lastmod>2021-02-18</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://pages.isnot.jp/tags/github/</loc>
     <lastmod>2021-02-18</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>

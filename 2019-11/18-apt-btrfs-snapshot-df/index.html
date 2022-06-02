@@ -47,7 +47,7 @@
 
     
   
-<!-- hexo injector head_end start --><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/lightgallery.js@1.2.0/dist/css/lightgallery.min.css" /><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-tag-google-photos-album@1.2.0/css/google_photos_album.css" integrity="sha256-+fmg1peSAbhT32GtVA2D9f1zAjN3v6lX+9Y14jKmYBs=" crossorigin="anonymous"><!-- hexo injector head_end end --><meta name="generator" content="Hexo 5.2.0"></head>
+<!-- hexo injector head_end start --><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/lightgallery.js@1.2.0/dist/css/lightgallery.min.css" /><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-tag-google-photos-album@1.2.0/css/google_photos_album.css" integrity="sha256-+fmg1peSAbhT32GtVA2D9f1zAjN3v6lX+9Y14jKmYBs=" crossorigin="anonymous"><!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.2.0"></head>
 
 <body>
   <div id="container">
@@ -114,7 +114,7 @@
 <p>今回まずきっかけになったのは、VirtualBoxで動かしているWindows10のシステム更新をしたところ、問題発生、途中で停止したことによる。<br>ディスク容量が問題になっていることは、すぐに察した。今までに同様の件は経験済みである。</p>
 <p>このパソコンで最もディスクを消費しているものは、そのWindows10のHDDイメージで、約51GiBであった。<br>これを、まだディスクには余裕がるもう一つのパソコンに移動した。<br>つまり今後はVirtualBoxはそちらのほうで使うことにした。</p>
 <p>これでディスクには大きく余裕ができるハズだろうと思ったのに…。なんと100%→95%になっただけ。残り約10GiB。<br>これは何かがおかしいと思って、イロイロ調べることにした。</p>
-<p>dfや「btrfs filesystem usage /」で見ると、ディスクの割当て済みがほぼ100％近く、空きは上記のように約10GiBと表示される。<br>いっぽう、duやbaobabで調べる、つまり個々のファイルの大きさを積算していく方式で調べると、それは約53GiBであると判った。<br>これは、驚きを持って受け止められれるべき事柄でありつつ、たしかに、冷静に考えると（ある点を除いて）妥当だと納得いく数字。</p>
+<p>dfや「btrfs filesystem usage &#x2F;」で見ると、ディスクの割当て済みがほぼ100％近く、空きは上記のように約10GiBと表示される。<br>いっぽう、duやbaobabで調べる、つまり個々のファイルの大きさを積算していく方式で調べると、それは約53GiBであると判った。<br>これは、驚きを持って受け止められれるべき事柄でありつつ、たしかに、冷静に考えると（ある点を除いて）妥当だと納得いく数字。</p>
 <p>つまり、妥当であるのは、パソコンの利用状況などを考慮すれば、使用済みが53GiBであるという事実。200GiB超も使っているというほうが変だ。<br>そして納得できない、分からないのが、ディスク容量の使用済み（実数）と空きの合計が、ディスク（というよりパーティション）として確保している大きさに一致しないこと。<br>170GiB以上も、謎の差分があることになる。</p>
 <p>これは、古き伝統的（そしてごく単純な）ファイルシステムを管理していた頃の知識からは、ありえない、異常事態としか言いようがない。<br>しかしここはもはや、Btrfsの世界なのである。<br>なので、何を調べるべきかは、だいたい想像できることではあるのだ。ただ、私の経験と知識では、まだ知らない何かがあるのだろう、ということ。</p>
 <p>調べた。<br>その結果に辿り着いた答えが、aptのスナップショット機能によるものだったというわけ。<br>apt-btrfs-snapshotを使うと、それを確認でき、削除を含む管理ができる。<br>一番あたらしいものを一つだけ残して、あとは削除した。</p>
@@ -124,7 +124,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://pages.isnot.jp/2019-11/18-apt-btrfs-snapshot-df/" data-id="cklaw9vxn000ivibq9rs2ht2t" data-title="apt-btrfs-snapshotによるディスク容量の消費" class="article-permalink">
+      <a data-url="https://pages.isnot.jp/2019-11/18-apt-btrfs-snapshot-df/" data-id="cl3wxg9tx000h6ebqehbxbshk" data-title="apt-btrfs-snapshotによるディスク容量の消費" class="article-permalink">
       
       </a>
       
@@ -289,7 +289,7 @@
   <div class="outer">
   <div id="gotoTop"><span class="fa fa-arrow-circle-up" title="↑Scroll to top of page">&nbsp;</span></div>
     <div id="footer-info" class="inner">
-      &copy; 2021 isnot<br>
+      &copy; 2022 isnot<br>
       Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>,
       Theme &quot;Horizon&quot; based on <a href="https://github.com/hexojs/hexo-theme-landscape" target="_blank">Landscape</a>
     </div>

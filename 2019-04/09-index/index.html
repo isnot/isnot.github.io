@@ -50,7 +50,7 @@
 
     
   
-<!-- hexo injector head_end start --><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/lightgallery.js@1.2.0/dist/css/lightgallery.min.css" /><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-tag-google-photos-album@1.2.0/css/google_photos_album.css" integrity="sha256-+fmg1peSAbhT32GtVA2D9f1zAjN3v6lX+9Y14jKmYBs=" crossorigin="anonymous"><!-- hexo injector head_end end --><meta name="generator" content="Hexo 5.2.0"></head>
+<!-- hexo injector head_end start --><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/lightgallery.js@1.2.0/dist/css/lightgallery.min.css" /><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-tag-google-photos-album@1.2.0/css/google_photos_album.css" integrity="sha256-+fmg1peSAbhT32GtVA2D9f1zAjN3v6lX+9Y14jKmYBs=" crossorigin="anonymous"><!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.2.0"></head>
 
 <body>
   <div id="container">
@@ -120,7 +120,7 @@
 <p>そのうえで、ホスティングにGitHub Pagesを使う。<br>レンサバに直接デプロイするのに比べると、例えば出先でスマホから、ブラウザを使ってちょこっとコンテンツを書き換える程度のことが、それなりに出来るから。<br>まぁ普段はデスクトップのパソコンで作業します。</p>
 <h3 id="つまずき-その1-ドメインの設定"><a href="#つまずき-その1-ドメインの設定" class="headerlink" title="つまずき その1 ドメインの設定"></a>つまずき その1 ドメインの設定</h3><p>さくらの会員メニューからログイン。ドメインの設定。<br>ドメインの編集から、CNAMEを追加する。このとき、「値」に何を設定すれば良いか分かってなかったので、調べる。と、FQDN書けよと。<br>ここで失敗。末尾のドット（.）を付け忘れる。いつまで待ってもドメインが伝播してこないなーとか。<br>1日待って、おかしいと思って見直したら、そういうことだった。</p>
 <p>ついでに、無料のSSL証明書をポチっとした。この上なく楽だな〜。<br>業務で国内大手事業者からSSL証明書を買った経験は何度かあるけど、そういうのと次元がまったく違ってますね。</p>
-<h3 id="つまずき-その2-リポジトリの設定"><a href="#つまずき-その2-リポジトリの設定" class="headerlink" title="つまずき その2 リポジトリの設定"></a>つまずき その2 リポジトリの設定</h3><p>「CNAME」という名前のファイルを置くのだが、いろいろあって、衝突したり消えたりした。<br>結局でいうと、&lt;$blog_home&gt;/source/CNAME に置いてあげれば解決でした。</p>
+<h3 id="つまずき-その2-リポジトリの設定"><a href="#つまずき-その2-リポジトリの設定" class="headerlink" title="つまずき その2 リポジトリの設定"></a>つまずき その2 リポジトリの設定</h3><p>「CNAME」という名前のファイルを置くのだが、いろいろあって、衝突したり消えたりした。<br>結局でいうと、&lt;$blog_home&gt;&#x2F;source&#x2F;CNAME に置いてあげれば解決でした。</p>
 <h3 id="themes-のカスタマイズ"><a href="#themes-のカスタマイズ" class="headerlink" title="themes のカスタマイズ"></a>themes のカスタマイズ</h3><p>themesには、Stageというのを選んだ。<br>結構たくさんある中で選んだポイントは、<br>本文テキストの文字サイズが小さくないこと。<br>ライト系で、白っぽいこと。<br>そして、jQuery依存しないで済むこと。</p>
 <p>よく見たらjQuery使われていたんだけど、見た目のちょっとした動きを付けるためだけに使っている程度だったので、カスタマイズの過程で外しといた。</p>
 <p>あとはヘッダーの画像を入れ替え、位置関係を調整。<br>サイドバーのアバター画像も入れ替え。</p>
@@ -128,7 +128,7 @@
 <p>マルチ言語機能があるが、日本語（ja）の言語ファイルがなかったので、enをコピーして適当に翻訳した。</p>
 <p>今のところは、この程度かな。</p>
 <h3 id="つまずき-その3-jsの変更を反映する"><a href="#つまずき-その3-jsの変更を反映する" class="headerlink" title="つまずき その3 jsの変更を反映する"></a>つまずき その3 jsの変更を反映する</h3><p>これはつまずきというより、すぐに気付けた。<br>hexo コマンドでは、themesの中の、webpack処理が行われないようです。<br>つまり、元jsファイルを更新した時に、minify後のファイルには反映されないのです。<br>なので、以下のようにbuildしてやる必要がありました。</p>
-<figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line"><span class="variable">$</span> <span class="built_in">cd</span> themes/stage/</span><br><span class="line"><span class="variable">$</span> npm run build</span><br><span class="line"><span class="variable">$</span> <span class="built_in">cd</span> ../..</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ cd themes/stage/</span><br><span class="line">$ npm run build</span><br><span class="line">$ cd ../..</span><br></pre></td></tr></table></figure>
 
 <h3 id="既存コンテンツどうしよう"><a href="#既存コンテンツどうしよう" class="headerlink" title="既存コンテンツどうしよう"></a>既存コンテンツどうしよう</h3><p>G+のバックアップデータをインポートするとしたら、パーザから自作してだな。<br>うーむ。</p>
 <p>そして旧ブログというかWeb日記も、そのうちコンバートしておくか。</p>
@@ -137,7 +137,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://pages.isnot.jp/2019-04/09-index/" data-id="cklaw9vxz0016vibq5bk34er4" data-title="はじめまして！" class="article-permalink">
+      <a data-url="https://pages.isnot.jp/2019-04/09-index/" data-id="cl3wxg9ua00166ebqdayqf15e" data-title="はじめまして！" class="article-permalink">
       
       </a>
       
@@ -297,7 +297,7 @@
   <div class="outer">
   <div id="gotoTop"><span class="fa fa-arrow-circle-up" title="↑Scroll to top of page">&nbsp;</span></div>
     <div id="footer-info" class="inner">
-      &copy; 2021 isnot<br>
+      &copy; 2022 isnot<br>
       Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>,
       Theme &quot;Horizon&quot; based on <a href="https://github.com/hexojs/hexo-theme-landscape" target="_blank">Landscape</a>
     </div>

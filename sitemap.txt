@@ -1,3 +1,4 @@
+https://pages.isnot.jp/2022-09/12-troubles-about-my-new-tablet/
 https://pages.isnot.jp/about/index.html
 https://pages.isnot.jp/works/mapbox-sample.html
 https://pages.isnot.jp/works/sample-custom-buttons.html
@@ -53,8 +54,12 @@ https://pages.isnot.jp/tags/github-pages/
 https://pages.isnot.jp/tags/domain/
 https://pages.isnot.jp/tags/sakura/
 https://pages.isnot.jp/tags/cycling/
+https://pages.isnot.jp/tags/MaxPad/
+https://pages.isnot.jp/tags/I11/
+https://pages.isnot.jp/tags/Amazon/
 https://pages.isnot.jp/categories/javascript/
 https://pages.isnot.jp/categories/hexo/
 https://pages.isnot.jp/categories/photo/
 https://pages.isnot.jp/categories/ubuntu/
 https://pages.isnot.jp/categories/myself/
+https://pages.isnot.jp/categories/gear/

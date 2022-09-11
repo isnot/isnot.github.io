@@ -2,6 +2,15 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://pages.isnot.jp/2022-09/12-troubles-about-my-new-tablet/</loc>
+    
+    <lastmod>2022-09-11</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://pages.isnot.jp/about/index.html</loc>
     
     <lastmod>2022-06-02</lastmod>
@@ -301,7 +310,7 @@
 
   <url>
     <loc>https://pages.isnot.jp/</loc>
-    <lastmod>2022-06-02</lastmod>
+    <lastmod>2022-09-11</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
@@ -309,147 +318,168 @@
   
   <url>
     <loc>https://pages.isnot.jp/tags/javascript/</loc>
-    <lastmod>2022-06-02</lastmod>
+    <lastmod>2022-09-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://pages.isnot.jp/tags/ingress/</loc>
-    <lastmod>2022-06-02</lastmod>
+    <lastmod>2022-09-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://pages.isnot.jp/tags/gas/</loc>
-    <lastmod>2022-06-02</lastmod>
+    <lastmod>2022-09-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://pages.isnot.jp/tags/telegram/</loc>
-    <lastmod>2022-06-02</lastmod>
+    <lastmod>2022-09-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://pages.isnot.jp/tags/line/</loc>
-    <lastmod>2022-06-02</lastmod>
+    <lastmod>2022-09-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://pages.isnot.jp/tags/chatbot/</loc>
-    <lastmod>2022-06-02</lastmod>
+    <lastmod>2022-09-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://pages.isnot.jp/tags/npm/</loc>
-    <lastmod>2022-06-02</lastmod>
+    <lastmod>2022-09-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://pages.isnot.jp/tags/hexo/</loc>
-    <lastmod>2022-06-02</lastmod>
+    <lastmod>2022-09-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://pages.isnot.jp/tags/photo/</loc>
-    <lastmod>2022-06-02</lastmod>
+    <lastmod>2022-09-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://pages.isnot.jp/tags/skyscraper/</loc>
-    <lastmod>2022-06-02</lastmod>
+    <lastmod>2022-09-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://pages.isnot.jp/tags/ubuntu/</loc>
-    <lastmod>2022-06-02</lastmod>
+    <lastmod>2022-09-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://pages.isnot.jp/tags/github/</loc>
-    <lastmod>2022-06-02</lastmod>
+    <lastmod>2022-09-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://pages.isnot.jp/tags/map/</loc>
-    <lastmod>2022-06-02</lastmod>
+    <lastmod>2022-09-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://pages.isnot.jp/tags/mapbox/</loc>
-    <lastmod>2022-06-02</lastmod>
+    <lastmod>2022-09-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://pages.isnot.jp/tags/tokorozawa/</loc>
-    <lastmod>2022-06-02</lastmod>
+    <lastmod>2022-09-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://pages.isnot.jp/tags/rose/</loc>
-    <lastmod>2022-06-02</lastmod>
+    <lastmod>2022-09-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://pages.isnot.jp/tags/isnot/</loc>
-    <lastmod>2022-06-02</lastmod>
+    <lastmod>2022-09-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://pages.isnot.jp/tags/github-pages/</loc>
-    <lastmod>2022-06-02</lastmod>
+    <lastmod>2022-09-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://pages.isnot.jp/tags/domain/</loc>
-    <lastmod>2022-06-02</lastmod>
+    <lastmod>2022-09-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://pages.isnot.jp/tags/sakura/</loc>
-    <lastmod>2022-06-02</lastmod>
+    <lastmod>2022-09-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://pages.isnot.jp/tags/cycling/</loc>
-    <lastmod>2022-06-02</lastmod>
+    <lastmod>2022-09-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://pages.isnot.jp/tags/MaxPad/</loc>
+    <lastmod>2022-09-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://pages.isnot.jp/tags/I11/</loc>
+    <lastmod>2022-09-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://pages.isnot.jp/tags/Amazon/</loc>
+    <lastmod>2022-09-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
@@ -458,35 +488,42 @@
   
   <url>
     <loc>https://pages.isnot.jp/categories/javascript/</loc>
-    <lastmod>2022-06-02</lastmod>
+    <lastmod>2022-09-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://pages.isnot.jp/categories/hexo/</loc>
-    <lastmod>2022-06-02</lastmod>
+    <lastmod>2022-09-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://pages.isnot.jp/categories/photo/</loc>
-    <lastmod>2022-06-02</lastmod>
+    <lastmod>2022-09-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://pages.isnot.jp/categories/ubuntu/</loc>
-    <lastmod>2022-06-02</lastmod>
+    <lastmod>2022-09-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://pages.isnot.jp/categories/myself/</loc>
-    <lastmod>2022-06-02</lastmod>
+    <lastmod>2022-09-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://pages.isnot.jp/categories/gear/</loc>
+    <lastmod>2022-09-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
